@@ -22,7 +22,7 @@ public class Bedürfnis {
 	 * Name:
 	 * 1 = Nahrung
 	 * 2 = Gesundheit
-	 * 3 = 
+	 * 3 = Soziales
 	 * 4 = Luxus
 	 * 
 	 * @param name
