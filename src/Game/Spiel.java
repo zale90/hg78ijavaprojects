@@ -26,6 +26,7 @@ public class Spiel {
 		bedürfnisse = avatar.getBedürfnisse();
 		kontostand = avatar.getKontostand();
 		avatarNr = avatar.getAvatarNummer();
+		
 	}
 
 }
