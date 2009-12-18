@@ -1,8 +1,10 @@
 package Game.GUI;
 
 import javax.swing.*;
+import Game.*;
 
-public class Charakterauswahl extends JPanel {
+public class Charakterauswahl extends JPanel
+{
 
 	private static final long serialVersionUID = -5037394024976426750L;
 
@@ -15,6 +17,7 @@ public class Charakterauswahl extends JPanel {
 		JLabel lbl‹berschrift = new JLabel("W‰hlen Sie einen Charakter");
 		lbl‹berschrift.setLocation(10, 20);
 		lbl‹berschrift.setSize(200, 20);
+		lbl‹berschrift.setFont(Optionen.FONT_TITLE);
 		this.add(lbl‹berschrift);
 		
 		this.setVisible(true);
