@@ -16,6 +16,7 @@ public class Hauptfenster extends JFrame {
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
 		this.setNativeLookAndFeel();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
 		this.setVisible(true);
@@ -29,11 +30,13 @@ public class Hauptfenster extends JFrame {
 		this.add(mainPanel);
 	}
 	
-	public void setNativeLookAndFeel() {
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch(Exception e) {
-			System.out.println("Fehler beim Setzen des Windows Look&Feel: " + e);
-		}
-	}
+	/**
+	 * Setzt das Windows Look & Feel!
+	 */
+    private void setNativeLookAndFeel() {
+        try {
+            UIManager.setLookAndFeel(
+                UIManager.getSystemLookAndFeelClassName() );
+        } catch( Exception e ) {}
+    }
 }
