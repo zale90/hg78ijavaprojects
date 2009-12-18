@@ -15,8 +15,9 @@ public class Hauptfenster extends JFrame {
 		this.setSize(1000, 700);
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
-		this.setNativeLookAndFeel();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+		this.setNativeLookAndFeel();
 		
 		
 		this.setVisible(true);
@@ -28,6 +29,7 @@ public class Hauptfenster extends JFrame {
 		}
 		mainPanel = panel;
 		this.add(mainPanel);
+		this.repaint();
 	}
 	
 	/**
