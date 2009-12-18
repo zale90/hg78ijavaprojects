@@ -43,7 +43,18 @@ public class Bedürfnis {
 	/**
 	 * @return the name
 	 */
-	public int getName() {
+	public String getName(int nr) {
+		String name = new String("");
+		
+		switch (this.name)
+		{
+		case 1: name = "Hunger";
+		case 2: name = "Gesundheit";
+		case 3: name = "Soziales";
+		case 4: name = "Luxus";
+		
+		}
+		
 		return name;
 	}
 	
