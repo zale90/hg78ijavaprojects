@@ -1,6 +1,7 @@
 package Game.GUI;
 
 import java.awt.event.*;
+import java.util.*;
 
 
 import javax.swing.*;
@@ -12,7 +13,7 @@ public class Charakterauswahl extends JPanel implements MouseListener
 	private static final long serialVersionUID = -5037394024976426750L;
 	private Object lblStart;
 
-	public Charakterauswahl(Avatar av1, Avatar av2, Avatar av3) {
+	public Charakterauswahl(ArrayList<Avatar> avaArray) {
 		this.setSize(1000, 700);
 		this.setLocation(0,0);
 		this.setLayout(null);
@@ -23,17 +24,11 @@ public class Charakterauswahl extends JPanel implements MouseListener
 		lbl‹berschrift.setSize(400, 50);
 		lbl‹berschrift.setFont(Optionen.FONT_TITLE);
 		this.add(lbl‹berschrift);
+
 		
-		JLabel lblStart = new JLabel("Spiel starten");
-		lblStart.setLocation(850, 620);
-		lblStart.setSize(150,40);
-		lblStart.setFont(Optionen.FONT_BUTTON);
-		lblStart.addMouseListener(this);
-		this.add(lblStart);
-		
-		JPanel pnlCharacter1 = new CharakterGUI(av1, 10, 100);
-		JPanel pnlCharacter2 = new CharakterGUI(av2, 340, 100);
-		JPanel pnlCharacter3 = new CharakterGUI(av3, 670, 100);
+		JPanel pnlCharacter1 = new CharakterGUI(avaArray.get(1), 10, 100);
+		JPanel pnlCharacter2 = new CharakterGUI(avaArray.get(2), 340, 100);
+		JPanel pnlCharacter3 = new CharakterGUI(avaArray.get(3), 670, 100);
 		
 		
 		
@@ -44,8 +39,6 @@ public class Charakterauswahl extends JPanel implements MouseListener
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		if (arg0.getSource() == this.lblStart){
-			//JOA NE?!
 		} 
 		
 	}
