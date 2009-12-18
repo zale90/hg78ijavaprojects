@@ -10,6 +10,7 @@ public class Charakterauswahl extends JPanel {
 		this.setSize(1000, 500);
 		this.setLocation(0, 100);
 		this.setLayout(null);
+		this.setBackground(null);
 		
 		JLabel lbl‹berschrift = new JLabel("W‰hlen Sie einen Charakter");
 		lbl‹berschrift.setLocation(10, 20);
