@@ -1,14 +1,13 @@
 package Game.GUI;
 
 import javax.swing.*;
-
-import Game.Optionen;
+import Game.*;
 
 public class Spieloberfläche extends JPanel {
 
 	private static final long serialVersionUID = 846296549789605647L;
 	
-	private JTextField console;
+	private JTextArea console;
 	private JLabel lblHeading;
 	
 	public Spieloberfläche() {
@@ -24,10 +23,15 @@ public class Spieloberfläche extends JPanel {
 		lblHeading.setLocation(20, 20);
 		this.add(lblHeading);
 		
-		console = new JTextField();
-		console.setSize(1000, 100);
-		console.setLocation(0, 880);
-		this.add(console);
+		console = new JTextArea("Hallo");
+		//console.setEditable(false);
+        JScrollPane spConsole = new JScrollPane(console);
+        //spConsole.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        spConsole.setSize(995, 100);
+        spConsole.setLocation(0, 568);
+		this.add(spConsole);
+		
+		console.append("Noch mehr Text");
 		
 		this.setVisible(true);
 	}
