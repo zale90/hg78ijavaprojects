@@ -17,7 +17,7 @@ public class Information {
 	/**
 	 * @param zuÄndern 1=Nahrung, 2=N.faktor, 3=Gesundheit, 4=G.Faktor, 
 	 * 				   5=Soziales, 6=S.Faktor 7=Luxus, 8=L.Faktor,
-	 * 				   9=Zeit, 10=Zeit pro Runde, 11=Kinder, 12=K.Faktor
+	 * 				   9=Kinder, 10=K.Faktor, 11=Zeit, 12=Zeit pro Runde, 
 	 * 				   13=Geld, 14=Geld pro Monat
 	 * @param änderungsart 1=auf Wert, 2=um Wert ändern, 3=auf Wert%, 4=um Wert% ändern
 	 * @param wert

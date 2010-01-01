@@ -24,6 +24,7 @@ public class Bedürfnis {
 	 * 2 = Gesundheit
 	 * 3 = Soziales
 	 * 4 = Luxus
+	 * 5 = Kinder
 	 * 
 	 * @param name
 	 * @param wert
@@ -52,6 +53,7 @@ public class Bedürfnis {
 		case 2: name = "Gesundheit";
 		case 3: name = "Soziales";
 		case 4: name = "Luxus";
+		case 5: name = "Kinder";
 		
 		}
 		

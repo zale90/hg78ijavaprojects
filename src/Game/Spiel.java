@@ -11,7 +11,7 @@ package Game;
 
 public class Spiel {
 	
-	//Bedürfnisse: 1=Nahrung, 2=Gesundheit, 3=Soziales, 4=Luxus
+	//Bedürfnisse: 1=Nahrung, 2=Gesundheit, 3=Soziales, 4=Luxus, 5=Kinder
 	private Bedürfnis[] bedürfnisse;
 	private int zeit;
 	private int zeitProRunde;
@@ -61,7 +61,11 @@ public class Spiel {
 				case 7: {neuerWert = bedürfnisse[4].getWert();
 						referenz = bedürfnisse[4];}
 				case 8: {neuerWert = bedürfnisse[4].getAbfallfaktor();
-						referenz = bedürfnisse[4];}
+						referenz = bedürfnisse[5];}
+				case 9: {neuerWert = bedürfnisse[5].getWert();
+						referenz = bedürfnisse[5];}
+				case 10: {neuerWert = bedürfnisse[5].getAbfallfaktor();
+						 referenz = bedürfnisse[5];}
 				}
 				
 				switch(infos[i].getÄnderungsart())
