@@ -61,7 +61,7 @@ public class Spiel {
 				case 7: {neuerWert = bedürfnisse[4].getWert();
 						referenz = bedürfnisse[4];}
 				case 8: {neuerWert = bedürfnisse[4].getAbfallfaktor();
-						referenz = bedürfnisse[5];}
+						referenz = bedürfnisse[4];}
 				case 9: {neuerWert = bedürfnisse[5].getWert();
 						referenz = bedürfnisse[5];}
 				case 10: {neuerWert = bedürfnisse[5].getAbfallfaktor();
