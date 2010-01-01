@@ -11,8 +11,12 @@ package Game;
 
 public class Spiel {
 	
+	//Bedürfnisse: 1=Nahrung, 2=Gesundheit, 3=Soziales, 4=Luxus
 	private Bedürfnis[] bedürfnisse;
+	private int zeit;
+	private int zeitProRunde;
 	private int kontostand;
+	private int geldProMonat;
 	private int avatarNr;
 	
 	/**
@@ -28,5 +32,97 @@ public class Spiel {
 		avatarNr = avatar.getAvatarNummer();
 		
 	}
-
+	
+	
+	//UNVOLLSTÄNDIG!!! ES FEHLEN DIE FÄLLE ZEIT UND GELD!
+	public void infosUmsetzen(Information[] infos)
+	{
+		for(int i=0; i<infos.length; i++)
+		{
+			//Bedürfnisbereich
+			if(infos[i].getZuÄndern()<9)
+			{
+				int neuerWert = 0;
+				Bedürfnis referenz = null;
+				switch(infos[i].getZuÄndern())
+				{
+				case 1: {neuerWert = bedürfnisse[1].getWert();
+						referenz = bedürfnisse[1];}
+				case 2: {neuerWert = bedürfnisse[1].getAbfallfaktor();
+						referenz = bedürfnisse[1];}
+				case 3: {neuerWert = bedürfnisse[2].getWert();
+						referenz = bedürfnisse[2];}
+				case 4: {neuerWert = bedürfnisse[2].getAbfallfaktor();
+						referenz = bedürfnisse[2];}
+				case 5: {neuerWert = bedürfnisse[3].getWert();
+						referenz = bedürfnisse[3];}
+				case 6: {neuerWert = bedürfnisse[3].getAbfallfaktor();
+						referenz = bedürfnisse[3];}
+				case 7: {neuerWert = bedürfnisse[4].getWert();
+						referenz = bedürfnisse[4];}
+				case 8: {neuerWert = bedürfnisse[4].getAbfallfaktor();
+						referenz = bedürfnisse[4];}
+				}
+				
+				switch(infos[i].getÄnderungsart())
+				{
+				case 1:
+					{
+						if(infos[i].getWert()>=referenz.getMin() && infos[i].getWert()<=referenz.getMax())
+							neuerWert = infos[i].getWert();
+						else
+						{
+							if(infos[i].getWert()<referenz.getMin())
+								neuerWert = referenz.getMin();
+							else
+								neuerWert = referenz.getMax();
+						}
+					}
+				case 2:
+					{
+						int tmp = neuerWert + infos[i].getWert();
+						if(tmp>=referenz.getMin() && tmp<=referenz.getMax())
+							neuerWert = tmp;
+						else
+						{
+							if(tmp<referenz.getMin())
+								neuerWert = referenz.getMin();
+							else
+								neuerWert = referenz.getMax();
+						}
+					}
+				case 3:
+					{
+						double tmp = neuerWert*infos[i].getWert();
+						int tmp2 = (int)tmp; //so grob
+						if(tmp2>=referenz.getMin() && tmp2<=referenz.getMax())
+							neuerWert = tmp2;
+						else
+						{
+							if(tmp2<referenz.getMin())
+								neuerWert = referenz.getMin();
+							else
+								neuerWert = referenz.getMax();
+						}
+					}
+				case 4:
+					{
+						double tmp = neuerWert*infos[i].getWert();
+						int tmp2 = (int)tmp; //so grob
+						tmp2 = neuerWert + tmp2;
+						if(tmp2>=referenz.getMin() && tmp2<=referenz.getMax())
+							neuerWert = tmp2;
+						else
+						{
+							if(tmp2<referenz.getMin())
+								neuerWert = referenz.getMin();
+							else
+								neuerWert = referenz.getMax();
+						}
+					}
+				}	
+			}
+			//Hier sollten weitere If-Fälle für Zeit und Geld entstehen
+		}
+	}
 }
