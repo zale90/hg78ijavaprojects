@@ -121,23 +121,26 @@ public class Bedürfnis {
 		this.abfallfaktor = abfallfaktor;
 	}
 	
-	/**
-	 * Ändert den Wert dieses Bedüfnisses und addiert die übergebene Änderung.
-	 * 
-	 * @param änderung Die Wertänderung die zum alten Wert addiert wird. Negative Änderungen möglich.
-	 * @return
-	 */
-	public boolean ändereWert(int änderung) {
-		if(änderung < min) {
-			wert = min;
-			return false;
-		} else if(änderung > max) {
-			wert = max;
-			return false;
-		} else {
-			wert = wert + änderung;
-			return true;
-		}
-	}
+
+//Methode ausgelagert in Spiel, diese übernimmt jetzt alle wertändernden Aufgaben, also auch Zeit und andere Faktoren mit Hilfe von Informationen
+//Nachteil: Wir müssen immer 'ne Information erstellen Vorteil: Es kann quasi nichts schief gehen und alles ist super einheitlich! (Vorteil überwiegt, ganz klar... ;) )
+//	/**
+//	 * Ändert den Wert dieses Bedüfnisses und addiert die übergebene Änderung.
+//	 * 
+//	 * @param änderung Die Wertänderung die zum alten Wert addiert wird. Negative Änderungen möglich.
+//	 * @return
+//	 */
+//	public boolean ändereWert(int änderung) {
+//		if(änderung < min) {
+//			wert = min;
+//			return false;
+//		} else if(änderung > max) {
+//			wert = max;
+//			return false;
+//		} else {
+//			wert = wert + änderung;
+//			return true;
+//		}
+//	}
 
 }

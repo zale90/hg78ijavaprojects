@@ -10,6 +10,10 @@ public class Initialisator
 
 	}
 	
+	/*
+	 * gibt die Avatare zurück, die irgendwo gespeichert werden müssen (evtl. launcher?)
+	 * Werte müssen natürlich noch angepasst werden!
+	 */
 	public ArrayList<Avatar> gibAvatare()
 	{
 		ArrayList<Avatar> liste = new ArrayList<Avatar>();
