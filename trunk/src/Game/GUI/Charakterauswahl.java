@@ -25,12 +25,13 @@ public class Charakterauswahl extends JPanel implements MouseListener
 		lbl‹berschrift.setFont(Optionen.FONT_TITLE);
 		this.add(lbl‹berschrift);
 
+		JPanel pnlCharacter1 = new CharakterGUI(avaArray.get(0), 10, 100);
+		JPanel pnlCharacter2 = new CharakterGUI(avaArray.get(1), 340, 100);
+		JPanel pnlCharacter3 = new CharakterGUI(avaArray.get(2), 670, 100);
 		
-		JPanel pnlCharacter1 = new CharakterGUI(avaArray.get(1), 10, 100);
-		JPanel pnlCharacter2 = new CharakterGUI(avaArray.get(2), 340, 100);
-		JPanel pnlCharacter3 = new CharakterGUI(avaArray.get(3), 670, 100);
-		
-		
+		this.add(pnlCharacter1);
+		this.add(pnlCharacter2);
+		this.add(pnlCharacter3);
 		
 		
 		this.setVisible(true);
