@@ -14,7 +14,7 @@ public class Avatar {
 	private int avatarNummer;
 	private String name;  //Hinzugefügt, weil könnte nützlich werden.
 	private String beschreibung;
-	private ArrayList<Bedürfnis> bedürfnisse;
+	private Bedürfnis[] bedürfnisse;
 	private int kontostand;
 	private String bild;
 	
@@ -23,7 +23,7 @@ public class Avatar {
 	 * @param bedürfnisse
 	 * @param kontostand
 	 */
-	public Avatar(int nummer,String name , String beschreibung, ArrayList<Bedürfnis> bedürfnisse, int kontostand, String bild) {
+	public Avatar(int nummer,String name , String beschreibung, Bedürfnis[] bedürfnisse, int kontostand, String bild) {
 		super();
 		this.avatarNummer = nummer;
 		this.setName(name);

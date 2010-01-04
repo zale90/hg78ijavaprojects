@@ -39,7 +39,6 @@ public class Charakterauswahl extends JPanel implements MouseListener
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		} 
 		
 	}
 
