@@ -9,6 +9,8 @@
 
 package Game;
 
+import Game.GUI.*;
+
 public class Spiel {
 	
 	//Bedürfnisse: 1=Nahrung, 2=Gesundheit, 3=Soziales, 4=Luxus, 5=Kinder
@@ -18,6 +20,8 @@ public class Spiel {
 	private int kontostand;
 	private int geldProMonat;
 	private int avatarNr;
+	private Hauptfenster mainGUI;
+	private Spieloberfläche gameGUI;
 	
 	/**
 	 * Ein neues Spielt wird anhand der Informationen
@@ -26,11 +30,68 @@ public class Spiel {
 	 * 
 	 * @param avatar
 	 */
-	public Spiel(Avatar avatar) {
+	public Spiel(Avatar avatar, Hauptfenster mainGUI) {
 		bedürfnisse = avatar.getBedürfnisse();
 		kontostand = avatar.getKontostand();
 		avatarNr = avatar.getAvatarNummer();
-		
+		this.mainGUI = mainGUI;
+		gameGUI = new Spieloberfläche(this);
+		zeigeSpielGUI();
+	}
+	
+	public Bedürfnis[] getBedürfnisse() {
+		return bedürfnisse;
+	}
+
+	public void setBedürfnisse(Bedürfnis[] bedürfnisse) {
+		this.bedürfnisse = bedürfnisse;
+	}
+
+	public int getZeit() {
+		return zeit;
+	}
+
+	public void setZeit(int zeit) {
+		this.zeit = zeit;
+	}
+
+	public int getZeitProRunde() {
+		return zeitProRunde;
+	}
+
+	public void setZeitProRunde(int zeitProRunde) {
+		this.zeitProRunde = zeitProRunde;
+	}
+
+	public int getKontostand() {
+		return kontostand;
+	}
+
+	public void setKontostand(int kontostand) {
+		this.kontostand = kontostand;
+	}
+
+	public int getGeldProMonat() {
+		return geldProMonat;
+	}
+
+	public void setGeldProMonat(int geldProMonat) {
+		this.geldProMonat = geldProMonat;
+	}
+
+	public int getAvatarNr() {
+		return avatarNr;
+	}
+
+	public void setAvatarNr(int avatarNr) {
+		this.avatarNr = avatarNr;
+	}
+
+	/**
+	 * Zeigt die aktuelle Spieloberfläche im Hauptfenster an!
+	 */
+	public void zeigeSpielGUI() {
+		mainGUI.zeigePanel(gameGUI);
 	}
 	
 	
