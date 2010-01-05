@@ -7,8 +7,6 @@
 
 package Game;
 
-import java.util.*;
-
 public class Avatar {
 	
 	private int avatarNummer;

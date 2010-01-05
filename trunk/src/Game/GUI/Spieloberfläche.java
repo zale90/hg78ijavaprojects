@@ -9,7 +9,7 @@ public class Spieloberfläche extends JPanel {
 	private static final long serialVersionUID = 846296549789605647L;
 	
 	private JTextArea console;
-	private JLabel lblHeading;
+	private JLabel lblHeading, lblZeit, lblGeld;
 	private JProgressBar[] bedürfnisBars;
 	private Spiel spiel;
 	
@@ -47,6 +47,29 @@ public class Spieloberfläche extends JPanel {
 		
 		initializeBars(spiel.getBedürfnisse());
 		
+		// Verbleibende Zeit anzeigen
+		JLabel lblVerbleibendeZeit = new JLabel("Verbleibende Zeit:");
+		lblVerbleibendeZeit.setSize(100, 20);
+		lblVerbleibendeZeit.setLocation(850, 280);
+		this.add(lblVerbleibendeZeit);
+		
+		lblZeit = new JLabel("" + spiel.getZeit());
+		lblZeit.setSize(100, 20);
+		lblZeit.setLocation(945, 280);
+		this.add(lblZeit);
+		
+		
+		// Kontostand anzeigen
+		JLabel lblKontostand = new JLabel("Kontostand:");
+		lblKontostand.setSize(100, 20);
+		lblKontostand.setLocation(850, 300);
+		this.add(lblKontostand);
+		
+		lblGeld = new JLabel("" + spiel.getKontostand());
+		lblGeld.setSize(100, 20);
+		lblGeld.setLocation(945, 300);
+		this.add(lblGeld);
+		
 		this.setVisible(true);
 	}
 	
@@ -61,7 +84,7 @@ public class Spieloberfläche extends JPanel {
 			Point pos = getPositionForBars(i);
 			bedürfnisBars[i] = new JProgressBar(bedürfnisse[i].getMin(), bedürfnisse[i].getMax());
 			bedürfnisBars[i].setValue(bedürfnisse[i].getWert());
-			bedürfnisBars[i].setSize(100, 20);
+			bedürfnisBars[i].setSize(130, 20);
 			bedürfnisBars[i].setLocation(pos);
 			this.add(bedürfnisBars[i]);
 			JLabel lbl = new JLabel(bedürfnisse[i].getName());
@@ -72,7 +95,7 @@ public class Spieloberfläche extends JPanel {
 	}
 	
 	private Point getPositionForBars(int i) {
-		int xPos = 870;
+		int xPos = 850;
 		if(i == 0) {
 			return new Point(xPos, 100);
 		} else if(i == 1) {
