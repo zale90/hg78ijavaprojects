@@ -24,7 +24,7 @@ public class Initialisator
 		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);
 		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);
 		
-		avList.add(new Avatar(1, "Horst Terano", "Akademiker (leicht)", bedList, 1500, "TESTBILD.jpg"));
+		avList.add(new Avatar(1, "Horst Terano", "Akademiker (leicht)", bedList, 1500, "testAvatar.jpg"));
 		avList.add(new Avatar(2, "Horst Terano", "Akademiker (leicht)", bedList, 1500, "BILD"));
 		avList.add(new Avatar(3, "Horst Terano", "Akademiker (leicht)", bedList, 1500, "BILD"));
 		

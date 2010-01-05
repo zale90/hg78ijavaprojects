@@ -24,10 +24,9 @@ public class CharakterGUI extends JPanel implements ActionListener
       name.setHorizontalAlignment(0);
       this.add(name);
       
-      bild = new JLabel(new ImageIcon(avatar.getBildURL()));
+      bild = new JLabel(new ImageIcon("files/avatarImages/" + avatar.getBildURL()));
       bild.setSize(200, 200);
       bild.setLocation(60, 90);
-     // bild.setIcon(new ImageIcon("test"));
       this.add(bild);
       
       beschreibung = new JTextArea(avatar.getBeschreibung());
