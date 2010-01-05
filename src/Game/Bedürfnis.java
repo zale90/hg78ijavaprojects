@@ -20,11 +20,11 @@ public class Bedürfnis {
 	 * Erstellt ein neues Bedürfnis.
 	 * 
 	 * Name:
-	 * 1 = Nahrung
-	 * 2 = Gesundheit
-	 * 3 = Soziales
-	 * 4 = Luxus
-	 * 5 = Kinder
+	 * 0 = Nahrung
+	 * 1 = Gesundheit
+	 * 2 = Soziales
+	 * 3 = Luxus
+	 * 4 = Kinder
 	 * 
 	 * @param name
 	 * @param wert
@@ -47,17 +47,25 @@ public class Bedürfnis {
 	public String getName(int nr) {
 		String name = new String("");
 		
-		switch (this.name)
+		switch (nr)
 		{
-		case 1: name = "Hunger";
-		case 2: name = "Gesundheit";
-		case 3: name = "Soziales";
-		case 4: name = "Luxus";
-		case 5: name = "Kinder";
-		
+			case 0: name = "Hunger";
+					break;
+			case 1: name = "Gesundheit";
+					break;
+			case 2: name = "Soziales";
+					break;
+			case 3: name = "Luxus";
+					break;
+			case 4: name = "Kinder";
+					break;
 		}
 		
 		return name;
+	}
+	
+	public String getName() {
+		return getName(name);
 	}
 	
 	/**

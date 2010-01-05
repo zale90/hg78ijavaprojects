@@ -6,11 +6,12 @@ import Game.*;
 
 public class CharakterGUI extends JPanel implements ActionListener
 {
+	
 	private static final long serialVersionUID = 5;
-   private Avatar avatar;
-   private JLabel name, bild;
-   private JTextArea beschreibung;
-   private JButton wahl;
+	private Avatar avatar;
+	private JLabel name, bild;
+	private JTextArea beschreibung;
+	private JButton wahl;
    
    public CharakterGUI(Avatar avatar, int x, int y)
    {
@@ -45,14 +46,18 @@ public class CharakterGUI extends JPanel implements ActionListener
       
       this.setVisible(true);
    }
-   public void actionPerformed(ActionEvent e)
-   {
-
+   
+   public void actionPerformed(ActionEvent e)   {
+	   if(e.getSource() == wahl) {
+		   SpielAnwendung.starteSpiel(getAvatar());
+	   }
    }
-public void setAvatar(Avatar avatar) {
-	this.avatar = avatar;
-}
-public Avatar getAvatar() {
-	return avatar;
-}
+   
+	public void setAvatar(Avatar avatar) {
+		this.avatar = avatar;
+	}
+	
+	public Avatar getAvatar() {
+		return avatar;
+	}
 }

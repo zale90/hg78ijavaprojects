@@ -5,8 +5,8 @@ import java.util.*;
 
 public class SpielAnwendung {
 	
-	private Hauptfenster mainGUI = new Hauptfenster();
-	private ArrayList<Avatar> avList;
+	private static Hauptfenster mainGUI = new Hauptfenster();
+	private static ArrayList<Avatar> avList;
 
 	/**
 	 * Initialisiert eine neue Anwendung des Spiels 
@@ -18,12 +18,16 @@ public class SpielAnwendung {
 		zeigeCharakterauswahl();
 	}
 	
-	private void zeigeCharakterauswahl() {
+	private static void zeigeCharakterauswahl() {
 		mainGUI.zeigePanel(new Charakterauswahl(getAvatare()));
 	}
 	
-	public ArrayList<Avatar> getAvatare() {
+	public static ArrayList<Avatar> getAvatare() {
 		return avList;
+	}
+	
+	public static void starteSpiel(Avatar av) {
+		Spiel spiel = new Spiel(av, mainGUI);
 	}
 	
 }
