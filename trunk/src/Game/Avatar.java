@@ -13,7 +13,7 @@ public class Avatar {
 	private String name;  //Hinzugefügt, weil könnte nützlich werden.
 	private String beschreibung;
 	private Bedürfnis[] bedürfnisse;
-	private int kontostand;
+	private int kontostand, einkommen, zeitProRunde;
 	private String bild;
 	
 	/**
@@ -21,14 +21,16 @@ public class Avatar {
 	 * @param bedürfnisse
 	 * @param kontostand
 	 */
-	public Avatar(int nummer,String name , String beschreibung, Bedürfnis[] bedürfnisse, int kontostand, String bild) {
+	public Avatar(int nummer,String name , String beschreibung, Bedürfnis[] bedürfnisse, int kontostand, int einkommen, int zeitProRunde) {
 		super();
 		this.avatarNummer = nummer;
 		this.setName(name);
 		this.beschreibung = beschreibung;
 		this.bedürfnisse = bedürfnisse;
 		this.kontostand = kontostand;
-		this.bild = bild;
+//		this.bild = bild;
+		this.setEinkommen(einkommen);
+		this.setZeitProRunde(zeitProRunde);
 	}
 
 	/**
@@ -107,6 +109,22 @@ public class Avatar {
 
 	public String getName() {
 		return name;
+	}
+
+	public void setZeitProRunde(int zeitProRunde) {
+		this.zeitProRunde = zeitProRunde;
+	}
+
+	public int getZeitProRunde() {
+		return zeitProRunde;
+	}
+
+	public void setEinkommen(int einkommen) {
+		this.einkommen = einkommen;
+	}
+
+	public int getEinkommen() {
+		return einkommen;
 	}
 	
 }
