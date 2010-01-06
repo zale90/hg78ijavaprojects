@@ -7,20 +7,28 @@
 
 package Game;
 
+import Game.GUI.Ereignisfenster;
+
 public class Ereignis {
 	
+	private int nummer = 1;
 	private String ereignisname;
 	private String ereignistext;
 	private boolean ereignistyp;
 	private Information[] ja;
 	private Information[] nein;
+	private Ereignisfenster fenster;
 	
-	public Ereignis(int ereignisnummer) {
-		
+	public Ereignis() {
+		// Ereignis generieren
+	}
+	
+	public void ausführen() {
+		fensterErzeugen();
 	}
 	
 	private void fensterErzeugen() {
-		
+		fenster = new Ereignisfenster(this);
 	}
 	
 	public Information[] ja() {
@@ -29,6 +37,10 @@ public class Ereignis {
 	
 	public Information[] nein() {
 		return null;
+	}
+	
+	public int getNummer() {
+		return nummer;
 	}
 
 }
