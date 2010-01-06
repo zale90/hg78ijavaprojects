@@ -9,6 +9,7 @@
 
 package Game;
 
+import java.util.ArrayList;
 import Game.GUI.*;
 
 public class Spiel {
@@ -21,6 +22,7 @@ public class Spiel {
 	private int geldProMonat;
 	private int avatarNr;
 	private int aktuelleRunde;
+	private ArrayList<Integer> genutzteEreignisse;
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
 	
@@ -42,6 +44,7 @@ public class Spiel {
 		this.mainGUI = mainGUI;
 		gameGUI = new Spieloberfläche(this, avatar.getName());
 		zeigeSpielGUI();
+		genutzteEreignisse = new ArrayList<Integer>();
 	}
 	
 	public Bedürfnis[] getBedürfnisse() {
@@ -98,6 +101,7 @@ public class Spiel {
 	public void zeigeSpielGUI() {
 		mainGUI.zeigePanel(gameGUI);
 	}
+	
 	public void naechsteRunde()
 	{
 		aktuelleRunde = aktuelleRunde + 1;
@@ -112,10 +116,28 @@ public class Spiel {
 				// Man hat verloren; was tun?
 			}
 		}
+		
+		// Ereignis ausführen
+		Ereignis er = getRandomEreignis();
+		er.ausführen();
 	}
+	
 	public int getAktuelleRunde()
 	{
 		return aktuelleRunde;
+	}
+	
+	/**
+	 * Erstellt neue Ereignisse, bis eins kommt, welches noch nie vorhanden war!
+	 * @return Ereignis
+	 */
+	public Ereignis getRandomEreignis() {
+		Ereignis er = null;
+		while(er == null || genutzteEreignisse.contains(er.getNummer())) {
+			er = new Ereignis();
+		}
+		genutzteEreignisse.add(er.getNummer());
+		return er;
 	}
 	
 	

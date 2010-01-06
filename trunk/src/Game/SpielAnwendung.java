@@ -5,7 +5,7 @@ import java.util.*;
 
 public class SpielAnwendung {
 	
-	private static final Hauptfenster mainGUI = new Hauptfenster();
+	public static final Hauptfenster mainGUI = new Hauptfenster();
 	private static final ArrayList<Avatar> avList = Initialisator.gibAvatare();
 
 	/**
