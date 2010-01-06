@@ -13,7 +13,7 @@ import Game.GUI.*;
 
 public class Spiel {
 	
-	//Bedürfnisse: 1=Nahrung, 2=Gesundheit, 3=Soziales, 4=Luxus, 5=Kinder
+	//Bedürfnisse: 0=Nahrung, 1=Gesundheit, 2=Soziales, 3=Luxus, 4=Kinder
 	private Bedürfnis[] bedürfnisse;
 	private int zeit;
 	private int zeitProRunde;
@@ -35,7 +35,7 @@ public class Spiel {
 		kontostand = avatar.getKontostand();
 		avatarNr = avatar.getAvatarNummer();
 		this.mainGUI = mainGUI;
-		gameGUI = new Spieloberfläche(this);
+		gameGUI = new Spieloberfläche(this, avatar.getBildURL());
 		zeigeSpielGUI();
 	}
 	

@@ -49,7 +49,7 @@ public class Bedürfnis {
 		
 		switch (nr)
 		{
-			case 0: name = "Hunger";
+			case 0: name = "Nahrung";
 					break;
 			case 1: name = "Gesundheit";
 					break;
