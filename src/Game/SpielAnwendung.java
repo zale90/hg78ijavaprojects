@@ -27,7 +27,7 @@ public class SpielAnwendung {
 	}
 	
 	public static void starteSpiel(Avatar av) {
-		Spiel spiel = new Spiel(av, mainGUI);
+		new Spiel(av, mainGUI);
 	}
 	
 }

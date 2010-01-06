@@ -20,6 +20,7 @@ public class Spiel {
 	private int kontostand;
 	private int geldProMonat;
 	private int avatarNr;
+	private int aktuelleRunde;
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
 	
@@ -31,11 +32,15 @@ public class Spiel {
 	 * @param avatar
 	 */
 	public Spiel(Avatar avatar, Hauptfenster mainGUI) {
+		aktuelleRunde = 0;
 		bedürfnisse = avatar.getBedürfnisse();
 		kontostand = avatar.getKontostand();
+		geldProMonat = avatar.getEinkommen();
+		zeitProRunde = avatar.getZeitProRunde();
 		avatarNr = avatar.getAvatarNummer();
+		zeit = zeitProRunde;
 		this.mainGUI = mainGUI;
-		gameGUI = new Spieloberfläche(this, avatar.getBildURL());
+		gameGUI = new Spieloberfläche(this, avatar.getName());
 		zeigeSpielGUI();
 	}
 	
@@ -92,6 +97,25 @@ public class Spiel {
 	 */
 	public void zeigeSpielGUI() {
 		mainGUI.zeigePanel(gameGUI);
+	}
+	public void naechsteRunde()
+	{
+		aktuelleRunde = aktuelleRunde + 1;
+		if ((aktuelleRunde % 4) == 0)
+		{
+			kontostand = kontostand + geldProMonat;
+		}
+		for(int i = 0; i < bedürfnisse.length; i++) {
+			bedürfnisse[i].setWert(bedürfnisse[i].getWert()-bedürfnisse[i].getAbfallfaktor());
+			if (bedürfnisse[i].getWert() < bedürfnisse[i].getMin())
+			{
+				// Man hat verloren; was tun?
+			}
+		}
+	}
+	public int getAktuelleRunde()
+	{
+		return aktuelleRunde;
 	}
 	
 	
