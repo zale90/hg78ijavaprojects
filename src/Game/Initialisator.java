@@ -5,11 +5,6 @@ import java.util.*;
 public class Initialisator 
 {
 	
-	public Initialisator()
-	{
-
-	}
-	
 	/*
 	 * gibt die Avatare zurück, die irgendwo gespeichert werden müssen (evtl. launcher?)
 	 * Werte müssen natürlich noch angepasst werden!
