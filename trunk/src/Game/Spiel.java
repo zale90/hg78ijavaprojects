@@ -22,6 +22,7 @@ public class Spiel {
 	private int geldProMonat;
 	private int avatarNr;
 	private int aktuelleRunde;
+	private int score;
 	private ArrayList<Integer> genutzteEreignisse;
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
@@ -40,6 +41,7 @@ public class Spiel {
 		geldProMonat = avatar.getEinkommen();
 		zeitProRunde = avatar.getZeitProRunde();
 		avatarNr = avatar.getAvatarNummer();
+		score = 0;
 		zeit = zeitProRunde;
 		this.mainGUI = mainGUI;
 		gameGUI = new Spieloberfläche(this, avatar.getName());
@@ -104,6 +106,7 @@ public class Spiel {
 	
 	public void naechsteRunde()
 	{
+		scoresAddieren();
 		aktuelleRunde = aktuelleRunde + 1;
 		if ((aktuelleRunde % 4) == 0)
 		{
@@ -120,6 +123,7 @@ public class Spiel {
 		// Ereignis ausführen
 		Ereignis er = getRandomEreignis();
 		er.ausführen();
+		
 	}
 	
 	public int getAktuelleRunde()
@@ -235,5 +239,13 @@ public class Spiel {
 			}
 			//Hier sollten weitere If-Fälle für Zeit und Geld entstehen
 		}
+	}
+	
+	//Addiert jede Runde Punkte auf den Punktestand neu auf.
+	public void scoresAddieren() {
+		for(Bedürfnis b: bedürfnisse) {
+			score += b.getWert();
+		}
+		score += kontostand/15;
 	}
 }
