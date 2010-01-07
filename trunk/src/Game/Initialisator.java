@@ -31,4 +31,85 @@ public class Initialisator
 		
 		return avList;
 	}
+	
+	public static ArrayList<Ereignis> gibEreignisse() {
+		ArrayList<Ereignis> erList = new ArrayList<Ereignis>();
+		
+		Ereignis e;
+		Information[] ja, nein;
+		
+		// Ereignisdaten
+		ja = new Information[1];
+		ja[0] = new Information(13, 2, 50);
+		e = new Ereignis(1, "Lottogewinn", "Sie haben 4 Richtige und daher im Lotto 50 € gewonnen. Gehen Sie sparsam damit um!", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(2, "Krankheit", "Sie haben Atemschwierigkeiten und starkes Fieber und können Ihren Arzt besuchen. Dabei fallen 10€ Praxisgebühren an. Gehen Sie nicht zum Arzt leiden Ihre Bedürfnisse darunter. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(3, "Kino", "Natasha lädt dich ins Kino ein. Dadurch wird dein Bedürfnis an Kultur und Sozialem gesichert. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(4, "Diebstahl", "In dein Haus wurde eingebrochen. Dabei wurden dir 40 € entwendet. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(5, "Kühlschrank im Arsch", "Während du in der Stadt warst hat dein Kühlschrank den Geist aufgegeben. Du kannst ihn zwar reparieren, jedoch sind alle Lebensmittel verdorben. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(6, "Steuerrückzahlung", "Sie haben im letzten Jahr zu viele Steuern gezahlt und erhalten daher jetzt eine Rückzahlung in Höhe von 50€. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(7, "Schulausflug", "Dein(e) Kind(er) machen einen Ausflug nach Hamburg. Zahle 70€ für die Fahrt. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(8, "Fund", "Du findest in der Stadt 100€ auf dem Boden. Du bist mega happy. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(9, "Ohne Licht gefahren", "Während du mit deinem Fahrrad ohne Licht unterwegs warst, wurdest du erwischt und mußt 10 € Strafe zahlen. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(10, "Pfand erhalten", "Du bringst deine gesammelten Pfandflaschen zurück und erhälst 10 €. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(11, "Rückgeld", "Die Kassiererin bei kik gibt Ihnen 10 € zu viel zurück. Geben Sie das Geld zurück oder stecken Sie es unauffällig ein? ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(12, "Waschmaschine defekt", "Ihre Waschmaschiene scheint defekt zu sein. Möchten Sie einen Mechaniker anrufen um diese reparieren zu lassen oder möchten Sie sich direkt ein neuesstromsparenderes Modell kaufen?  ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(13, "Fahrradreifen defekt", "Während einer Radtour ist ihr Fahrradreifen geplatzt. An einer nahegelegenen Tankstelle können sie Flickzeug besorgen. Es kostet sie 8 €. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(14, "Gericht", "Sie wurden von einem Reichen angepöbelt. Wollen sie Schadensersatz fordern? Falls ja, müssen sie bei einer Niederlage des Prozesses die Gerichtskosten übernehmen. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(15, "Erbfall", "Ein Onkel ist verstorben. Sein Vermächtnis beträgt 70 Euro. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(16, "Kreuzworträtsel", "Sie haben bei einem Kreuzworträtsel gewonnen! Sie erhalten Freikarten für das Kino und ein Museum. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(17, "Ausflug", "Einer deiner Freunde fragt, ob du an einem Ausflug teilnehmen willst. Du müsstest 30 Euro bezahlen, andernfalls sinkt dein Soziales. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(18, "Handy", "Eine Handyabrechnung wurde nicht beglichen, zahlen sie 15 Euro Strafe. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(19, "Essen bei Mutter", "Deine Mutter hat dich am Wochenende zum Essen eingeladen! ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(20, "Todesfall", "Dein Onkel ist plötzlich verstorben. Der Rest deiner Verwandschaft schlägt vor, dass du dich mit 70€ an der Beerdigung beteiligst. Bist du einverstanden? ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(21, "Nahrungsaufschub", "Dein Vater bringt dir eine Ladung Äpfel aus seinem Garten mit und füllt damit deinen Nahrungsvorrat auf. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(22, "Europafest", "Du besuchst das Europafest zum Thema \"Armut und Ausgrenzung\" und spielst ein tolles Spiel. Das Bedürfnis nach Kultur sinkt. ", false, null, null);
+		erList.add(e);
+		
+		e = new Ereignis(23, "McDonalds ruft an", "McDonalds ruft an: Deine Mutter ist in der Rutsche stecken geblieben. Du musst 10€ für Fett zahlen um sie wieder heraus zu holen. ", false, null, null);
+		erList.add(e);
+		
+		return erList;
+	}
 }
