@@ -17,6 +17,7 @@ public class CharakterGUI extends JPanel implements ActionListener
    {
       this.setSize(320, 500);
       this.setLocation(x, y);
+      this.setBackground(null);
       this.setLayout(null);
       
       name = new JLabel(avatar.getName());

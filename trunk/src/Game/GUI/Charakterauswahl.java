@@ -21,9 +21,9 @@ public class Charakterauswahl extends JPanel {
 		lbl‹berschrift.setFont(Optionen.FONT_TITLE);
 		this.add(lbl‹berschrift);
 
-		JPanel pnlCharacter1 = new CharakterGUI(avaArray.get(0), 10, 100);
-		JPanel pnlCharacter2 = new CharakterGUI(avaArray.get(1), 340, 100);
-		JPanel pnlCharacter3 = new CharakterGUI(avaArray.get(2), 670, 100);
+		JPanel pnlCharacter1 = new CharakterGUI(avaArray.get(0), 0, 100);
+		JPanel pnlCharacter2 = new CharakterGUI(avaArray.get(1), 330, 100);
+		JPanel pnlCharacter3 = new CharakterGUI(avaArray.get(2), 660, 100);
 		
 		this.add(pnlCharacter1);
 		this.add(pnlCharacter2);

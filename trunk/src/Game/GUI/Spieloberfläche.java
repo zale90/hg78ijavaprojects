@@ -188,16 +188,24 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		}
 		else if (arg0.getSource() == rundeWeiter)
 		{
-			spiel.naechsteRunde();
-			Bedürfnis[] bedürfnisse = spiel.getBedürfnisse();
-			for(int i = 0; i < bedürfnisse.length; i++) {
-				bedürfnisBars[i].setValue(bedürfnisse[i].getWert());
-			}
-			lblGeld.setText(spiel.getKontostand() + "");
-			lblGeldProMonat.setText(spiel.getGeldProMonat() + "");
-			lblZeit.setText(spiel.getZeitProRunde() + "");
-			lblZeitpunkt.setText(((spiel.getAktuelleRunde() % 4)+1) + ". Woche, " + (((int)spiel.getAktuelleRunde() / 4)+1) + ". Monat");
+			nächsteRunde();
 		}
+	}
+	
+	private void nächsteRunde() {
+		spiel.naechsteRunde();
+		aktualisiereDaten();
+	}
+	
+	private void aktualisiereDaten() {
+		Bedürfnis[] bedürfnisse = spiel.getBedürfnisse();
+		for(int i = 0; i < bedürfnisse.length; i++) {
+			bedürfnisBars[i].setValue(bedürfnisse[i].getWert());
+		}
+		lblGeld.setText(spiel.getKontostand() + "");
+		lblGeldProMonat.setText(spiel.getGeldProMonat() + "");
+		lblZeit.setText(spiel.getZeitProRunde() + "");
+		lblZeitpunkt.setText(((spiel.getAktuelleRunde() % 4)+1) + ". Woche, " + (((int)spiel.getAktuelleRunde() / 4)+1) + ". Monat");
 	}
 
 	@Override
