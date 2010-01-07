@@ -10,12 +10,10 @@
 package Game;
 
 import java.util.*;
-
 import Game.GUI.*;
 
 public class Spiel {
 	
-	//Bedürfnisse: 0=Nahrung, 1=Gesundheit, 2=Soziales, 3=Luxus, 4=Kinder
 	private Bedürfnis[] bedürfnisse;
 	private int zeit;
 	private int zeitProRunde;
