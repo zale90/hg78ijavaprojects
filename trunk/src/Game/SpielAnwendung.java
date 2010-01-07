@@ -28,6 +28,7 @@ public class SpielAnwendung {
 	
 	public static ArrayList<Ereignis> getEreignisse() {
 		return erList;
+		
 	}
 	
 	public static void starteSpiel(Avatar av) {
