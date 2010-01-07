@@ -6,16 +6,15 @@ import java.util.*;
 public class SpielAnwendung {
 	
 	public static final Hauptfenster mainGUI = new Hauptfenster();
-	private static final ArrayList<Avatar> avList = Initialisator.gibAvatare();
+	private static ArrayList<Avatar> avList = Initialisator.gibAvatare();
 
 	/**
 	 * Initialisiert eine neue Anwendung des Spiels 
 	 * und zeigt das Hauptfenster an.
 	 */
 	public SpielAnwendung() {
-//		Initialisator init = new Initialisator();
-//		avList = init.gibAvatare();
-//		zeigeCharakterauswahl();
+		avList = Initialisator.gibAvatare();
+		zeigeCharakterauswahl();
 	}
 	
 	public static void zeigeCharakterauswahl() {
