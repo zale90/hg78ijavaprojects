@@ -10,8 +10,6 @@ public class Ereignisfenster extends JDialog {
 	public Ereignisfenster(Ereignis er) {
 		this.setLocationRelativeTo(null);
 		this.setSize(400, 200);
-		this.setVisible(true);
-		
 	}
 
 }

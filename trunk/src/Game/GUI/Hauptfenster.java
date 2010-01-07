@@ -17,8 +17,7 @@ public class Hauptfenster extends JFrame {
 		this.setLayout(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
-		this.setNativeLookAndFeel();
-		
+		this.setNativeLookAndFeel();		
 		
 		this.setVisible(true);
 	}
