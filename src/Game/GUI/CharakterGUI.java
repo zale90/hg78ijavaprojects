@@ -1,6 +1,7 @@
 package Game.GUI;
 
 import javax.swing.*;
+
 import java.awt.event.*;
 import Game.*;
 
@@ -10,8 +11,9 @@ public class CharakterGUI extends JPanel implements ActionListener
 	private static final long serialVersionUID = 5;
 	private Avatar avatar;
 	private JLabel name, bild;
-	private JTextArea beschreibung;
+	private JTextPane beschreibung;
 	private JButton wahl;
+	private JScrollPane beschreibungScrollbalken;
    
    public CharakterGUI(Avatar avatar, int x, int y)
    {
@@ -31,10 +33,20 @@ public class CharakterGUI extends JPanel implements ActionListener
       bild.setLocation(60, 90);
       this.add(bild);
       
-      beschreibung = new JTextArea(avatar.getBeschreibung());
+      beschreibung = new JTextPane();
+      beschreibung.setEditable(false);
       beschreibung.setSize(250, 100);
       beschreibung.setLocation(30, 300);
+//      beschreibung.setWrapStyleWord(true);
+//      beschreibung.setLineWrap(true);
+      beschreibung.setText(avatar.getBeschreibung());
       this.add(beschreibung);
+      
+      beschreibungScrollbalken = new JScrollPane(beschreibung);
+      beschreibungScrollbalken.setSize(250, 100);
+      beschreibungScrollbalken.setLocation(30, 300);
+      beschreibungScrollbalken.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+      this.add(beschreibungScrollbalken);
       
       wahl = new JButton("Spiele " + name.getText());
       wahl.setSize(300, 50);
