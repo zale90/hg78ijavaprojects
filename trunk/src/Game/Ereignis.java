@@ -11,18 +11,26 @@ import Game.GUI.Ereignisfenster;
 
 public class Ereignis {
 	
+	// Ereignisdaten
 	private int nummer = 1;
-	private String ereignisname;
-	private String ereignistext;
-	private boolean ereignistyp;
+	private String name;
+	private String text;
+	// True = Ja / Nein | False = OK (Informationen in ja)
+	private boolean typ;
 	private Information[] ja;
 	private Information[] nein;
+	
 	private Ereignisfenster fenster;
 	
-	public Ereignis() {
-		// Ereignis generieren
+	public Ereignis(int nummer, String name, String text, boolean typ, Information[] ja, Information[] nein) {
+		this.nummer = nummer;
+		this.name = name;
+		this.text = text;
+		this.typ = typ;
+		this.ja = ja;
+		this.nein = nein;
 	}
-	
+
 	public void ausführen() {
 		fensterErzeugen();
 	}
