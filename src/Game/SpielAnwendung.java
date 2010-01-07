@@ -7,7 +7,7 @@ public class SpielAnwendung {
 	
 	public static final Hauptfenster mainGUI = new Hauptfenster();
 	private static ArrayList<Avatar> avList = Initialisator.gibAvatare();
-	private static ArrayList<Ereignis> erList;
+	private static ArrayList<Ereignis> erList = Initialisator.gibEreignisse();
 	
 	public static void zeigeCharakterauswahl() {
 		mainGUI.zeigePanel(new Charakterauswahl(getAvatare()));
