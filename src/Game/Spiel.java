@@ -9,7 +9,8 @@
 
 package Game;
 
-import java.util.ArrayList;
+import java.util.*;
+
 import Game.GUI.*;
 
 public class Spiel {
@@ -23,9 +24,9 @@ public class Spiel {
 	private int avatarNr;
 	private int aktuelleRunde;
 	private int score;
-	private ArrayList<Integer> genutzteEreignisse;
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
+	private ArrayList<Ereignis> erList;
 	
 	/**
 	 * Ein neues Spielt wird anhand der Informationen
@@ -46,7 +47,7 @@ public class Spiel {
 		this.mainGUI = mainGUI;
 		gameGUI = new Spieloberfläche(this, avatar.getName());
 		zeigeSpielGUI();
-		genutzteEreignisse = new ArrayList<Integer>();
+		erList = Initialisator.gibEreignisse();
 	}
 	
 	public Bedürfnis[] getBedürfnisse() {
@@ -136,11 +137,10 @@ public class Spiel {
 	 * @return Ereignis
 	 */
 	public Ereignis getRandomEreignis() {
-		Ereignis er = null;
-		while(er == null || genutzteEreignisse.contains(er.getNummer())) {
-			er = new Ereignis();
-		}
-		genutzteEreignisse.add(er.getNummer());
+		Random rand = new Random();
+		int i = rand.nextInt(erList.size());
+		Ereignis er = erList.get(i);
+		erList.remove(i);
 		return er;
 	}
 	

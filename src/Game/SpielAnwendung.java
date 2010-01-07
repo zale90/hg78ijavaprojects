@@ -6,20 +6,9 @@ import java.util.*;
 public class SpielAnwendung {
 	
 	public static final Hauptfenster mainGUI = new Hauptfenster();
-	private static ArrayList<Avatar> avList = Initialisator.gibAvatare();
-	private static ArrayList<Ereignis> erList = Initialisator.gibEreignisse();
 	
 	public static void zeigeCharakterauswahl() {
-		mainGUI.zeigePanel(new Charakterauswahl(getAvatare()));
-	}
-	
-	public static ArrayList<Avatar> getAvatare() {
-		return avList;
-	}
-	
-	public static ArrayList<Ereignis> getEreignisse() {
-		return erList;
-		
+		mainGUI.zeigePanel(new Charakterauswahl(Initialisator.gibAvatare()));
 	}
 	
 	public static void starteSpiel(Avatar av) {
