@@ -39,16 +39,16 @@ public class Initialisator
 		e = new Ereignis(1, "Lottogewinn", "Sie haben 4 Richtige und daher im Lotto 50 € gewonnen. Gehen Sie sparsam damit um!", false, null, null);
 		erList.add(e);
 		
-		e = new Ereignis(2, "Krankheit", "Sie haben Atemschwierigkeiten und starkes Fieber und können Ihren Arzt besuchen. Dabei fallen 10€ Praxisgebühren an. Gehen Sie nicht zum Arzt leiden Ihre Bedürfnisse darunter. ", false, null, null);
+		e = new Ereignis(2, "Krankheit", "Sie haben Atemschwierigkeiten und starkes Fieber und können Ihren Arzt besuchen. Dabei fallen 10€ Praxisgebühren an. Gehen Sie nicht zum Arzt leiden Ihre Bedürfnisse darunter. Möchten Sie zum Arzt gehen?", true, null, null);
 		erList.add(e);
 		
-		e = new Ereignis(3, "Kino", "Natasha lädt dich ins Kino ein. Dadurch wird dein Bedürfnis an Kultur und Sozialem gesichert. ", false, null, null);
+		e = new Ereignis(3, "Kino", "Natasha lädt dich ins Kino ein. Dadurch wird dein Bedürfnis an Kultur und Sozialem gesichert.", false, null, null);
 		erList.add(e);
 		
-		e = new Ereignis(4, "Diebstahl", "In dein Haus wurde eingebrochen. Dabei wurden dir 40 € entwendet. ", false, null, null);
+		e = new Ereignis(4, "Diebstahl", "In dein Haus wurde eingebrochen. Dabei wurden dir 40 € entwendet.", false, null, null);
 		erList.add(e);
 		
-		e = new Ereignis(5, "Kühlschrank im Arsch", "Während du in der Stadt warst hat dein Kühlschrank den Geist aufgegeben. Du kannst ihn zwar reparieren, jedoch sind alle Lebensmittel verdorben. ", false, null, null);
+		e = new Ereignis(5, "Kühlschrank im Arsch", "Während du in der Stadt warst hat dein Kühlschrank den Geist aufgegeben. Du kannst ihn zwar reparieren, jedoch sind alle Lebensmittel verdorben. Möchtest du den Kühlschrank jetzt reparieren?", true, null, null);
 		erList.add(e);
 		
 		e = new Ereignis(6, "Steuerrückzahlung", "Sie haben im letzten Jahr zu viele Steuern gezahlt und erhalten daher jetzt eine Rückzahlung in Höhe von 50€. ", false, null, null);

@@ -58,7 +58,10 @@ public class Ereignis {
 	private void verarbeiteNein() {
 		System.out.println("Nein!");		
 	}
-	
+
+	/**
+	 * @return the nummer
+	 */
 	public int getNummer() {
 		return nummer;
 	}
