@@ -145,13 +145,18 @@ public class Spiel {
 	}
 	
 	
+	
+	
+	//===================================================
 	//UNVOLLSTÄNDIG!!! ES FEHLEN DIE FÄLLE ZEIT UND GELD!
+	//===================================================
+	
 	public void infosUmsetzen(Information[] infos)
 	{
 		for(int i=0; i<infos.length; i++)
 		{
 			//Bedürfnisbereich
-			if(infos[i].getZuÄndern()<9)
+			if(infos[i].getZuÄndern()<11)
 			{
 				int neuerWert = 0;
 				Bedürfnis referenz = null;
@@ -237,7 +242,60 @@ public class Spiel {
 					}
 				}	
 			}
-			//Hier sollten weitere If-Fälle für Zeit und Geld entstehen
+			if(infos[i].getZuÄndern() == 11)
+			{
+				int neuerWert = zeit;
+				
+				switch(infos[i].getÄnderungsart())
+				{
+				case 1:
+					{
+						if(infos[i].getWert()>0)
+							neuerWert = infos[i].getWert();
+						else
+						{
+							neuerWert = 0;
+						}
+					}
+				case 2:
+					{
+						int tmp = neuerWert + infos[i].getWert();
+						if(tmp > 0)
+							neuerWert = tmp;
+						else
+						{
+							neuerWert = 0;
+						}
+					}
+				case 3:
+					{
+						double tmp = neuerWert*infos[i].getWert();
+						int tmp2 = (int)tmp; //so grob
+						if(tmp2>0)
+							neuerWert = tmp2;
+						else
+						{
+							neuerWert = 0;
+						}
+					}
+				case 4:
+					{
+						double tmp = neuerWert*infos[i].getWert();
+						int tmp2 = (int)tmp; //so grob
+						tmp2 = neuerWert + tmp2;
+						if(tmp2>0)
+							neuerWert = tmp2;
+						else
+						{
+							neuerWert = 0;
+						}
+					}
+				}
+			}
+			if(infos[i].getZuÄndern()>11 && infos[i].getZuÄndern()<15)
+			{
+				
+			}
 		}
 	}
 	
