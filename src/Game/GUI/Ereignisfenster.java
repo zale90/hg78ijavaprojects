@@ -1,3 +1,7 @@
+/**
+ * ACHTUNG!
+ * WIRD IN DER AKTUELLEN VERSION NICHT MEHR BENUTZT!
+ */
 package Game.GUI;
 
 import javax.swing.JDialog;
