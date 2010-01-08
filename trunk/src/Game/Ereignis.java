@@ -29,13 +29,14 @@ public class Ereignis {
 		this.nein = nein;
 	}
 
-	public void ausführen() {
+	public Information[] ausführen() {
 		int antwort = fensterAnzeigen();
 		if(antwort == JOptionPane.YES_OPTION) {
-			verarbeiteJa();
+			return ja;
 		} else if(antwort == JOptionPane.NO_OPTION) {
-			verarbeiteNein();
+			return nein;
 		}
+		return null;
 	}
 	
 	private int fensterAnzeigen() {
@@ -49,14 +50,6 @@ public class Ereignis {
 		return JOptionPane.showOptionDialog(SpielAnwendung.mainGUI, getText(), 
 				getName(), optionType, JOptionPane.INFORMATION_MESSAGE, null,
 				options, options[0]);
-	}
-	
-	private void verarbeiteJa() {
-		System.out.println("Ja!");
-	}
-	
-	private void verarbeiteNein() {
-		System.out.println("Nein!");		
 	}
 
 	/**
