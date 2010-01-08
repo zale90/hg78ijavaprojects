@@ -121,7 +121,7 @@ public class Spiel {
 		
 		// Ereignis ausführen
 		Ereignis er = getRandomEreignis();
-		er.ausführen();
+		infosUmsetzen(er.ausführen());
 		
 	}
 	
@@ -164,25 +164,35 @@ public class Spiel {
 				switch(infos[i].getZuÄndern())
 				{
 				case 1: {neuerWert = bedürfnisse[1].getWert();
-						referenz = bedürfnisse[1];}
+						referenz = bedürfnisse[1];
+						break;}
 				case 2: {neuerWert = bedürfnisse[1].getAbfallfaktor();
-						referenz = bedürfnisse[1];}
+						referenz = bedürfnisse[1];
+						break;}
 				case 3: {neuerWert = bedürfnisse[2].getWert();
-						referenz = bedürfnisse[2];}
+						referenz = bedürfnisse[2];
+						break;}
 				case 4: {neuerWert = bedürfnisse[2].getAbfallfaktor();
-						referenz = bedürfnisse[2];}
+						referenz = bedürfnisse[2];
+						break;}
 				case 5: {neuerWert = bedürfnisse[3].getWert();
-						referenz = bedürfnisse[3];}
+						referenz = bedürfnisse[3];
+						break;}
 				case 6: {neuerWert = bedürfnisse[3].getAbfallfaktor();
-						referenz = bedürfnisse[3];}
+						referenz = bedürfnisse[3];
+						break;}
 				case 7: {neuerWert = bedürfnisse[4].getWert();
-						referenz = bedürfnisse[4];}
+						referenz = bedürfnisse[4];
+						break;}
 				case 8: {neuerWert = bedürfnisse[4].getAbfallfaktor();
-						referenz = bedürfnisse[4];}
+						referenz = bedürfnisse[4];
+						break;}
 				case 9: {neuerWert = bedürfnisse[5].getWert();
-						referenz = bedürfnisse[5];}
+						referenz = bedürfnisse[5];
+						break;}
 				case 10: {neuerWert = bedürfnisse[5].getAbfallfaktor();
-						 referenz = bedürfnisse[5];}
+						 referenz = bedürfnisse[5];
+						 break;}
 				}
 				
 				switch(infos[i].getÄnderungsart())
@@ -198,6 +208,7 @@ public class Spiel {
 							else
 								neuerWert = referenz.getMax();
 						}
+						break;
 					}
 				case 2:
 					{
@@ -211,6 +222,7 @@ public class Spiel {
 							else
 								neuerWert = referenz.getMax();
 						}
+						break;
 					}
 				case 3:
 					{
@@ -225,6 +237,7 @@ public class Spiel {
 							else
 								neuerWert = referenz.getMax();
 						}
+						break;
 					}
 				case 4:
 					{
@@ -240,21 +253,32 @@ public class Spiel {
 							else
 								neuerWert = referenz.getMax();
 						}
+						break;
 					}
 				}
 				
 				switch(infos[i].getZuÄndern())
 				{
 				case 1: bedürfnisse[1].setWert(neuerWert);
+						break;
 				case 2: bedürfnisse[1].setAbfallfaktor(neuerWert);
+						break;
 				case 3: bedürfnisse[2].setWert(neuerWert);
+						break;
 				case 4: bedürfnisse[2].setAbfallfaktor(neuerWert);
+						break;
 				case 5: bedürfnisse[3].setWert(neuerWert);
+						break;
 				case 6: bedürfnisse[3].setAbfallfaktor(neuerWert);
+						break;
 				case 7: bedürfnisse[4].setWert(neuerWert);
+						break;		
 				case 8: bedürfnisse[4].setAbfallfaktor(neuerWert);
+						break;
 				case 9: bedürfnisse[5].setWert(neuerWert);
+				        break;
 				case 10: bedürfnisse[5].setAbfallfaktor(neuerWert);
+						 break;
 				}
 			}
 			if(infos[i].getZuÄndern() == 11)
@@ -271,6 +295,7 @@ public class Spiel {
 						{
 							neuerWert = 0;
 						}
+						break;
 					}
 				case 2:
 					{
@@ -281,6 +306,7 @@ public class Spiel {
 						{
 							neuerWert = 0;
 						}
+						break;
 					}
 				case 3:
 					{
@@ -292,6 +318,7 @@ public class Spiel {
 						{
 							neuerWert = 0;
 						}
+						break;
 					}
 				case 4:
 					{
@@ -304,6 +331,7 @@ public class Spiel {
 						{
 							neuerWert = 0;
 						}
+						break;
 					}
 				}
 				zeit = neuerWert;
@@ -314,21 +342,31 @@ public class Spiel {
 				switch(infos[i].getZuÄndern())
 				{
 				case 12: neuerWert = zeitProRunde;
+						 break;
 				case 13: neuerWert = kontostand;
+				         break;
 				case 14: neuerWert = geldProMonat;
+		         		 break;
 				}
 				switch(infos[i].getÄnderungsart())
 				{
 				case 1: neuerWert = infos[i].getWert();
+						break;
 				case 2: neuerWert = infos[i].getWert() + neuerWert;
+						break;
 				case 3: neuerWert = (int)(neuerWert * infos[i].getWert() / 100);
+						break;
 				case 4: neuerWert = neuerWert + (int)(neuerWert * infos[i].getWert() /100);
+						break;
 				}
 				switch(infos[i].getZuÄndern())
 				{
 				case 12: zeitProRunde = neuerWert;
+						 break;
 				case 13: kontostand = neuerWert;
+						 break;
 				case 14: geldProMonat = neuerWert;
+						 break;
 				}
 			}
 		}
