@@ -43,6 +43,7 @@ public class CharakterGUI extends JPanel implements ActionListener
       beschreibungScrollbalken.setLocation(30, 300);
       beschreibungScrollbalken.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
       this.add(beschreibungScrollbalken);
+      beschreibung.setCaretPosition(0);
       
       wahl = new JButton("Spiele " + name.getText());
       wahl.setSize(300, 50);
