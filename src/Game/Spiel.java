@@ -35,7 +35,7 @@ public class Spiel {
 	 */
 	public Spiel(Avatar avatar, Hauptfenster mainGUI) {
 		aktuelleRunde = 0;
-		bedürfnisse = avatar.getBedürfnisse();
+		bedürfnisse = avatar.getBedürfnisse().clone();
 		kontostand = avatar.getKontostand();
 		geldProMonat = avatar.getEinkommen();
 		zeitProRunde = avatar.getZeitProRunde();
