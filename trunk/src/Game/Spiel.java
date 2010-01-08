@@ -163,35 +163,35 @@ public class Spiel {
 				Bedürfnis referenz = null;
 				switch(infos[i].getZuÄndern())
 				{
-				case 1: {neuerWert = bedürfnisse[1].getWert();
+				case 1: {neuerWert = bedürfnisse[0].getWert();
+						referenz = bedürfnisse[0];
+						break;}
+				case 2: {neuerWert = bedürfnisse[0].getAbfallfaktor();
+						referenz = bedürfnisse[0];
+						break;}
+				case 3: {neuerWert = bedürfnisse[1].getWert();
 						referenz = bedürfnisse[1];
 						break;}
-				case 2: {neuerWert = bedürfnisse[1].getAbfallfaktor();
+				case 4: {neuerWert = bedürfnisse[1].getAbfallfaktor();
 						referenz = bedürfnisse[1];
 						break;}
-				case 3: {neuerWert = bedürfnisse[2].getWert();
+				case 5: {neuerWert = bedürfnisse[2].getWert();
 						referenz = bedürfnisse[2];
 						break;}
-				case 4: {neuerWert = bedürfnisse[2].getAbfallfaktor();
+				case 6: {neuerWert = bedürfnisse[2].getAbfallfaktor();
 						referenz = bedürfnisse[2];
 						break;}
-				case 5: {neuerWert = bedürfnisse[3].getWert();
+				case 7: {neuerWert = bedürfnisse[3].getWert();
 						referenz = bedürfnisse[3];
 						break;}
-				case 6: {neuerWert = bedürfnisse[3].getAbfallfaktor();
+				case 8: {neuerWert = bedürfnisse[3].getAbfallfaktor();
 						referenz = bedürfnisse[3];
 						break;}
-				case 7: {neuerWert = bedürfnisse[4].getWert();
+				case 9: {neuerWert = bedürfnisse[4].getWert();
 						referenz = bedürfnisse[4];
 						break;}
-				case 8: {neuerWert = bedürfnisse[4].getAbfallfaktor();
-						referenz = bedürfnisse[4];
-						break;}
-				case 9: {neuerWert = bedürfnisse[5].getWert();
-						referenz = bedürfnisse[5];
-						break;}
-				case 10: {neuerWert = bedürfnisse[5].getAbfallfaktor();
-						 referenz = bedürfnisse[5];
+				case 10: {neuerWert = bedürfnisse[4].getAbfallfaktor();
+						 referenz = bedürfnisse[4];
 						 break;}
 				}
 				
@@ -259,25 +259,25 @@ public class Spiel {
 				
 				switch(infos[i].getZuÄndern())
 				{
-				case 1: bedürfnisse[1].setWert(neuerWert);
+				case 1: bedürfnisse[0].setWert(neuerWert);
 						break;
-				case 2: bedürfnisse[1].setAbfallfaktor(neuerWert);
+				case 2: bedürfnisse[0].setAbfallfaktor(neuerWert);
 						break;
-				case 3: bedürfnisse[2].setWert(neuerWert);
+				case 3: bedürfnisse[1].setWert(neuerWert);
 						break;
-				case 4: bedürfnisse[2].setAbfallfaktor(neuerWert);
+				case 4: bedürfnisse[1].setAbfallfaktor(neuerWert);
 						break;
-				case 5: bedürfnisse[3].setWert(neuerWert);
+				case 5: bedürfnisse[2].setWert(neuerWert);
 						break;
-				case 6: bedürfnisse[3].setAbfallfaktor(neuerWert);
+				case 6: bedürfnisse[2].setAbfallfaktor(neuerWert);
 						break;
-				case 7: bedürfnisse[4].setWert(neuerWert);
+				case 7: bedürfnisse[3].setWert(neuerWert);
 						break;		
-				case 8: bedürfnisse[4].setAbfallfaktor(neuerWert);
+				case 8: bedürfnisse[3].setAbfallfaktor(neuerWert);
 						break;
-				case 9: bedürfnisse[5].setWert(neuerWert);
+				case 9: bedürfnisse[4].setWert(neuerWert);
 				        break;
-				case 10: bedürfnisse[5].setAbfallfaktor(neuerWert);
+				case 10: bedürfnisse[4].setAbfallfaktor(neuerWert);
 						 break;
 				}
 			}
