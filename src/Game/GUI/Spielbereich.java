@@ -58,12 +58,12 @@ public class Spielbereich extends JPanel implements MouseListener
 	public void mouseClicked(MouseEvent arg0) {
 		
 	}
-
+	
 	@Override
 	public void mouseEntered(MouseEvent mevtE) {
 		// Tür öffnet sich bei MouseOver.
 		if (mevtE.getSource() == lblDoor) {
-			spielUI.zeigeNachrichtInKonsole("Maus ist im in Türbereich.");
+			//spielUI.zeigeNachrichtInKonsole("Maus ist im in Türbereich.");
 			lblDoor.setIcon(imgDoorOpened);
 		}
 
