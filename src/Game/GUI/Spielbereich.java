@@ -1,5 +1,7 @@
 package Game.GUI;
 import javax.swing.*;
+import javax.swing.border.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -23,7 +25,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		this.spielUI = spielUI;
 		
 		imgDoorClosed = new ImageIcon("files/avatarImages/Horst Terarno.jpg");
-		imgDoorOpened = new ImageIcon("files/avatarImages/Hasma Hasmada.jpg");
+		imgDoorOpened = new ImageIcon("files/avatarImages/Hasma Hamada.jpg");
 		
 		
 		lblDoor = new JLabel(imgDoorClosed);
@@ -34,9 +36,10 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 		
 		
-		lblbackGround = new JLabel(new ImageIcon("files/gameImages/bg.jpg"));
+		lblbackGround = new JLabel(new ImageIcon("files/gameImages/bg.png"));
 		lblbackGround.setSize(800, 500);
 		lblbackGround.setLocation(0,0);
+		lblbackGround.setOpaque(true);
 		this.add(lblbackGround);
 		
 		
@@ -63,16 +66,15 @@ public class Spielbereich extends JPanel implements MouseListener
 			spielUI.zeigeNachrichtInKonsole("Maus ist im in Türbereich.");
 			lblDoor.setIcon(imgDoorOpened);
 		}
-		if (mevtE.getSource() == lblbackGround) {
-			lblDoor.setIcon(imgDoorClosed);
-		}
+
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		if(arg0.getSource() == lblDoor) {
+			lblDoor.setIcon(imgDoorClosed);
+		}
 	}
 
 	@Override
