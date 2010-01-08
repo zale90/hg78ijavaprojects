@@ -10,7 +10,7 @@ public class Spielbereich extends JPanel implements MouseListener
 {
 
 	/**
-	 * Der Bereich in Dem das eigentlich Spiel abläuft (Wohnung)
+	 * Der Bereich in dem das eigentliche Spiel abläuft (Wohnung)
 	 */
 	private static final long serialVersionUID = -634199744790451275L;
 	private JLabel lblbackGround;
@@ -55,13 +55,12 @@ public class Spielbereich extends JPanel implements MouseListener
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent mevtE) {
-		// TODO Mouse Enter fertig machen für alle Objekte.
+		// Tür öffnet sich bei MouseOver.
 		if (mevtE.getSource() == lblDoor) {
 			spielUI.zeigeNachrichtInKonsole("Maus ist im in Türbereich.");
 			lblDoor.setIcon(imgDoorOpened);
@@ -72,6 +71,8 @@ public class Spielbereich extends JPanel implements MouseListener
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
+		//Alle Objekte werden zurück in den Standardzustand versetzt.
+		//Tür wird geschlossen.
 		if(arg0.getSource() == lblDoor) {
 			lblDoor.setIcon(imgDoorClosed);
 		}
@@ -79,13 +80,11 @@ public class Spielbereich extends JPanel implements MouseListener
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 	
