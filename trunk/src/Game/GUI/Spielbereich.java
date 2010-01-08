@@ -1,8 +1,6 @@
 package Game.GUI;
-import javax.swing.*;
-import javax.swing.border.*;
 
-import java.awt.*;
+import javax.swing.*;
 import java.awt.event.*;
 
 
@@ -15,22 +13,22 @@ public class Spielbereich extends JPanel implements MouseListener
 	private static final long serialVersionUID = -634199744790451275L;
 	private JLabel lblbackGround;
 	private JLabel lblDoor;
-	private Spieloberfläche spielUI;
+	//private Spieloberfläche spielUI;
 	private ImageIcon imgDoorClosed;
 	private ImageIcon imgDoorOpened;
 	
 	
 	public Spielbereich(int x,int y, Spieloberfläche spielUI) {
 		
-		this.spielUI = spielUI;
+		//this.spielUI = spielUI;
 		
 		imgDoorClosed = new ImageIcon("files/gameImages/doorclosed.png");
 		imgDoorOpened = new ImageIcon("files/gameImages/null.png");
 		
 		
 		lblDoor = new JLabel(imgDoorClosed);
-		lblDoor.setSize(81,333);
-		lblDoor.setLocation(687,91);
+		lblDoor.setSize(81, 340);
+		lblDoor.setLocation(687,90);
 		lblDoor.addMouseListener(this);
 		lblDoor.setOpaque(false);
 		this.add(lblDoor);
