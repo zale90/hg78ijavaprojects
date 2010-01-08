@@ -28,8 +28,8 @@ public class Initialisator
 		bedList[1] = new Bedürfnis(1, 50, 0, 100, 25);  // Gesundheit
 		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);  // Soziales
 		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);  // Luxus
-		bedList[4] = new Bedürfnis(4, 50, 0, 100, 25);  // Kinder
-		avList.add(new Avatar(2, "Hasma Hamada", "Hasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern(9, 10 und 12 Jahre). Er ist gelernter Schlosser, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen  Qualifikationen wurde ihm bei Wenner Metallbau gekündigt. Seine Frau trägt mit einem 400€ Job zur Haushaltskasse bei, trotzdem können sie nur Rücklagen in Höhe von 130,-€ verbuchen.", bedList, 1000, 200, 2));
+		//bedList[4] = new Bedürfnis(4, 50, 0, 100, 25);  // Kinder
+		avList.add(new Avatar(2, "Hasma Hamada", "Hasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern(9, 10 und 12 Jahre). Er ist gelernter Schlosser, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen  Qualifikationen wurde ihm bei Wenner Metallbau gekündigt. Seine Frau trägt mit einem 400€ Job zur Haushaltskasse bei, trotzdem können sie nur Rücklagen in Höhe von 130,-€ verbuchen.", bedList, 130, 200, 2));
 		
 		// Chantal-Jacqueline Chaves
 		bedList = new Bedürfnis[4];		
@@ -37,7 +37,7 @@ public class Initialisator
 		bedList[1] = new Bedürfnis(1, 50, 0, 100, 25);  // Gesundheit
 		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);  // Soziales
 		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);  // Luxus
-		avList.add(new Avatar(3, "Chantal-Jacqueline Chaves", "Chantal ist eine 20- jährige Mutter eines 3- jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör - Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.", bedList, 750, 300, 3));
+		avList.add(new Avatar(3, "Chantal-Jacqueline Chaves", "Chantal ist eine 20- jährige Mutter eines 3- jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör - Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.", bedList, 0, 300, 3));
 		
 		return avList;
 	}
