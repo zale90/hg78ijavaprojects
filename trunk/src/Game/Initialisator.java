@@ -12,17 +12,32 @@ public class Initialisator
 	public static ArrayList<Avatar> gibAvatare()
 	{
 		ArrayList<Avatar> avList = new ArrayList<Avatar>();
-		Bedürfnis[] bedList = new Bedürfnis[4];
+		Bedürfnis[] bedList;
 		
-		bedList[0] = new Bedürfnis(0, 50, 0, 100, 25);
-		bedList[1] = new Bedürfnis(1, 50, 0, 100, 25);
-		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);
-		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);
-//		bedList[4] = new Bedürfnis(4, 50, 0, 100, 25);
-		
+		// Horst Terano
+		bedList = new Bedürfnis[4];		
+		bedList[0] = new Bedürfnis(0, 50, 0, 100, 25);  // Nahrung
+		bedList[1] = new Bedürfnis(1, 50, 0, 100, 25);  // Gesundheit
+		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);  // Soziales
+		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);  // Luxus
 		avList.add(new Avatar(1, "Horst Terarno", "Horst ist ein 35-jähriger, kinder- und arbeitsloser Akademiker. Er hat Immobilienmanagement studiert und danach bei Traumhaus.de gearbeitet. Aufgrund der Wirtschaftskrise und gescheiterter Aktienspekulationen verlor er seinen Arbeitsplatz und seine Rücklagen schrumpften auf 1500,-€. Trotz Hartz IV versucht er seinen Lebensstandard zu halten.", bedList, 1500, 500, 5));
-		avList.add(new Avatar(2, "Arn Terhorsto", "Akademiker (leicht)", bedList, 1000, 200, 2));
-		avList.add(new Avatar(3, "Ter Horstarno", "Akademiker (leicht)", bedList, 750, 300, 3));
+		
+		// Hasma Hamada
+		bedList = new Bedürfnis[5];		
+		bedList[0] = new Bedürfnis(0, 50, 0, 100, 25);  // Nahrung
+		bedList[1] = new Bedürfnis(1, 50, 0, 100, 25);  // Gesundheit
+		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);  // Soziales
+		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);  // Luxus
+		bedList[4] = new Bedürfnis(4, 50, 0, 100, 25);  // Kinder
+		avList.add(new Avatar(2, "Hasma Hamada", "Hasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern(9, 10 und 12 Jahre). Er ist gelernter Schlosser, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen  Qualifikationen wurde ihm bei Wenner Metallbau gekündigt. Seine Frau trägt mit einem 400€ Job zur Haushaltskasse bei, trotzdem können sie nur Rücklagen in Höhe von 130,-€ verbuchen.", bedList, 1000, 200, 2));
+		
+		// Chantal-Jacqueline Chaves
+		bedList = new Bedürfnis[4];		
+		bedList[0] = new Bedürfnis(0, 50, 0, 100, 25);  // Nahrung
+		bedList[1] = new Bedürfnis(1, 50, 0, 100, 25);  // Gesundheit
+		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);  // Soziales
+		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);  // Luxus
+		avList.add(new Avatar(3, "Chantal-Jacqueline Chaves", "Chantal ist eine 20- jährige Mutter eines 3- jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör - Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.", bedList, 750, 300, 3));
 		
 		return avList;
 	}
