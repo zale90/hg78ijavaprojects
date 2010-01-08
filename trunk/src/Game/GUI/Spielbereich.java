@@ -24,14 +24,15 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 		this.spielUI = spielUI;
 		
-		imgDoorClosed = new ImageIcon("files/avatarImages/Horst Terarno.jpg");
-		imgDoorOpened = new ImageIcon("files/avatarImages/Hasma Hamada.jpg");
+		imgDoorClosed = new ImageIcon("files/gameImages/doorclosed.png");
+		imgDoorOpened = new ImageIcon("files/gameImages/null.png");
 		
 		
 		lblDoor = new JLabel(imgDoorClosed);
-		lblDoor.setSize(50,100);
-		lblDoor.setLocation(200,50);
+		lblDoor.setSize(81,333);
+		lblDoor.setLocation(687,91);
 		lblDoor.addMouseListener(this);
+		lblDoor.setOpaque(false);
 		this.add(lblDoor);
 		
 		
