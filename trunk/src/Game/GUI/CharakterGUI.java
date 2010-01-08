@@ -34,13 +34,12 @@ public class CharakterGUI extends JPanel implements ActionListener
       this.add(bild);
       
       beschreibung = new JTextPane();
+      beschreibung.setText(avatar.getBeschreibung());
       beschreibung.setEditable(false);
       beschreibung.setSize(250, 100);
       beschreibung.setLocation(30, 300);
-//      beschreibung.setWrapStyleWord(true);
-//      beschreibung.setLineWrap(true);
-      beschreibung.setText(avatar.getBeschreibung());
-      this.add(beschreibung);
+//    beschreibung.setWrapStyleWord(true);
+//    beschreibung.setLineWrap(true);
       
       beschreibungScrollbalken = new JScrollPane(beschreibung);
       beschreibungScrollbalken.setSize(250, 100);
