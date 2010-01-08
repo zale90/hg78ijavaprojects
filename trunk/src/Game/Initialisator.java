@@ -115,7 +115,7 @@ public class Initialisator
 		erList.add(e);
 		
 		ja = new Information[2];
-		ja[0] = new Information(13, 2, 400);
+		ja[0] = new Information(13, 2, -400);
 		ja[1] = new Information(12, 2, 1);
 		nein = new Information[1];
 		nein[0] = new Information(13, 2, -20);
@@ -143,13 +143,13 @@ public class Initialisator
 		ja = new Information[2];
 		ja[0] = new Information(5, 4, 15);
 		ja[1] = new Information(7, 2, 25);
-		e = new Ereignis(16, "Preisausschreiben", "Sie haben bei einem Preisausschreiben gewonnen! Sie erhalten Freikarten für das Kino und ein Museum. ", false, null, null);
+		e = new Ereignis(16, "Preisausschreiben", "Sie haben bei einem Preisausschreiben gewonnen! Sie erhalten Freikarten für das Kino und ein Museum. ", false, ja, null);
 		erList.add(e);
 		
 		ja = new Information[1];
 		ja[0] = new Information(13, 2, 30);
 		nein = new Information[1];
-		nein[0] = new Information(5, 4, 75);
+		nein[0] = new Information(5, 4, -75);
 		e = new Ereignis(17, "Ausflug", "Einer deiner Freunde fragt, ob du an einem Ausflug teilnehmen willst. Du müsstest 30 Euro bezahlen, andernfalls sinkt dein soziales Bedürfnis. Nimmst du teil?", true, ja, nein);
 		erList.add(e);
 		
