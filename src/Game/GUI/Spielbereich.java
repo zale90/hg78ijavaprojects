@@ -2,6 +2,7 @@ package Game.GUI;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 
 
 public class Spielbereich extends JPanel implements MouseListener
@@ -16,19 +17,29 @@ public class Spielbereich extends JPanel implements MouseListener
 	//private Spieloberfläche spielUI;
 	private ImageIcon imgDoorClosed;
 	private ImageIcon imgDoorOpened;
+	private JPanel pnlDoorActions;
+	//private PointerInfo pointerInfo;
+	private TextComponent txtDoorHeader;
 	
 	
 	public Spielbereich(int x,int y, Spieloberfläche spielUI) {
 		
 		//this.spielUI = spielUI;
-		
 		imgDoorClosed = new ImageIcon("files/gameImages/doorclosed.png");
 		imgDoorOpened = new ImageIcon("files/gameImages/null.png");
+		
+		//txtDoorHeader = new TextComponent("Wohnung verlassen");
+		
+		pnlDoorActions = new JPanel();
+		pnlDoorActions.setSize(200, 40);
+		pnlDoorActions.setBackground(Color.BLACK);
+		pnlDoorActions.setVisible(false);
+		this.add(pnlDoorActions);
 		
 		
 		lblDoor = new JLabel(imgDoorClosed);
 		lblDoor.setSize(81, 340);
-		lblDoor.setLocation(687,90);
+		lblDoor.setLocation(687, 90);
 		lblDoor.addMouseListener(this);
 		lblDoor.setOpaque(false);
 		this.add(lblDoor);
@@ -53,15 +64,18 @@ public class Spielbereich extends JPanel implements MouseListener
 	
 	
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		
+	public void mouseClicked(MouseEvent mouseClick) {
+		//Zeigt ein Door-Actionpanel an. 
+		if (mouseClick.getSource() == lblDoor) {
+			
+			showActionPanel(mouseClick, pnlDoorActions, lblDoor);			
+		}
 	}
 	
 	@Override
-	public void mouseEntered(MouseEvent mevtE) {
+	public void mouseEntered(MouseEvent mouseOver) {
 		// Tür öffnet sich bei MouseOver.
-		if (mevtE.getSource() == lblDoor) {
-			//spielUI.zeigeNachrichtInKonsole("Maus ist im in Türbereich.");
+		if (mouseOver.getSource() == lblDoor) {
 			lblDoor.setIcon(imgDoorOpened);
 		}
 
@@ -69,10 +83,10 @@ public class Spielbereich extends JPanel implements MouseListener
 	}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
+	public void mouseExited(MouseEvent mouseEx) {
 		//Alle Objekte werden zurück in den Standardzustand versetzt.
 		//Tür wird geschlossen.
-		if(arg0.getSource() == lblDoor) {
+		if(mouseEx.getSource() == lblDoor) {
 			lblDoor.setIcon(imgDoorClosed);
 		}
 	}
@@ -87,7 +101,34 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 	}
 	
+	//Zeigt unterhalb der Maus ein Panel mit möglichen Aktionen an.
+	/**
+	 * @param mEvt Ein Mouse Event für x,y Coords der Maus.
+	 * @param actionPnl Das Panel, das angezeigt werden soll.
+	 * @param lblSuper Das JLabel, bei dem das Actionpanel erstellt wird.
+	 */
+	public void showActionPanel(MouseEvent mEvt, Component actionPnl, JLabel lblSuper) {
+		//MouseClick pos bestimmen
+		
+		//pointerInfo = MouseInfo.getPointerInfo();
+		//Point p = pointerInfo.getLocation();
+		//int xpos = (int) p.getX();
+		//int ypos = (int) p.getY() + 10;	
+		
+		int xpos = mEvt.getX();
+		int ypos = mEvt.getY();
+		//spielUI.zeigeNachrichtInKonsole("Mausklick Location @ " + xpos + ", " + ypos + " (Türbereich).");
+				
+		//Sorgt dafür, dass das Actionpanel nicht außerhalb des Panels erstellt wird.
+		if ((xpos + lblSuper.getX() + actionPnl.getWidth() / 2) < 800) {
+			actionPnl.setLocation(xpos + lblSuper.getX() - actionPnl.getWidth() / 2, ypos + lblSuper.getY() + 5);
+		} else {
+			actionPnl.setLocation(800 - actionPnl.getWidth(), ypos + lblSuper.getY() + 5);
+		}
+		actionPnl.setVisible(true);
+		
 
-	
+		
+	}
 	
 }
