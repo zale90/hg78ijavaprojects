@@ -1,6 +1,8 @@
 package Game.GUI;
 
 import javax.swing.*;
+
+import java.awt.Color;
 import java.awt.event.*;
 import Game.*;
 
@@ -12,7 +14,6 @@ public class CharakterGUI extends JPanel implements ActionListener
 	private JLabel name, bild;
 	private JTextPane beschreibung;
 	private JButton wahl;
-	private JScrollPane beschreibungScrollbalken;
    
    public CharakterGUI(Avatar avatar, int x, int y)
    {
@@ -23,31 +24,27 @@ public class CharakterGUI extends JPanel implements ActionListener
       
       name = new JLabel(avatar.getName());
       name.setSize(300, 50);
-      name.setLocation(20, 20);
+      name.setLocation(20, 0);
       name.setHorizontalAlignment(0);
       this.add(name);
       
       bild = new JLabel(new ImageIcon("files/avatarImages/" + avatar.getName() + ".jpg"));
       bild.setSize(200, 200);
-      bild.setLocation(60, 90);
+      bild.setLocation(60, 50);
       this.add(bild);
       
       beschreibung = new JTextPane();
-      beschreibung.setEditable(false);
-      
-      beschreibungScrollbalken = new JScrollPane(beschreibung);
-      beschreibung.setSize(250, 100);
-      beschreibung.setLocation(30, 300);
+      beschreibung.setBackground(null);
       beschreibung.setText(avatar.getBeschreibung());
-      beschreibungScrollbalken.setSize(250, 100);
-      beschreibungScrollbalken.setLocation(30, 300);
-      beschreibungScrollbalken.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-      this.add(beschreibungScrollbalken);
+      beschreibung.setSize(250, 150);
+      beschreibung.setLocation(35, 270);
+      beschreibung.setEditable(false);
       beschreibung.setCaretPosition(0);
+      this.add(beschreibung);
       
       wahl = new JButton("Spiele " + name.getText());
       wahl.setSize(300, 50);
-      wahl.setLocation(20, 420);
+      wahl.setLocation(15, 450);
       wahl.setHorizontalAlignment(0);
       wahl.addActionListener(this);
       this.add(wahl);
