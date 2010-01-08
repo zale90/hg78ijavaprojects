@@ -1,7 +1,6 @@
 package Game.GUI;
 
 import javax.swing.*;
-
 import java.awt.event.*;
 import Game.*;
 
@@ -34,14 +33,12 @@ public class CharakterGUI extends JPanel implements ActionListener
       this.add(bild);
       
       beschreibung = new JTextPane();
-      beschreibung.setText(avatar.getBeschreibung());
       beschreibung.setEditable(false);
-      beschreibung.setSize(250, 100);
-      beschreibung.setLocation(30, 300);
-//    beschreibung.setWrapStyleWord(true);
-//    beschreibung.setLineWrap(true);
       
       beschreibungScrollbalken = new JScrollPane(beschreibung);
+      beschreibung.setSize(250, 100);
+      beschreibung.setLocation(30, 300);
+      beschreibung.setText(avatar.getBeschreibung());
       beschreibungScrollbalken.setSize(250, 100);
       beschreibungScrollbalken.setLocation(30, 300);
       beschreibungScrollbalken.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
