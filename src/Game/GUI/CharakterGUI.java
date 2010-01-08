@@ -2,7 +2,6 @@ package Game.GUI;
 
 import javax.swing.*;
 
-import java.awt.Color;
 import java.awt.event.*;
 import Game.*;
 
