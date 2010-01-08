@@ -59,7 +59,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		/*
 		 * Nur ein Testpanel, um zu schauen welche Größe wir für das Spielfeld einplanen müssen - ich finds so gut
 		 */
-		JPanel spielfeldTest = new Spielbereich();
+		JPanel spielfeldTest = new Spielbereich(0,0, this);
 		spielfeldTest.setSize(800, 500);
 		spielfeldTest.setLocation(20, 60);
 		this.add(spielfeldTest);
