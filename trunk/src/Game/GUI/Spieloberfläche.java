@@ -230,5 +230,12 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
+	public void aktion(Aktion aktion)
+	{
+		spiel.infosUmsetzen(aktion.getVeraenderungen());
+		zeigeNachrichtInKonsole(aktion.getKonsolenausgabe());
+		aktualisiereDaten();
+		
+	}
 
 }
