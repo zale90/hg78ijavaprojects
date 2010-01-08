@@ -28,7 +28,6 @@ public class Avatar {
 		this.beschreibung = beschreibung;
 		this.bedürfnisse = bedürfnisse;
 		this.kontostand = kontostand;
-//		this.bild = bild;
 		this.setEinkommen(einkommen);
 		this.setZeitProRunde(zeitProRunde);
 	}
