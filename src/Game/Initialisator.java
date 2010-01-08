@@ -154,7 +154,7 @@ public class Initialisator
 		erList.add(e);
 		
 		ja = new Information[1];
-		ja[0] = new Information(13, 2, 15);
+		ja[0] = new Information(13, 2, -15);
 		e = new Ereignis(18, "Handy", "Eine Handyabrechnung wurde nicht beglichen, zahlen sie 15 Euro Strafe. ", false, ja, null);
 		erList.add(e);
 		
