@@ -141,7 +141,7 @@ public class Initialisator
 		erList.add(e);
 		
 		ja = new Information[2];
-		ja[0] = new Information(5, 4, 15);
+		ja[0] = new Information(5, 2, 15);
 		ja[1] = new Information(7, 2, 25);
 		e = new Ereignis(16, "Preisausschreiben", "Sie haben bei einem Preisausschreiben gewonnen! Sie erhalten Freikarten für das Kino und ein Museum. ", false, ja, null);
 		erList.add(e);
