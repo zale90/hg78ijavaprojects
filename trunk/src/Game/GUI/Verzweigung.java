@@ -23,7 +23,7 @@ public class Verzweigung extends JPanel implements ActionListener { //wahrschein
 		verzweigungen = verz;
 		verzweigungsButtons = new ArrayList<JButton>();
 		
-		this.setSize(80, (aktionen.size() * 20) + (verzweigungen.size()) * 20);
+		this.setSize(100, (aktionen.size() * 20) + (verzweigungen.size()) * 20);
 	      this.setBackground(null);
 	      this.setLayout(null);
 		
@@ -39,7 +39,7 @@ public class Verzweigung extends JPanel implements ActionListener { //wahrschein
 		{
 			verzweigungsButtons.add(new JButton(verzweigungen.get(i).getName()));
 			verzweigungsButtons.get(i).addActionListener(this);
-			verzweigungsButtons.get(i).setSize(80, 20);
+			verzweigungsButtons.get(i).setSize(100, 20);
 			verzweigungsButtons.get(i).setLocation(0, (aktionen.size()+i)*20);
 			this.add(verzweigungsButtons.get(i));
 		}

@@ -21,7 +21,7 @@ public class Aktion extends JButton {
 		this.beschreibung = beschreibung;
 		this.konsolenausgabe = konsolenausgabe;
 		
-		setSize(80, 20);
+		setSize(100, 20);
 		setBackground(Color.green);
 	}
 
