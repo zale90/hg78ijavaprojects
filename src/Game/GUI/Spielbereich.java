@@ -4,11 +4,12 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.*;
 
 import Game.Optionen;
 
 
-public class Spielbereich extends JPanel implements MouseListener, ActionListener
+public class Spielbereich extends JPanel implements MouseListener // Actionlistener wird durch neues System nicht mehr gebraucht
 {
 
 	/**
@@ -16,48 +17,64 @@ public class Spielbereich extends JPanel implements MouseListener, ActionListene
 	 */
 	private static final long serialVersionUID = -634199744790451275L;
 	private JLabel lblbackGround;
-	private JLabel lblDoor;
-	private JLabel lblDoorHeader;
-	//private Spieloberfläche spielUI;
 	private ImageIcon imgDoorClosed;
 	private ImageIcon imgDoorOpened;
-	private JPanel pnlDoorActions;
-	private JButton btnKino;
-	//private PointerInfo pointerInfo;
+	private Spieloberfläche spieloberfläche;
+	private int aktivesObjekt;
+	//zu ArrayLists: Jedes Aktionsobjekt hat einen Header, ein Label für den Spielbereich, 
+	//2 Bilder, eins für inaktiv und eins wenn die Maus drauf ist, und ein Untermenu, das aufploppt, wenn man draufklickt
+	//In den ArrayLists gibts folgendes System: ein Index ist ein Aktionsobjekt. Das heißt wenn auf ein Objekt geklickt
+	//wird muss man nur durch eine Schleife herausfinden, an welchem index das in "aktionsObjekte" steht und dieser Index
+	//ist dann derselbe, unter dem bspw in aktionsHeader der passende header zu finden ist.
+	private ArrayList<JLabel> aktionsObjekte, aktionsHeader;
+	private ArrayList<Verzweigung> aktionsMenus;
+	private ArrayList<ImageIcon> bilderInaktiv, bilderAktiv; 
 	
 	
 	public Spielbereich(int x,int y, Spieloberfläche spielUI) {
 		
-		//this.spielUI = spielUI;
-		imgDoorClosed = new ImageIcon("files/gameImages/doorclosed.png");
-		imgDoorOpened = new ImageIcon("files/gameImages/null.png");
+		spieloberfläche = spielUI;
 		
-		lblDoorHeader = new JLabel("Wohnung verlassen", SwingConstants.CENTER);
+		bilderInaktiv = new ArrayList<ImageIcon>();
+		bilderAktiv = new ArrayList<ImageIcon>();
+		aktionsObjekte = new ArrayList<JLabel>();
+		aktionsHeader = new ArrayList<JLabel>();
+		aktionsMenus = new ArrayList<Verzweigung>();
+		aktivesObjekt = -1; //-1 heißt das momentan kein Objekt aktiv ist; das heißt  man ist nicht mit der Maus auf einem und hat auch nicht auf eines geklickt
+		Verzweigung.setSpielbereich(this); //die Verzweigung muss auf das Spielbereich-objekt zugreifen können
+		
+		//Folgender Block ist nur zum test da; ich erstelle damit das Menu, was aufgeht, wenn man auch die Tür klickt, mitsamt Untermenu
+		// TEST
+		ArrayList<Aktion> aktVer1 = new ArrayList<Aktion>();
+		aktVer1.add(new Aktion("Kino", "Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
+		ArrayList<Verzweigung> verVer1 = new ArrayList<Verzweigung>();
+		ArrayList<Aktion> aktVer11 = new ArrayList<Aktion>();
+		aktVer11.add(new Aktion("Park", "Gehe in den Park", "Du bist in den Park gegangen", null,null));
+		Verzweigung ver11 = new Verzweigung("Sonstiges", aktVer11, new ArrayList<Verzweigung>());
+		this.add(ver11);
+		verVer1.add(ver11);
+		Verzweigung ver1 = new Verzweigung("Door", aktVer1, verVer1);
+		this.add(ver1);
+		aktionsMenus.add(ver1);
+		// TEST
+		
+		bilderInaktiv.add(new ImageIcon("files/gameImages/doorclosed.png"));
+		bilderAktiv.add(new ImageIcon("files/gameImages/null.png"));
+		
+		JLabel lblDoorHeader = new JLabel("Wohnung verlassen", SwingConstants.CENTER);
 		lblDoorHeader.setFont(Optionen.FONT_ACTION_HEADER);
 		lblDoorHeader.setSize(150,40);
 		lblDoorHeader.setVisible(false);
 		this.add(lblDoorHeader);
+		aktionsHeader.add(lblDoorHeader);
 		
-		pnlDoorActions = new JPanel();
-		pnlDoorActions.setSize(200, 40);
-		pnlDoorActions.setBorder(new EtchedBorder(EtchedBorder.RAISED));
-		pnlDoorActions.setVisible(false);
-		pnlDoorActions.setOpaque(true);
-		this.add(pnlDoorActions);
-		
-		btnKino = new JButton("Kino");
-		btnKino.setSize(80,25);
-		btnKino.setLocation(5,5);
-		pnlDoorActions.add(btnKino);
-		btnKino.addActionListener(this);
-		
-		
-		lblDoor = new JLabel(imgDoorClosed);
+		JLabel lblDoor = new JLabel(bilderInaktiv.get(0));
 		lblDoor.setSize(81, 340);
 		lblDoor.setLocation(687, 90);
 		lblDoor.addMouseListener(this);
 		lblDoor.setOpaque(false);
 		this.add(lblDoor);
+		aktionsObjekte.add(lblDoor);
 		
 		
 		
@@ -65,6 +82,7 @@ public class Spielbereich extends JPanel implements MouseListener, ActionListene
 		lblbackGround.setSize(800, 500);
 		lblbackGround.setLocation(0,0);
 		lblbackGround.setOpaque(true);
+		lblbackGround.addMouseListener(this);
 		this.add(lblbackGround);
 		
 		
@@ -80,31 +98,52 @@ public class Spielbereich extends JPanel implements MouseListener, ActionListene
 	
 	@Override
 	public void mouseClicked(MouseEvent mouseClick) {
+		//blendet eventuelle Untermenus aus, die evtl noch angezeigt sind
+		if (aktivesObjekt != -1)
+			aktionsMenus.get(aktivesObjekt).setVisible(false);
+		
 		//Zeigt ein Door-Actionpanel an. 
-		if (mouseClick.getSource() == lblDoor) {
-			
-			showActionComponent(mouseClick, pnlDoorActions, lblDoor, 0);			
+		for (int i = 0; i < aktionsObjekte.size(); i++)
+		{
+			if(mouseClick.getSource() == aktionsObjekte.get(i))
+			{
+				showActionComponent(mouseClick.getPoint(), aktionsMenus.get(i), aktionsObjekte.get(i), 0);
+				aktivesObjekt = i;
+				return;
+			}
 		}
 	}
 	
 	@Override
 	public void mouseEntered(MouseEvent mouseOver) {
 		// Tür öffnet sich bei MouseOver.
-		if (mouseOver.getSource() == lblDoor) {
-			lblDoor.setIcon(imgDoorOpened);
-			showActionComponent(mouseOver, lblDoorHeader, lblDoor, 1);
+		for (int i = 0; i < aktionsObjekte.size(); i++)
+		{
+			if(mouseOver.getSource() == aktionsObjekte.get(i))
+			{
+				showActionComponent(mouseOver.getPoint(), aktionsHeader.get(i), aktionsObjekte.get(i), 1);
+				aktionsObjekte.get(i).setIcon(bilderAktiv.get(i));
+				aktivesObjekt = i;
+				return;
+			}
+		}
+		// Tür schließt sich bei "betreten" des backgrounds, außerdem werden mögliche Menus geshclossen und Header ausgeblendet
+		if (mouseOver.getSource() == lblbackGround)
+		{
+			if (aktivesObjekt != -1)
+			{
+				aktionsMenus.get(aktivesObjekt).setVisible(false);
+				aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
+				aktionsHeader.get(aktivesObjekt).setVisible(false);
+				aktivesObjekt = -1;
+			}
 		}
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent mouseEx) {
-		//Alle Objekte werden zurück in den Standardzustand versetzt.
-		//Tür wird geschlossen.
-		if(mouseEx.getSource() == lblDoor) {
-			lblDoor.setIcon(imgDoorClosed);
-			lblDoorHeader.setVisible(false);		
-		}
+		//Tür schließen u.s.w. in mouse entered gepackt, weil sonst die Tür zu ging wenn man auf das ActionPanel ging
 	}
 
 	@Override
@@ -119,12 +158,12 @@ public class Spielbereich extends JPanel implements MouseListener, ActionListene
 	
 	//Zeigt unterhalb der Maus ein Panel mit möglichen Aktionen an.
 	/**
-	 * @param mEvt Ein Mouse Event für x,y Coords der Maus.
+	 * @param mEvt Ein Punkt für x,y Coords.
 	 * @param actionCmp Die Komponente, die angezeigt werden soll.
-	 * @param lblSuper Das JLabel, bei dem das Actionpanel erstellt wird.
+	 * @param lblSuper Die Komponente, bei der das Actionpanel erstellt wird.
 	 * @param actionCompType 0=ActionPanel 1=ActionLabel
 	 */
-	public void showActionComponent(MouseEvent mEvt, Component actionCmp, JLabel lblSuper, int actionCompType) {
+	public void showActionComponent(Point mEvt, Component actionCmp, JComponent lblSuper, int actionCompType) {
 		//MouseClick pos bestimmen
 		
 		//pointerInfo = MouseInfo.getPointerInfo();
@@ -132,8 +171,8 @@ public class Spielbereich extends JPanel implements MouseListener, ActionListene
 		//int xpos = (int) p.getX();
 		//int ypos = (int) p.getY() + 10;	
 		
-		int xpos = mEvt.getX();
-		int ypos = mEvt.getY();
+		int xpos = (int)mEvt.getX();
+		int ypos = (int)mEvt.getY();
 		int height = 0;
 		//spielUI.zeigeNachrichtInKonsole("Mausklick Location @ " + xpos + ", " + ypos + " (Türbereich).");
 				
@@ -153,14 +192,10 @@ public class Spielbereich extends JPanel implements MouseListener, ActionListene
 		actionCmp.setVisible(true);
 				
 	}
-
-
-
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnKino) {
-			pnlDoorActions.setVisible(false);
-		}
-		
+	public void aktionAusfuehren(Aktion akt)
+	{
+		spieloberfläche.aktion(akt);
+		aktionsMenus.get(aktivesObjekt).setVisible(false);		
 	}
 	
 }
