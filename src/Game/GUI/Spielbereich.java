@@ -100,7 +100,7 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		
 		JLabel lblFridge = new JLabel(bilderInaktiv.get(1));
 		lblFridge.setSize(99, 237);
-		lblFridge.setLocation(565, 85);
+		lblFridge.setLocation(566, 86);
 		lblFridge.addMouseListener(this);
 		lblFridge.setOpaque(false);
 		this.add(lblFridge);
