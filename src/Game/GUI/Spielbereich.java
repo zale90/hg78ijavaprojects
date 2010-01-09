@@ -58,8 +58,22 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		aktionsMenus.add(ver1);
 		// TEST
 		
+		// Schonmal erster Menupunkt für Kühlschrank; müssen wir später mal schauen ob wir das alles hier initialisieren oder in Initialisator
+		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
+		gemueseAktionen.add(new Aktion("Hochwertig", "Kaufe hochwertiges Gemüse", "Du hast Qualitätsgemüse gekauft", null, null));
+		gemueseAktionen.add(new Aktion("Mittelmaeßig", "Kaufe mittelmaeßiges Gemüse", "Du hast mittelmaeßiges Gemüse gekauft", null, null));
+		gemueseAktionen.add(new Aktion("Billig", "Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft", null, null));
+		ArrayList<Verzweigung> essenVerzweigung = new ArrayList<Verzweigung>();
+		essenVerzweigung.add(new Verzweigung("Gemuese", gemueseAktionen, new ArrayList<Verzweigung>()));
+		this.add(essenVerzweigung.get(0));
+		Verzweigung ver12 = new Verzweigung("Fridge", new ArrayList<Aktion>(), essenVerzweigung);
+		this.add(ver12);
+		aktionsMenus.add(ver12);
+		
 		bilderInaktiv.add(new ImageIcon("files/gameImages/doorclosed.png"));
+		bilderInaktiv.add(new ImageIcon("files/gameImages/fridgeclosed.png"));
 		bilderAktiv.add(new ImageIcon("files/gameImages/null.png"));
+		bilderAktiv.add(new ImageIcon("files/gameImages/fridgeopen.png"));
 		
 		JLabel lblDoorHeader = new JLabel("Wohnung verlassen", SwingConstants.CENTER);
 		lblDoorHeader.setFont(Optionen.FONT_ACTION_HEADER);
@@ -67,6 +81,12 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		lblDoorHeader.setVisible(false);
 		this.add(lblDoorHeader);
 		aktionsHeader.add(lblDoorHeader);
+		
+		JLabel lblFridgeHeader = new JLabel("Essen kaufen", SwingConstants.CENTER);
+		lblFridgeHeader.setFont(Optionen.FONT_ACTION_HEADER);
+		lblFridgeHeader.setSize(150,40);
+		lblFridgeHeader.setVisible(false);
+		this.add(lblFridgeHeader);
 		
 		JLabel lblDoor = new JLabel(bilderInaktiv.get(0));
 		lblDoor.setSize(81, 340);
@@ -76,6 +96,15 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		this.add(lblDoor);
 		aktionsObjekte.add(lblDoor);
 		
+		aktionsHeader.add(lblFridgeHeader);
+		
+		JLabel lblFridge = new JLabel(bilderInaktiv.get(1));
+		lblFridge.setSize(99, 237);
+		lblFridge.setLocation(565, 85);
+		lblFridge.addMouseListener(this);
+		lblFridge.setOpaque(false);
+		this.add(lblFridge);
+		aktionsObjekte.add(lblFridge);
 		
 		
 		lblbackGround = new JLabel(new ImageIcon("files/gameImages/bg.png"));
