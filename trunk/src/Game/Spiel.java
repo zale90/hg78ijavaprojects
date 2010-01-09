@@ -111,13 +111,13 @@ public class Spiel {
 		{
 			kontostand = kontostand + geldProMonat;
 		}
-//		for(int i = 0; i < bedürfnisse.length; i++) {
-//			bedürfnisse[i].setWert(bedürfnisse[i].getWert()-bedürfnisse[i].getAbfallfaktor());
-//			if (bedürfnisse[i].getWert() < bedürfnisse[i].getMin())
-//			{
-//				// Man hat verloren; was tun?
-//			}
-//		}
+		for(int i = 0; i < bedürfnisse.length; i++) {
+			bedürfnisse[i].setWert(bedürfnisse[i].getWert()-bedürfnisse[i].getAbfallfaktor());
+			if (bedürfnisse[i].getWert() < bedürfnisse[i].getMin())
+			{
+				// Man hat verloren; was tun?
+			}
+		}
 		
 		// Ereignis ausführen
 		Ereignis er = getRandomEreignis();
