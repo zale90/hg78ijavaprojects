@@ -68,7 +68,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		name.setSize(140, 20);
 		name.setLocation(840,60);
 		name.setHorizontalAlignment(0);
-		name.setFont(new Font("Serif", Font.BOLD, 16));
+		name.setFont(Optionen.FONT_BIGGER);
 		this.add(name);
 		
 		JLabel avatarbild = new JLabel(new ImageIcon("files/avatarImages/" + charName + "Klein.jpg"));
@@ -81,34 +81,34 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		// Verbleibende Zeit anzeigen
 		JLabel lblVerbleibendeZeit = new JLabel("Verbleibende Zeit:");
 		lblVerbleibendeZeit.setSize(100, 20);
-		lblVerbleibendeZeit.setLocation(840, 435);
+		lblVerbleibendeZeit.setLocation(840, 445);
 		this.add(lblVerbleibendeZeit);
 		
 		lblZeit = new JLabel("" + spiel.getZeit());
 		lblZeit.setSize(100, 20);
-		lblZeit.setLocation(935, 435);
+		lblZeit.setLocation(935, 445);
 		this.add(lblZeit);
 		
 		
 		// Kontostand anzeigen
 		JLabel lblKontostand = new JLabel("Kontostand:");
 		lblKontostand.setSize(100, 20);
-		lblKontostand.setLocation(840, 455);
+		lblKontostand.setLocation(840, 465);
 		this.add(lblKontostand);
 		
 		lblGeld = new JLabel("" + spiel.getKontostand());
 		lblGeld.setSize(100, 20);
-		lblGeld.setLocation(935, 455);
+		lblGeld.setLocation(935, 465);
 		this.add(lblGeld);
 		
 		JLabel lblEinkommen = new JLabel("Einkommen:");
 		lblEinkommen.setSize(100, 20);
-		lblEinkommen.setLocation(840, 475);
+		lblEinkommen.setLocation(840, 485);
 		this.add(lblEinkommen);
 		
 		lblGeldProMonat = new JLabel(spiel.getGeldProMonat() + "");
 		lblGeldProMonat.setSize(100, 20);
-		lblGeldProMonat.setLocation(935, 475);
+		lblGeldProMonat.setLocation(935, 485);
 		this.add(lblGeldProMonat);
 		
 		lblZeitpunkt = new JLabel("1. Woche, 1. Monat");
@@ -169,11 +169,13 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		if(i == 0) {
 			return new Point(xPos, 255);
 		} else if(i == 1) {
-			return new Point(xPos, 305);
+			return new Point(xPos, 295);
 		} else if(i == 2) {
-			return new Point(xPos, 355);
+			return new Point(xPos, 335);
 		} else if(i == 3) {
-			return new Point(xPos, 405);
+			return new Point(xPos, 375);
+		} else if(i == 4) {
+			return new Point(xPos, 415);
 		}
 		
 		return null;
@@ -208,28 +210,18 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mousePressed(MouseEvent arg0) {}
 
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+	public void mouseReleased(MouseEvent arg0) {	
 	}
+	
 	public void aktion(Aktion aktion)
 	{
 		spiel.infosUmsetzen(aktion.getVeraenderungen());
