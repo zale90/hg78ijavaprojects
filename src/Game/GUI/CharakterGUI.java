@@ -22,8 +22,9 @@ public class CharakterGUI extends JPanel implements ActionListener
       this.setLayout(null);
       
       name = new JLabel(avatar.getName());
+      name.setFont(Optionen.FONT_BIGGER);
       name.setSize(300, 50);
-      name.setLocation(20, 0);
+      name.setLocation(7, 0);
       name.setHorizontalAlignment(0);
       this.add(name);
       
