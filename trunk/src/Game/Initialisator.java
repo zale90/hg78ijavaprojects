@@ -87,7 +87,8 @@ public class Initialisator
 		//===========================
 		//Was machen wir mit den Kinderereignissen? Bislang haben wir kein Kriterium,
 		//um diese von anderen Ereignisen abgrenzen zu können...
-		//Ich bin dafür, Kinderereignisse komplett zu entfernen.
+		//Ich bin dafür, Kinderereignisse komplett zu entfernen. (Henrik)
+		//Ich bin auch dafür. (Philipp)
 		//===========================
 		ja = new Information[1];
 		ja[0] = new Information(13, 2, -70);
