@@ -14,4 +14,8 @@ public class SpielAnwendung {
 		new Spiel(av, mainGUI);
 	}
 	
+	public static void beendeSpiel(int score) {
+		new Highscores(new Score("Testspieler", 100));
+	}
+	
 }
