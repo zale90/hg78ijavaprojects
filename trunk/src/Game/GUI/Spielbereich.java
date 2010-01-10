@@ -64,7 +64,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 		bilderInaktiv.add(new ImageIcon("files/gameImages/doorclosed.png"));
 		bilderInaktiv.add(new ImageIcon("files/gameImages/fridgeclosed.png"));
-		bilderAktiv.add(new ImageIcon("files/gameImages/null.png"));
+		bilderAktiv.add(new ImageIcon("files/gameImages/dooropen.png"));
 		bilderAktiv.add(new ImageIcon("files/gameImages/fridgeopen.png"));
 		
 		JLabel lblDoorHeader = new JLabel("Wohnung verlassen", SwingConstants.CENTER);
@@ -91,8 +91,8 @@ public class Spielbereich extends JPanel implements MouseListener
 		aktionsHeader.add(lblFridgeHeader);
 		
 		JLabel lblFridge = new JLabel(bilderInaktiv.get(1));
-		lblFridge.setSize(99, 237);
-		lblFridge.setLocation(566, 86);
+		lblFridge.setSize(144, 241);
+		lblFridge.setLocation(522, 85);
 		lblFridge.addMouseListener(this);
 		lblFridge.setOpaque(false);
 		this.add(lblFridge);
