@@ -243,5 +243,29 @@ public class Spielbereich extends JPanel implements MouseListener
 		spieloberfläche.aktion(akt);
 		aktionsMenus.get(aktivesObjekt).setVisible(false);		
 	}
+	public void setzeAktiviert(boolean akt)
+	{
+		if (akt)
+		{
+			for (int i = 0; i < aktionsObjekte.size(); i++)
+			{
+				aktionsObjekte.get(i).addMouseListener(this);
+			}
+		}
+		else
+		{
+			for (int i = 0; i < aktionsObjekte.size(); i++)
+			{
+				aktionsObjekte.get(i).removeMouseListener(this);
+			}
+		}
+		if (aktivesObjekt != -1)
+		{
+			aktionsMenus.get(aktivesObjekt).setVisible(false);
+			aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
+			aktionsHeader.get(aktivesObjekt).setVisible(false);
+			aktivesObjekt = -1;
+		}
+	}
 	
 }

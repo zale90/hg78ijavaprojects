@@ -16,6 +16,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	private JProgressBar[] bedürfnisBars;
 	private Spiel spiel;
 	private PunkteGUI punkteGUI;
+	private Spielbereich spielbereich;
 	/*
 	 * interaktive Schaltflächen; erstmal mit JLabels, damit wir flexibler sind
 	 */
@@ -63,10 +64,10 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		/*
 		 * Nur ein Testpanel, um zu schauen welche Größe wir für das Spielfeld einplanen müssen - ich finds so gut
 		 */
-		JPanel spielfeldTest = new Spielbereich(0,0, this);
-		spielfeldTest.setSize(800, 500);
-		spielfeldTest.setLocation(20, 60);
-		this.add(spielfeldTest);
+		spielbereich = new Spielbereich(0,0, this);
+		spielbereich.setSize(800, 500);
+		spielbereich.setLocation(20, 60);
+		this.add(spielbereich);
 		
 		JLabel name = new JLabel(charName);
 		name.setSize(140, 20);
@@ -203,8 +204,23 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	}
 	
 	private void nächsteRunde() {
+		setzeAktiviert(false);
 		spiel.punkteBerechnen(punkteGUI);
 		aktualisiereDaten();
+	}
+	public void setzeAktiviert(boolean akt)
+	{
+		if (akt)
+		{
+			rundeWeiter.addMouseListener(this);
+			spielNeuStarten.addMouseListener(this);
+		}
+		else
+		{
+			rundeWeiter.removeMouseListener(this);
+			spielNeuStarten.removeMouseListener(this);
+		}
+		spielbereich.setzeAktiviert(akt);
 	}
 	
 	public void aktualisiereDaten() {
