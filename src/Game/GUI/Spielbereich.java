@@ -1,7 +1,6 @@
 package Game.GUI;
 
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
@@ -17,15 +16,8 @@ public class Spielbereich extends JPanel implements MouseListener
 	 */
 	private static final long serialVersionUID = -634199744790451275L;
 	private JLabel lblbackGround;
-	private ImageIcon imgDoorClosed;
-	private ImageIcon imgDoorOpened;
 	private Spieloberfläche spieloberfläche;
 	private int aktivesObjekt;
-	//zu ArrayLists: Jedes Aktionsobjekt hat einen Header, ein Label für den Spielbereich, 
-	//2 Bilder, eins für inaktiv und eins wenn die Maus drauf ist, und ein Untermenu, das aufploppt, wenn man draufklickt
-	//In den ArrayLists gibts folgendes System: ein Index ist ein Aktionsobjekt. Das heißt wenn auf ein Objekt geklickt
-	//wird muss man nur durch eine Schleife herausfinden, an welchem index das in "aktionsObjekte" steht und dieser Index
-	//ist dann derselbe, unter dem bspw in aktionsHeader der passende header zu finden ist.
 	private ArrayList<JLabel> aktionsObjekte, aktionsHeader;
 	private ArrayList<Verzweigung> aktionsMenus;
 	private ArrayList<ImageIcon> bilderInaktiv, bilderAktiv; 
@@ -45,30 +37,30 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 		//Folgender Block ist nur zum test da; ich erstelle damit das Menu, was aufgeht, wenn man auch die Tür klickt, mitsamt Untermenu
 		// TEST
-		ArrayList<Aktion> aktVer1 = new ArrayList<Aktion>();
-		aktVer1.add(new Aktion("Kino", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
-		ArrayList<Verzweigung> verVer1 = new ArrayList<Verzweigung>();
-		ArrayList<Aktion> aktVer11 = new ArrayList<Aktion>();
-		aktVer11.add(new Aktion("Park", "(blue)Gehe in den Park \n\n(red)Zeit: -1\n(green)Soziales: +10\nLuxus: +5", "Du bist in den Park gegangen", null,null));
-		Verzweigung ver11 = new Verzweigung("Sonstiges", "Sonstige Aktivitäten ausserhalb deiner Wohnung.", aktVer11, new ArrayList<Verzweigung>());
-		this.add(ver11);
-		verVer1.add(ver11);
-		Verzweigung ver1 = new Verzweigung("Door", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", aktVer1, verVer1);
-		this.add(ver1);
-		aktionsMenus.add(ver1);
+		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
+		türAktionen.add(new Aktion("Kino", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
+		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
+		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
+		sonstigesAktionen.add(new Aktion("Park", "(blue)Gehe in den Park \n\n(red)Zeit: -1\n(green)Soziales: +10\nLuxus: +5", "Du bist in den Park gegangen", null,null));
+		Verzweigung sonstiges = new Verzweigung("Sonstiges", "Sonstige Aktivitäten ausserhalb deiner Wohnung.", sonstigesAktionen, new ArrayList<Verzweigung>());
+		this.add(sonstiges);
+		türVerzweigungen.add(sonstiges);
+		Verzweigung Tür = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
+		this.add(Tür);
+		aktionsMenus.add(Tür);
 		// TEST
 		
 		// Schonmal erster Menupunkt für Kühlschrank; müssen wir später mal schauen ob wir das alles hier initialisieren oder in Initialisator
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
 		gemueseAktionen.add(new Aktion("Hochwertig", "(blue)Kaufe hochwertiges Gemüse", "Du hast Qualitätsgemüse gekauft", null, null));
-		gemueseAktionen.add(new Aktion("Mittelmaeßig", "(blue)Kaufe mittelmaeßiges Gemüse", "Du hast mittelmaeßiges Gemüse gekauft", null, null));
+		gemueseAktionen.add(new Aktion("Mittelmäßig", "(blue)Kaufe mittelmäßiges Gemüse", "Du hast mittelmäßiges Gemüse gekauft", null, null));
 		gemueseAktionen.add(new Aktion("Billig", "(blue)Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft", null, null));
 		ArrayList<Verzweigung> kuehlschrankVerzweigung = new ArrayList<Verzweigung>();
-		kuehlschrankVerzweigung.add(new Verzweigung("Gemuese", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
+		kuehlschrankVerzweigung.add(new Verzweigung("Gemüse", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
 		this.add(kuehlschrankVerzweigung.get(0));
-		Verzweigung ver12 = new Verzweigung("Kuehlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
-		this.add(ver12);
-		aktionsMenus.add(ver12);
+		Verzweigung kuehlschrank = new Verzweigung("Kuehlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
+		this.add(kuehlschrank);
+		aktionsMenus.add(kuehlschrank);
 		
 		bilderInaktiv.add(new ImageIcon("files/gameImages/doorclosed.png"));
 		bilderInaktiv.add(new ImageIcon("files/gameImages/fridgeclosed.png"));
