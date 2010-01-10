@@ -7,7 +7,4 @@ Hier können wir eine kleine Liste mit Dingen anlegen die noch zu tun sind.
 
 = Aufgaben =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+#Bilder für den Spielbereich erstellen.
