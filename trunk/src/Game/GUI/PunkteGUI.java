@@ -2,7 +2,7 @@ package Game.GUI;
 
 import java.awt.Font;
 import javax.swing.*;
-
+import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import Game.*;
@@ -24,6 +24,7 @@ public class PunkteGUI extends JPanel implements ActionListener
 		this.setLocation(400, 175);
 		//this.setLocationRelativeTo(null);
 		this.setLayout(null);
+		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		
 		ueberschrift = new JLabel("Punkteabrechnung");
 		ueberschrift.setSize(195,30);
