@@ -1,5 +1,6 @@
 package Main;
 
+import Game.Score;
 import Game.SpielAnwendung;
 
 public class Launcher {
@@ -10,8 +11,8 @@ public class Launcher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		new SpielAnwendung();
 		SpielAnwendung.zeigeCharakterauswahl();
+//		SpielAnwendung.beendeSpiel(new Score("Testspieler", 550));
 	}
 
 }
