@@ -130,7 +130,7 @@ public class Initialisator
 		erList.add(e);
 		
 		ja = new Information[1];
-		if(zufall.nextInt(2) == 0)
+		if(zufall.nextBoolean())
 			ja[0] = new Information(13, 2, 75);
 		else
 			ja[0] = new Information(13, 4, -15);
