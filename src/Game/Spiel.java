@@ -21,7 +21,7 @@ public class Spiel {
 	private int geldProMonat;
 	private int avatarNr;
 	private int aktuelleRunde;
-	private int score;
+	private int punkte;
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
 	private ArrayList<Ereignis> erList;
@@ -40,7 +40,7 @@ public class Spiel {
 		geldProMonat = avatar.getEinkommen();
 		zeitProRunde = avatar.getZeitProRunde();
 		avatarNr = avatar.getAvatarNummer();
-		score = 0;
+		punkte = 0;
 		zeit = zeitProRunde;
 		this.mainGUI = mainGUI;
 		gameGUI = new Spieloberfläche(this, avatar.getName());
@@ -105,7 +105,7 @@ public class Spiel {
 	
 	public void naechsteRunde()
 	{
-		scoresAddieren();
+		punkteBerechnen();
 		aktuelleRunde = aktuelleRunde + 1;
 		if ((aktuelleRunde % 4) == 0)
 		{
@@ -120,8 +120,8 @@ public class Spiel {
 		}
 		
 		// Ereignis ausführen
-		Ereignis er = getRandomEreignis();
-		infosUmsetzen(er.ausführen());
+		//Ereignis er = getRandomEreignis();
+		//infosUmsetzen(er.ausführen());
 		
 	}
 	
@@ -145,10 +145,9 @@ public class Spiel {
 	
 	
 	
-	//===================================================
-	//UNVOLLSTÄNDIG!!! ES FEHLEN DIE FÄLLE ZEIT UND GELD!
-	//===================================================
-	
+	//=====================================================================
+	//Eigentlich voll schwachsinnig die Methode, ich bin trotzdem stolz. ;)
+	//=====================================================================	
 	public void infosUmsetzen(Information[] infos)
 	{
 		if(infos == null){}
@@ -374,10 +373,17 @@ public class Spiel {
 	}
 	
 	//Addiert jede Runde Punkte auf den Punktestand neu auf.
-	public void scoresAddieren() {
-		for(Bedürfnis b: bedürfnisse) {
-			score += b.getWert();
-		}
-		score += kontostand/15;
+	public void punkteBerechnen() 
+	{
+		int hungerP = bedürfnisse[0].getWert();
+		int gesundheitP = bedürfnisse[1].getWert();
+		int sozialesP = bedürfnisse[2].getWert();
+		int luxusP = bedürfnisse[3].getWert();
+		int geldP = (int)(kontostand/15);
+		
+		int punkteAlt = punkte;
+		punkte = punkte + hungerP + gesundheitP + sozialesP + luxusP + geldP;
+		
+		new PunkteGUI(hungerP, gesundheitP, sozialesP, luxusP, geldP, punkteAlt, punkte);
 	}
 }
