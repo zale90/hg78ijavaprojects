@@ -7,4 +7,4 @@ Hier können wir eine kleine Liste mit Dingen anlegen die noch zu tun sind.
 
 = Aufgaben =
 
-#Bilder für den Spielbereich erstellen.
+  # Bilder für den Spielbereich erstellen.
