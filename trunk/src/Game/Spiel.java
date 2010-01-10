@@ -133,7 +133,7 @@ public class Spiel {
 	
 	public void naechsteRunde()
 	{
-		punkteBerechnen();
+		mainGUI.setEnabled(true);
 		aktuelleRunde = aktuelleRunde + 1;
 		if ((aktuelleRunde % 4) == 0)
 		{
@@ -156,17 +156,9 @@ public class Spiel {
 			spielBeenden();
 			return;
 		}
-		
-		
-	}
-	
-	//Musste ich auslagern, damit mein Punktefenster nicht direkt vom Ereignispopup überlager wird.
-	//Da gibt's bestimmt 'ne bessere Lösung, vielleicht fällt euch was ein.
-	public void ereignisAusführen()
-	{
-		mainGUI.setEnabled(true);
 		Ereignis er = getRandomEreignis();
 		infosUmsetzen(er.ausführen());
+		
 	}
 	
 	/**

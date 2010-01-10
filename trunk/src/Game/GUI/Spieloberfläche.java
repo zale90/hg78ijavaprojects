@@ -194,7 +194,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	}
 	
 	private void nächsteRunde() {
-		spiel.naechsteRunde();
+		spiel.punkteBerechnen();
 		aktualisiereDaten();
 	}
 	
