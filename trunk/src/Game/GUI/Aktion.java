@@ -22,7 +22,6 @@ public class Aktion extends JLabel {
 		this.konsolenausgabe = konsolenausgabe;
 		
 		setSize(120, 30);
-		setBackground(Color.green);
 		setOpaque(true);
 		setBorder(BorderFactory.createEtchedBorder());
 		setHorizontalAlignment(0);

@@ -9,7 +9,7 @@ import java.util.*;
 import Game.Optionen;
 
 
-public class Spielbereich extends JPanel implements MouseListener // Actionlistener wird durch neues System nicht mehr gebraucht
+public class Spielbereich extends JPanel implements MouseListener
 {
 
 	/**
@@ -46,11 +46,11 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		//Folgender Block ist nur zum test da; ich erstelle damit das Menu, was aufgeht, wenn man auch die Tür klickt, mitsamt Untermenu
 		// TEST
 		ArrayList<Aktion> aktVer1 = new ArrayList<Aktion>();
-		aktVer1.add(new Aktion("Kino", "Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
+		aktVer1.add(new Aktion("Kino", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
 		ArrayList<Verzweigung> verVer1 = new ArrayList<Verzweigung>();
 		ArrayList<Aktion> aktVer11 = new ArrayList<Aktion>();
-		aktVer11.add(new Aktion("Park", "Gehe in den Park", "Du bist in den Park gegangen", null,null));
-		Verzweigung ver11 = new Verzweigung("Sonstiges", "Test12...PENIS!", aktVer11, new ArrayList<Verzweigung>());
+		aktVer11.add(new Aktion("Park", "(blue)Gehe in den Park \n\n(red)Zeit: -1\n(green)Soziales: +10\nLuxus: +5", "Du bist in den Park gegangen", null,null));
+		Verzweigung ver11 = new Verzweigung("Sonstiges", "Sonstige Aktivitäten ausserhalb deiner Wohnung.", aktVer11, new ArrayList<Verzweigung>());
 		this.add(ver11);
 		verVer1.add(ver11);
 		Verzweigung ver1 = new Verzweigung("Door", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", aktVer1, verVer1);
@@ -60,13 +60,13 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		
 		// Schonmal erster Menupunkt für Kühlschrank; müssen wir später mal schauen ob wir das alles hier initialisieren oder in Initialisator
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
-		gemueseAktionen.add(new Aktion("Hochwertig", "Kaufe hochwertiges Gemüse", "Du hast Qualitätsgemüse gekauft", null, null));
-		gemueseAktionen.add(new Aktion("Mittelmaeßig", "Kaufe mittelmaeßiges Gemüse", "Du hast mittelmaeßiges Gemüse gekauft", null, null));
-		gemueseAktionen.add(new Aktion("Billig", "Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft", null, null));
-		ArrayList<Verzweigung> essenVerzweigung = new ArrayList<Verzweigung>();
-		essenVerzweigung.add(new Verzweigung("Gemuese", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
-		this.add(essenVerzweigung.get(0));
-		Verzweigung ver12 = new Verzweigung("Fridge", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), essenVerzweigung);
+		gemueseAktionen.add(new Aktion("Hochwertig", "(blue)Kaufe hochwertiges Gemüse", "Du hast Qualitätsgemüse gekauft", null, null));
+		gemueseAktionen.add(new Aktion("Mittelmaeßig", "(blue)Kaufe mittelmaeßiges Gemüse", "Du hast mittelmaeßiges Gemüse gekauft", null, null));
+		gemueseAktionen.add(new Aktion("Billig", "(blue)Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft", null, null));
+		ArrayList<Verzweigung> kuehlschrankVerzweigung = new ArrayList<Verzweigung>();
+		kuehlschrankVerzweigung.add(new Verzweigung("Gemuese", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
+		this.add(kuehlschrankVerzweigung.get(0));
+		Verzweigung ver12 = new Verzweigung("Kuehlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
 		this.add(ver12);
 		aktionsMenus.add(ver12);
 		
@@ -129,7 +129,24 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 	public void mouseClicked(MouseEvent mouseClick) {
 		//blendet Untermenus aus, die evtl noch angezeigt sind
 		if (aktivesObjekt != -1)
+		{
 			aktionsMenus.get(aktivesObjekt).setVisible(false);
+			if (aktionsObjekte.get(aktivesObjekt) != mouseClick.getSource())
+			{
+				aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
+				aktionsHeader.get(aktivesObjekt).setVisible(false);
+				for (int i = 0; i < aktionsObjekte.size(); i++)
+				{
+					if (aktionsObjekte.get(i) == mouseClick.getSource())
+					{
+						aktionsObjekte.get(i).setIcon(bilderAktiv.get(i));
+						showActionComponent(mouseClick.getPoint(), aktionsHeader.get(i), aktionsObjekte.get(i), 1);
+						aktivesObjekt = i;
+						return;
+					}
+				}
+			}
+		}
 		
 		if (mouseClick.getSource() == lblbackGround)
 		{
@@ -143,14 +160,11 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		}
 		
 		//Zeigt ein Door-Actionpanel an. 
-//		for (int i = 0; i < aktionsObjekte.size(); i++)
-//		{
-			if(aktivesObjekt != -1 && mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
-			{
-				aktionsMenus.get(aktivesObjekt).setVisible(true);
-				return;
-			}
-//		}
+		if(aktivesObjekt != -1 && mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
+		{
+			aktionsMenus.get(aktivesObjekt).setVisible(true);
+			return;
+		}
 	}
 	
 	@Override
