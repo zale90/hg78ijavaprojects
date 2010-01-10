@@ -147,6 +147,8 @@ public class Spiel {
 			{
 				// Spiel verloren
 				verloren = true;
+				
+				//Hat man wirklich verloren? Man bekommt keine Punkte mehr, aber muss das Spiel deshalb zu Ende sein?
 			}
 		}
 		
@@ -155,11 +157,16 @@ public class Spiel {
 			return;
 		}
 		
-		// Ereignis ausführen
-		//Ereignis er = getRandomEreignis();
-		//infosUmsetzen(er.ausführen());
 		
-		
+	}
+	
+	//Musste ich auslagern, damit mein Punktefenster nicht direkt vom Ereignispopup überlager wird.
+	//Da gibt's bestimmt 'ne bessere Lösung, vielleicht fällt euch was ein.
+	public void ereignisAusführen()
+	{
+		mainGUI.setEnabled(true);
+		Ereignis er = getRandomEreignis();
+		infosUmsetzen(er.ausführen());
 	}
 	
 	/**
@@ -186,14 +193,9 @@ public class Spiel {
 		Ereignis er = erList.get(i);
 		erList.remove(i);
 		return er;
-	}
+	}	
 	
-	
-	
-	
-	//=====================================================================
 	//Eigentlich voll schwachsinnig die Methode, ich bin trotzdem stolz. ;)
-	//=====================================================================	
 	public void infosUmsetzen(Information[] infos)
 	{
 		if(infos == null){}
@@ -421,6 +423,7 @@ public class Spiel {
 	//Addiert jede Runde Punkte auf den Punktestand neu auf.
 	public void punkteBerechnen() 
 	{
+		mainGUI.setEnabled(false);
 		int hungerP = bedürfnisse[0].getWert();
 		int gesundheitP = bedürfnisse[1].getWert();
 		int sozialesP = bedürfnisse[2].getWert();
@@ -430,6 +433,6 @@ public class Spiel {
 		int punkteAlt = punkte;
 		punkte = punkte + hungerP + gesundheitP + sozialesP + luxusP + geldP;
 		
-		//new PunkteGUI(hungerP, gesundheitP, sozialesP, luxusP, geldP, punkteAlt, punkte);
+		new PunkteGUI(hungerP, gesundheitP, sozialesP, luxusP, geldP, punkteAlt, punkte, this);
 	}
 }
