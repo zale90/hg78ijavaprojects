@@ -158,7 +158,7 @@ public class Spiel {
 		}
 		Ereignis er = getRandomEreignis();
 		infosUmsetzen(er.ausführen());
-		
+		gameGUI.aktualisiereDaten();
 	}
 	
 	/**

@@ -198,7 +198,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		aktualisiereDaten();
 	}
 	
-	private void aktualisiereDaten() {
+	public void aktualisiereDaten() {
 		Bedürfnis[] bedürfnisse = spiel.getBedürfnisse();
 		for(int i = 0; i < bedürfnisse.length; i++) {
 			bedürfnisBars[i].setValue(bedürfnisse[i].getWert());
