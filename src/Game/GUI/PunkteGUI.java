@@ -148,7 +148,7 @@ public class PunkteGUI extends JWindow implements ActionListener
 		if(arg0.getSource() == ok)
 		{
 			this.setVisible(false);
-			spiel.ereignisAusführen();
+			spiel.naechsteRunde();
 		}
 	}
 }
