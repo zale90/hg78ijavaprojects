@@ -1,18 +1,23 @@
 package Game.GUI;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import Game.Highscores;
 import Game.Optionen;
+import Game.SpielAnwendung;
 import Game.TableModelHighscore;
 
-public class Highscoreliste extends JPanel {
+public class Highscoreliste extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = -767260215399434697L;
 	
 	private JTable tblScores;
+	private JButton btnNeuesSpiel, btnBeendeSpiel;
 
 	public Highscoreliste(Highscores scores) {
 		this.setSize(1000, 700);
@@ -32,7 +37,7 @@ public class Highscoreliste extends JPanel {
 		// Tabelle anzeigen
 		tblScores = new JTable(new TableModelHighscore(scores));
 		tblScores.setSize(300, 500);
-		tblScores.setLocation(50, 100);
+		tblScores.setLocation(30, 80);
 		tblScores.setShowGrid(false);
 		tblScores.setRowHeight(50);
 		tblScores.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
@@ -43,7 +48,29 @@ public class Highscoreliste extends JPanel {
 		tblScores.setEnabled(false);
 		this.add(tblScores);
 		
+		// Buttons anzeigen
+		btnNeuesSpiel = new JButton("Neues Spiel starten");
+		btnNeuesSpiel.setSize(200, 50);
+		btnNeuesSpiel.setLocation(20, 600);
+		btnNeuesSpiel.addActionListener(this);
+		this.add(btnNeuesSpiel);
+		
+		btnBeendeSpiel = new JButton("Spiel beenden");
+		btnBeendeSpiel.setSize(200, 50);
+		btnBeendeSpiel.setLocation(250, 600);
+		btnBeendeSpiel.addActionListener(this);
+		this.add(btnBeendeSpiel);
+		
 		this.setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent evt) {
+		if(evt.getSource() == btnNeuesSpiel) {
+			SpielAnwendung.zeigeCharakterauswahl();
+		} else if(evt.getSource() == btnBeendeSpiel) {
+			System.exit(0);
+		}
 	}
 	
 }
