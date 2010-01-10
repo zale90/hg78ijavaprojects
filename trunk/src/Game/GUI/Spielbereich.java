@@ -135,7 +135,6 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		{
 			if (aktivesObjekt != -1)
 			{
-				testitest("background angeklickt, aktObj = -1");
 				aktionsMenus.get(aktivesObjekt).setVisible(false);
 				aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
 				aktionsHeader.get(aktivesObjekt).setVisible(false);
@@ -149,7 +148,6 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 			if(aktivesObjekt != -1 && mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
 			{
 				aktionsMenus.get(aktivesObjekt).setVisible(true);
-				testitest("aktionsMenus " + aktivesObjekt + " angezeigt.");
 				return;
 			}
 //		}
@@ -166,7 +164,6 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 				aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
 				aktionsHeader.get(aktivesObjekt).setVisible(false);
 				aktivesObjekt = -1;
-				testitest("background mouseover, aktObj = -1");
 			}
 		}
 		else if (aktivesObjekt == -1)
@@ -239,11 +236,6 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 	{
 		spieloberfläche.aktion(akt);
 		aktionsMenus.get(aktivesObjekt).setVisible(false);		
-	}
-	
-	public void testitest(String str)
-	{
-		spieloberfläche.zeigeNachrichtInKonsole(str);
 	}
 	
 }
