@@ -133,7 +133,7 @@ public class Spiel {
 	
 	public void naechsteRunde()
 	{
-		mainGUI.setEnabled(true);
+		gameGUI.setzeAktiviert(true);
 		aktuelleRunde = aktuelleRunde + 1;
 		if ((aktuelleRunde % 4) == 0)
 		{
