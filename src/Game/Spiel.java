@@ -10,6 +10,9 @@
 package Game;
 
 import java.util.*;
+
+import javax.swing.JOptionPane;
+
 import Game.GUI.*;
 
 public class Spiel {
@@ -96,6 +99,31 @@ public class Spiel {
 		this.avatarNr = avatarNr;
 	}
 
+	public int getPunkte() {
+		return punkte;
+	}
+
+	public void setPunkte(int punkte) {
+		this.punkte = punkte;
+	}
+
+	public ArrayList<Ereignis> getErList() {
+		return erList;
+	}
+
+	public void setErList(ArrayList<Ereignis> erList) {
+		this.erList = erList;
+	}
+	
+	public int getAktuelleRunde()
+	{
+		return aktuelleRunde;
+	}
+
+	public void setAktuelleRunde(int aktuelleRunde) {
+		this.aktuelleRunde = aktuelleRunde;
+	}
+
 	/**
 	 * Zeigt die aktuelle Spieloberfläche im Hauptfenster an!
 	 */
@@ -111,23 +139,41 @@ public class Spiel {
 		{
 			kontostand = kontostand + geldProMonat;
 		}
+		
+		boolean verloren = false;
 		for(int i = 0; i < bedürfnisse.length; i++) {
 			bedürfnisse[i].setWert(bedürfnisse[i].getWert()-bedürfnisse[i].getAbfallfaktor());
 			if (bedürfnisse[i].getWert() < bedürfnisse[i].getMin())
 			{
-				// Man hat verloren; was tun?
+				// Spiel verloren
+				verloren = true;
 			}
+		}
+		
+		if(verloren) {
+			spielBeenden();
+			return;
 		}
 		
 		// Ereignis ausführen
 		//Ereignis er = getRandomEreignis();
 		//infosUmsetzen(er.ausführen());
 		
+		
 	}
 	
-	public int getAktuelleRunde()
-	{
-		return aktuelleRunde;
+	/**
+	 * Dialog zur Eingabe des Namens wird angezeigt.
+	 * Anschließend wird das Spiel beendet und man sieht die Highscoreliste.
+	 */
+	private void spielBeenden() {
+		String text = "Du hast das Leben leider nicht meistern können. \nDas Spiel ist deshalb für dich Leider vorbei. \n\nImmerhin hast du " + getPunkte() + " Punkte erspielt. \n\nUm in dich in die Highscoreliste einzutragen, gib hier deinen Namen ein:";
+		String antwort = JOptionPane.showInputDialog(SpielAnwendung.mainGUI, text, "Verloren!", JOptionPane.PLAIN_MESSAGE);
+		if(antwort == null || antwort.trim().equals("")) {
+			SpielAnwendung.beendeSpiel();
+		} else {
+			SpielAnwendung.beendeSpiel(new Score(antwort, getPunkte()));
+		}
 	}
 	
 	/**
@@ -384,6 +430,6 @@ public class Spiel {
 		int punkteAlt = punkte;
 		punkte = punkte + hungerP + gesundheitP + sozialesP + luxusP + geldP;
 		
-		new PunkteGUI(hungerP, gesundheitP, sozialesP, luxusP, geldP, punkteAlt, punkte);
+		//new PunkteGUI(hungerP, gesundheitP, sozialesP, luxusP, geldP, punkteAlt, punkte);
 	}
 }

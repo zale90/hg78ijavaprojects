@@ -13,7 +13,7 @@ public class Credits extends JPanel {
 		this.setSize(494, 672);
 		this.setLocation(500, 0);
 		this.setLayout(null);
-		this.setBackground(null);
+		this.setBackground(Color.BLACK);
 		
 		this.setBorder(new LineBorder(Color.BLACK, 2));
 		

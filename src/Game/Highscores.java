@@ -25,6 +25,12 @@ public class Highscores {
 		zeigeHighscores();
 	}
 	
+	public Highscores() {
+		list = loadListFromFile();
+		
+		zeigeHighscores();
+	}
+	
 	public ArrayList<Score> getHighscores() {
 		return list;
 	}
