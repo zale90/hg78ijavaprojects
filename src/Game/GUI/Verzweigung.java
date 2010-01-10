@@ -7,23 +7,27 @@ import java.awt.*;
 import java.util.*;
 import Game.*;
 
-public class Verzweigung extends JPanel implements ActionListener { //wahrscheinlich müssen wir hier später MouseListener nehmen, aber egal
+public class Verzweigung extends JPanel implements MouseListener, ActionListener { //wahrscheinlich müssen wir hier später MouseListener nehmen, aber egal
 	
 	private static final long serialVersionUID = 1L;
-	private String name;
+	private String name, beschreibung;
 	private static Spielbereich spielber;
 	private ArrayList<Verzweigung> verzweigungen;
 	private ArrayList<Aktion> aktionen;
 	private ArrayList<JButton> verzweigungsButtons;
+	private JTextPane beschreibungsfeld;
 	
-	public Verzweigung(String name, ArrayList<Aktion> akt, ArrayList<Verzweigung> verz)
+	public Verzweigung(String name, String beschreibung, ArrayList<Aktion> akt, ArrayList<Verzweigung> verz)
 	{
 		this.name = name;
+		this.beschreibung = beschreibung;
 		aktionen = akt;
 		verzweigungen = verz;
 		verzweigungsButtons = new ArrayList<JButton>();
 		
-		this.setSize(100, (aktionen.size() * 20) + (verzweigungen.size()) * 20);
+		// bei 170 höhe hat man für genau 5 Buttons platz
+		this.setSize(300, 170);
+		this.setLocation(170, 100);
 	      this.setBackground(null);
 	      this.setLayout(null);
 		
@@ -31,18 +35,32 @@ public class Verzweigung extends JPanel implements ActionListener { //wahrschein
 	     //wir sollten Buttons für Verzweigungen und für Aktionen wahrscheinlich noch unterschiedliche Farben geben
 		for (int i = 0; i < aktionen.size(); i++)
 		{
-			aktionen.get(i).setLocation(0, i*20);
-			aktionen.get(i).addActionListener(this);
+			aktionen.get(i).setLocation(10, (i*30) + 10);
+			aktionen.get(i).addMouseListener(this);
 			this.add(aktionen.get(i));
 		}
 		for (int i = 0; i < verzweigungen.size(); i++)
 		{
 			verzweigungsButtons.add(new JButton(verzweigungen.get(i).getName()));
 			verzweigungsButtons.get(i).addActionListener(this);
-			verzweigungsButtons.get(i).setSize(100, 20);
-			verzweigungsButtons.get(i).setLocation(0, (aktionen.size()+i)*20);
+			verzweigungsButtons.get(i).setSize(120, 30);
+			if (aktionen.size() == 0)
+				verzweigungsButtons.get(i).setLocation(10, ((aktionen.size()+i)*30) + 10);
+			else
+				verzweigungsButtons.get(i).setLocation(10, ((aktionen.size()+i)*30) + 10);
 			this.add(verzweigungsButtons.get(i));
 		}
+		beschreibungsfeld = new JTextPane();
+		beschreibungsfeld.setSize(150,150);
+		beschreibungsfeld.setLocation(140, 10);
+	    this.add(beschreibungsfeld);
+	    beschreibungsfeld.setText(beschreibung);
+	    
+	    JScrollPane beschreibungsscroller = new JScrollPane(beschreibungsfeld);
+	    beschreibungsscroller.setSize(beschreibungsfeld.getSize());
+	    beschreibungsscroller.setLocation(beschreibungsfeld.getLocation());
+	    this.add(beschreibungsscroller);
+		
 		this.setVisible(false);
 	}
 	public static void setSpielbereich(Spielbereich sp)
@@ -51,29 +69,15 @@ public class Verzweigung extends JPanel implements ActionListener { //wahrschein
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource().getClass().getName().split("\\.")[2].equals("Aktion"))
+		for (int i = 0; i < verzweigungen.size(); i++)
 		{
-			for (int i = 0; i < aktionen.size(); i++)
+			if (verzweigungsButtons.get(i).equals(arg0.getSource()))
 			{
-				if (aktionen.get(i).equals(arg0.getSource()))
-				{
-					spielber.aktionAusfuehren(aktionen.get(i));
-					return;
-				}
+				super.setVisible(false);
+				verzweigungen.get(i).setVisible(true);
+				return;
 			}
-		}
-		else
-		{
-			for (int i = 0; i < verzweigungen.size(); i++)
-			{
-				if (verzweigungsButtons.get(i).equals(arg0.getSource()))
-				{
-					setVisible(false);
-					spielber.showActionComponent(verzweigungsButtons.get(i).getLocation(), verzweigungen.get(i), this, 0);
-					return;
-				}
-			}
-		}
+		}	
 		
 	}
 	public String getName()
@@ -91,5 +95,56 @@ public class Verzweigung extends JPanel implements ActionListener { //wahrschein
 		{
 			verzweigungen.get(i).setVisible(false);
 		}
+	}
+	// isVisible überschreiben, damit Spielbereich erfahren kann, ob noch Untermenus dieses menus visible sind
+	public boolean isVisible()
+	{
+		for (int i = 0; i < verzweigungen.size(); i++)
+		{
+			if (verzweigungen.get(i).isVisible())
+			{
+				return true;
+			}
+		}
+		return super.isVisible();
+	}
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		for (int i = 0; i < aktionen.size(); i++)
+		{
+			if (aktionen.get(i).equals(arg0.getSource()))
+			{
+				spielber.aktionAusfuehren(aktionen.get(i));
+				return;
+			}
+		}
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		for (int i = 0; i < aktionen.size(); i++)
+		{
+			if (aktionen.get(i).equals(arg0.getSource()))
+			{
+				beschreibungsfeld.setText(aktionen.get(i).getBeschreibung());
+				return;
+			}
+		}
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		beschreibungsfeld.setText(beschreibung);
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }
