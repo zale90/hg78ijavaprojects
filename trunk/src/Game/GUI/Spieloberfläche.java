@@ -15,6 +15,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	private JLabel lblHeading, lblZeit, lblGeld, lblGeldProMonat, lblZeitpunkt;  //fällt jemandem ein besseres Wort für Einkommen ein, außer Einkommen?
 	private JProgressBar[] bedürfnisBars;
 	private Spiel spiel;
+	private PunkteGUI punkteGUI;
 	/*
 	 * interaktive Schaltflächen; erstmal mit JLabels, damit wir flexibler sind
 	 */
@@ -27,6 +28,9 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		this.setBackground(null);
 		
 		this.spiel = spiel;
+		
+		punkteGUI = new PunkteGUI(spiel);
+		this.add(punkteGUI);
 		
 		// GUI-Elemente erzeugen
 		lblHeading = new JLabel(Optionen.NAME);
@@ -164,6 +168,11 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		}
 	}
 	
+	private PunkteGUI getPunkteGUI()
+	{
+		return punkteGUI;
+	}
+	
 	private Point getPositionForBars(int i) {
 		int xPos = 840;
 		if(i == 0) {
@@ -194,7 +203,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	}
 	
 	private void nächsteRunde() {
-		spiel.punkteBerechnen();
+		spiel.punkteBerechnen(punkteGUI);
 		aktualisiereDaten();
 	}
 	

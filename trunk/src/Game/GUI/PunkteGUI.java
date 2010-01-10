@@ -2,31 +2,36 @@ package Game.GUI;
 
 import java.awt.Font;
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import Game.*;
 
-public class PunkteGUI extends JWindow implements ActionListener
+public class PunkteGUI extends JPanel implements ActionListener
 {
 	private static final long serialVersionUID = 1626731797661003093L;
-	JButton ok;
-	Spiel spiel;
+	private JButton ok;
+	private Spiel spiel;
+	private JLabel[] bedürfnisse, bPunkte;
+	private JLabel ueberschrift, bedürfnis, bSumme, lGeld, gPunkt, lGesamt, gesPunkt, lVorher, pVorher, lPunktestand, pPunktestand;
+	private JTextPane einleitung;
 
-	public PunkteGUI(int hunger, int gesundheit, int soziales, int luxus, int geld, int alt, int gesamt, Spiel spiel)
+	public PunkteGUI(Spiel spiel)
 	{
 		this.spiel = spiel;
 		
 		this.setSize(200,350);
-		this.setLocationRelativeTo(null);
+		this.setLocation(400, 175);
+		//this.setLocationRelativeTo(null);
 		this.setLayout(null);
 		
-		JLabel ueberschrift = new JLabel("Punkteabrechnung");
+		ueberschrift = new JLabel("Punkteabrechnung");
 		ueberschrift.setSize(195,30);
 		ueberschrift.setLocation(5,0);
 		ueberschrift.setFont(new Font("Arial", Font.BOLD, 20));
 		this.add(ueberschrift);
 		
-		JTextPane einleitung = new JTextPane();
+		einleitung = new JTextPane();
 		einleitung.setText("In der letzten Runde haben Sie folgende Punkte erspielt:");
 		einleitung.setSize(195, 50);
 		einleitung.setBackground(null);
@@ -34,13 +39,13 @@ public class PunkteGUI extends JWindow implements ActionListener
 		einleitung.setLocation(3, 30);
 		this.add(einleitung);
 		
-		JLabel bedürfnis = new JLabel("Bedürfnisse");
+		bedürfnis = new JLabel("Bedürfnisse");
 		bedürfnis.setSize(195,20);
 		bedürfnis.setLocation(5,145);
 		bedürfnis.setFont(new Font("Arial", Font.BOLD, 14));
 		this.add(bedürfnis);
 		
-		JLabel[] bedürfnisse = new JLabel[4];
+		bedürfnisse = new JLabel[4];
 		int ort = 85;
 		for(int i = 0; i < 4; i++)
 		{
@@ -55,7 +60,7 @@ public class PunkteGUI extends JWindow implements ActionListener
 		bedürfnisse[2].setText("Soziales");
 		bedürfnisse[3].setText("Luxus");
 		
-		JLabel[] bPunkte = new JLabel[4];
+		bPunkte = new JLabel[4];
 		ort = 85;
 		for(int i = 0; i < 4; i++)
 		{
@@ -66,65 +71,61 @@ public class PunkteGUI extends JWindow implements ActionListener
 			this.add(bPunkte[i]);
 			ort = ort + 15;
 		}
-		bPunkte[0].setText(Integer.toString(hunger));
-		bPunkte[1].setText(Integer.toString(gesundheit));
-		bPunkte[2].setText(Integer.toString(soziales));
-		bPunkte[3].setText(Integer.toString(luxus));
 		
-		JLabel bSumme = new JLabel(Integer.toString(hunger + gesundheit + soziales + luxus));
+		bSumme = new JLabel();
 		bSumme.setSize(95,20);
 		bSumme.setLocation(100,145);
 		bSumme.setHorizontalAlignment(JLabel.RIGHT);
 		bSumme.setFont(new Font("Arial", Font.BOLD, 14));
 		this.add(bSumme);
 		
-		JLabel lGeld = new JLabel("Geld");
+		lGeld = new JLabel("Geld");
 		lGeld.setSize(95,20);
 		lGeld.setLocation(5,170);
 		lGeld.setFont(new Font("Arial", Font.BOLD, 14));
 		this.add(lGeld);
 		
-		JLabel gPunkt = new JLabel(Integer.toString(geld));
+		gPunkt = new JLabel();
 		gPunkt.setSize(95,20);
 		gPunkt.setLocation(100,170);
 		gPunkt.setFont(new Font("Arial", Font.BOLD, 14));
 		gPunkt.setHorizontalAlignment(JLabel.RIGHT);
 		this.add(gPunkt);
 		
-		JLabel lGesamt = new JLabel("Gesamt");
+		lGesamt = new JLabel("Gesamt");
 		lGesamt.setSize(95,20);
 		lGesamt.setLocation(5,200);
 		lGesamt.setFont(new Font("Arial", Font.BOLD, 16));
 		this.add(lGesamt);
 		
-		JLabel gesPunkt = new JLabel(Integer.toString(hunger + gesundheit + soziales + luxus + geld));
+		gesPunkt = new JLabel();
 		gesPunkt.setSize(95,20);
 		gesPunkt.setLocation(100,200);
 		gesPunkt.setFont(new Font("Arial", Font.BOLD, 16));
 		gesPunkt.setHorizontalAlignment(JLabel.RIGHT);
 		this.add(gesPunkt);
 		
-		JLabel lVorher = new JLabel("Punkte vorher");
+		lVorher = new JLabel("Punkte vorher");
 		lVorher.setSize(95,20);
 		lVorher.setLocation(5, 220);
 		lVorher.setFont(new Font("Arial", Font.PLAIN, 14));
 		this.add(lVorher);
 		
-		JLabel pVorher = new JLabel(Integer.toString(alt));
+		pVorher = new JLabel();
 		pVorher.setSize(95,20);
 		pVorher.setLocation(100,220);
 		pVorher.setFont(new Font("Arial", Font.PLAIN, 14));
 		pVorher.setHorizontalAlignment(JLabel.RIGHT);
 		this.add(pVorher);
 		
-		JLabel lPunktestand = new JLabel("Punktestand");
+		lPunktestand = new JLabel("Punktestand");
 		lPunktestand.setSize(190,30);
 		lPunktestand.setLocation(5, 260);
 		lPunktestand.setFont(new Font("Arial", Font.BOLD, 16));
 		lPunktestand.setHorizontalAlignment(JLabel.CENTER);
 		this.add(lPunktestand);
 		
-		JLabel pPunktestand = new JLabel(Integer.toString(gesamt));
+		pPunktestand = new JLabel();
 		pPunktestand.setSize(190,30);
 		pPunktestand.setLocation(5,280);
 		pPunktestand.setFont(new Font("Arial", Font.BOLD, 20));
@@ -140,9 +141,23 @@ public class PunkteGUI extends JWindow implements ActionListener
 		ok.addActionListener(this);
 		this.add(ok);
 		
-		this.setVisible(true);		
+		this.setVisible(false);		
 	}
 
+	public void setzeWerte(int hunger, int gesundheit, int soziales, int luxus, int geld, int alt)
+	{
+		this.setVisible(true);
+		bPunkte[0].setText(Integer.toString(hunger));
+		bPunkte[1].setText(Integer.toString(gesundheit));
+		bPunkte[2].setText(Integer.toString(soziales));
+		bPunkte[3].setText(Integer.toString(luxus));
+		bSumme.setText(Integer.toString(hunger + gesundheit + soziales + luxus));
+		gPunkt.setText(Integer.toString(geld));
+		gesPunkt.setText(Integer.toString(hunger + gesundheit + soziales + luxus + geld));
+		pVorher.setText(Integer.toString(alt));
+		pPunktestand.setText(Integer.toString(alt + hunger + gesundheit + soziales + luxus + geld));
+	}
+	
 	public void actionPerformed(ActionEvent arg0) 
 	{
 		if(arg0.getSource() == ok)

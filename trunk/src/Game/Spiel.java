@@ -413,9 +413,9 @@ public class Spiel {
 	}
 	
 	//Addiert jede Runde Punkte auf den Punktestand neu auf.
-	public void punkteBerechnen() 
+	public void punkteBerechnen(PunkteGUI gui) 
 	{
-		mainGUI.setEnabled(false);
+		
 		int hungerP = bedürfnisse[0].getWert();
 		int gesundheitP = bedürfnisse[1].getWert();
 		int sozialesP = bedürfnisse[2].getWert();
@@ -425,6 +425,6 @@ public class Spiel {
 		int punkteAlt = punkte;
 		punkte = punkte + hungerP + gesundheitP + sozialesP + luxusP + geldP;
 		
-		new PunkteGUI(hungerP, gesundheitP, sozialesP, luxusP, geldP, punkteAlt, punkte, this);
+		gui.setzeWerte(hungerP, gesundheitP, sozialesP, luxusP, geldP, punkteAlt);
 	}
 }
