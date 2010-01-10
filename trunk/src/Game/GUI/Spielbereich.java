@@ -50,10 +50,10 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		ArrayList<Verzweigung> verVer1 = new ArrayList<Verzweigung>();
 		ArrayList<Aktion> aktVer11 = new ArrayList<Aktion>();
 		aktVer11.add(new Aktion("Park", "Gehe in den Park", "Du bist in den Park gegangen", null,null));
-		Verzweigung ver11 = new Verzweigung("Sonstiges", aktVer11, new ArrayList<Verzweigung>());
+		Verzweigung ver11 = new Verzweigung("Sonstiges", "Test12...PENIS!", aktVer11, new ArrayList<Verzweigung>());
 		this.add(ver11);
 		verVer1.add(ver11);
-		Verzweigung ver1 = new Verzweigung("Door", aktVer1, verVer1);
+		Verzweigung ver1 = new Verzweigung("Door", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", aktVer1, verVer1);
 		this.add(ver1);
 		aktionsMenus.add(ver1);
 		// TEST
@@ -64,9 +64,9 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 		gemueseAktionen.add(new Aktion("Mittelmaeßig", "Kaufe mittelmaeßiges Gemüse", "Du hast mittelmaeßiges Gemüse gekauft", null, null));
 		gemueseAktionen.add(new Aktion("Billig", "Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft", null, null));
 		ArrayList<Verzweigung> essenVerzweigung = new ArrayList<Verzweigung>();
-		essenVerzweigung.add(new Verzweigung("Gemuese", gemueseAktionen, new ArrayList<Verzweigung>()));
+		essenVerzweigung.add(new Verzweigung("Gemuese", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
 		this.add(essenVerzweigung.get(0));
-		Verzweigung ver12 = new Verzweigung("Fridge", new ArrayList<Aktion>(), essenVerzweigung);
+		Verzweigung ver12 = new Verzweigung("Fridge", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), essenVerzweigung);
 		this.add(ver12);
 		aktionsMenus.add(ver12);
 		
@@ -127,40 +127,15 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 	
 	@Override
 	public void mouseClicked(MouseEvent mouseClick) {
-		//blendet eventuelle Untermenus aus, die evtl noch angezeigt sind
+		//blendet Untermenus aus, die evtl noch angezeigt sind
 		if (aktivesObjekt != -1)
 			aktionsMenus.get(aktivesObjekt).setVisible(false);
 		
-		//Zeigt ein Door-Actionpanel an. 
-		for (int i = 0; i < aktionsObjekte.size(); i++)
-		{
-			if(mouseClick.getSource() == aktionsObjekte.get(i))
-			{
-				showActionComponent(mouseClick.getPoint(), aktionsMenus.get(i), aktionsObjekte.get(i), 0);
-				aktivesObjekt = i;
-				return;
-			}
-		}
-	}
-	
-	@Override
-	public void mouseEntered(MouseEvent mouseOver) {
-		// Tür öffnet sich bei MouseOver.
-		for (int i = 0; i < aktionsObjekte.size(); i++)
-		{
-			if(mouseOver.getSource() == aktionsObjekte.get(i))
-			{
-				showActionComponent(mouseOver.getPoint(), aktionsHeader.get(i), aktionsObjekte.get(i), 1);
-				aktionsObjekte.get(i).setIcon(bilderAktiv.get(i));
-				aktivesObjekt = i;
-				return;
-			}
-		}
-		// Tür schließt sich bei "betreten" des backgrounds, außerdem werden mögliche Menus geshclossen und Header ausgeblendet
-		if (mouseOver.getSource() == lblbackGround)
+		if (mouseClick.getSource() == lblbackGround)
 		{
 			if (aktivesObjekt != -1)
 			{
+				testitest("background angeklickt, aktObj = -1");
 				aktionsMenus.get(aktivesObjekt).setVisible(false);
 				aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
 				aktionsHeader.get(aktivesObjekt).setVisible(false);
@@ -168,6 +143,45 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 			}
 		}
 		
+		//Zeigt ein Door-Actionpanel an. 
+//		for (int i = 0; i < aktionsObjekte.size(); i++)
+//		{
+			if(aktivesObjekt != -1 && mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
+			{
+				aktionsMenus.get(aktivesObjekt).setVisible(true);
+				testitest("aktionsMenus " + aktivesObjekt + " angezeigt.");
+				return;
+			}
+//		}
+	}
+	
+	@Override
+	public void mouseEntered(MouseEvent mouseOver) {
+		// Tür öffnet sich bei MouseOver.
+		
+		if (mouseOver.getSource() == lblbackGround)
+		{
+			if (aktivesObjekt != -1 && !aktionsMenus.get(aktivesObjekt).isVisible())
+			{
+				aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
+				aktionsHeader.get(aktivesObjekt).setVisible(false);
+				aktivesObjekt = -1;
+				testitest("background mouseover, aktObj = -1");
+			}
+		}
+		else if (aktivesObjekt == -1)
+		{
+			for (int i = 0; i < aktionsObjekte.size(); i++)
+			{
+				if(mouseOver.getSource() == aktionsObjekte.get(i))
+				{
+					showActionComponent(mouseOver.getPoint(), aktionsHeader.get(i), aktionsObjekte.get(i), 1);
+					aktionsObjekte.get(i).setIcon(bilderAktiv.get(i));
+					aktivesObjekt = i;
+					return;
+				}
+			}
+		}
 	}
 
 	@Override
@@ -225,6 +239,11 @@ public class Spielbereich extends JPanel implements MouseListener // Actionliste
 	{
 		spieloberfläche.aktion(akt);
 		aktionsMenus.get(aktivesObjekt).setVisible(false);		
+	}
+	
+	public void testitest(String str)
+	{
+		spieloberfläche.zeigeNachrichtInKonsole(str);
 	}
 	
 }

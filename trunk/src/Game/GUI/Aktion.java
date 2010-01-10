@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.*;
 import Game.*;
 
-public class Aktion extends JButton {
+public class Aktion extends JLabel {
 	private static final long serialVersionUID = 1L;
 	private Information[] nutzen, kosten; // veraenderungen aufgeteilt in kosten und nutzen, um diese eventuell irgendwo anzuzeigen oder so
 	private String name, beschreibung, konsolenausgabe;
@@ -21,8 +21,11 @@ public class Aktion extends JButton {
 		this.beschreibung = beschreibung;
 		this.konsolenausgabe = konsolenausgabe;
 		
-		setSize(100, 20);
+		setSize(120, 30);
 		setBackground(Color.green);
+		setOpaque(true);
+		setBorder(BorderFactory.createEtchedBorder());
+		setHorizontalAlignment(0);
 	}
 
 	public void setName(String name) {
