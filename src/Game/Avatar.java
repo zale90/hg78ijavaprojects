@@ -10,7 +10,7 @@ package Game;
 public class Avatar {
 	
 	private int avatarNummer;
-	private String name;  //Hinzugefügt, weil könnte nützlich werden.
+	private String name;
 	private String beschreibung;
 	private Bedürfnis[] bedürfnisse;
 	private int kontostand, einkommen, zeitProRunde;
@@ -21,7 +21,7 @@ public class Avatar {
 	 * @param bedürfnisse
 	 * @param kontostand
 	 */
-	public Avatar(int nummer,String name , String beschreibung, Bedürfnis[] bedürfnisse, int kontostand, int einkommen, int zeitProRunde) {
+	public Avatar(int nummer, String name , String beschreibung, Bedürfnis[] bedürfnisse, int kontostand, int einkommen, int zeitProRunde) {
 		super();
 		this.avatarNummer = nummer;
 		this.setName(name);
@@ -82,7 +82,7 @@ public class Avatar {
 	}
 
 	/**
-	 * @param kontostand the kontostand to set
+	 * @param avatarNummer the avatarNummer to set
 	 */
 	public void setAvatarNummer(int avatarNummer) {
 		this.avatarNummer = avatarNummer;

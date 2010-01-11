@@ -171,7 +171,7 @@ public class Spiel {
 		if(antwort == null || antwort.trim().equals("")) {
 			SpielAnwendung.beendeSpiel();
 		} else {
-			SpielAnwendung.beendeSpiel(new Score(antwort, getPunkte()));
+			SpielAnwendung.beendeSpiel(getAvatarNr(), new Score(antwort, getPunkte()));
 		}
 	}
 	
