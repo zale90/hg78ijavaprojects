@@ -2,7 +2,6 @@ package Game.GUI;
 
 import java.awt.Font;
 import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import Game.*;

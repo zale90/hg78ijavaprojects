@@ -185,15 +185,16 @@ public class Spiel {
 		String text = "Du hast das Leben leider nicht meistern können. \nDas Spiel ist deshalb für dich Leider vorbei. \n\nImmerhin hast du " + getPunkte() + " Punkte erspielt. \n\nUm in dich in die Highscoreliste einzutragen, gib hier deinen Namen ein:";
 		String antwort = JOptionPane.showInputDialog(SpielAnwendung.mainGUI, text, "Verloren!", JOptionPane.PLAIN_MESSAGE);
 		if(antwort == null || antwort.trim().equals("")) {
-			SpielAnwendung.beendeSpiel();
+			SpielAnwendung.beendeSpiel(getAvatarNr(), getAvatarName());
 		} else {
 			SpielAnwendung.beendeSpiel(getAvatarNr(), getAvatarName(), new Score(antwort, getPunkte()));
 		}
 	}
 	
 	/**
-	 * Erstellt neue Ereignisse, bis eins kommt, welches noch nie vorhanden war!
-	 * @return Ereignis
+	 * Liefert ein zufälliges Ereignis aus der erList zurück und löscht dieses dann.
+	 * 
+	 * @return zufälliges Ereignis
 	 */
 	public Ereignis getRandomEreignis() {
 		Random rand = new Random();

@@ -18,8 +18,8 @@ public class SpielAnwendung {
 		new Highscores(avatarNr, avatarName, score);
 	}
 	
-	public static void beendeSpiel() {
-		new Highscores();
+	public static void beendeSpiel(int avatarNr, String avatarName) {
+		new Highscores(avatarNr, avatarName);
 	}
 	
 }
