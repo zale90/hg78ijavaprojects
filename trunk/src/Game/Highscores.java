@@ -13,11 +13,15 @@ import Game.GUI.Highscoreliste;
 public class Highscores {
 	
 	private static final long serialVersionUID = 4767664434581498500L;
+
+	private final String scoreFileFolder = "files/data/";
 	
 	private ArrayList<Score> list;
-	private final String scoreFile = "files/data/highscores.dat";
+	private String scoreFile = "";
 
-	public Highscores(Score score) {
+	public Highscores(int listAvatar, Score score) {
+		scoreFile = scoreFileFolder + "scores/highscores_" + listAvatar + ".dat";
+		
 		list = loadListFromFile();
 		
 		insertIntoList(score);

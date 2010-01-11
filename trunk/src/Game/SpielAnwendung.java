@@ -14,8 +14,8 @@ public class SpielAnwendung {
 		new Spiel(av, mainGUI);
 	}
 	
-	public static void beendeSpiel(Score score) {
-		new Highscores(score);
+	public static void beendeSpiel(int listAvatar, Score score) {
+		new Highscores(listAvatar, score);
 	}
 	
 	public static void beendeSpiel() {
