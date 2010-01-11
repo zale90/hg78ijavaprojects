@@ -18,9 +18,12 @@ public class Highscores {
 	
 	private ArrayList<Score> list;
 	private String scoreFile = "";
+	private String avatarName;
 
-	public Highscores(int listAvatar, Score score) {
-		scoreFile = scoreFileFolder + "scores/highscores_" + listAvatar + ".dat";
+	public Highscores(int avatarNr, String avatarName, Score score) {
+		this.avatarName = avatarName;
+		
+		scoreFile = scoreFileFolder + "scores/highscores_" + avatarNr + ".dat";
 		
 		list = loadListFromFile();
 		
@@ -29,6 +32,14 @@ public class Highscores {
 		zeigeHighscores();
 	}
 	
+	public String getAvatarName() {
+		return avatarName;
+	}
+
+	public void setAvatarName(String avatarName) {
+		this.avatarName = avatarName;
+	}
+
 	public Highscores() {
 		list = loadListFromFile();
 		
