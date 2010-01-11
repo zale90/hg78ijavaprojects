@@ -9,14 +9,13 @@ import Game.*;
 
 public class Aktion extends JLabel {
 	private static final long serialVersionUID = 1L;
-	private Information[] nutzen, kosten; // veraenderungen aufgeteilt in kosten und nutzen, um diese eventuell irgendwo anzuzeigen oder so
+	private Information[] veraenderungen;
 	private String name, beschreibung, konsolenausgabe;
 	
-	public Aktion(String name, String beschreibung, String konsolenausgabe, Information[] nutz, Information[] kost)
+	public Aktion(String name, String beschreibung, String konsolenausgabe, Information[] ver)
 	{
 		super(name);
-		nutzen = nutz;
-		kosten = kost;
+		setVeraenderungen(ver);
 		this.name = name;
 		this.beschreibung = beschreibung;
 		this.konsolenausgabe = konsolenausgabe;
@@ -50,47 +49,13 @@ public class Aktion extends JLabel {
 	public String getBeschreibung() {
 		return beschreibung;
 	}
-
-	public void setNutzen(Information[] nutzen) {
-		this.nutzen = nutzen;
-	}
-
-	public Information[] getNutzen() {
-		return nutzen;
-	}
-
-	public void setKosten(Information[] kosten) {
-		this.kosten = kosten;
-	}
-
-	public Information[] getKosten() {
-		return kosten;
-	}
-	public Information[] getVeraenderungen() // für spiel, wenn die Veränderungen umgesetzt werden. Da muss nicht mehr getrennt werden.
+	public Information[] getVeraenderungen()
 	{
-		if (kosten == null)
-		{
-			if (nutzen == null)
-				return null;
-			else
-			{
-				return nutzen;
-			}
-		}
-		if (nutzen == null)
-		{
-			return kosten;
-		}
-		Information[] veraenderungen = new Information[kosten.length+nutzen.length];
-		for (int i = 0; i < kosten.length; i++)
-		{
-			veraenderungen[i] = kosten[i];
-		}
-		for (int i = 0; i < nutzen.length; i++)
-		{
-			veraenderungen[i] = nutzen[i];
-		}
 		return veraenderungen;
+	}
+
+	public void setVeraenderungen(Information[] veraenderungen) {
+		this.veraenderungen = veraenderungen;
 	}
 	
 }
