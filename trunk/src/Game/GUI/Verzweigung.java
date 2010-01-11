@@ -1,12 +1,10 @@
 package Game.GUI;
 
 import javax.swing.*;
-import javax.swing.border.*;
 import javax.swing.text.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
-import Game.*;
 
 public class Verzweigung extends JPanel implements MouseListener { //wahrscheinlich müssen wir hier später MouseListener nehmen, aber egal
 	
