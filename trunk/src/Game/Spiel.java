@@ -18,11 +18,12 @@ import Game.GUI.*;
 public class Spiel {
 	
 	private Bedürfnis[] bedürfnisse;
+	private int avatarNr;
+	private String avatarName;
 	private int zeit;
 	private int zeitProRunde;
 	private int kontostand;
 	private int geldProMonat;
-	private int avatarNr;
 	private int aktuelleRunde;
 	private int punkte;
 	private Hauptfenster mainGUI;
@@ -37,17 +38,24 @@ public class Spiel {
 	 * @param avatar
 	 */
 	public Spiel(Avatar avatar, Hauptfenster mainGUI) {
-		aktuelleRunde = 0;
 		bedürfnisse = avatar.getBedürfnisse().clone();
 		kontostand = avatar.getKontostand();
 		geldProMonat = avatar.getEinkommen();
 		zeitProRunde = avatar.getZeitProRunde();
 		avatarNr = avatar.getAvatarNummer();
+		avatarName = avatar.getName();
+		
+		// Startwerte
+		aktuelleRunde = 0;
 		punkte = 0;
 		zeit = zeitProRunde;
+		
+		// GUI
 		this.mainGUI = mainGUI;
 		gameGUI = new Spieloberfläche(this, avatar.getName());
 		zeigeSpielGUI();
+		
+		// Ereignisse erzeugen
 		erList = Initialisator.gibEreignisse();
 	}
 	
@@ -97,6 +105,14 @@ public class Spiel {
 
 	public void setAvatarNr(int avatarNr) {
 		this.avatarNr = avatarNr;
+	}
+
+	public String getAvatarName() {
+		return avatarName;
+	}
+
+	public void setAvatarName(String avatarName) {
+		this.avatarName = avatarName;
 	}
 
 	public int getPunkte() {
@@ -171,7 +187,7 @@ public class Spiel {
 		if(antwort == null || antwort.trim().equals("")) {
 			SpielAnwendung.beendeSpiel();
 		} else {
-			SpielAnwendung.beendeSpiel(getAvatarNr(), new Score(antwort, getPunkte()));
+			SpielAnwendung.beendeSpiel(getAvatarNr(), getAvatarName(), new Score(antwort, getPunkte()));
 		}
 	}
 	

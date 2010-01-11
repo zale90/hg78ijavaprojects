@@ -28,9 +28,9 @@ public class Highscoreliste extends JPanel implements ActionListener {
 		// Credits anzeigen
 		this.add(new Credits());
 		
-		JLabel lbl‹berschrift = new JLabel("Highscores");
+		JLabel lbl‹berschrift = new JLabel("Highscores: " + scores.getAvatarName());
 		lbl‹berschrift.setFont(Optionen.FONT_TITLE);
-		lbl‹berschrift.setSize(400, 50);
+		lbl‹berschrift.setSize(460, 50);
 		lbl‹berschrift.setLocation(20, 20);
 		this.add(lbl‹berschrift);
 		
@@ -59,6 +59,7 @@ public class Highscoreliste extends JPanel implements ActionListener {
 		btnBeendeSpiel.setSize(200, 50);
 		btnBeendeSpiel.setLocation(250, 600);
 		btnBeendeSpiel.addActionListener(this);
+		btnBeendeSpiel.setEnabled(false);
 		this.add(btnBeendeSpiel);
 		
 		this.setVisible(true);
