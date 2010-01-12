@@ -18,96 +18,67 @@ public class Spielbereich extends JPanel implements MouseListener
 	private JLabel lblbackGround;
 	private Spieloberfläche spieloberfläche;
 	private int aktivesObjekt;
-	private ArrayList<JLabel> aktionsObjekte, aktionsHeader;
-	private ArrayList<Verzweigung> aktionsMenus;
-	private ArrayList<ImageIcon> bilderInaktiv, bilderAktiv; 
+	private ArrayList<Aktionsobjekt> aktionsObjekte;
+	private JLabel header;
 	
 	
 	public Spielbereich(int x,int y, Spieloberfläche spielUI) {
 		
 		spieloberfläche = spielUI;
-		
-		bilderInaktiv = new ArrayList<ImageIcon>();
-		bilderAktiv = new ArrayList<ImageIcon>();
-		aktionsObjekte = new ArrayList<JLabel>();
-		aktionsHeader = new ArrayList<JLabel>();
-		aktionsMenus = new ArrayList<Verzweigung>();
+		aktionsObjekte = new ArrayList<Aktionsobjekt>();
 		aktivesObjekt = -1; //-1 heißt das momentan kein Objekt aktiv ist; das heißt  man ist nicht mit der Maus auf einem und hat auch nicht auf eines geklickt
 		Verzweigung.setSpielbereich(this); //die Verzweigung muss auf das Spielbereich-objekt zugreifen können
 		
-		//Folgender Block ist nur zum test da; ich erstelle damit das Menu, was aufgeht, wenn man auch die Tür klickt, mitsamt Untermenu
-		// TEST
+		// es gibt nur noch einen header, der einfach rumbewegt und mit anderen Strings ausgestattet
+		header = new JLabel();
+		header.setHorizontalAlignment(SwingConstants.CENTER);
+		header.setFont(Optionen.FONT_ACTION_HEADER);
+		header.setSize(150,40);
+		header.setVisible(false);
+		this.add(header);
+		
+		// erstellen der Aktionsobjekte mit Menus
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
 		türAktionen.add(new Aktion("Kino", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null));
 		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
 		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
 		sonstigesAktionen.add(new Aktion("Park", "(blue)Gehe in den Park \n\n(red)Zeit: -1\n(green)Soziales: +10\nLuxus: +5", "Du bist in den Park gegangen", null));
 		Verzweigung sonstiges = new Verzweigung("Sonstiges", "Sonstige Aktivitäten ausserhalb deiner Wohnung.", sonstigesAktionen, new ArrayList<Verzweigung>());
-		this.add(sonstiges);
 		türVerzweigungen.add(sonstiges);
-		Verzweigung Tür = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
-		this.add(Tür);
-		aktionsMenus.add(Tür);
-		// TEST
+		Verzweigung tuerMenu = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
 		
-		// Schonmal erster Menupunkt für Kühlschrank; müssen wir später mal schauen ob wir das alles hier initialisieren oder in Initialisator
+		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", "dooropen.png","doorclosed.png", tuerMenu);
+		tuer.setSize(81, 340);
+		tuer.setLocation(687, 90);
+		tuer.addMouseListener(this);
+		tuer.setOpaque(false);
+		this.add(tuer);
+		aktionsObjekte.add(tuer);
+		
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
 		gemueseAktionen.add(new Aktion("Hochwertig", "(blue)Kaufe hochwertiges Gemüse", "Du hast Qualitätsgemüse gekauft", null));
 		gemueseAktionen.add(new Aktion("Mittelmäßig", "(blue)Kaufe mittelmäßiges Gemüse", "Du hast mittelmäßiges Gemüse gekauft", null));
 		gemueseAktionen.add(new Aktion("Billig", "(blue)Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft", null));
 		ArrayList<Verzweigung> kuehlschrankVerzweigung = new ArrayList<Verzweigung>();
 		kuehlschrankVerzweigung.add(new Verzweigung("Gemüse", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
-		this.add(kuehlschrankVerzweigung.get(0));
-		Verzweigung kuehlschrank = new Verzweigung("Kuehlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
+		Verzweigung kuehlschrankMenu = new Verzweigung("Kuehlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
+		
+		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen","fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
+		kuehlschrank.setSize(144, 241);
+		kuehlschrank.setLocation(522, 85);
+		kuehlschrank.addMouseListener(this);
+		kuehlschrank.setOpaque(false);
 		this.add(kuehlschrank);
-		aktionsMenus.add(kuehlschrank);
+		aktionsObjekte.add(kuehlschrank);		
 		
-		bilderInaktiv.add(new ImageIcon("files/gameImages/doorclosed.png"));
-		bilderInaktiv.add(new ImageIcon("files/gameImages/fridgeclosed.png"));
-		bilderAktiv.add(new ImageIcon("files/gameImages/dooropen.png"));
-		bilderAktiv.add(new ImageIcon("files/gameImages/fridgeopen.png"));
-		
-		JLabel lblDoorHeader = new JLabel("Wohnung verlassen", SwingConstants.CENTER);
-		lblDoorHeader.setFont(Optionen.FONT_ACTION_HEADER);
-		lblDoorHeader.setSize(150,40);
-		lblDoorHeader.setVisible(false);
-		this.add(lblDoorHeader);
-		aktionsHeader.add(lblDoorHeader);
-		
-		JLabel lblFridgeHeader = new JLabel("Essen kaufen", SwingConstants.CENTER);
-		lblFridgeHeader.setFont(Optionen.FONT_ACTION_HEADER);
-		lblFridgeHeader.setSize(150,40);
-		lblFridgeHeader.setVisible(false);
-		this.add(lblFridgeHeader);
-		
-		JLabel lblDoor = new JLabel(bilderInaktiv.get(0));
-		lblDoor.setSize(81, 340);
-		lblDoor.setLocation(687, 90);
-		lblDoor.addMouseListener(this);
-		lblDoor.setOpaque(false);
-		this.add(lblDoor);
-		aktionsObjekte.add(lblDoor);
-		
-		aktionsHeader.add(lblFridgeHeader);
-		
-		JLabel lblFridge = new JLabel(bilderInaktiv.get(1));
-		lblFridge.setSize(144, 241);
-		lblFridge.setLocation(522, 85);
-		lblFridge.addMouseListener(this);
-		lblFridge.setOpaque(false);
-		this.add(lblFridge);
-		aktionsObjekte.add(lblFridge);
-		
-		
-		lblbackGround = new JLabel(new ImageIcon("files/gameImages/bg.png"));
+		// Hintergrund und Spielbereichgröße
+		lblbackGround = new JLabel(new ImageIcon(Optionen.ICON_PATH_GAME + "bg.png"));
 		lblbackGround.setSize(800, 500);
 		lblbackGround.setLocation(0,0);
 		lblbackGround.setOpaque(true);
 		lblbackGround.addMouseListener(this);
 		this.add(lblbackGround);
-		
-		
-		
+				
 		this.setSize(800,500);
 		this.setLocation(x,y);
 		this.setBackground(null);
@@ -119,43 +90,37 @@ public class Spielbereich extends JPanel implements MouseListener
 	
 	@Override
 	public void mouseClicked(MouseEvent mouseClick) {
-		//blendet Untermenus aus, die evtl noch angezeigt sind
 		if (aktivesObjekt != -1)
 		{
-			aktionsMenus.get(aktivesObjekt).setVisible(false);
-			if (aktionsObjekte.get(aktivesObjekt) != mouseClick.getSource())
+			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
+			if (mouseClick.getSource() == lblbackGround)
 			{
-				aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
-				aktionsHeader.get(aktivesObjekt).setVisible(false);
-				for (int i = 0; i < aktionsObjekte.size(); i++)
+				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+				header.setVisible(false);
+				aktivesObjekt = -1;
+			}
+			else
+			{
+				if(mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
 				{
-					if (aktionsObjekte.get(i) == mouseClick.getSource())
+					aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
+				}
+				else	
+				{
+					aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+					for (int i = 0; i < aktionsObjekte.size(); i++)
 					{
-						aktionsObjekte.get(i).setIcon(bilderAktiv.get(i));
-						showActionComponent(mouseClick.getPoint(), aktionsHeader.get(i), aktionsObjekte.get(i), 1);
-						aktivesObjekt = i;
-						return;
+						if (aktionsObjekte.get(i) == mouseClick.getSource())
+						{
+							aktionsObjekte.get(i).setAktiv(true);
+							header.setText(aktionsObjekte.get(i).getHeader());
+							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
+							aktivesObjekt = i;
+							return;
+						}
 					}
 				}
 			}
-		}
-		
-		if (mouseClick.getSource() == lblbackGround)
-		{
-			if (aktivesObjekt != -1)
-			{
-				aktionsMenus.get(aktivesObjekt).setVisible(false);
-				aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
-				aktionsHeader.get(aktivesObjekt).setVisible(false);
-				aktivesObjekt = -1;
-			}
-		}
-		
-		//Zeigt ein Door-Actionpanel an. 
-		if(aktivesObjekt != -1 && mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
-		{
-			aktionsMenus.get(aktivesObjekt).setVisible(true);
-			return;
 		}
 	}
 	
@@ -165,10 +130,10 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 		if (mouseOver.getSource() == lblbackGround)
 		{
-			if (aktivesObjekt != -1 && !aktionsMenus.get(aktivesObjekt).isVisible())
+			if (aktivesObjekt != -1 && !aktionsObjekte.get(aktivesObjekt).getMenu().isVisible())
 			{
-				aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
-				aktionsHeader.get(aktivesObjekt).setVisible(false);
+				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+				header.setVisible(false);
 				aktivesObjekt = -1;
 			}
 		}
@@ -178,8 +143,9 @@ public class Spielbereich extends JPanel implements MouseListener
 			{
 				if(mouseOver.getSource() == aktionsObjekte.get(i))
 				{
-					showActionComponent(mouseOver.getPoint(), aktionsHeader.get(i), aktionsObjekte.get(i), 1);
-					aktionsObjekte.get(i).setIcon(bilderAktiv.get(i));
+					header.setText(aktionsObjekte.get(i).getHeader());
+					showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i), 1);
+					aktionsObjekte.get(i).setAktiv(true);
 					aktivesObjekt = i;
 					return;
 				}
@@ -241,7 +207,7 @@ public class Spielbereich extends JPanel implements MouseListener
 	public void aktionAusfuehren(Aktion akt)
 	{
 		spieloberfläche.aktion(akt);
-		aktionsMenus.get(aktivesObjekt).setVisible(false);		
+		aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);		
 	}
 	public void setzeAktiviert(boolean akt)
 	{
@@ -261,9 +227,9 @@ public class Spielbereich extends JPanel implements MouseListener
 		}
 		if (aktivesObjekt != -1)
 		{
-			aktionsMenus.get(aktivesObjekt).setVisible(false);
-			aktionsObjekte.get(aktivesObjekt).setIcon(bilderInaktiv.get(aktivesObjekt));
-			aktionsHeader.get(aktivesObjekt).setVisible(false);
+			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
+			aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+			header.setVisible(false);
 			aktivesObjekt = -1;
 		}
 	}

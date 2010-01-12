@@ -76,7 +76,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		name.setFont(Optionen.FONT_BIGGER);
 		this.add(name);
 		
-		JLabel avatarbild = new JLabel(new ImageIcon("files/avatarImages/" + charName + "Klein.jpg"));
+		JLabel avatarbild = new JLabel(new ImageIcon(Optionen.ICON_PATH_AVATAR + charName + "Klein.jpg"));
 		avatarbild.setSize(140,140);
 		avatarbild.setLocation(840, 90);
 		this.add(avatarbild);
