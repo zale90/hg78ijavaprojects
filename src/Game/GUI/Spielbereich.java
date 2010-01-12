@@ -104,6 +104,7 @@ public class Spielbereich extends JPanel implements MouseListener
 				if(mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
 				{
 					aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
+					header.setVisible(false);
 				}
 				else	
 				{
