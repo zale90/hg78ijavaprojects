@@ -29,7 +29,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		aktivesObjekt = -1; //-1 heißt das momentan kein Objekt aktiv ist; das heißt  man ist nicht mit der Maus auf einem und hat auch nicht auf eines geklickt
 		Verzweigung.setSpielbereich(this); //die Verzweigung muss auf das Spielbereich-objekt zugreifen können
 		
-		// es gibt nur noch einen header, der einfach rumbewegt und mit anderen Strings ausgestattet
+		// es gibt nur noch einen header, der einfach rumbewegt und mit anderen Strings ausgestattet wird
 		header = new JLabel();
 		header.setHorizontalAlignment(SwingConstants.CENTER);
 		header.setFont(Optionen.FONT_ACTION_HEADER);
@@ -93,8 +93,12 @@ public class Spielbereich extends JPanel implements MouseListener
 		if(aktivesObjekt != -1 && mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
 		{
 			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
-//			header.setVisible(false);
 		}
+		
+		/*
+		 * unterhalb der alte Code, mit dem Untermenus geschlossen wurden, sobald man auf Hintergrund
+		 * oder andere aktionsObjekte klickte. Bitte drin lassen, damit wirs u.U. schnell wieder haben.
+		 */
 //		if (aktivesObjekt != -1)
 //		{
 //			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
@@ -161,33 +165,10 @@ public class Spielbereich extends JPanel implements MouseListener
 				}
 			}
 		}
-//		else
-//		{
-//			if (!aktionsObjekte.get(aktivesObjekt).isVisible())
-//			{
-//				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
-//				for (int i = 0; i < aktionsObjekte.size(); i++)
-//				{
-//					if(mouseOver.getSource() == aktionsObjekte.get(i))
-//					{
-//						header.setText(aktionsObjekte.get(i).getHeadertext());
-//						
-////						showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i), 1);
-//						header.setLocation(aktionsObjekte.get(i).getHeaderpos());
-//						header.setVisible(true);
-//						
-//						aktionsObjekte.get(i).setAktiv(true);
-//						aktivesObjekt = i;
-//						return;
-//					}
-//				}
-//			}
-//		}
 	}
 
 	@Override
 	public void mouseExited(MouseEvent mouseEx) {
-		//Tür schließen u.s.w. in mouse entered gepackt, weil sonst die Tür zu ging wenn man auf das ActionPanel ging
 	}
 
 	@Override
@@ -259,10 +240,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		}
 		if (aktivesObjekt != -1)
 		{
-			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
-			aktionsObjekte.get(aktivesObjekt).setAktiv(false);
-			header.setVisible(false);
-			aktivesObjekt = -1;
+			aktionsObjektAbwaehlen();
 		}
 	}
 	public void aktionsObjektAbwaehlen()
