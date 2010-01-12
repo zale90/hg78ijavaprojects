@@ -1,6 +1,7 @@
 package Game.GUI;
 
 import javax.swing.*;
+import java.awt.*;
 
 import Game.*;
 
@@ -9,13 +10,15 @@ public class Aktionsobjekt extends JLabel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String header;
+	private String headertext;
+	private Point headerpos;
 	private ImageIcon aktiv, inaktiv;
 	private Verzweigung menu;
 	
-	public Aktionsobjekt(String header, String aktiv, String inaktiv, Verzweigung menu)
+	public Aktionsobjekt(String headertext, Point headerpos, String aktiv, String inaktiv, Verzweigung menu)
 	{
-		this.setHeader(header);
+		this.setHeadertext(headertext);
+		this.setHeaderpos(headerpos);
 		this.setAktiv(new ImageIcon(Optionen.ICON_PATH_GAME + aktiv));
 		this.setInaktiv(new ImageIcon(Optionen.ICON_PATH_GAME + inaktiv));
 		this.setMenu(menu);
@@ -23,12 +26,20 @@ public class Aktionsobjekt extends JLabel {
 		this.setVisible(true);
 	}
 
-	public void setHeader(String header) {
-		this.header = header;
+	public void setHeadertext(String headertext) {
+		this.headertext = headertext;
 	}
 
-	public String getHeader() {
-		return header;
+	public String getHeadertext() {
+		return headertext;
+	}
+
+	public void setHeaderpos(Point headerpos) {
+		this.headerpos = headerpos;
+	}
+
+	public Point getHeaderpos() {
+		return headerpos;
 	}
 
 	public void setAktiv(ImageIcon aktiv) {

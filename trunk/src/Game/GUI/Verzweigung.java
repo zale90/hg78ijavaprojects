@@ -5,8 +5,9 @@ import javax.swing.text.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
+import Game.*;
 
-public class Verzweigung extends JPanel implements MouseListener { //wahrscheinlich müssen wir hier später MouseListener nehmen, aber egal
+public class Verzweigung extends JPanel implements MouseListener, ActionListener { //wahrscheinlich müssen wir hier später MouseListener nehmen, aber egal
 	
 	private static final long serialVersionUID = 1L;
 	private String name, beschreibung;
@@ -15,6 +16,8 @@ public class Verzweigung extends JPanel implements MouseListener { //wahrscheinl
 	private ArrayList<Aktion> aktionen;
 	private ArrayList<JLabel> verzweigungsButtons;
 	private JTextPane beschreibungsfeld;
+	private JButton zurueck;
+	private Verzweigung letzteVerzweigung;
 	
 	public Verzweigung(String name, String beschreibung, ArrayList<Aktion> akt, ArrayList<Verzweigung> verz)
 	{
@@ -25,35 +28,49 @@ public class Verzweigung extends JPanel implements MouseListener { //wahrscheinl
 		verzweigungsButtons = new ArrayList<JLabel>();
 		
 		// bei 170 höhe hat man für genau 5 Buttons platz
-		this.setSize(300, 170);
-		this.setLocation(280, 150);
+		this.setSize(300, 200);
+		this.setLocation(280, 120);
 	      this.setBackground(new Color(153,134,124));
 	      this.setLayout(null);
 	      this.setBorder(BorderFactory.createEtchedBorder());
 	      
+	      JLabel titel = new JLabel(name);
+	      titel.setSize(100, 20);
+	      titel.setLocation(100, 10);
+	      titel.setHorizontalAlignment(SwingConstants.CENTER);
+	      titel.setFont(Optionen.FONT_BIGGER);
+	      this.add(titel);
+	      
+	      zurueck = new JButton("<<");
+	      zurueck.setSize(50, 20);
+	      zurueck.setLocation(10,10);
+	      zurueck.setHorizontalAlignment(SwingConstants.CENTER);
+	      zurueck.addActionListener(this);
+	      
 	     //wir sollten Buttons für Verzweigungen und für Aktionen wahrscheinlich noch unterschiedliche Farben geben
 		for (int i = 0; i < aktionen.size(); i++)
 		{
-			aktionen.get(i).setLocation(10, (i*30) + 10);
+			aktionen.get(i).setLocation(10, (i*30) + 40);
 			aktionen.get(i).addMouseListener(this);
 			this.add(aktionen.get(i));
 		}
 		for (int i = 0; i < verzweigungen.size(); i++)
 		{
+			verzweigungen.get(i).setLetzteVerzweigung(this);
 			verzweigungsButtons.add(new JLabel(verzweigungen.get(i).getName() + " >>"));
 			verzweigungsButtons.get(i).addMouseListener(this);
 			verzweigungsButtons.get(i).setSize(120, 30);
 			verzweigungsButtons.get(i).setHorizontalAlignment(0);
 			verzweigungsButtons.get(i).setOpaque(true);
 			if (aktionen.size() == 0)
-				verzweigungsButtons.get(i).setLocation(10, ((aktionen.size()+i)*30) + 10);
+				verzweigungsButtons.get(i).setLocation(10, ((aktionen.size()+i)*30) + 40);
 			else
-				verzweigungsButtons.get(i).setLocation(10, ((aktionen.size()+i)*30) + 10);
+				verzweigungsButtons.get(i).setLocation(10, ((aktionen.size()+i)*30) + 40);
 			this.add(verzweigungsButtons.get(i));
 		}
 		beschreibungsfeld = new JTextPane();
 		beschreibungsfeld.setSize(150,150);
-		beschreibungsfeld.setLocation(140, 10);
+		beschreibungsfeld.setLocation(140, 40);
 		beschreibungsfeld.setEditable(false);
 		beschreibungsfeld.setBackground(new Color(220, 220, 220));
 		beschreibungsfeld.setOpaque(true);
@@ -200,5 +217,19 @@ public class Verzweigung extends JPanel implements MouseListener { //wahrscheinl
 	        }
 		}
 		beschreibungsfeld.setCaretPosition(0);
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		if (arg0.getSource() == zurueck)
+		{
+			this.setVisible(false);
+			letzteVerzweigung.setVisible(true);
+		}
+		
+	}
+	public void setLetzteVerzweigung(Verzweigung lv)
+	{
+		letzteVerzweigung = lv;
+		this.add(zurueck);
 	}
 }

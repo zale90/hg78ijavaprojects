@@ -47,7 +47,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		türVerzweigungen.add(sonstiges);
 		Verzweigung tuerMenu = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
 		
-		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", "dooropen.png","doorclosed.png", tuerMenu);
+		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", new Point(640, 30), "dooropen.png","doorclosed.png", tuerMenu);
 		tuer.setSize(81, 340);
 		tuer.setLocation(687, 90);
 		tuer.addMouseListener(this);
@@ -63,7 +63,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		kuehlschrankVerzweigung.add(new Verzweigung("Gemüse", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
 		Verzweigung kuehlschrankMenu = new Verzweigung("Kuehlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
 		
-		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen","fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
+		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(560, 30),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
 		kuehlschrank.setSize(144, 241);
 		kuehlschrank.setLocation(522, 85);
 		kuehlschrank.addMouseListener(this);
@@ -104,7 +104,7 @@ public class Spielbereich extends JPanel implements MouseListener
 				if(mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
 				{
 					aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
-					header.setVisible(false);
+//					header.setVisible(false);
 				}
 				else	
 				{
@@ -114,8 +114,12 @@ public class Spielbereich extends JPanel implements MouseListener
 						if (aktionsObjekte.get(i) == mouseClick.getSource())
 						{
 							aktionsObjekte.get(i).setAktiv(true);
-							header.setText(aktionsObjekte.get(i).getHeader());
-							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
+							header.setText(aktionsObjekte.get(i).getHeadertext());
+							
+//							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
+							header.setLocation(aktionsObjekte.get(i).getHeaderpos());
+							header.setVisible(true);
+							
 							aktivesObjekt = i;
 							return;
 						}
@@ -144,8 +148,12 @@ public class Spielbereich extends JPanel implements MouseListener
 			{
 				if(mouseOver.getSource() == aktionsObjekte.get(i))
 				{
-					header.setText(aktionsObjekte.get(i).getHeader());
-					showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i), 1);
+					header.setText(aktionsObjekte.get(i).getHeadertext());
+					
+//					showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i), 1);
+					header.setLocation(aktionsObjekte.get(i).getHeaderpos());
+					header.setVisible(true);
+					
 					aktionsObjekte.get(i).setAktiv(true);
 					aktivesObjekt = i;
 					return;
