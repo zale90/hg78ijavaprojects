@@ -17,9 +17,15 @@ public class Avatar {
 	private String bild;
 	
 	/**
-	 * @param beschreibung
-	 * @param bedürfnisse
-	 * @param kontostand
+	 * Ein Avatar mit den übergebenen Startwerten.
+	 * 
+	 * @param nummer Nummer, die eindeutig zu vergeben ist.
+	 * @param name Vor- und Nachname
+	 * @param beschreibung Beschreibung des Avatars.
+	 * @param bedürfnisse Array mit allen Anfangsbedürfnissen.
+	 * @param kontostand Anfangskontostand.
+	 * @param einkommen Einkommen, welches der Avatar jedem >Monat< bekommt.
+	 * @param zeitProRunde Für den Avatar verfügbare Zeit pro >Runde<.
 	 */
 	public Avatar(int nummer, String name , String beschreibung, Bedürfnis[] bedürfnisse, int kontostand, int einkommen, int zeitProRunde) {
 		super();
@@ -109,7 +115,7 @@ public class Avatar {
 	public String getName() {
 		return name;
 	}
-
+	
 	public void setZeitProRunde(int zeitProRunde) {
 		this.zeitProRunde = zeitProRunde;
 	}

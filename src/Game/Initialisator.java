@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Initialisator 
 {
-	
-	/*
-	 * gibt die Avatare zurück, die irgendwo gespeichert werden müssen (evtl. launcher?)
-	 * Werte müssen natürlich noch angepasst werden!
+	/**
+	 * Liefert die vordefinierten Avatare zurück.
+	 * 
+	 * @return ArrayList mit Avataren.
 	 */
 	public static ArrayList<Avatar> gibAvatare()
 	{
@@ -43,6 +43,11 @@ public class Initialisator
 		return avList;
 	}
 	
+	/**
+	 * Gibt die Liste mit allen Ereignissen zurück. Diese sind dabei immer in der gleichen Reihenfolge.
+	 * 
+	 * @return ArrayList mit allen Ereignissen.
+	 */
 	public static ArrayList<Ereignis> gibEreignisse() {
 		ArrayList<Ereignis> erList = new ArrayList<Ereignis>();
 		

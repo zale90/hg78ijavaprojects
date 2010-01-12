@@ -28,21 +28,29 @@ public class Information {
 	public static final int AENDERN_GELD = 13;
 	public static final int AENDERN_GELD_PRO_MONAT = 14;
 	
+	/**
+	 * Setzt den Wert auf den übergebenen Wert fest. Dies geschieht unabhängig vom aktuellen Wert.
+	 */
 	public static final int ART_AUF_WERT = 1;
+	/**
+	 * Addiert den neuen Wert auf den aktuellen Wert drauf. Um einen Wert abzuziehen, muss ein negativer Wert übergeben werden.
+	 */
 	public static final int ART_UM_WERT = 2;
+	/**
+	 * Setzt den Wert auf einen bestimmten Prozentsatz fest. Dies geschieht unabhängig vom aktuellen Wert.
+	 */
 	public static final int ART_AUF_PROZENTWERT = 3;
+	/**
+	 * Erhöht den Wert um eine bestimmten Prozentsatz.
+	 */
 	public static final int ART_UM_PROZENTWERT = 4;
 	
 	/**
-	 * @param zuÄndern 1=Nahrung, 2=N.faktor, 3=Gesundheit, 4=G.Faktor, 
-	 * 				   5=Soziales, 6=S.Faktor 7=Luxus, 8=L.Faktor,
-	 * 				   9=Kinder, 10=K.Faktor, 11=Zeit, 12=Zeit pro Runde, 
-	 * 				   13=Geld, 14=Geld pro Monat
-	 * @param änderungsart 1=auf Wert, 2=um Wert ändern, 3=auf Wert%, 4=um Wert% ändern
-	 * @param wert
+	 * @param zuÄndern Gibt den den Wert an, der geändert werden sollte. Dabei können alle Konstanten mit dem Anfang AENDERN_ benutzt werden.
+	 * @param änderungsart Gibt die Art der Änderung an. Dabei können die Konstanten mit dem Anfang ART_ benutzt werden.
+	 * @param wert Der neue Wert.
 	 */
 	public Information(int zuÄndern, int änderungsart, int wert) {
-		super();
 		this.zuÄndern = zuÄndern;
 		this.änderungsart = änderungsart;
 		this.wert = wert;

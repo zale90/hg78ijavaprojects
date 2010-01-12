@@ -1,12 +1,12 @@
 package Game.GUI;
 
 import javax.swing.*;
-
+import javax.swing.border.*;
+import java.awt.Color;
 import java.awt.event.*;
 import Game.*;
 
-public class CharakterGUI extends JPanel implements ActionListener
-{
+public class CharakterGUI extends JPanel implements ActionListener {
 	
 	private static final long serialVersionUID = 5;
 	private Avatar avatar;
@@ -14,8 +14,17 @@ public class CharakterGUI extends JPanel implements ActionListener
 	private JTextPane beschreibung;
 	private JButton wahl;
    
-   public CharakterGUI(Avatar avatar, int x, int y)
-   {
+	/**
+	 * Panel mit der Übersicht über einen Avatar.
+	 * Zeigt den Namen, ein Bild, die Beschreibung sowie einen Button
+	 * mit dem sich das Spiel mit dem jeweiligen Avatar starten lässt.
+	 * 
+	 * @param avatar Avatar für den das Panel erstellt werden soll.
+	 * @param x X-Koordinate an der das Panel angezeigt werden soll.
+	 * @param y Y-Koordinate an der das Panel angezeigt werden soll.
+	 */
+   public CharakterGUI(Avatar avatar, int x, int y) {
+	   
       this.setSize(320, 500);
       this.setLocation(x, y);
       this.setBackground(null);
@@ -31,6 +40,7 @@ public class CharakterGUI extends JPanel implements ActionListener
       bild = new JLabel(new ImageIcon(Optionen.ICON_PATH_AVATAR + avatar.getName() + ".jpg"));
       bild.setSize(200, 200);
       bild.setLocation(60, 50);
+      bild.setBorder(new LineBorder(Color.BLACK, 1));
       this.add(bild);
       
       beschreibung = new JTextPane();
