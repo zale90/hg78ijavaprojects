@@ -20,6 +20,7 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	private JLabel exit;
 	private Verzweigung letzteVerzweigung;
 	
+	
 	public Verzweigung(String name, String beschreibung, ArrayList<Aktion> akt, ArrayList<Verzweigung> verz)
 	{
 		this.name = name;
@@ -34,6 +35,7 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	      this.setBackground(new Color(153,134,124));
 	      this.setLayout(null);
 	      this.setBorder(BorderFactory.createEtchedBorder());
+	      this.addMouseListener(this);
 	      
 	      JLabel titel = new JLabel(name);
 	      titel.setSize(100, 20);
@@ -52,6 +54,8 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	      zurueck.setFont(new Font("Arial", Font.BOLD, 12));
 	      zurueck.setOpaque(true);
 	      zurueck.addMouseListener(this);
+	      zurueck.setVisible(false);
+	      this.add(zurueck);
 	      
 	      exit = new JLabel("X");
 	      exit.setSize(20,20);
@@ -150,6 +154,8 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		if (arg0.getSource() == this)
+			return;
 		if (arg0.getSource() == zurueck)
 		{
 			this.setVisible(false);
@@ -186,6 +192,8 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
+		if (arg0.getSource() == this)
+			return;
 		if (arg0.getSource().getClass().getName().split("\\.")[2].equals("Aktion"))
 		{
 			for (int i = 0; i < aktionen.size(); i++)
@@ -252,6 +260,6 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	public void setLetzteVerzweigung(Verzweigung lv)
 	{
 		letzteVerzweigung = lv;
-		this.add(zurueck);
+		zurueck.setVisible(true);
 	}
 }

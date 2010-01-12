@@ -90,52 +90,52 @@ public class Spielbereich extends JPanel implements MouseListener
 	
 	@Override
 	public void mouseClicked(MouseEvent mouseClick) {
-		if(aktivesObjekt != -1 && mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
-		{
-			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
-		}
+//		if(aktivesObjekt != -1 && mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
+//		{
+//			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
+//		}
 		
 		/*
 		 * unterhalb der alte Code, mit dem Untermenus geschlossen wurden, sobald man auf Hintergrund
 		 * oder andere aktionsObjekte klickte. Bitte drin lassen, damit wirs u.U. schnell wieder haben.
 		 */
-//		if (aktivesObjekt != -1)
-//		{
-//			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
-//			if (mouseClick.getSource() == lblbackGround)
-//			{
-//				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
-//				header.setVisible(false);
-//				aktivesObjekt = -1;
-//			}
-//			else
-//			{
-//				if(mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
-//				{
-//					aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
-////					header.setVisible(false);
-//				}
-//				else	
-//				{
-//					aktionsObjekte.get(aktivesObjekt).setAktiv(false);
-//					for (int i = 0; i < aktionsObjekte.size(); i++)
-//					{
-//						if (aktionsObjekte.get(i) == mouseClick.getSource())
-//						{
-//							aktionsObjekte.get(i).setAktiv(true);
-//							header.setText(aktionsObjekte.get(i).getHeadertext());
-//							
-////							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
-//							header.setLocation(aktionsObjekte.get(i).getHeaderpos());
-//							header.setVisible(true);
-//							
-//							aktivesObjekt = i;
-//							return;
-//						}
-//					}
-//				}
-//			}
-//		}
+		if (aktivesObjekt != -1)
+		{
+			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
+			if (mouseClick.getSource() == lblbackGround)
+			{
+				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+				header.setVisible(false);
+				aktivesObjekt = -1;
+			}
+			else
+			{
+				if(mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
+				{
+					aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
+//					header.setVisible(false);
+				}
+				else	
+				{
+					aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+					for (int i = 0; i < aktionsObjekte.size(); i++)
+					{
+						if (aktionsObjekte.get(i) == mouseClick.getSource())
+						{
+							aktionsObjekte.get(i).setAktiv(true);
+							header.setText(aktionsObjekte.get(i).getHeadertext());
+							
+//							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
+							header.setLocation(aktionsObjekte.get(i).getHeaderpos());
+							header.setVisible(true);
+							
+							aktivesObjekt = i;
+							return;
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	@Override
@@ -219,8 +219,8 @@ public class Spielbereich extends JPanel implements MouseListener
 	}
 	public void aktionAusfuehren(Aktion akt)
 	{
-		spieloberfläche.aktion(akt);
 		aktionsObjektAbwaehlen();	
+		spieloberfläche.aktion(akt);
 	}
 	public void setzeAktiviert(boolean akt)
 	{
