@@ -10,13 +10,14 @@ import Game.*;
 public class Verzweigung extends JPanel implements MouseListener, ActionListener { //wahrscheinlich müssen wir hier später MouseListener nehmen, aber egal
 	
 	private static final long serialVersionUID = 1L;
-	private String name, beschreibung;
 	private static Spielbereich spielber;
+	private String name, beschreibung;
 	private ArrayList<Verzweigung> verzweigungen;
 	private ArrayList<Aktion> aktionen;
 	private ArrayList<JLabel> verzweigungsButtons;
 	private JTextPane beschreibungsfeld;
-	private JButton zurueck;
+	private JLabel zurueck;
+	private JLabel exit;
 	private Verzweigung letzteVerzweigung;
 	
 	public Verzweigung(String name, String beschreibung, ArrayList<Aktion> akt, ArrayList<Verzweigung> verz)
@@ -41,11 +42,28 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	      titel.setFont(Optionen.FONT_BIGGER);
 	      this.add(titel);
 	      
-	      zurueck = new JButton("<<");
+	      zurueck = new JLabel("<<");
 	      zurueck.setSize(50, 20);
 	      zurueck.setLocation(10,10);
 	      zurueck.setHorizontalAlignment(SwingConstants.CENTER);
-	      zurueck.addActionListener(this);
+	      zurueck.setBackground(Color.white);
+	      zurueck.setBorder(BorderFactory.createLineBorder(Color.black));
+	      zurueck.setForeground(Color.black);
+	      zurueck.setFont(new Font("Arial", Font.BOLD, 12));
+	      zurueck.setOpaque(true);
+	      zurueck.addMouseListener(this);
+	      
+	      exit = new JLabel("X");
+	      exit.setSize(20,20);
+	      exit.setLocation(270, 10);
+	      exit.setHorizontalAlignment(SwingConstants.CENTER);
+	      exit.setBackground(Color.white);
+	      exit.setBorder(BorderFactory.createLineBorder(Color.black));
+	      exit.setForeground(Color.black);
+	      exit.setFont(new Font("Arial", Font.BOLD, 12));
+	      exit.setOpaque(true);
+	      exit.addMouseListener(this);
+	      this.add(exit);
 	      
 	     //wir sollten Buttons für Verzweigungen und für Aktionen wahrscheinlich noch unterschiedliche Farben geben
 		for (int i = 0; i < aktionen.size(); i++)
@@ -132,7 +150,16 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		if (arg0.getSource().getClass().getName().split("\\.")[2].equals("Aktion"))
+		if (arg0.getSource() == zurueck)
+		{
+			this.setVisible(false);
+			letzteVerzweigung.setVisible(true);
+		}
+		else if (arg0.getSource() == exit)
+		{
+			spielber.aktionsObjektAbwaehlen();
+		}
+		else if (arg0.getSource().getClass().getName().split("\\.")[2].equals("Aktion"))
 		{
 			for (int i = 0; i < aktionen.size(); i++)
 			{
@@ -155,6 +182,7 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 				}
 			}
 		}
+		
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
@@ -220,12 +248,6 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		if (arg0.getSource() == zurueck)
-		{
-			this.setVisible(false);
-			letzteVerzweigung.setVisible(true);
-		}
-		
 	}
 	public void setLetzteVerzweigung(Verzweigung lv)
 	{
