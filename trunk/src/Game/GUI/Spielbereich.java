@@ -61,7 +61,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		gemueseAktionen.add(new Aktion("Billig", "(blue)Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft", null));
 		ArrayList<Verzweigung> kuehlschrankVerzweigung = new ArrayList<Verzweigung>();
 		kuehlschrankVerzweigung.add(new Verzweigung("Gemüse", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
-		Verzweigung kuehlschrankMenu = new Verzweigung("Kuehlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
+		Verzweigung kuehlschrankMenu = new Verzweigung("Kühlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
 		
 		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(560, 30),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
 		kuehlschrank.setSize(144, 241);
@@ -90,56 +90,57 @@ public class Spielbereich extends JPanel implements MouseListener
 	
 	@Override
 	public void mouseClicked(MouseEvent mouseClick) {
-		if (aktivesObjekt != -1)
+		if(aktivesObjekt != -1 && mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
 		{
-			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
-			if (mouseClick.getSource() == lblbackGround)
-			{
-				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
-				header.setVisible(false);
-				aktivesObjekt = -1;
-			}
-			else
-			{
-				if(mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
-				{
-					aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
-//					header.setVisible(false);
-				}
-				else	
-				{
-					aktionsObjekte.get(aktivesObjekt).setAktiv(false);
-					for (int i = 0; i < aktionsObjekte.size(); i++)
-					{
-						if (aktionsObjekte.get(i) == mouseClick.getSource())
-						{
-							aktionsObjekte.get(i).setAktiv(true);
-							header.setText(aktionsObjekte.get(i).getHeadertext());
-							
-//							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
-							header.setLocation(aktionsObjekte.get(i).getHeaderpos());
-							header.setVisible(true);
-							
-							aktivesObjekt = i;
-							return;
-						}
-					}
-				}
-			}
+			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
+//			header.setVisible(false);
 		}
+//		if (aktivesObjekt != -1)
+//		{
+//			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
+//			if (mouseClick.getSource() == lblbackGround)
+//			{
+//				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+//				header.setVisible(false);
+//				aktivesObjekt = -1;
+//			}
+//			else
+//			{
+//				if(mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
+//				{
+//					aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
+////					header.setVisible(false);
+//				}
+//				else	
+//				{
+//					aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+//					for (int i = 0; i < aktionsObjekte.size(); i++)
+//					{
+//						if (aktionsObjekte.get(i) == mouseClick.getSource())
+//						{
+//							aktionsObjekte.get(i).setAktiv(true);
+//							header.setText(aktionsObjekte.get(i).getHeadertext());
+//							
+////							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
+//							header.setLocation(aktionsObjekte.get(i).getHeaderpos());
+//							header.setVisible(true);
+//							
+//							aktivesObjekt = i;
+//							return;
+//						}
+//					}
+//				}
+//			}
+//		}
 	}
 	
 	@Override
-	public void mouseEntered(MouseEvent mouseOver) {
-		// Tür öffnet sich bei MouseOver.
-		
+	public void mouseEntered(MouseEvent mouseOver) {		
 		if (mouseOver.getSource() == lblbackGround)
 		{
 			if (aktivesObjekt != -1 && !aktionsObjekte.get(aktivesObjekt).getMenu().isVisible())
 			{
-				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
-				header.setVisible(false);
-				aktivesObjekt = -1;
+				aktionsObjektAbwaehlen();
 			}
 		}
 		else if (aktivesObjekt == -1)
@@ -160,6 +161,28 @@ public class Spielbereich extends JPanel implements MouseListener
 				}
 			}
 		}
+//		else
+//		{
+//			if (!aktionsObjekte.get(aktivesObjekt).isVisible())
+//			{
+//				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+//				for (int i = 0; i < aktionsObjekte.size(); i++)
+//				{
+//					if(mouseOver.getSource() == aktionsObjekte.get(i))
+//					{
+//						header.setText(aktionsObjekte.get(i).getHeadertext());
+//						
+////						showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i), 1);
+//						header.setLocation(aktionsObjekte.get(i).getHeaderpos());
+//						header.setVisible(true);
+//						
+//						aktionsObjekte.get(i).setAktiv(true);
+//						aktivesObjekt = i;
+//						return;
+//					}
+//				}
+//			}
+//		}
 	}
 
 	@Override
@@ -216,7 +239,7 @@ public class Spielbereich extends JPanel implements MouseListener
 	public void aktionAusfuehren(Aktion akt)
 	{
 		spieloberfläche.aktion(akt);
-		aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);		
+		aktionsObjektAbwaehlen();	
 	}
 	public void setzeAktiviert(boolean akt)
 	{
@@ -242,5 +265,14 @@ public class Spielbereich extends JPanel implements MouseListener
 			aktivesObjekt = -1;
 		}
 	}
-	
+	public void aktionsObjektAbwaehlen()
+	{
+		if (aktivesObjekt != -1)
+		{
+			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
+			aktionsObjekte.get(aktivesObjekt).setAktiv(false);
+			header.setVisible(false);
+			aktivesObjekt = -1;
+		}
+	}
 }
