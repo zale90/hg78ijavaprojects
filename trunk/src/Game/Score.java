@@ -9,6 +9,12 @@ public class Score implements Serializable {
 	private String name;
 	private long value;
 	
+	/**
+	 * Kombination von Name und Punkte für einen Highscore.
+	 * 
+	 * @param name Name für die Highscoreliste.
+	 * @param value Punkte für die Highscoreliste.
+	 */
 	public Score(String name, long value) {
 		this.name = name;
 		this.value = value;

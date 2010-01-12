@@ -9,8 +9,6 @@ package Game;
 
 import java.awt.Font;
 
-import javax.swing.ImageIcon;
-
 public class Optionen {
 	
 	public static final String NAME = "Ich bin arm - Holt mich hier raus!";

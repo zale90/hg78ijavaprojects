@@ -5,7 +5,7 @@ import Game.SpielAnwendung;
 public class Launcher {
 
 	/**
-	 * Startet eine neue Anwendung des Spiels.
+	 * Startet eine neue Anwendung des Spiels und beginnt mit der Charakterauswahl.
 	 * 
 	 * @param args
 	 */

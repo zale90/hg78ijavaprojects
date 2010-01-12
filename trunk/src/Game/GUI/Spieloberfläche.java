@@ -1,10 +1,10 @@
 package Game.GUI;
 
 import java.awt.*;
-
 import java.awt.event.*;
-
 import javax.swing.*;
+import javax.swing.border.*;
+
 import Game.*;
 
 public class Spieloberfläche extends JPanel implements MouseListener {
@@ -17,7 +17,8 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	private Spiel spiel;
 	private PunkteGUI punkteGUI;
 	private Spielbereich spielbereich;
-	/*
+	
+	/**
 	 * interaktive Schaltflächen; erstmal mit JLabels, damit wir flexibler sind
 	 */
 	private JLabel rundeWeiter, spielNeuStarten;
@@ -40,14 +41,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		lblHeading.setLocation(20, 20);
 		this.add(lblHeading);
 		
-		/*
-		 * Ich hab die JTextArea durch ein JTextPane ersetzt, weil der JScrollPane immer automatisch runter scrollte,
-		 * was man hier mit der Methode "setCaretPosition(Integer)" verhindern kann.
-		 * Das es auch in JTextArea diese Methode gibt ist mir erst nachher aufgefallen.
-		 * Dafür können wir jetzt, falls wir das noch brauchen sollten, den Text in der Konsole besser designen,
-		 * z.B. bestimmte Wörter einzeln hervorheben, Zeilen anders einfärben, u.s.w. 
-		 * Außerdem hat das JTextPane einen schönen Rahmen. ^^
-		 */
+		// Konsole hinzufügen
 		console = new JTextPane();
 		console.setEditable(false);
 		console.setSize(800, 90);
@@ -61,14 +55,13 @@ public class Spieloberfläche extends JPanel implements MouseListener {
         spConsole.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		this.add(spConsole);
 		
-		/*
-		 * Nur ein Testpanel, um zu schauen welche Größe wir für das Spielfeld einplanen müssen - ich finds so gut
-		 */
+		// Nur ein Testpanel, um zu schauen welche Größe wir für das Spielfeld einplanen müssen - ich finds so gut
 		spielbereich = new Spielbereich(0,0, this);
 		spielbereich.setSize(800, 500);
 		spielbereich.setLocation(20, 60);
 		this.add(spielbereich);
 		
+		// Avatar
 		JLabel name = new JLabel(charName);
 		name.setSize(140, 20);
 		name.setLocation(840,60);
@@ -79,6 +72,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		JLabel avatarbild = new JLabel(new ImageIcon(Optionen.ICON_PATH_AVATAR + charName + "Klein.jpg"));
 		avatarbild.setSize(140,140);
 		avatarbild.setLocation(840, 90);
+		avatarbild.setBorder(new LineBorder(Color.BLACK, 1));
 		this.add(avatarbild);
 		
 		initializeBars(spiel.getBedürfnisse());
@@ -167,11 +161,6 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 			lbl.setLocation(pos.x, pos.y-20);
 			this.add(lbl);
 		}
-	}
-	
-	private PunkteGUI getPunkteGUI()
-	{
-		return punkteGUI;
 	}
 	
 	private Point getPositionForBars(int i) {

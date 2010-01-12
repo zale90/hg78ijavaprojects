@@ -15,6 +15,12 @@ public class Bedürfnis {
 	private int max;
 	private int abfallfaktor;
 	
+
+	public static final int NAHRUNG = 1;
+	public static final int GESUNDHEIT = 2;
+	public static final int SOZIALES = 3;
+	public static final int LUXUS = 4;
+	public static final int KINDER = 5;
 	
 	/**
 	 * Erstellt ein neues Bedürfnis.
@@ -26,11 +32,11 @@ public class Bedürfnis {
 	 * 3 = Luxus
 	 * 4 = Kinder
 	 * 
-	 * @param name
-	 * @param wert
-	 * @param min
-	 * @param max
-	 * @param abfallfaktor
+	 * @param name Name des Bedürfnisses. Es können die Konstanden NAHRUNG, GESUNDHEIT, SOZIALES, LUXUS und KINDER benutzt werden.
+	 * @param wert Anfangswert
+	 * @param min Minimalwert
+	 * @param max Maximalwert
+	 * @param abfallfaktor Faktor um den der Wert bei jeder Runde reduziert werden soll.
 	 */
 	public Bedürfnis(int name, int wert, int min, int max, int abfallfaktor) {
 		super();
