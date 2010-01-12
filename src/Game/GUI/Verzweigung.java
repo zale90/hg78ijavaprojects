@@ -76,6 +76,8 @@ public class Verzweigung extends JPanel implements MouseListener { //wahrscheinl
 	    beschreibungsscroller.setSize(beschreibungsfeld.getSize());
 	    beschreibungsscroller.setLocation(beschreibungsfeld.getLocation());
 	    this.add(beschreibungsscroller);
+	    
+	    spielber.add(this);
 		
 		this.setVisible(false);
 	}
