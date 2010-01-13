@@ -2,11 +2,13 @@ package Game.GUI;
 
 import javax.swing.*;
 import Game.*;
+import Game.GUI.Minigames.*;
 
 public class Aktion extends JLabel {
 	private static final long serialVersionUID = 1L;
 	private Information[] veraenderungen;
 	private String name, beschreibung, konsolenausgabe;
+	private Minispiel minispiel;
 	
 	public Aktion(String name, String beschreibung, String konsolenausgabe, Information[] ver)
 	{
@@ -52,6 +54,14 @@ public class Aktion extends JLabel {
 
 	public void setVeraenderungen(Information[] veraenderungen) {
 		this.veraenderungen = veraenderungen;
+	}
+
+	public void setMinispiel(Minispiel minispiel) {
+		this.minispiel = minispiel;
+	}
+
+	public Minispiel getMinispiel() {
+		return minispiel;
 	}
 	
 }

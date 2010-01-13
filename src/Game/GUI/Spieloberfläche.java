@@ -239,9 +239,22 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	public void aktion(Aktion aktion)
 	{
 		spiel.infosUmsetzen(aktion.getVeraenderungen());
+		if (aktion.getMinispiel() != null)
+		{
+			setzeAktiviert(false);
+			aktion.getMinispiel().start(this);
+		}
 		zeigeNachrichtInKonsole(aktion.getKonsolenausgabe());
 		aktualisiereDaten();
 		
+	}
+	public void minispielEnde(Information info)
+	{
+		Information[] infoArray = new Information[1];
+		infoArray[0] = info;
+		spiel.infosUmsetzen(infoArray);
+		setzeAktiviert(true);
+		aktualisiereDaten();
 	}
 
 }
