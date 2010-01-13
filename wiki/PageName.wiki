@@ -6,7 +6,7 @@ Hier findet ihr alle Informationen um eure Minigames so anzupassen, damit das Ha
 
 = Speichern von Dateien =
 
-Alle Dateien, die das Spiel benötigt, sollten im Ordner files/minigames/<<Game-Name>> gespeichert werden.
+Alle Dateien, die das Spiel benötigt, sollten im Ordner files/minigames/Game-Name gespeichert werden.
 
 
 = Rückgabe =
