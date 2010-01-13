@@ -529,22 +529,23 @@ public class TicTacToe extends JFrame implements Minispiel, Runnable, ActionList
   {
      try
      {
-       thread.sleep(500);
-       playSound();
-       x1.setText("T");
-       x2.setText(" I");
-       x3.setText("C");
-       thread.sleep(400);
-       playCpuSound();
-       x4.setText("T");
-       x5.setText("A");
-       x6.setText("C");
-       thread.sleep(400);
-       playSound();
-       x7.setText("T");
-       x8.setText("O");
-       x9.setText("E");
-       thread.sleep(300);
+//       thread.sleep(500);
+//       playSound();
+//       x1.setText("T");
+//       x2.setText(" I");
+//       x3.setText("C");
+//       thread.sleep(400);
+//       playCpuSound();
+//       x4.setText("T");
+//       x5.setText("A");
+//       x6.setText("C");
+//       thread.sleep(400);
+//       playSound();
+//       x7.setText("T");
+//       x8.setText("O");
+//       x9.setText("E");
+//       thread.sleep(300);
+       
        
        x1.setVisible(false);
        x2.setVisible(false);
