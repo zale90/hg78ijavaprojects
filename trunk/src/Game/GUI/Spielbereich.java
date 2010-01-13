@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
+import Game.GUI.Minigames.TicTacToe.*;
 
 import Game.Optionen;
 
@@ -39,6 +40,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
 		türAktionen.add(new Aktion("Kino besuchen", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null));
         türAktionen.add(new Aktion("Freunde besuchen", "(blue)Besuche deine Freunde\n\n(red)Zeit: -1\n(green)Soziales: +10", "Du hast deine Freunde besucht.", null));
+        türAktionen.get(1).setMinispiel(new TicTacToe());
         türAktionen.add(new Aktion("Theater besuchen", "(blue)Besuche ein Theater\n\n(red)Geld: -50\nZeit: -1\n(green)Soziales: +10\nLuxus: +15", "Du bist ins Theater gegangen.", null));
 		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
 		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
