@@ -70,6 +70,20 @@ public class Bedürfnis {
 		return name;
 	}
 	
+	/**
+	 * Überprüft ob das Bedürfnis bereits das Minimum erreicht hat.
+	 * 
+	 * @return boolean true wenn Bedürfnis auf Minimum, sonst: false
+	 */
+	public boolean istMinimum() {
+		return (getWert() == getMin());
+	}
+	
+	/**
+	 * Liefert den Namen des aktuellen Bedürfnisses als Strin zurück.
+	 * 
+	 * @return Name des Bedürfnisses.
+	 */
 	public String getName() {
 		return getName(name);
 	}
@@ -89,10 +103,18 @@ public class Bedürfnis {
 	}
 	
 	/**
-	 * @param wert the wert to set
+	 * Setzt den Wert des Bedürfnisses. Dieser kann jedoch nicht größer als das Maximum oder kleiner als das Minimum werden.
+	 * 
+	 * @param wert Der neue Wert.
 	 */
 	public void setWert(int wert) {
-		this.wert = wert;
+		if(wert > getMax()) {
+			this.wert = wert;
+		} else if(wert < getMin()) {
+			this.wert = min;
+		} else {
+			this.wert = wert;
+		}
 	}
 	
 	/**
@@ -136,27 +158,5 @@ public class Bedürfnis {
 	public void setAbfallfaktor(int abfallfaktor) {
 		this.abfallfaktor = abfallfaktor;
 	}
-	
-
-//Methode ausgelagert in Spiel, diese übernimmt jetzt alle wertändernden Aufgaben, also auch Zeit und andere Faktoren mit Hilfe von Informationen
-//Nachteil: Wir müssen immer 'ne Information erstellen Vorteil: Es kann quasi nichts schief gehen und alles ist super einheitlich! (Vorteil überwiegt, ganz klar... ;) )
-//	/**
-//	 * Ändert den Wert dieses Bedüfnisses und addiert die übergebene Änderung.
-//	 * 
-//	 * @param änderung Die Wertänderung die zum alten Wert addiert wird. Negative Änderungen möglich.
-//	 * @return
-//	 */
-//	public boolean ändereWert(int änderung) {
-//		if(änderung < min) {
-//			wert = min;
-//			return false;
-//		} else if(änderung > max) {
-//			wert = max;
-//			return false;
-//		} else {
-//			wert = wert + änderung;
-//			return true;
-//		}
-//	}
 
 }

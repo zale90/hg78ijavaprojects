@@ -147,34 +147,44 @@ public class Spiel {
 		mainGUI.zeigePanel(gameGUI);
 	}
 	
-	public void naechsteRunde()
-	{
+	public void naechsteRunde() {
 		gameGUI.setzeAktiviert(true);
-		aktuelleRunde = aktuelleRunde + 1;
-		if ((aktuelleRunde % 4) == 0)
-		{
+		aktuelleRunde++;
+		
+		// Bei neuem Monat Geld auszahlen
+		if ((aktuelleRunde % 4) == 0) {
 			kontostand = kontostand + geldProMonat;
 		}
 		
-		boolean verloren = false;
-		for(int i = 0; i < bedürfnisse.length; i++) {
-			bedürfnisse[i].setWert(bedürfnisse[i].getWert()-bedürfnisse[i].getAbfallfaktor());
-			if (bedürfnisse[i].getWert() < bedürfnisse[i].getMin())
-			{
-				// Spiel verloren
-				verloren = true;
-				
-				//Hat man wirklich verloren? Man bekommt keine Punkte mehr, aber muss das Spiel deshalb zu Ende sein?
-			}
-		}
+		// Bedürfnisse um Abfallfaktor reduzieren
+		bedürfnisseFallen();
 		
-		if(verloren) {
-			spielBeenden();
-			return;
-		}
+		// Ereignisse auslösen
 		Ereignis er = getRandomEreignis();
 		infosUmsetzen(er.ausführen());
 		gameGUI.aktualisiereDaten();
+		
+		// Überprüfen ob Spieler verloren hat
+		if(istBedürfnisAufMinimum()) {
+			spielBeenden();
+			return;
+		}
+	}
+	
+	private boolean istBedürfnisAufMinimum() {
+		boolean minimum = false;
+		for(int i = 0; i < bedürfnisse.length; i++) {
+			if(bedürfnisse[i].istMinimum()) {
+				minimum = true;
+			}
+		}
+		return minimum;
+	}
+	
+	private void bedürfnisseFallen() {
+		for(int i = 0; i < bedürfnisse.length; i++) {
+			bedürfnisse[i].setWert(bedürfnisse[i].getWert()-bedürfnisse[i].getAbfallfaktor());
+		}
 	}
 	
 	/**
