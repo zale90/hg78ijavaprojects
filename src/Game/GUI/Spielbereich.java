@@ -34,6 +34,8 @@ public class Spielbereich extends JPanel implements MouseListener
 		header.setHorizontalAlignment(SwingConstants.CENTER);
 		header.setFont(Optionen.FONT_ACTION_HEADER);
 		header.setSize(150,40);
+		header.setForeground(Color.BLACK);
+		header.setBackground(Color.WHITE);
 		header.setVisible(false);
 		this.add(header);
 		
@@ -107,7 +109,7 @@ public class Spielbereich extends JPanel implements MouseListener
 				if(mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
 				{
 					aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
-//					header.setVisible(false);
+					header.setVisible(false);
 				}
 				else	
 				{
@@ -149,9 +151,9 @@ public class Spielbereich extends JPanel implements MouseListener
 				{
 					header.setText(aktionsObjekte.get(i).getHeadertext());
 					
-//					showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i), 1);
-					header.setLocation(aktionsObjekte.get(i).getHeaderpos());
-					header.setVisible(true);
+					showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i), 1);
+//					header.setLocation(aktionsObjekte.get(i).getHeaderpos());
+//					header.setVisible(true);
 					
 					aktionsObjekte.get(i).setAktiv(true);
 					aktivesObjekt = i;
