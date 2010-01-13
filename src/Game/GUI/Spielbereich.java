@@ -19,7 +19,8 @@ public class Spielbereich extends JPanel implements MouseListener
 	private Spieloberfläche spieloberfläche;
 	private int aktivesObjekt;
 	private ArrayList<Aktionsobjekt> aktionsObjekte;
-	private JLabel header;
+	private ActionHeader header;
+	private Thread threadHeader;
 	
 	
 	public Spielbereich(int x,int y, Spieloberfläche spielUI) {
@@ -30,18 +31,15 @@ public class Spielbereich extends JPanel implements MouseListener
 		Verzweigung.setSpielbereich(this); //die Verzweigung muss auf das Spielbereich-objekt zugreifen können
 		
 		// es gibt nur noch einen header, der einfach rumbewegt und mit anderen Strings ausgestattet wird
-		header = new JLabel();
-		header.setHorizontalAlignment(SwingConstants.CENTER);
-		header.setFont(Optionen.FONT_ACTION_HEADER);
-		header.setSize(150,40);
-		header.setForeground(Color.BLACK);
-		header.setBackground(Color.WHITE);
-		header.setVisible(false);
+		header = new ActionHeader(this);		
 		this.add(header);
+		threadHeader = new Thread(header);
 		
 		// erstellen der Aktionsobjekte mit Menus
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
 		türAktionen.add(new Aktion("Kino besuchen", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null));
+        türAktionen.add(new Aktion("Freunde besuchen", "(blue)Besuche deine Freunde\n\n(red)Zeit: -1\n(green)Soziales: +10", "Du hast deine Freunde besucht.", null));
+        türAktionen.add(new Aktion("Theater besuchen", "(blue)Besuche ein Theater\n\n(red)Geld: -50\nZeit: -1\n(green)Soziales: +10\nLuxus: +15", "Du bist ins Theater gegangen.", null));
 		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
 		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
 		sonstigesAktionen.add(new Aktion("Park", "(blue)Gehe in den Park \n\n(red)Zeit: -1\n(green)Soziales: +10\nLuxus: +5", "Du bist in den Park gegangen", null));
@@ -121,7 +119,13 @@ public class Spielbereich extends JPanel implements MouseListener
 							aktionsObjekte.get(i).setAktiv(true);
 							header.setText(aktionsObjekte.get(i).getHeadertext());
 							
-							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
+							
+							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i));
+							try {
+									threadHeader.start();
+							        } catch (Exception e) {							        	
+							        }
+							
 //							header.setLocation(aktionsObjekte.get(i).getHeaderpos());
 //							header.setVisible(true);
 							
@@ -151,7 +155,13 @@ public class Spielbereich extends JPanel implements MouseListener
 				{
 					header.setText(aktionsObjekte.get(i).getHeadertext());
 					
-					showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i), 1);
+					
+					showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i));
+					try {
+							threadHeader.start();
+					        } catch (Exception e) {
+					        	
+					        }
 //					header.setLocation(aktionsObjekte.get(i).getHeaderpos());
 //					header.setVisible(true);
 					
@@ -184,7 +194,7 @@ public class Spielbereich extends JPanel implements MouseListener
 	 * @param lblSuper Die Komponente, bei der das Actionpanel erstellt wird.
 	 * @param actionCompType 0=ActionPanel 1=ActionLabel
 	 */
-	public void showActionComponent(Point mEvt, Component actionCmp, JComponent lblSuper, int actionCompType) {
+	public void showActionComponent(Point mEvt, Component actionCmp, JComponent lblSuper) {
 		//MouseClick pos bestimmen
 		
 		//pointerInfo = MouseInfo.getPointerInfo();
@@ -195,14 +205,8 @@ public class Spielbereich extends JPanel implements MouseListener
 		int xpos = (int)mEvt.getX();
 		int ypos = (int)mEvt.getY();
 		int height = 0;
-		//spielUI.zeigeNachrichtInKonsole("Mausklick Location @ " + xpos + ", " + ypos + " (Türbereich).");
+		
 				
-		switch (actionCompType) {
-		case 0: height = -5;
-				break;
-		case 1: height = 40;
-				break;
-		}
 		
 		//Sorgt dafür, dass die Komponente nicht außerhalb des Panels erstellt wird.
 		if ((xpos + lblSuper.getX() + actionCmp.getWidth() / 2) < 800) {
@@ -248,5 +252,9 @@ public class Spielbereich extends JPanel implements MouseListener
 			header.setVisible(false);
 			aktivesObjekt = -1;
 		}
+	}
+	
+	public int getAktivesObjekt() {
+		return aktivesObjekt;
 	}
 }
