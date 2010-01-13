@@ -1,0 +1,23 @@
+#summary Informationen für Minigames
+
+= Einleitung =
+
+Hier findet ihr alle Informationen um eure Minigames so anzupassen, damit das Hauptspiel sie benutzen kann.
+
+= Speichern von Dateien =
+
+Alle Dateien, die das Spiel benötigt, sollten im Ordner files/minigames/<<Game-Name>> gespeichert werden.
+
+
+= Rückgabe =
+
+Um die Informationen die das Minigame generiert verarbeiten zu können, müssen diese in einem Informations-Array gespeichert sein.
+
+
+= Informationspaket =
+
+In diesem Paket (ZIP) befinden sich alle benötigten Dateien für die Integration der Minigames.
+
+Aktueller Inhalt (13.01.2010): Klasse Information, Dokumentation des aktuellen Spiels.
+
+Das Paket findet ihr unter Downloads
