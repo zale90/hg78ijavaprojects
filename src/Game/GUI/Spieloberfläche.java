@@ -17,6 +17,8 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	private Spiel spiel;
 	private PunkteGUI punkteGUI;
 	private Spielbereich spielbereich;
+	private Thread threadlblMaus;
+	private MausLabel lblMaus;
 	
 	/**
 	 * interaktive Schaltflächen; erstmal mit JLabels, damit wir flexibler sind
@@ -155,6 +157,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 			bedürfnisBars[i].setValue(bedürfnisse[i].getWert());
 			bedürfnisBars[i].setSize(140, 20);
 			bedürfnisBars[i].setLocation(pos);
+			bedürfnisBars[i].addMouseListener(this);
 			this.add(bedürfnisBars[i]);
 			JLabel lbl = new JLabel(bedürfnisse[i].getName());
 			lbl.setSize(100, 20);
@@ -224,10 +227,34 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {}
+	public void mouseEntered(MouseEvent evt) {
+		// BedürfnisInfos anzeigen
+		for(int i = 0; i < bedürfnisBars.length; i++) {
+			JProgressBar bar = bedürfnisBars[i];
+			
+			if(evt.getSource() == bar) {
+				lblMaus = new MausLabel(Bedürfnis.getName(i) + ": " + bar.getValue() + "%", this);
+				this.add(lblMaus);
+				threadlblMaus = new Thread(lblMaus);
+				threadlblMaus.run();
+			}
+		}
+		
+	}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {}
+	public void mouseExited(MouseEvent evt) {
+		// BedürfnisInfos anzeigen
+		for(int i = 0; i < bedürfnisBars.length; i++) {
+			JProgressBar bar = bedürfnisBars[i];
+			
+			if(evt.getSource() == bar) {
+				threadlblMaus.stop();
+				threadlblMaus = null;
+				this.remove(lblMaus);
+			}
+		}
+	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {}
