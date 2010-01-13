@@ -6,14 +6,15 @@ import Game.GUI.Minigames.*;
 
 public class Aktion extends JLabel {
 	private static final long serialVersionUID = 1L;
-	private Information[] veraenderungen;
+	private Information[] kosten, nutzen;
 	private String name, beschreibung, konsolenausgabe;
 	private Minispiel minispiel;
 	
-	public Aktion(String name, String beschreibung, String konsolenausgabe, Information[] ver)
+	public Aktion(String name, String beschreibung, String konsolenausgabe, Information[] kost, Information[] nutz)
 	{
 		super(name);
-		setVeraenderungen(ver);
+		this.kosten = kost;
+		this.nutzen= nutz;
 		this.name = name;
 		this.beschreibung = beschreibung;
 		this.konsolenausgabe = konsolenausgabe;
@@ -47,13 +48,40 @@ public class Aktion extends JLabel {
 	public String getBeschreibung() {
 		return beschreibung;
 	}
+	public Information[] getKosten()
+	{
+		return kosten;
+	}
+	public Information[] getNutzen()
+	{
+		return nutzen;
+	}
 	public Information[] getVeraenderungen()
 	{
-		return veraenderungen;
-	}
-
-	public void setVeraenderungen(Information[] veraenderungen) {
-		this.veraenderungen = veraenderungen;
+		if (kosten == null)
+		{
+			return nutzen;
+		}
+		else
+		{
+			if (nutzen == null)
+			{
+				return kosten;
+			}
+			else
+			{
+				Information[] veraenderung = new Information[kosten.length + nutzen.length];
+				for (int i = 0; i < kosten.length; i++)
+				{
+					veraenderung[i] = kosten[i];
+				}
+				for (int i = 0; i < nutzen.length; i++)
+				{
+					veraenderung[i+kosten.length] = nutzen[i];
+				}
+				return veraenderung;
+			}
+		}
 	}
 
 	public void setMinispiel(Minispiel minispiel) {
