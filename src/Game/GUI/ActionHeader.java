@@ -6,6 +6,7 @@ import java.awt.Point;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 import Game.Optionen;
 
@@ -34,11 +35,14 @@ public class ActionHeader extends JLabel implements Runnable{
 		while (spielbereich.getAktivesObjekt() != -1){
 			if (this.isVisible()) {
 				try {
-					Thread.sleep(1000);
+					Thread.sleep(20);
 				} catch (Exception e) {}
 				p = MouseInfo.getPointerInfo().getLocation();
-				//this.setLocation(p);
+				SwingUtilities.convertPointFromScreen(p, spielbereich);
+				//spielbereich.spieloberfläche.zeigeNachrichtInKonsole(p.getX() + ", " + p.getY());
+				this.setLocation(p);
 				this.repaint();
+				
 			}
 		}
 		
