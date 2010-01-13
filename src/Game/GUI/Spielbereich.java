@@ -41,7 +41,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 		// erstellen der Aktionsobjekte mit Menus
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
-		türAktionen.add(new Aktion("Kino", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null));
+		türAktionen.add(new Aktion("Kino besuchen", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null));
 		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
 		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
 		sonstigesAktionen.add(new Aktion("Park", "(blue)Gehe in den Park \n\n(red)Zeit: -1\n(green)Soziales: +10\nLuxus: +5", "Du bist in den Park gegangen", null));
@@ -65,7 +65,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(522, 85), new Dimension(144, 241),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
 		kuehlschrank.addMouseListener(this);
 		this.add(kuehlschrank);
-		aktionsObjekte.add(kuehlschrank);		
+		aktionsObjekte.add(kuehlschrank);
 		
 		// Hintergrund und Spielbereichgröße
 		lblbackGround = new JLabel(new ImageIcon(Optionen.ICON_PATH_GAME + "bg.png"));
