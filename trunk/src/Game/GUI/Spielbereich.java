@@ -47,9 +47,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		türVerzweigungen.add(sonstiges);
 		Verzweigung tuerMenu = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
 		
-		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", new Point(640, 30), "dooropen.png","doorclosed.png", tuerMenu);
-		tuer.setSize(81, 340);
-		tuer.setLocation(687, 90);
+		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", new Point(687, 90), new Dimension(81, 340), "dooropen.png","doorclosed.png", tuerMenu);
 		tuer.addMouseListener(this);
 		tuer.setOpaque(false);
 		this.add(tuer);
@@ -63,9 +61,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		kuehlschrankVerzweigung.add(new Verzweigung("Gemüse", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
 		Verzweigung kuehlschrankMenu = new Verzweigung("Kühlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
 		
-		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(560, 30),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
-		kuehlschrank.setSize(144, 241);
-		kuehlschrank.setLocation(522, 85);
+		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(522, 85), new Dimension(144, 241),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
 		kuehlschrank.addMouseListener(this);
 		kuehlschrank.setOpaque(false);
 		this.add(kuehlschrank);
@@ -125,9 +121,9 @@ public class Spielbereich extends JPanel implements MouseListener
 							aktionsObjekte.get(i).setAktiv(true);
 							header.setText(aktionsObjekte.get(i).getHeadertext());
 							
-//							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
-							header.setLocation(aktionsObjekte.get(i).getHeaderpos());
-							header.setVisible(true);
+							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i), 1);
+//							header.setLocation(aktionsObjekte.get(i).getHeaderpos());
+//							header.setVisible(true);
 							
 							aktivesObjekt = i;
 							return;
