@@ -7,6 +7,7 @@ import java.awt.Point;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.border.*;
 
 import Game.Optionen;
 
@@ -28,6 +29,7 @@ public class ActionHeader extends JLabel implements Runnable{
 		this.setSize(130,30);
 		this.setForeground(Color.WHITE);
 		this.setBackground(new java.awt.Color(0,0,0,150));
+		this.setBorder(new LineBorder(Color.BLACK, 2));
 		this.setVisible(false);
 	}
 	
