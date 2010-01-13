@@ -49,7 +49,6 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", new Point(687, 90), new Dimension(81, 340), "dooropen.png","doorclosed.png", tuerMenu);
 		tuer.addMouseListener(this);
-		tuer.setOpaque(false);
 		this.add(tuer);
 		aktionsObjekte.add(tuer);
 		
@@ -63,7 +62,6 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(522, 85), new Dimension(144, 241),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
 		kuehlschrank.addMouseListener(this);
-		kuehlschrank.setOpaque(false);
 		this.add(kuehlschrank);
 		aktionsObjekte.add(kuehlschrank);		
 		

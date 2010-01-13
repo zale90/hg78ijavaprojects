@@ -15,10 +15,13 @@ public class Aktionsobjekt extends JLabel {
 	private ImageIcon aktiv, inaktiv;
 	private Verzweigung menu;
 	
-	public Aktionsobjekt(String headertext, Point headerpos, String aktiv, String inaktiv, Verzweigung menu)
+	public Aktionsobjekt(String headertext, Point coords, Dimension dim, String aktiv, String inaktiv, Verzweigung menu)
 	{
 		this.setHeadertext(headertext);
-		this.setHeaderpos(headerpos);
+		//this.setHeaderpos(headerpos);
+		this.setSize(dim);
+		this.setLocation(coords);
+		this.setOpaque(false);
 		this.setAktiv(new ImageIcon(Optionen.ICON_PATH_GAME + aktiv));
 		this.setInaktiv(new ImageIcon(Optionen.ICON_PATH_GAME + inaktiv));
 		this.setMenu(menu);
