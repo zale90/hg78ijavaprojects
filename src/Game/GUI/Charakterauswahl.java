@@ -9,8 +9,8 @@ public class Charakterauswahl extends JPanel {
 	private static final long serialVersionUID = -5037394024976426750L;
 
 	public Charakterauswahl(ArrayList<Avatar> avaArray) {
-		
-		this.setSize(1000, 700);
+
+		this.setSize(995, 672);
 		this.setLocation(0,0);
 		this.setLayout(null);
 		this.setBackground(null);

@@ -20,7 +20,7 @@ public class Highscoreliste extends JPanel implements ActionListener {
 	private JButton btnNeuesSpiel, btnBeendeSpiel;
 
 	public Highscoreliste(Highscores scores) {
-		this.setSize(1000, 700);
+		this.setSize(995, 672);
 		this.setLocation(0, 0);
 		this.setLayout(null);
 		this.setBackground(null);

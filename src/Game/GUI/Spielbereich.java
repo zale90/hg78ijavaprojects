@@ -20,8 +20,8 @@ public class Spielbereich extends JPanel implements MouseListener
 	private Spieloberfläche spieloberfläche;
 	private int aktivesObjekt;
 	private ArrayList<Aktionsobjekt> aktionsObjekte;
-	private ActionHeader header;
-	private Thread threadHeader;
+	private MausLabel lblMaus;
+	private Thread threadlblMaus;
 	
 	
 	public Spielbereich(int x,int y, Spieloberfläche spielUI) {
@@ -32,9 +32,9 @@ public class Spielbereich extends JPanel implements MouseListener
 		Verzweigung.setSpielbereich(this); //die Verzweigung muss auf das Spielbereich-objekt zugreifen können
 		
 		// es gibt nur noch einen header, der einfach rumbewegt und mit anderen Strings ausgestattet wird
-		header = new ActionHeader(this);		
-		this.add(header);
-		threadHeader = new Thread(header);
+		lblMaus = new MausLabel(this);		
+		this.add(lblMaus);
+		threadlblMaus = new Thread(lblMaus);
 		
 		// erstellen der Aktionsobjekte mit Menus
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
@@ -101,7 +101,7 @@ public class Spielbereich extends JPanel implements MouseListener
 			if (mouseClick.getSource() == lblbackGround)
 			{
 				aktionsObjekte.get(aktivesObjekt).setAktiv(false);
-				header.setVisible(false);
+				lblMaus.setVisible(false);
 				aktivesObjekt = -1;
 			}
 			else
@@ -109,7 +109,7 @@ public class Spielbereich extends JPanel implements MouseListener
 				if(mouseClick.getSource() == aktionsObjekte.get(aktivesObjekt))
 				{
 					aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(true);
-					header.setVisible(false);
+					lblMaus.setVisible(false);
 				}
 				else	
 				{
@@ -119,13 +119,13 @@ public class Spielbereich extends JPanel implements MouseListener
 						if (aktionsObjekte.get(i) == mouseClick.getSource())
 						{
 							aktionsObjekte.get(i).setAktiv(true);
-							header.setText(aktionsObjekte.get(i).getHeadertext());
+							lblMaus.setText(aktionsObjekte.get(i).getHeadertext());
 							
 							
 							//showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i));
 							try {
-								    threadHeader = new Thread(header);
-									threadHeader.start();
+								    threadlblMaus = new Thread(lblMaus);
+								    threadlblMaus.start();
 							        } catch (Exception e) {							        	
 							        }
 							
@@ -156,13 +156,13 @@ public class Spielbereich extends JPanel implements MouseListener
 			{
 				if(mouseOver.getSource() == aktionsObjekte.get(i))
 				{
-					header.setText(aktionsObjekte.get(i).getHeadertext());
+					lblMaus.setText(aktionsObjekte.get(i).getHeadertext());
 					
 					
 					//showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i));
 					try {
-					     	threadHeader = new Thread(header);
-							threadHeader.start();
+					     	threadlblMaus = new Thread(lblMaus);
+					     	threadlblMaus.start();
 					        } catch (Exception e) {
 					        	
 					        }
@@ -253,7 +253,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		{
 			aktionsObjekte.get(aktivesObjekt).getMenu().setVisible(false);
 			aktionsObjekte.get(aktivesObjekt).setAktiv(false);
-			header.setVisible(false);
+			lblMaus.setVisible(false);
 			aktivesObjekt = -1;
 		}
 	}

@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-
 import Game.*;
 
 public class Spieloberfläche extends JPanel implements MouseListener {
@@ -12,21 +11,17 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	private static final long serialVersionUID = 846296549789605647L;
 	
 	private JTextPane console;
-	private JLabel lblHeading, lblZeit, lblGeld, lblGeldProMonat, lblZeitpunkt;  //fällt jemandem ein besseres Wort für Einkommen ein, außer Einkommen?
+	private JLabel lblHeading, lblZeit, lblGeld, lblGeldProMonat, lblZeitpunkt;
 	private JProgressBar[] bedürfnisBars;
 	private Spiel spiel;
 	private PunkteGUI punkteGUI;
 	private Spielbereich spielbereich;
 	private Thread threadlblMaus;
 	private MausLabel lblMaus;
-	
-	/**
-	 * interaktive Schaltflächen; erstmal mit JLabels, damit wir flexibler sind
-	 */
 	private JLabel rundeWeiter, spielNeuStarten;
 	
 	public Spieloberfläche(Spiel spiel, String charName) {
-		this.setSize(1000, 700);
+		this.setSize(995, 672);
 		this.setLocation(0, 0);
 		this.setLayout(null);
 		this.setBackground(null);
@@ -35,6 +30,11 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		
 		punkteGUI = new PunkteGUI(spiel);
 		this.add(punkteGUI);
+		
+		// Maus-Label
+		lblMaus = new MausLabel(this);
+		this.add(lblMaus);
+		threadlblMaus = new Thread(lblMaus);
 		
 		// GUI-Elemente erzeugen
 		lblHeading = new JLabel(Optionen.NAME);
@@ -127,10 +127,6 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		rundeWeiter.addMouseListener(this);
 		this.add(rundeWeiter);
 		
-		/*
-		 * Den sollten wir wahrscheinlich noch woanders hinpacken,
-		 * der ist nur an der Stelle, weil ich noch Platz hatte.
-		 */
 		spielNeuStarten = new JLabel("Neues Spiel starten");
 		spielNeuStarten.setSize(140, 40);
 		spielNeuStarten.setLocation(840 ,618);
@@ -233,27 +229,33 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 			JProgressBar bar = bedürfnisBars[i];
 			
 			if(evt.getSource() == bar) {
-				lblMaus = new MausLabel(Bedürfnis.getName(i) + ": " + bar.getValue() + "%", this);
-				this.add(lblMaus);
-				threadlblMaus = new Thread(lblMaus);
-				threadlblMaus.run();
+				zeigeMausLabel(Bedürfnis.getName(i) + ": " + bar.getValue() + "%");
 			}
 		}
 		
+		// Buttoninfos anzeigen
+		if(evt.getSource() == rundeWeiter) {
+			//zeigeMausLabel("In die nächste Runde wechseln!");
+		} else if(evt.getSource() == spielNeuStarten) {
+			zeigeMausLabel("Zurück zur Charakterauswahl!");
+		}
+		
+	}
+	
+	/**
+	 * Zeit an der aktuellen Mausposition das Mauslabel an, bis die Maus die aktuelle Komponente verlässt.
+	 * 
+	 * @param text Text, der im Label angezeigt werden soll.
+	 */
+	private void zeigeMausLabel(String text) {
+		lblMaus.setText(text);
+		threadlblMaus = new Thread(lblMaus);
+		threadlblMaus.start();
 	}
 
 	@Override
 	public void mouseExited(MouseEvent evt) {
-		// BedürfnisInfos anzeigen
-		for(int i = 0; i < bedürfnisBars.length; i++) {
-			JProgressBar bar = bedürfnisBars[i];
-			
-			if(evt.getSource() == bar) {
-				threadlblMaus.stop();
-				threadlblMaus = null;
-				this.remove(lblMaus);
-			}
-		}
+		lblMaus.setVisible(false);
 	}
 
 	@Override
@@ -275,6 +277,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		aktualisiereDaten();
 		
 	}
+	
 	public void minispielEnde(Information info)
 	{
 		Information[] infoArray = new Information[1];

@@ -18,6 +18,8 @@ public class ActionHeader extends JLabel implements Runnable{
 	
 	/**
 	 * Der Header, der erscheint, wenn man die Maus über ein Interaktionsobjekt bewegt.
+	 * 
+	 * ACHTUNG: Wird nicht mehr benötigt! Für den Fall, dass Holle die Klasse trotzdem haben möchte, lass ich sie nochmal drin!
 	 */
 	private static final long serialVersionUID = 1L;
 
