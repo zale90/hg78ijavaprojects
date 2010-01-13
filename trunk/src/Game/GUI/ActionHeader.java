@@ -25,14 +25,16 @@ public class ActionHeader extends JLabel implements Runnable{
 		this.setHorizontalAlignment(SwingConstants.CENTER);
 		this.setOpaque(true);
 		this.setFont(Optionen.FONT_ACTION_HEADER);
-		this.setSize(150,40);
+		this.setSize(130,30);
 		this.setForeground(Color.WHITE);
-		this.setBackground(new java.awt.Color(0,0,0,20));	
+		this.setBackground(new java.awt.Color(0,0,0,150));
 		this.setVisible(false);
 	}
 	
 	
 	public void run() {
+		this.setSize(this.getText().length() * 9, 30);
+		this.setVisible(true);
 		while (spielbereich.getAktivesObjekt() != -1){
 			if (this.isVisible()) {
 				try {
@@ -43,12 +45,12 @@ public class ActionHeader extends JLabel implements Runnable{
 				//spielbereich.spieloberfläche.zeigeNachrichtInKonsole(p.getX() + ", " + p.getY());
 				
 				//this.setLocation(p);
-				if ((p.getX() + this.getWidth() / 2) < 800) {
-					this.setLocation((int) (p.getX() - this.getWidth() / 2), (int) p.getY() - 30);
+				if ((p.getX() + this.getWidth()) < 800) {
+					this.setLocation((int) (p.getX()), (int) p.getY() + 20);
 				} else {
-					this.setLocation(800 - this.getWidth(),(int) p.getY() - 30);
+					this.setLocation(800 - this.getWidth(),(int) p.getY() + 20);
 				}
-				this.repaint();
+				//this.repaint();
 				
 			}
 		}
