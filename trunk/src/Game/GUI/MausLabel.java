@@ -40,25 +40,35 @@ public class MausLabel extends JLabel implements Runnable {
 	 * Zeigt das Label neben der Maus an, bis es auf unsichtbar gesetzt wird.
 	 */
 	public void run() {
+		// Aktualisieren bevor das Label angezeigt wird.
+		zeigeNebenMaus();
 		this.setSize(this.getText().length() * 9, 30);
+		
 		this.setVisible(true);
+		
+		// Solange das Label sichtbar ist: Position aktualisieren.
 		while (isVisible()){
-			if (this.isVisible()) {
-				
-				try {
-					Thread.sleep(10);
-				} catch (Exception e) {}
-				
-				Point p = MouseInfo.getPointerInfo().getLocation();
-				SwingUtilities.convertPointFromScreen(p, comp);
-				
-				if ((p.getX() + this.getWidth()) < comp.getWidth()-5) {
-					this.setLocation((int) (p.getX()), (int) p.getY() + 20);
-				} else {
-					this.setLocation(comp.getWidth()-5 - this.getWidth(),(int) p.getY() + 20);
-				}
-				
-			}
+			
+			// Verzögerung
+			try {
+				Thread.sleep(10);
+			} catch (Exception e) {}
+			
+			zeigeNebenMaus();
+		}
+	}
+	
+	/**
+	 * Zeigt das Label an der richtigen Position neben der Maus an.
+	 */
+	private void zeigeNebenMaus() {
+		Point p = MouseInfo.getPointerInfo().getLocation();
+		SwingUtilities.convertPointFromScreen(p, comp);
+		
+		if ((p.getX() + this.getWidth()) < comp.getWidth()-5) {
+			this.setLocation((int) (p.getX()), (int) p.getY() + 20);
+		} else {
+			this.setLocation(comp.getWidth()-5 - this.getWidth(),(int) p.getY() + 20);
 		}
 	}
 }
