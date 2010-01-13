@@ -124,6 +124,7 @@ public class Spielbereich extends JPanel implements MouseListener
 							
 							showActionComponent(mouseClick.getPoint(), header, aktionsObjekte.get(i));
 							try {
+								    threadHeader = new Thread(header);
 									threadHeader.start();
 							        } catch (Exception e) {							        	
 							        }
@@ -160,6 +161,7 @@ public class Spielbereich extends JPanel implements MouseListener
 					
 					showActionComponent(mouseOver.getPoint(), header, aktionsObjekte.get(i));
 					try {
+					     	threadHeader = new Thread(header);
 							threadHeader.start();
 					        } catch (Exception e) {
 					        	

@@ -23,10 +23,11 @@ public class ActionHeader extends JLabel implements Runnable{
 	public ActionHeader(Spielbereich spielbereich) {
 		this.spielbereich = spielbereich;
 		this.setHorizontalAlignment(SwingConstants.CENTER);
+		this.setOpaque(true);
 		this.setFont(Optionen.FONT_ACTION_HEADER);
 		this.setSize(150,40);
-		this.setForeground(Color.BLACK);
-		this.setBackground(Color.WHITE);
+		this.setForeground(Color.WHITE);
+		this.setBackground(new java.awt.Color(0,0,0,20));	
 		this.setVisible(false);
 	}
 	
