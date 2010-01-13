@@ -4,6 +4,13 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.Color;
 import java.awt.event.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultStyledDocument;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 import Game.*;
 
 public class CharakterGUI extends JPanel implements ActionListener {
@@ -43,9 +50,19 @@ public class CharakterGUI extends JPanel implements ActionListener {
       bild.setBorder(new LineBorder(Color.BLACK, 1));
       this.add(bild);
       
-      beschreibung = new JTextPane();
+      StyleContext kontext = new StyleContext();
+      StyledDocument dokument = new DefaultStyledDocument(kontext);
+      Style style = dokument.getStyle(StyleContext.DEFAULT_STYLE);
+      StyleConstants.setAlignment(style, StyleConstants.ALIGN_JUSTIFIED);
+      
+      try {
+          dokument.insertString(dokument.getLength(), avatar.getBeschreibung(), style);
+        } catch (BadLocationException badLocationException) {
+        }
+      
+      beschreibung = new JTextPane(dokument);
       beschreibung.setBackground(null);
-      beschreibung.setText(avatar.getBeschreibung());
+      //beschreibung.setText(avatar.getBeschreibung());
       beschreibung.setSize(250, 150);
       beschreibung.setLocation(35, 270);
       beschreibung.setEditable(false);
