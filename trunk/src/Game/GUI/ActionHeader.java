@@ -35,12 +35,18 @@ public class ActionHeader extends JLabel implements Runnable{
 		while (spielbereich.getAktivesObjekt() != -1){
 			if (this.isVisible()) {
 				try {
-					Thread.sleep(20);
+					Thread.sleep(10);
 				} catch (Exception e) {}
 				p = MouseInfo.getPointerInfo().getLocation();
 				SwingUtilities.convertPointFromScreen(p, spielbereich);
 				//spielbereich.spieloberfläche.zeigeNachrichtInKonsole(p.getX() + ", " + p.getY());
-				this.setLocation(p);
+				
+				//this.setLocation(p);
+				if ((p.getX() + this.getWidth() / 2) < 800) {
+					this.setLocation((int) (p.getX() - this.getWidth() / 2), (int) p.getY() - 30);
+				} else {
+					this.setLocation(800 - this.getWidth(),(int) p.getY() - 30);
+				}
 				this.repaint();
 				
 			}

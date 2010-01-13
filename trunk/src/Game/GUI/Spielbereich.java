@@ -206,7 +206,7 @@ public class Spielbereich extends JPanel implements MouseListener
 		
 		int xpos = (int)mEvt.getX();
 		int ypos = (int)mEvt.getY();
-		int height = 0;
+		int height = 30;
 		
 				
 		
