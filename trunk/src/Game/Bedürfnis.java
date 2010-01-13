@@ -50,7 +50,7 @@ public class Bedürfnis {
 	/**
 	 * @return the name
 	 */
-	public String getName(int nr) {
+	public static String getName(int nr) {
 		String name = new String("");
 		
 		switch (nr)

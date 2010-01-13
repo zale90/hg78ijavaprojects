@@ -75,7 +75,7 @@ public class Ereignis {
 		}
 		return JOptionPane.showOptionDialog(SpielAnwendung.mainGUI, getText(), 
 				getName(), optionType, JOptionPane.INFORMATION_MESSAGE, null,
-				options, options[0]);
+				options, options[0]);		
 	}
 
 	/**
