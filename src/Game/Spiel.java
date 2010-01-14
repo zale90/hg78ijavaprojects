@@ -114,7 +114,12 @@ public class Spiel {
 	 * Beendet die aktuelle Runde und wechselt in die nächste.
 	 */
 	public void naechsteRunde() {
-		gameGUI.setzeAktiviert(true);
+		// Überprüfen ob Spieler verloren hat
+		if(istBedürfnisAufMinimum()) {
+			spielBeenden();
+			return;
+		}
+		//gameGUI.setzeAktiviert(true);
 		aktuelleRunde++;
 		
 		// Bei neuem Monat Geld auszahlen
@@ -124,18 +129,12 @@ public class Spiel {
 		
 		// Bedürfnisse um Abfallfaktor reduzieren
 		bedürfnisseFallen();
+		gameGUI.aktualisiereDaten();
 		
 		// Ereignisse auslösen
 		Ereignis er = getRandomEreignis();
-		infosUmsetzen(er.ausführen());
-		gameGUI.aktualisiereDaten();
-		
-		// Überprüfen ob Spieler verloren hat
-		if(istBedürfnisAufMinimum()) {
-			spielBeenden();
-			return;
+		gameGUI.getEreignisfenster().fensterZeigen(er);
 		}
-	}
 	
 	/**
 	 * Liefert true wenn mindestens ein Bedürfnis auf dem Minimum ist.
@@ -234,7 +233,7 @@ public class Spiel {
 	 * 
 	 * @param infos Infos die umgesetzt werden sollen.
 	 */
-	private void infosUmsetzen(Information[] infos)
+	public void infosUmsetzen(Information[] infos)
 	{
 		if(infos == null){}
 		else
