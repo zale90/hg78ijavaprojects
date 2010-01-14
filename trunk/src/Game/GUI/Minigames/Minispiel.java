@@ -1,9 +1,9 @@
 package Game.GUI.Minigames;
 
-import Game.GUI.Spieloberfläche;
+import Game.Spiel;
 
 public interface Minispiel {
 	
-	public void start(Spieloberfläche spieloberfläche);
+	public void start(Spiel spiel);
 
 }
