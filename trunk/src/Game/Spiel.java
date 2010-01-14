@@ -201,10 +201,12 @@ public class Spiel {
 		gameGUI.aktualisiereDaten();
 	}
 	
-	public void minispielEnde(Information[] infos)
+	public void minispielEnde(String konsolennachricht, Information[] infos)
 	{
 //		Information[] infoArray = new Information[1];
 //		infoArray[0] = info;
+		if (konsolennachricht != null & konsolennachricht != "")
+			gameGUI.zeigeNachrichtInKonsole(konsolennachricht);
 		infosUmsetzen(infos);
 		gameGUI.setzeAktiviert(true);
 		gameGUI.aktualisiereDaten();
