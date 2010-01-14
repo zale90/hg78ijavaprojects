@@ -201,19 +201,40 @@ public class Spiel {
 		gameGUI.aktualisiereDaten();
 	}
 	
-	public void minispielEnde(String konsolennachricht, Information[] infos)
-	{
-//		Information[] infoArray = new Information[1];
-//		infoArray[0] = info;
-		if (konsolennachricht != null & konsolennachricht != "")
+	/**
+	 * Wird direkt vor beenden eines Minispiels aufgerufen um dessen Informationen zu verarbeiten und
+	 * das Hauptspiel wieder freizugeben.
+	 * 
+	 * @param infos Informations-Array, das alle Informationen beinhaltet, die umgesetzt werden sollen.
+	 * @param konsolennachricht Nachricht die in der Konsole des Spiels angezeigt werden soll.
+	 */
+	public void minispielEnde(Information[] infos, String konsolennachricht) {
+		// Nachricht auf Konsole, wenn vorhaden
+		if (konsolennachricht != null && konsolennachricht.trim() != "")
 			gameGUI.zeigeNachrichtInKonsole(konsolennachricht);
+		
+		// Infos verarbeiten
 		infosUmsetzen(infos);
 		gameGUI.setzeAktiviert(true);
 		gameGUI.aktualisiereDaten();
 	}
 	
-	//Eigentlich voll schwachsinnig die Methode, ich bin trotzdem stolz. ;)
-	public void infosUmsetzen(Information[] infos)
+	/**
+	 * Wird direkt vor beenden eines Minispiels aufgerufen um dessen Informationen zu verarbeiten und
+	 * das Hauptspiel wieder freizugeben.
+	 * 
+	 * @param infos Informations-Array, das alle Informationen beinhaltet, die umgesetzt werden sollen.
+	 */
+	public void minispielEnde(Information[] infos) {
+		minispielEnde(infos, null);
+	}
+	
+	/**
+	 * Setzt alle Informationen des übergebenen Informations-Arrays um.
+	 * 
+	 * @param infos Infos die umgesetzt werden sollen.
+	 */
+	private void infosUmsetzen(Information[] infos)
 	{
 		if(infos == null){}
 		else
@@ -437,7 +458,11 @@ public class Spiel {
 		}
 	}
 	
-	//Addiert jede Runde Punkte auf den Punktestand neu auf.
+	/**
+	 * Addiert in jeder Runde die neu erhaltenen Punkte auf die bereits vorhandenen.
+	 * 
+	 * @param gui PunkteGUI in dem die Daten angezeigt werden sollen.
+	 */
 	public void punkteBerechnen(PunkteGUI gui) 
 	{
 		
