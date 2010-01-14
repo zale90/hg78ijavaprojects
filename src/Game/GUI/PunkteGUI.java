@@ -32,7 +32,7 @@ public class PunkteGUI extends JPanel implements ActionListener
 		this.add(ueberschrift);
 		
 		einleitung = new JTextPane();
-		einleitung.setText("In der letzten Runde haben Sie folgende Punkte erspielt:");
+		einleitung.setText("In der letzten Runde hast du folgende Punkte erspielt:");
 		einleitung.setSize(195, 50);
 		einleitung.setBackground(null);
 		einleitung.setEditable(false);
