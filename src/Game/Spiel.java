@@ -71,73 +71,36 @@ public class Spiel {
 		return zeit;
 	}
 
-	public void setZeit(int zeit) {
-		this.zeit = zeit;
-	}
-
 	public int getZeitProRunde() {
 		return zeitProRunde;
-	}
-
-	public void setZeitProRunde(int zeitProRunde) {
-		this.zeitProRunde = zeitProRunde;
 	}
 
 	public int getKontostand() {
 		return kontostand;
 	}
 
-	public void setKontostand(int kontostand) {
-		this.kontostand = kontostand;
-	}
-
 	public int getGeldProMonat() {
 		return geldProMonat;
-	}
-
-	public void setGeldProMonat(int geldProMonat) {
-		this.geldProMonat = geldProMonat;
 	}
 
 	public int getAvatarNr() {
 		return avatarNr;
 	}
 
-	public void setAvatarNr(int avatarNr) {
-		this.avatarNr = avatarNr;
-	}
-
 	public String getAvatarName() {
 		return avatarName;
-	}
-
-	public void setAvatarName(String avatarName) {
-		this.avatarName = avatarName;
 	}
 
 	public int getPunkte() {
 		return punkte;
 	}
 
-	public void setPunkte(int punkte) {
-		this.punkte = punkte;
-	}
-
 	public ArrayList<Ereignis> getErList() {
 		return erList;
 	}
-
-	public void setErList(ArrayList<Ereignis> erList) {
-		this.erList = erList;
-	}
 	
-	public int getAktuelleRunde()
-	{
+	public int getAktuelleRunde() {
 		return aktuelleRunde;
-	}
-
-	public void setAktuelleRunde(int aktuelleRunde) {
-		this.aktuelleRunde = aktuelleRunde;
 	}
 
 	/**
@@ -147,6 +110,9 @@ public class Spiel {
 		mainGUI.zeigePanel(gameGUI);
 	}
 	
+	/**
+	 * Beendet die aktuelle Runde und wechselt in die nächste.
+	 */
 	public void naechsteRunde() {
 		gameGUI.setzeAktiviert(true);
 		aktuelleRunde++;
@@ -171,6 +137,12 @@ public class Spiel {
 		}
 	}
 	
+	/**
+	 * Liefert true wenn mindestens ein Bedürfnis auf dem Minimum ist.
+	 * Sind alle höher als das Minimum, liefert die Methode false.
+	 * 
+	 * @return true wenn mindestens ein Bedürfnis auf Minimum.
+	 */
 	private boolean istBedürfnisAufMinimum() {
 		boolean minimum = false;
 		for(int i = 0; i < bedürfnisse.length; i++) {
@@ -181,6 +153,9 @@ public class Spiel {
 		return minimum;
 	}
 	
+	/**
+	 * Lässt die Bedürfnisse um den Abfallfaktor fallen.
+	 */
 	private void bedürfnisseFallen() {
 		for(int i = 0; i < bedürfnisse.length; i++) {
 			bedürfnisse[i].setWert(bedürfnisse[i].getWert()-bedürfnisse[i].getAbfallfaktor());
