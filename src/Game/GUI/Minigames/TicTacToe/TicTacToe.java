@@ -19,7 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.awt.event.KeyEvent;
 
-import Game.GUI.Spieloberfläche;
+import Game.Spiel;
 import Game.GUI.Minigames.Minispiel;
 import Game.Information;
 
@@ -90,7 +90,7 @@ public class TicTacToe extends JFrame implements Minispiel, Runnable, ActionList
   boolean cpufeld8 = false;
   boolean cpufeld9 = false;
   
-  private Spieloberfläche spieloberfläche;
+  private Spiel spiel;
   // Ende Attribute
 
 
@@ -429,10 +429,10 @@ public class TicTacToe extends JFrame implements Minispiel, Runnable, ActionList
 
   // Anfang Methoden
   
-  public void start(Spieloberfläche spieloberfläche)
+  public void start(Spiel spiel)
   {
 	  
-	  this.spieloberfläche = spieloberfläche;
+	  this.spiel = spiel;
        this.setVisible(true);
        cursorAnzeigen();
        menuLaden();
@@ -2051,8 +2051,9 @@ public class TicTacToe extends JFrame implements Minispiel, Runnable, ActionList
                    playClickSound();
 //                   System.exit(0);
                    this.setVisible(false);
-                   Information info = new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 50);
-                   spieloberfläche.minispielEnde(info);
+                   Information[] infos = new Information[1];
+                   infos[0] = new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 50);
+                   spiel.minispielEnde(infos);
              }
              
              if(event.getSource() == hauptmenu)

@@ -212,7 +212,28 @@ public class Spiel {
 		Ereignis er = erList.get(i);
 		erList.remove(i);
 		return er;
-	}	
+	}
+		
+	public void aktionAusfuehren(Aktion aktion)
+	{
+		infosUmsetzen(aktion.getVeraenderungen());
+		if (aktion.getMinispiel() != null)
+		{
+			gameGUI.setzeAktiviert(false);
+			aktion.getMinispiel().start(this);
+		}
+		gameGUI.zeigeNachrichtInKonsole(aktion.getKonsolenausgabe());
+		gameGUI.aktualisiereDaten();
+	}
+	
+	public void minispielEnde(Information[] infos)
+	{
+//		Information[] infoArray = new Information[1];
+//		infoArray[0] = info;
+		infosUmsetzen(infos);
+		gameGUI.setzeAktiviert(true);
+		gameGUI.aktualisiereDaten();
+	}
 	
 	//Eigentlich voll schwachsinnig die Methode, ich bin trotzdem stolz. ;)
 	public void infosUmsetzen(Information[] infos)
