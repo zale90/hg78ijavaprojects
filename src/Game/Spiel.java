@@ -134,7 +134,7 @@ public class Spiel {
 		// Ereignisse auslösen
 		Ereignis er = getRandomEreignis();
 		gameGUI.getEreignisfenster().fensterZeigen(er);
-		}
+	}
 	
 	/**
 	 * Liefert true wenn mindestens ein Bedürfnis auf dem Minimum ist.
