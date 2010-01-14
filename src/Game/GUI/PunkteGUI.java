@@ -20,7 +20,7 @@ public class PunkteGUI extends JPanel implements ActionListener
 		this.spiel = spiel;
 		
 		this.setSize(200,350);
-		this.setLocation(400, 175);
+		this.setLocation(320, 135);
 		//this.setLocationRelativeTo(null);
 		this.setLayout(null);
 		this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
