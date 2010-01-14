@@ -141,12 +141,14 @@ public class PunkteGUI extends JPanel implements ActionListener
 		ok.addActionListener(this);
 		this.add(ok);
 		
-		this.setVisible(false);		
+		this.setVisible(false);
 	}
 
 	public void setzeWerte(int hunger, int gesundheit, int soziales, int luxus, int geld, int alt)
 	{
 		this.setVisible(true);
+		// OK-Button Fokussieren
+		ok.requestFocusInWindow();
 		bPunkte[0].setText(Integer.toString(hunger));
 		bPunkte[1].setText(Integer.toString(gesundheit));
 		bPunkte[2].setText(Integer.toString(soziales));

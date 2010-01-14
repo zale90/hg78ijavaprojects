@@ -162,6 +162,4 @@ public class Ereignis {
 		this.nummer = nummer;
 	}
 	
-	
-
 }

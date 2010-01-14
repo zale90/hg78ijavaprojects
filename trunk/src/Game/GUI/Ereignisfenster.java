@@ -109,6 +109,8 @@ public class Ereignisfenster extends JPanel implements ActionListener
 		}
 		
 		this.setVisible(true);
+		
+		fordereFokus();
 	}
 
 	public void actionPerformed(ActionEvent arg0) 
@@ -138,6 +140,17 @@ public class Ereignisfenster extends JPanel implements ActionListener
 			spiel.infosUmsetzen(er.getNein());
 			gameGUI.aktualisiereDaten();
 			gameGUI.setzeAktiviert(true);
+		}
+	}
+	
+	/**
+	 * Fokussiert den Ja- bzw. Weiter-Button.
+	 */
+	private void fordereFokus() {
+		if(er.getTyp()) {
+			ja.requestFocusInWindow();
+		} else {
+			ok.requestFocusInWindow();
 		}
 	}
 }
