@@ -2,7 +2,7 @@ package Game.GUI;
 
 import javax.swing.*;
 import Game.*;
-import Game.GUI.Minigames.*;
+import Game.Minigames.*;
 
 public class Aktion extends JLabel {
 	private static final long serialVersionUID = 1L;

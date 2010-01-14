@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
-import Game.GUI.Minigames.TicTacToe.*;
+
+import Game.Minigames.TicTacToe.*;
 
 import Game.Optionen;
 

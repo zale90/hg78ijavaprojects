@@ -1,4 +1,4 @@
-package Game.GUI.Minigames;
+package Game.Minigames;
 
 import Game.Spiel;
 
