@@ -9,9 +9,22 @@ Hier findet ihr alle Informationen um eure Minigames so anzupassen, damit das Ha
 Alle Dateien, die das Spiel benötigt, sollten im Ordner files/minigames/Game-Name gespeichert werden.
 
 
-= Rückgabe =
+= Ändern von Daten =
 
-Um die Informationen die das Minigame generiert verarbeiten zu können, müssen diese in einem Informations-Array gespeichert sein.
+Damit die Minigames auch Auswirkungen auf das gesamte Spiel haben, müssen diese zum Schluss ein Informations-Array an dieses übergeben. Dazu muss am Spiel eine der folgenden Methoden aufgerufen werden:
+void minispielEnde(Information[] infos)
+void minispielEnde(Information[] infos, String konsolennachricht)
+
+Die Änderungen befinden sich dann im Informations-Array. Außerdem kann eine Konsolennachricht ausgegeben werden.
+
+Nach dem Aufruf diese Methoden sollte das Minispiel beendet werden.
+
+
+= Interface Minispiel =
+
+Alle Minigames müssen das Interace Minispiel implementieren. Dieses stellt sicher, dass in jedem Minispiel die Methode folgende Methode vorhanden ist:
+public void start(Spiel spiel);
+Das Spiel wird vom Hauptspiel über diese Methode angesprochen und bekommt das aktuelle Spiel übergeben. An diesem Spiel kann es zum Schluss Änderungen vornehmen (siehe Ändern von Daten).
 
 
 = Informationspaket =
