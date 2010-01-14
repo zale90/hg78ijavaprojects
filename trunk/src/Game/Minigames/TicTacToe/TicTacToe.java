@@ -2047,7 +2047,7 @@ public class TicTacToe extends JFrame implements Minispiel, Runnable, ActionList
                    this.setVisible(false);
                    Information[] infos = new Information[1];
                    infos[0] = new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 50);
-                   spiel.minispielEnde(null, infos);
+                   spiel.minispielEnde(infos);
              }
              
              if(event.getSource() == hauptmenu)
