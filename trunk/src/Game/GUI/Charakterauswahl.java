@@ -15,7 +15,7 @@ public class Charakterauswahl extends JPanel {
 		this.setLayout(null);
 		this.setBackground(null);
 		
-		JLabel lbl‹berschrift = new JLabel("W‰hlen Sie einen Charakter");
+		JLabel lbl‹berschrift = new JLabel("W‰hle einen Charakter!");
 		lbl‹berschrift.setLocation(300, 10);
 		lbl‹berschrift.setSize(400, 50);
 		lbl‹berschrift.setFont(Optionen.FONT_TITLE);

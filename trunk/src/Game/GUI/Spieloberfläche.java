@@ -48,7 +48,7 @@ public class Spieloberfl‰che extends JPanel implements MouseListener {
 		console.setEditable(false);
 		console.setSize(800, 90);
 		console.setLocation(20, 568);
-		console.setText("Willkommen im Spiel " + Optionen.NAME + "!\nSie haben ein neues Spiel gestartet. Viel Spaﬂ!");
+		console.setText("Willkommen im Spiel " + Optionen.NAME + "!\nDu hast ein neues Spiel gestartet. Viel Spaﬂ!");
 		this.add(console);
 		
 		JScrollPane spConsole = new JScrollPane(console);
