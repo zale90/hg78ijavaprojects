@@ -46,7 +46,15 @@ public class Aktion extends JLabel {
 	}
 
 	public String getBeschreibung() {
-		return beschreibung;
+		String[] beduerfnisse = getBedürfnisveränderungen(getVeraenderungen());
+		if (beduerfnisse == null || beduerfnisse.length == 0)
+			return beschreibung;
+		String beduerfnistext = "\n\n";
+		for (int i = 0; i < beduerfnisse.length; i++)
+		{
+			beduerfnistext = beduerfnistext + beduerfnisse[i] + "\n";
+		}
+		return beschreibung + beduerfnistext;
 	}
 	public Information[] getKosten()
 	{
@@ -90,6 +98,76 @@ public class Aktion extends JLabel {
 
 	public Minispiel getMinispiel() {
 		return minispiel;
+	}
+	public String[] getBedürfnisveränderungen(Information[] infos)
+	{
+		if (infos != null && infos.length != 0)
+		{
+			String[] rueckgabe = new String[infos.length];
+		for(int i=0; i<infos.length; i++)
+		{
+			//Bedürfnisbereich
+			String datenfeld = "";
+			String operator = "";
+			String farbe = "(red)";
+			String einheit = "";
+			int wert = infos[i].getWert();
+			if (wert >= 0)
+				farbe = "(green)";
+			if ((infos[i].getÄnderungsart() % 2) == 0)//infos[i].getÄnderungsart() == 2 || infos[i].getÄnderungsart() == 4)
+			{
+				operator = "+";
+			}
+			if (infos[i].getÄnderungsart() > 2)
+			{
+				einheit = "%";
+			}
+					if ((infos[i].getZuÄndern() % 2) == 0)
+					{
+						wert = -wert;
+					}
+					if (wert < 0)
+					{
+						operator = "";
+					}
+					
+					switch(infos[i].getZuÄndern())
+					{
+					case 1: datenfeld = "Nahrung: ";
+							break;
+					case 2: datenfeld = "Nahrungsverbrauch: ";
+							break;
+					case 3: {datenfeld = "Gesundheit: ";
+							break;}
+					case 4: {datenfeld = "Gesundheitsabfall: ";
+							break;}
+					case 5: {datenfeld = "Soziales: ";
+							break;}
+					case 6: {datenfeld = "Soziale Verarmung: ";
+							break;}
+					case 7: {datenfeld = "Luxus: ";
+							break;}
+					case 8: {datenfeld = "Luxusabfall: ";
+							break;}
+					case 9: {datenfeld = "Kinder: ";
+							break;}
+					case 10: {datenfeld = "Kinderabfall: ";
+							 break;}
+					case 11: datenfeld = "Zeit: ";
+							 break;
+					case 12: datenfeld = "Zeit pro Woche: ";
+					break;
+					case 13: datenfeld = "Geld: ";
+					break;
+					case 14: datenfeld = "Geld pro Monat: ";
+					break;
+					}
+					rueckgabe[i] = farbe + datenfeld + operator + wert + einheit; 
+		}
+
+		return rueckgabe;
+		}
+		return null;
 	}
 	
 }
