@@ -199,13 +199,20 @@ public class Initialisator
 		
 		ja = new Information[1];
 		ja[0] = new Information(13, 2, -70);
-		e = new Ereignis(7, "Schulausflug", "Dein(e) Kind(er) machen einen Ausflug nach Hamburg. Zahle 70€ für die Fahrt. ", false, ja, null);
+		e = new Ereignis(7, "Schulausflug", "Deine Kinder machen einen Ausflug nach Hamburg. Zahle 70 Euro für die Fahrt. ", false, ja, null);
 		erList.add(e);
 		
 		ja = new Information[1];
 		ja[0] = new Information(Information.AENDERN_KINDER, 1, 100);
 		e = new Ereignis(24, "Clown", "Asi, der lustige Clown kommt vorbei. Deine Kinder sind euphorisch!", false, ja, null);
 		erList.add(e);
+		
+		ja = new Information[2];
+		ja[0] = new Information(Information.AENDERN_GELD, 2, -50);
+		ja[1] = new Information(Information.AENDERN_KINDER, 4, 50);
+		nein = new Information[1];
+		nein[0] = new Information(Information.AENDERN_KINDER, 4, -50);
+		e = new Ereignis(25, "Spielzeugwunsch", "Deine Kinder wollen unbedingt ein neues Spielzeug für 50 Euro. Kaufst du es und machst dein Kind glücklich oder wirst du es enttäuschen?", true, ja, nein);
 		
 		return erList;
 	}
