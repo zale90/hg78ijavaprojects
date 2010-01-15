@@ -29,8 +29,4 @@ Das Spiel wird vom Hauptspiel über diese Methode angesprochen und bekommt das a
 
 = Informationspaket =
 
-In diesem Paket (ZIP) befinden sich alle benötigten Dateien für die Integration der Minigames.
-
-Aktueller Inhalt (13.01.2010): Klasse Information, Dokumentation des aktuellen Spiels.
-
-Das Paket findet ihr unter Downloads
+Alle benötigten Dateien befinden sich im Transfer-Ordner!
