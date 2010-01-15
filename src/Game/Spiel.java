@@ -129,6 +129,7 @@ public class Spiel {
 		}
 		//gameGUI.setzeAktiviert(true);
 		aktuelleRunde++;
+		zeit = zeitProRunde;
 		
 		// Bei neuem Monat Geld auszahlen
 		if ((aktuelleRunde % 4) == 0) {
@@ -198,6 +199,56 @@ public class Spiel {
 		
 	public void aktionAusfuehren(Aktion aktion)
 	{
+		ArrayList<String> probs = getProblemBeduerfnisse(aktion.getVeraenderungen());
+		if (probs != null && probs.size() != 0)
+		{
+			ArrayList<String> probleme = new ArrayList<String>();
+			for (String prob: probs)
+			{
+				if (prob.equals("Zeit"))
+				{    
+					probleme.add("Zeit");
+				}
+				if (prob.equals("Geld"))
+				{    
+					probleme.add("Geld");
+				}
+			}
+			if (probleme.size() != 0)
+			{
+				String gruendeFormatiert = "";
+				for (int i = 0; i < probleme.size(); i++)
+				{
+					gruendeFormatiert = gruendeFormatiert + probleme.get(i);
+					if ((i+2) == probs.size())
+						gruendeFormatiert = gruendeFormatiert + " und ";
+					else if ((i+1) != probs.size())
+						gruendeFormatiert = gruendeFormatiert + ", ";
+				}
+				Object[] options = {"OK"};
+				JOptionPane.showOptionDialog(SpielAnwendung.mainGUI, "Diese Aktion kannst du nicht ausführen, da du nicht genug " + gruendeFormatiert + " hast.", 
+                        "Aktion nicht ausführbar", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null,
+                        options, options[0]);
+				return;
+			}
+			else
+			{
+				String gruendeFormatiert = "";
+				for (int i = 0; i < probs.size(); i++)
+				{
+					gruendeFormatiert = gruendeFormatiert + probs.get(i);
+					if ((i+2) == probs.size())
+						gruendeFormatiert = gruendeFormatiert + " und ";
+					else if ((i+1) != probs.size())
+						gruendeFormatiert = gruendeFormatiert + ", ";
+				}
+				Object[] options = {"Ja", "Nein"};
+				if (JOptionPane.showOptionDialog(SpielAnwendung.mainGUI, "Wenn du diese Aktion ausführst werden die Bedürfnisse " + gruendeFormatiert + " auf ihr Minimum sinken.\nWillst du diese Aktion wirklich ausführen?", 
+                        "Warnung", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
+                        options, options[0]) == JOptionPane.NO_OPTION)
+						return;
+			}
+		}
 		infosUmsetzen(aktion.getVeraenderungen());
 		if (aktion.getMinispiel() != null)
 		{
@@ -206,6 +257,240 @@ public class Spiel {
 		}
 		gameGUI.zeigeNachrichtInKonsole(aktion.getKonsolenausgabe());
 		gameGUI.aktualisiereDaten();
+	}
+	public ArrayList<String> getProblemBeduerfnisse(Information[] infos)
+	{
+			if (infos != null && infos.length != 0)
+			{
+				ArrayList<String> rueckgabe = new ArrayList<String>();
+				for(int i=0; i<infos.length; i++)
+				{
+					//Bedürfnisbereich
+					if(infos[i].getZuÄndern()<11)
+					{
+						int neuerWert = 0;
+						Bedürfnis referenz = null;
+						switch(infos[i].getZuÄndern())
+						{
+						case 1: {neuerWert = bedürfnisse[0].getWert();
+								referenz = bedürfnisse[0];
+								break;}
+						case 2: {neuerWert = bedürfnisse[0].getAbfallfaktor();
+								referenz = bedürfnisse[0];
+								break;}
+						case 3: {neuerWert = bedürfnisse[1].getWert();
+								referenz = bedürfnisse[1];
+								break;}
+						case 4: {neuerWert = bedürfnisse[1].getAbfallfaktor();
+								referenz = bedürfnisse[1];
+								break;}
+						case 5: {neuerWert = bedürfnisse[2].getWert();
+								referenz = bedürfnisse[2];
+								break;}
+						case 6: {neuerWert = bedürfnisse[2].getAbfallfaktor();
+								referenz = bedürfnisse[2];
+								break;}
+						case 7: {neuerWert = bedürfnisse[3].getWert();
+								referenz = bedürfnisse[3];
+								break;}
+						case 8: {neuerWert = bedürfnisse[3].getAbfallfaktor();
+								referenz = bedürfnisse[3];
+								break;}
+						case 9: {neuerWert = bedürfnisse[4].getWert();
+								referenz = bedürfnisse[4];
+								break;}
+						case 10: {neuerWert = bedürfnisse[4].getAbfallfaktor();
+								 referenz = bedürfnisse[4];
+								 break;}
+						}
+						
+						switch(infos[i].getÄnderungsart())
+						{
+						case 1:
+							{
+								if(infos[i].getWert()>=referenz.getMin() && infos[i].getWert()<=referenz.getMax())
+									neuerWert = infos[i].getWert();
+								else
+								{
+									if(infos[i].getWert()<referenz.getMin())
+										neuerWert = referenz.getMin();
+									else
+										neuerWert = referenz.getMax();
+								}
+								break;
+							}
+						case 2:
+							{
+								int tmp = neuerWert + infos[i].getWert();
+								if(tmp>=referenz.getMin() && tmp<=referenz.getMax())
+									neuerWert = tmp;
+								else
+								{
+									if(tmp<referenz.getMin())
+										neuerWert = referenz.getMin();
+									else
+										neuerWert = referenz.getMax();
+								}
+								break;
+							}
+						case 3:
+							{
+								double tmp = neuerWert*infos[i].getWert()/100;
+								int tmp2 = (int)tmp; //so grob
+								if(tmp2>=referenz.getMin() && tmp2<=referenz.getMax())
+									neuerWert = tmp2;
+								else
+								{
+									if(tmp2<referenz.getMin())
+										neuerWert = referenz.getMin();
+									else
+										neuerWert = referenz.getMax();
+								}
+								break;
+							}
+						case 4:
+							{
+								double tmp = neuerWert*infos[i].getWert();
+								int tmp2 = (int)tmp; //so grob
+								tmp2 = neuerWert + tmp2;
+								if(tmp2>=referenz.getMin() && tmp2<=referenz.getMax())
+									neuerWert = tmp2;
+								else
+								{
+									if(tmp2<referenz.getMin())
+										neuerWert = referenz.getMin();
+									else
+										neuerWert = referenz.getMax();
+								}
+								break;
+							}
+						}
+						
+						switch(infos[i].getZuÄndern())
+						{
+						case 1: if (bedürfnisse[0].getMin() >= neuerWert)
+									rueckgabe.add(bedürfnisse[0].getName());
+								break;
+						case 2: if (bedürfnisse[0].getMin() >= neuerWert)
+							rueckgabe.add(bedürfnisse[0].getName());
+								break;
+						case 3: if (bedürfnisse[1].getMin() >= neuerWert)
+							rueckgabe.add(bedürfnisse[0].getName());
+								break;
+						case 4: if (bedürfnisse[1].getMin() >= neuerWert)
+							rueckgabe.add(bedürfnisse[0].getName());
+								break;
+						case 5: if (bedürfnisse[2].getMin() >= neuerWert)
+							rueckgabe.add(bedürfnisse[0].getName());
+								break;
+						case 6: if (bedürfnisse[2].getMin() >= neuerWert)
+							rueckgabe.add(bedürfnisse[0].getName());
+								break;
+						case 7: if (bedürfnisse[3].getMin() >= neuerWert)
+							rueckgabe.add(bedürfnisse[0].getName());
+								break;		
+						case 8: if (bedürfnisse[3].getMin() >= neuerWert)
+							rueckgabe.add(bedürfnisse[0].getName());
+								break;
+						case 9: if (bedürfnisse[4].getMin() >= neuerWert)
+							rueckgabe.add(bedürfnisse[0].getName());
+						        break;
+						case 10: if (bedürfnisse[4].getMin() >= neuerWert)
+							rueckgabe.add(bedürfnisse[0].getName());
+								 break;
+						}
+					}
+					if(infos[i].getZuÄndern() == 11)
+					{
+						int neuerWert = zeit;
+						
+						switch(infos[i].getÄnderungsart())
+						{
+						case 1:
+							{
+								if(infos[i].getWert()>0)
+									neuerWert = infos[i].getWert();
+								else
+								{
+									neuerWert = 0;
+								}
+								break;
+							}
+						case 2:
+							{
+								int tmp = neuerWert + infos[i].getWert();
+								neuerWert = tmp;
+								break;
+							}
+						case 3:
+							{
+								double tmp = neuerWert*infos[i].getWert()/100;
+								int tmp2 = (int)tmp; //so grob
+								if(tmp2>0)
+									neuerWert = tmp2;
+								else
+								{
+									neuerWert = 0;
+								}
+								break;
+							}
+						case 4:
+							{
+								double tmp = neuerWert*infos[i].getWert()/100;
+								int tmp2 = (int)tmp; //so grob
+								tmp2 = neuerWert + tmp2;
+								if(tmp2>0)
+									neuerWert = tmp2;
+								else
+								{
+									neuerWert = 0;
+								}
+								break;
+							}
+						}
+						if (neuerWert < 0)
+							rueckgabe.add("Zeit");
+					}
+					if(infos[i].getZuÄndern()>11 && infos[i].getZuÄndern()<15)
+					{
+						int neuerWert = 0;
+						switch(infos[i].getZuÄndern())
+						{
+						case 12: neuerWert = zeitProRunde;
+								 break;
+						case 13: neuerWert = kontostand;
+						         break;
+						case 14: neuerWert = geldProMonat;
+				         		 break;
+						}
+						switch(infos[i].getÄnderungsart())
+						{
+						case 1: neuerWert = infos[i].getWert();
+								break;
+						case 2: neuerWert = infos[i].getWert() + neuerWert;
+								break;
+						case 3: neuerWert = (int)(neuerWert * infos[i].getWert() / 100);
+								break;
+						case 4: neuerWert = neuerWert + (int)(neuerWert * infos[i].getWert() /100);
+								break;
+						}
+						switch(infos[i].getZuÄndern())
+						{
+						case 12: if(neuerWert < 0)
+									rueckgabe.add("Zeit pro Runde");
+								 break;
+						case 13: if (neuerWert < 0)
+									rueckgabe.add("Geld");
+								 break;
+						case 14: if (neuerWert < 0)
+									rueckgabe.add("Einkommen");
+								 break;
+						}
+					}
+				}
+				return rueckgabe;
+			}
+			return null;
 	}
 	
 	/**
