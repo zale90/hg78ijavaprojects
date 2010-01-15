@@ -44,7 +44,7 @@ public class Initialisator
 	}
 	
 	/**
-	 * Gibt die Liste mit allen Ereignissen zurück. Diese sind dabei immer in der gleichen Reihenfolge.
+	 * Gibt die Liste mit allen Ereignissen die keine Kinder benötigen zurück. Diese sind dabei immer in der gleichen Reihenfolge.
 	 * 
 	 * @return ArrayList mit allen Ereignissen.
 	 */
@@ -87,18 +87,7 @@ public class Initialisator
 		ja = new Information[1];
 		ja[0] = new Information(13, 2, 50);
 		e = new Ereignis(6, "Steuerrückzahlung", "Du hast im letzten Jahr zu viele Steuern gezahlt und erhälst daher jetzt eine Rückzahlung in Höhe von 50€.", false, ja, null);
-		erList.add(e);
-		
-		//===========================
-		//Was machen wir mit den Kinderereignissen? Bislang haben wir kein Kriterium,
-		//um diese von anderen Ereignisen abgrenzen zu können...
-		//Ich bin dafür, Kinderereignisse komplett zu entfernen. (Henrik)
-		//Ich bin auch dafür. (Philipp)
-		//===========================
-//		ja = new Information[1];
-//		ja[0] = new Information(13, 2, -70);
-//		e = new Ereignis(7, "Schulausflug", "Dein(e) Kind(er) machen einen Ausflug nach Hamburg. Zahle 70€ für die Fahrt. ", false, ja, null);
-//		erList.add(e);
+		erList.add(e);		
 		
 		ja = new Information[1];
 		ja[0] = new Information(13, 2, 100);
@@ -190,6 +179,32 @@ public class Initialisator
 		ja = new Information[1];
 		ja[0] = new Information(13, 2, -10);
 		e = new Ereignis(23, "McDonalds ruft an", "McDonalds ruft an: Deine Mutter ist in der Rutsche stecken geblieben. Du musst 10€ für Fett zahlen um sie wieder heraus zu holen.", false, ja, null);
+		erList.add(e);
+		
+		return erList;
+	}
+	
+	/**
+	 * Gibt die Liste mit allen Ereignissen die Kinder benötigen zurück. Diese sind dabei immer in der gleichen Reihenfolge.
+	 * 
+	 * @return ArrayList mit allen Ereignissen.
+	 */
+	public static ArrayList<Ereignis> gibKinderEreignisse()
+	{
+		ArrayList<Ereignis> erList = new ArrayList<Ereignis>();
+		
+		Ereignis e;
+		Information[] ja, nein;
+		Random zufall = new Random();
+		
+		ja = new Information[1];
+		ja[0] = new Information(13, 2, -70);
+		e = new Ereignis(7, "Schulausflug", "Dein(e) Kind(er) machen einen Ausflug nach Hamburg. Zahle 70€ für die Fahrt. ", false, ja, null);
+		erList.add(e);
+		
+		ja = new Information[1];
+		ja[0] = new Information(Information.AENDERN_KINDER, 1, 100);
+		e = new Ereignis(24, "Clown", "Asi, der lustige Clown kommt vorbei. Deine Kinder sind euphorisch!", false, ja, null);
 		erList.add(e);
 		
 		return erList;

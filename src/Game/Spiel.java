@@ -57,6 +57,14 @@ public class Spiel {
 		
 		// Ereignisse erzeugen
 		erList = Initialisator.gibEreignisse();
+		ArrayList<Ereignis> kinderErList = Initialisator.gibKinderEreignisse();
+		if(avatar.getAvatarNummer()> 1)
+		{
+			for(Ereignis er : kinderErList)
+			{
+				erList.add(er);
+			}
+		}
 	}
 	
 	public Bedürfnis[] getBedürfnisse() {
