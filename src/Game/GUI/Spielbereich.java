@@ -55,6 +55,17 @@ public class Spielbereich extends JPanel implements MouseListener
 		this.add(tuer);
 		aktionsObjekte.add(tuer);
 		
+		//Verzweigung von der Zeitung wird erstellt mit allen Aktionen.
+		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
+		zeitungsAktionen.add(new Aktion("Lesen", "(blue) Du liest...", "Du hast die Zeitung durch gelesen.", null, null));	
+		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
+		Verzweigung zeitungsMenu = new Verzweigung("Zeitung", "Hier kannst du die Zeitung lesen, Kreuzworträtsel lösen und vieles mehr.", zeitungsAktionen, zeitungsVerzweigungen);
+		
+		Aktionsobjekt zeitung = new Aktionsobjekt("Zeitung lesen", new Point(100, 340), new Dimension(125, 64), "newspaperopen.png", "newspaperclosed.png", zeitungsMenu);
+		zeitung.addMouseListener(this);
+		this.add(zeitung);
+		aktionsObjekte.add(zeitung);
+		
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
 		gemueseAktionen.add(new Aktion("Hochwertig", "(blue)Kaufe hochwertiges Gemüse", "Du hast Qualitätsgemüse gekauft", null,null));
 		gemueseAktionen.add(new Aktion("Mittelmäßig", "(blue)Kaufe mittelmäßiges Gemüse", "Du hast mittelmäßiges Gemüse gekauft", null,null));
