@@ -31,7 +31,7 @@ public class CharakterGUI extends JPanel implements ActionListener {
 	 */
    public CharakterGUI(Avatar avatar, int x, int y) {
 	   
-      this.setSize(320, 500);
+      this.setSize(320, 550);
       this.setLocation(x, y);
       this.setBackground(null);
       this.setLayout(null);
@@ -62,7 +62,7 @@ public class CharakterGUI extends JPanel implements ActionListener {
       beschreibung = new JTextPane(dokument);
       beschreibung.setBackground(null);
       //beschreibung.setText(avatar.getBeschreibung());
-      beschreibung.setSize(250, 150);
+      beschreibung.setSize(250, 200);
       beschreibung.setLocation(35, 270);
       beschreibung.setEditable(false);
       beschreibung.setCaretPosition(0);
@@ -70,7 +70,7 @@ public class CharakterGUI extends JPanel implements ActionListener {
       
       wahl = new JButton("Spiele " + name.getText());
       wahl.setSize(300, 50);
-      wahl.setLocation(15, 450);
+      wahl.setLocation(15, 480);
       wahl.setHorizontalAlignment(0);
       wahl.addActionListener(this);
       this.add(wahl);
