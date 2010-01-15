@@ -221,7 +221,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		}
 		lblGeld.setText(spiel.getKontostand() + "");
 		lblGeldProMonat.setText(spiel.getGeldProMonat() + "");
-		lblZeit.setText(spiel.getZeitProRunde() + "");
+		lblZeit.setText(spiel.getZeit() + "");
 		lblZeitpunkt.setText(((spiel.getAktuelleRunde() % 4)+1) + ". Woche, " + (((int)spiel.getAktuelleRunde() / 4)+1) + ". Monat");
 	}
 
