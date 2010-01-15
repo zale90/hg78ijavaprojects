@@ -143,7 +143,7 @@ public class Initialisator
 		erList.add(e);
 		
 		ja = new Information[1];
-		ja[0] = new Information(13, 2, 30);
+		ja[0] = new Information(13, 2, -30);
 		nein = new Information[1];
 		nein[0] = new Information(5, 4, -75);
 		e = new Ereignis(17, "Ausflug", "Einer deiner Freunde fragt, ob du an einem Ausflug teilnehmen willst. Du müsstest 30€ bezahlen, andernfalls sinkt dein soziales Bedürfnis. Nimmst du teil?", true, ja, nein);
@@ -160,7 +160,7 @@ public class Initialisator
 		erList.add(e);
 		
 		ja = new Information[1];
-		ja[0] = new Information(13, 2, 70);
+		ja[0] = new Information(13, 2, -70);
 		nein = new Information[1];
 		nein[0] = new Information(5, 1, 0);
 		e = new Ereignis(20, "Todesfall", "Dein Onkel ist plötzlich verstorben. Der Rest deiner Verwandschaft schlägt vor, dass du dich mit 70€ an der Beerdigung beteiligst. Bist du einverstanden? Wenn nicht, sinkt dein Ansehen.", true, ja, nein);
@@ -172,7 +172,7 @@ public class Initialisator
 		erList.add(e);
 		
 		ja = new Information[1];
-		ja[0] = new Information(7, 4, 50);
+		ja[0] = new Information(7, 2, 20);
 		e = new Ereignis(22, "Europafest", "Du besuchst das Europafest zum Thema \"Armut und Ausgrenzung\" und spielst ein tolles Spiel. Das Bedürfnis nach Luxus sinkt.", false, ja, null);
 		erList.add(e);
 		
