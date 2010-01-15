@@ -318,7 +318,7 @@ public class Spiel {
 					}
 				case 3:
 					{
-						double tmp = neuerWert*infos[i].getWert();
+						double tmp = neuerWert*infos[i].getWert()/100;
 						int tmp2 = (int)tmp; //so grob
 						if(tmp2>=referenz.getMin() && tmp2<=referenz.getMax())
 							neuerWert = tmp2;
