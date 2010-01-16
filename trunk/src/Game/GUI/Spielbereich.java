@@ -5,8 +5,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
 
-import Game.Minigames.TicTacToe.*;
-import Game.Information;
+import Game.Initialisator;
 
 import Game.Optionen;
 
@@ -39,59 +38,8 @@ public class Spielbereich extends JPanel implements MouseListener
 		threadlblMaus = new Thread(lblMaus);
 		
 		// erstellen der Aktionsobjekte mit Menus
-		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
-		türAktionen.add(new Aktion("Kino besuchen", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
-        türAktionen.add(new Aktion("Freunde besuchen", "(blue)Besuche deine Freunde", "Du hast deine Freunde besucht.", null, null));
-        türAktionen.get(1).setMinispiel(new TicTacToe());
-        türAktionen.add(new Aktion("Theater besuchen", "(blue)Besuche ein Theater", "Du bist ins Theater gegangen.", null, null));
-		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
-		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
-		sonstigesAktionen.add(new Aktion("Park", "(blue)Gehe in den Park ", "Du bist in den Park gegangen", null, null));
-		Verzweigung sonstiges = new Verzweigung("Sonstiges", "Sonstige Aktivitäten ausserhalb deiner Wohnung.", sonstigesAktionen, new ArrayList<Verzweigung>());
-		türVerzweigungen.add(sonstiges);
-		Verzweigung tuerMenu = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
 		
-		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", new Point(687, 90), new Dimension(81, 340), "dooropen.png","doorclosed.png", tuerMenu);
-		tuer.addMouseListener(this);
-		this.add(tuer);
-		aktionsObjekte.add(tuer);
-		
-		//Verzweigung von der Zeitung wird erstellt mit allen Aktionen.
-		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
-		zeitungsAktionen.add(new Aktion("Lesen", "(blue) Du liest...", "Du hast die Zeitung durch gelesen.", null, null));	
-		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
-		Verzweigung zeitungsMenu = new Verzweigung("Zeitung", "Hier kannst du die Zeitung lesen, Kreuzworträtsel lösen und vieles mehr.", zeitungsAktionen, zeitungsVerzweigungen);
-		
-		Aktionsobjekt zeitung = new Aktionsobjekt("Zeitung lesen", new Point(100, 340), new Dimension(125, 64), "newspaperopen.png", "newspaperclosed.png", zeitungsMenu);
-		zeitung.addMouseListener(this);
-		this.add(zeitung);
-		aktionsObjekte.add(zeitung);
-		
-		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
-		Information gemueseInfos[] = new Information[4];
-		gemueseInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT,-1);
-		gemueseInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -20);
-		gemueseInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 20);
-		gemueseInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, 15);
-		gemueseAktionen.add(new Aktion("Hochwertig", "(blue)Kaufe hochwertiges Gemüse", "Du hast Qualitätsgemüse gekauft", gemueseInfos.clone(),null));
-		gemueseInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT,-1);
-		gemueseInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -15);
-		gemueseInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 15);
-		gemueseInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, 10);
-		gemueseAktionen.add(new Aktion("Mittelmäßig", "(blue)Kaufe mittelmäßiges Gemüse", "Du hast mittelmäßiges Gemüse gekauft", gemueseInfos.clone(),null));
-		gemueseInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT,-1);
-		gemueseInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -10);
-		gemueseInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 10);
-		gemueseInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, 5);
-		gemueseAktionen.add(new Aktion("Billig", "(blue)Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft", gemueseInfos.clone(),null));
-		ArrayList<Verzweigung> kuehlschrankVerzweigung = new ArrayList<Verzweigung>();
-		kuehlschrankVerzweigung.add(new Verzweigung("Gemüse", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
-		Verzweigung kuehlschrankMenu = new Verzweigung("Kühlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
-		
-		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(522, 85), new Dimension(144, 241),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
-		kuehlschrank.addMouseListener(this);
-		this.add(kuehlschrank);
-		aktionsObjekte.add(kuehlschrank);
+		aktionsObjekte = Initialisator.getAktionsobjekte(this);
 		
 		// Hintergrund und Spielbereichgröße
 		lblbackGround = new JLabel(new ImageIcon(Optionen.ICON_PATH_GAME + "bg.png"));
