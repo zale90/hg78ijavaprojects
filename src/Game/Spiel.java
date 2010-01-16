@@ -14,6 +14,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 import Game.GUI.*;
+import Game.Minigames.Minispiel;
 
 public class Spiel {
 	
@@ -253,7 +254,7 @@ public class Spiel {
 		if (aktion.getMinispiel() != null)
 		{
 			gameGUI.setzeAktiviert(false);
-			aktion.getMinispiel().start(this);
+			minispielStarten(aktion.getMinispiel());
 		}
 		gameGUI.zeigeNachrichtInKonsole(aktion.getKonsolenausgabe());
 		gameGUI.aktualisiereDaten();
@@ -768,5 +769,9 @@ public class Spiel {
 		punkte = punkte + hungerP + gesundheitP + sozialesP + luxusP + geldP;
 		
 		gui.setzeWerte(hungerP, gesundheitP, sozialesP, luxusP, geldP, punkteAlt);
+	}
+	public void minispielStarten(Minispiel minispiel)
+	{
+		minispiel.start(this);
 	}
 }

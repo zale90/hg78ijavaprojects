@@ -8,6 +8,7 @@
 package Game;
 
 import javax.swing.*;
+import Game.Minigames.Minispiel;
 
 public class Ereignis {
 	
@@ -19,6 +20,8 @@ public class Ereignis {
 	private boolean typ;
 	private Information[] ja;
 	private Information[] nein;
+	
+	private Minispiel minispiel;
 	
 	public static final boolean TYP_JA_NEIN = true;
 	public static final boolean TYP_OK = false;
@@ -160,6 +163,14 @@ public class Ereignis {
 	 */
 	public void setNummer(int nummer) {
 		this.nummer = nummer;
+	}
+
+	public void setMinispiel(Minispiel minispiel) {
+		this.minispiel = minispiel;
+	}
+
+	public Minispiel getMinispiel() {
+		return minispiel;
 	}
 	
 }

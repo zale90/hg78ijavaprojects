@@ -121,7 +121,10 @@ public class Ereignisfenster extends JPanel implements ActionListener
 			this.setVisible(false);
 			spiel.infosUmsetzen(er.getJa());
 			gameGUI.aktualisiereDaten();
-			gameGUI.setzeAktiviert(true);
+			if (er.getMinispiel() != null)
+				spiel.minispielStarten(er.getMinispiel());
+			else
+				gameGUI.setzeAktiviert(true);
 		}
 		if(arg0.getSource() == ja)
 		{
