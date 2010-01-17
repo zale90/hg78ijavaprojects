@@ -225,34 +225,26 @@ public class Initialisator
 	{
 		ArrayList<Aktionsobjekt> aktionsobjekte = new ArrayList<Aktionsobjekt>();
 		
-		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
-		türAktionen.add(new Aktion("Kino besuchen", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
-        türAktionen.add(new Aktion("Freunde besuchen", "(blue)Besuche deine Freunde", "Du hast deine Freunde besucht.", null, null));
-        türAktionen.get(1).setMinispiel(new TicTacToe());
-        türAktionen.add(new Aktion("Theater besuchen", "(blue)Besuche ein Theater", "Du bist ins Theater gegangen.", null, null));
-		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
-		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
-		sonstigesAktionen.add(new Aktion("Park", "(blue)Gehe in den Park ", "Du bist in den Park gegangen", null, null));
-		Verzweigung sonstiges = new Verzweigung("Sonstiges", "Sonstige Aktivitäten ausserhalb deiner Wohnung.", sonstigesAktionen, new ArrayList<Verzweigung>());
-		türVerzweigungen.add(sonstiges);
-		Verzweigung tuerMenu = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
-		
-		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", new Point(687, 90), new Dimension(81, 340), "dooropen.png","doorclosed.png", tuerMenu);
+		Aktionsobjekt tuer = getTuer();
 		tuer.addMouseListener(spielbereich);
 		spielbereich.add(tuer);
 		aktionsobjekte.add(tuer);
 		
-		//Verzweigung von der Zeitung wird erstellt mit allen Aktionen.
-		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
-		zeitungsAktionen.add(new Aktion("Lesen", "(blue) Du liest...", "Du hast die Zeitung durch gelesen.", null, null));	
-		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
-		Verzweigung zeitungsMenu = new Verzweigung("Zeitung", "Hier kannst du die Zeitung lesen, Kreuzworträtsel lösen und vieles mehr.", zeitungsAktionen, zeitungsVerzweigungen);
-		
-		Aktionsobjekt zeitung = new Aktionsobjekt("Zeitung lesen", new Point(100, 340), new Dimension(125, 64), "newspaperopen.png", "newspaperclosed.png", zeitungsMenu);
+		Aktionsobjekt zeitung = getZeitung();
 		zeitung.addMouseListener(spielbereich);
 		spielbereich.add(zeitung);
 		aktionsobjekte.add(zeitung);
 		
+		Aktionsobjekt kuehlschrank = getKuehlschrank();
+		kuehlschrank.addMouseListener(spielbereich);
+		spielbereich.add(kuehlschrank);
+		aktionsobjekte.add(kuehlschrank);
+		
+		return aktionsobjekte;
+	}
+	
+	public static Aktionsobjekt getKuehlschrank()
+	{
 		//Gemüse
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
 		Information gemueseInfos[] = new Information[4];
@@ -332,12 +324,36 @@ public class Initialisator
 		kuehlschrankVerzweigung.add(new Verzweigung("Fast Food", "Betörend, billig, böse: Fast Food macht für wenig Geld erstaunlich satt. Doch die von Geschmacksverstärker durchzogenen Nahrungsmittel schaden der Gesundheit extrem.", ffoodAktionen, new ArrayList<Verzweigung>()));
 		
 		Verzweigung kuehlschrankMenu = new Verzweigung("Kühlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
-		
 		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(522, 85), new Dimension(144, 241),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
-		kuehlschrank.addMouseListener(spielbereich);
-		spielbereich.add(kuehlschrank);
-		aktionsobjekte.add(kuehlschrank);
+		return kuehlschrank;
+	}
+	
+	public static Aktionsobjekt getTuer()
+	{
+		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
+		türAktionen.add(new Aktion("Kino besuchen", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
+        türAktionen.add(new Aktion("Freunde besuchen", "(blue)Besuche deine Freunde", "Du hast deine Freunde besucht.", null, null));
+        türAktionen.get(1).setMinispiel(new TicTacToe());
+        türAktionen.add(new Aktion("Theater besuchen", "(blue)Besuche ein Theater", "Du bist ins Theater gegangen.", null, null));
+		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
+		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
+		sonstigesAktionen.add(new Aktion("Park", "(blue)Gehe in den Park ", "Du bist in den Park gegangen", null, null));
+		Verzweigung sonstiges = new Verzweigung("Sonstiges", "Sonstige Aktivitäten ausserhalb deiner Wohnung.", sonstigesAktionen, new ArrayList<Verzweigung>());
+		türVerzweigungen.add(sonstiges);
+		Verzweigung tuerMenu = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
 		
-		return aktionsobjekte;
+		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", new Point(687, 90), new Dimension(81, 340), "dooropen.png","doorclosed.png", tuerMenu);
+		return tuer;
+	}
+	
+	public static Aktionsobjekt getZeitung()
+	{
+		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
+		zeitungsAktionen.add(new Aktion("Lesen", "(blue) Du liest...", "Du hast die Zeitung durch gelesen.", null, null));	
+		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
+		Verzweigung zeitungsMenu = new Verzweigung("Zeitung", "Hier kannst du die Zeitung lesen, Kreuzworträtsel lösen und vieles mehr.", zeitungsAktionen, zeitungsVerzweigungen);
+		
+		Aktionsobjekt zeitung = new Aktionsobjekt("Zeitung lesen", new Point(100, 340), new Dimension(125, 64), "newspaperopen.png", "newspaperclosed.png", zeitungsMenu);
+		return zeitung;
 	}
 }
