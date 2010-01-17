@@ -34,7 +34,7 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 		this.setLocation(280, 120);
 	      this.setBackground(new Color(153,134,124));
 	      this.setLayout(null);
-	      this.setBorder(BorderFactory.createEtchedBorder());
+	      this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	      this.addMouseListener(this);
 	      
 	      JLabel titel = new JLabel(name);
@@ -83,6 +83,7 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 			verzweigungsButtons.get(i).addMouseListener(this);
 			verzweigungsButtons.get(i).setSize(120, 30);
 			verzweigungsButtons.get(i).setHorizontalAlignment(0);
+			verzweigungsButtons.get(i).setBorder(BorderFactory.createEtchedBorder());
 			verzweigungsButtons.get(i).setOpaque(true);
 			if (aktionen.size() == 0)
 				verzweigungsButtons.get(i).setLocation(10, ((aktionen.size()+i)*30) + 40);
