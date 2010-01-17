@@ -200,7 +200,7 @@ public class Initialisator
 		
 		Ereignis e;
 		Information[] ja, nein;
-		Random zufall = new Random();
+		//Random zufall = new Random();
 		
 		ja = new Information[1];
 		ja[0] = new Information(13, 2, -70);
@@ -253,25 +253,84 @@ public class Initialisator
 		spielbereich.add(zeitung);
 		aktionsobjekte.add(zeitung);
 		
+		//Gemüse
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
 		Information gemueseInfos[] = new Information[4];
 		gemueseInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT,-1);
 		gemueseInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -20);
 		gemueseInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 20);
 		gemueseInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, 15);
-		gemueseAktionen.add(new Aktion("Hochwertig", "(blue)Kaufe hochwertiges Gemüse", "Du hast Qualitätsgemüse gekauft", gemueseInfos.clone(),null));
+		gemueseAktionen.add(new Aktion("Hochwertig", "(blue)Kaufe hochwertiges Gemüse", "Du hast Qualitätsgemüse gekauft.", gemueseInfos.clone(),null));
 		gemueseInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT,-1);
 		gemueseInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -15);
 		gemueseInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 15);
 		gemueseInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, 10);
-		gemueseAktionen.add(new Aktion("Mittelmäßig", "(blue)Kaufe mittelmäßiges Gemüse", "Du hast mittelmäßiges Gemüse gekauft", gemueseInfos.clone(),null));
+		gemueseAktionen.add(new Aktion("Mittelmäßig", "(blue)Kaufe mittelmäßiges Gemüse", "Du hast mittelmäßiges Gemüse gekauft.", gemueseInfos.clone(),null));
 		gemueseInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT,-1);
 		gemueseInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -10);
 		gemueseInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 10);
 		gemueseInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, 5);
-		gemueseAktionen.add(new Aktion("Billig", "(blue)Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft", gemueseInfos.clone(),null));
+		gemueseAktionen.add(new Aktion("Billig", "(blue)Kaufe billiges Gemüse", "Du hast billiges Gemüse gekauft.", gemueseInfos.clone(),null));
 		ArrayList<Verzweigung> kuehlschrankVerzweigung = new ArrayList<Verzweigung>();
-		kuehlschrankVerzweigung.add(new Verzweigung("Gemüse", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch mehr als beispielsweise Fast Food.", gemueseAktionen, new ArrayList<Verzweigung>()));
+		kuehlschrankVerzweigung.add(new Verzweigung("Gemüse", "Gemüse erhöht nicht nur deinen Nahrungsbalken, sondern auch deine Gesundheit. Allerdings kostet es dafür auch relativ viel.", gemueseAktionen, new ArrayList<Verzweigung>()));
+		
+		//Fleisch
+		ArrayList<Aktion> fleischAktionen = new ArrayList<Aktion>();
+		Information fleischInfos[] = new Information[4];
+		fleischInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		fleischInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -20);
+		fleischInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 30);
+		fleischInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, -15);
+		fleischAktionen.add(new Aktion("Hochwertig", "(blue)Kaufe hochwertiges Fleisch", "Du hast Qualitätsfleisch gekauft.", fleischInfos.clone(), null));
+		fleischInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		fleischInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -15);
+		fleischInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 25);
+		fleischInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, -10);
+		fleischAktionen.add(new Aktion("Mittelmäßig", "(blue)Kaufe mittelmäßiges Fleisch", "Du hast mittelmäßiges Fleisch gekauft.", fleischInfos.clone(), null));
+		fleischInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		fleischInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -10);
+		fleischInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 20);
+		fleischInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, -5);
+		fleischAktionen.add(new Aktion("Billig", "(blue)Kaufe billiges Fleisch", "Du hast billiges Fleisch gekauft.", fleischInfos.clone(), null));
+		kuehlschrankVerzweigung.add(new Verzweigung("Fleisch", "Fleisch macht extrem satt, ist aber auch recht teuer. Leider macht es auf Dauer fett und schadet somit der Gesundheit.", fleischAktionen, new ArrayList<Verzweigung>()));
+		
+		//Brot
+		ArrayList<Aktion> brotAktionen = new ArrayList<Aktion>();
+		Information brotInfos[] = new Information[3];
+		brotInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		brotInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -15);
+		brotInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 20);
+		brotAktionen.add(new Aktion("Hochwertig", "(blue)Kaufe hochwertiges Brot", "Du hast Qualitätsbrot gekauft.", brotInfos.clone(), null));
+		brotInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		brotInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -10);
+		brotInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 15);
+		brotAktionen.add(new Aktion("Mittelmäßig", "(blue)Kaufe mittelmäßiges Brot", "Du hast mittelmäßiges Brot gekauft.", brotInfos.clone(), null));
+		brotInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		brotInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -5);
+		brotInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 10);
+		brotAktionen.add(new Aktion("Billig", "(blue)Kaufe billiges Brot", "Du hast billiges Brot gekauft.", brotInfos.clone(), null));
+		kuehlschrankVerzweigung.add(new Verzweigung("Brot", "Brot macht satt, hat aber sonst keinerlei Auswirkungen. Dafür ist es günstiger als andere Nahrungsmittel.", brotAktionen, new ArrayList<Verzweigung>()));
+		
+		//Fast Food
+		ArrayList<Aktion> ffoodAktionen = new ArrayList<Aktion>();
+		Information ffoodInfos[] = new Information[4];
+		ffoodInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		ffoodInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -9);
+		ffoodInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 30);
+		ffoodInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, -30);
+		ffoodAktionen.add(new Aktion("Maximenü", "(blue)Der Koloss unter den Burgern", "Du hast ein Maximenü gekauft.", ffoodInfos.clone(), null));
+		ffoodInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		ffoodInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -6);
+		ffoodInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 20);
+		ffoodInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, -20);
+		ffoodAktionen.add(new Aktion("Sparmenü", "(blue)Ein ansehnlicher Haufen Fleisch", "Du hast mittelmäßiges Fleisch gekauft.", ffoodInfos.clone(), null));
+		ffoodInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		ffoodInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -3);
+		ffoodInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 10);
+		ffoodInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, -10);
+		ffoodAktionen.add(new Aktion("ein paar Burger", "(blue)3 pappige Burger", "Du hast billiges Fleisch gekauft.", ffoodInfos.clone(), null));
+		kuehlschrankVerzweigung.add(new Verzweigung("Fast Food", "Betörend, billig, böse: Fast Food macht für wenig Geld erstaunlich satt. Doch die von Geschmacksverstärker durchzogenen Nahrungsmittel schaden der Gesundheit extrem.", ffoodAktionen, new ArrayList<Verzweigung>()));
+		
 		Verzweigung kuehlschrankMenu = new Verzweigung("Kühlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
 		
 		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(522, 85), new Dimension(144, 241),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
