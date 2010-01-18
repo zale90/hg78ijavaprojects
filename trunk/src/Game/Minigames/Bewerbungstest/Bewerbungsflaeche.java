@@ -8,9 +8,10 @@ import java.util.Random;
 import Game.*;
 import Game.Minigames.*;
 
+
 public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseListener, Minispiel
 {
-	private static final long serialVersionUID = 4243815262315495694L;
+   private static final long serialVersionUID = 4243815262315495694L;
 //Anfang Attribute
    private JLabel lbl1;
    private JLabel lbl2;
@@ -37,7 +38,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
    private Spiel game;
    private final String folder = "files/minigames/Bewerbungstest/";
    //Ende Attribute
-   
+
    public Bewerbungsflaeche(int Bewerbungsfaktor){
       //Superklasse
       this.setLocation(300,200);
@@ -47,7 +48,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
       this.setUndecorated(true);
       this.setAlwaysOnTop(true);
-      
+
       //Faktor für Wahrscheinlichkeit des Vorstellungsgespräches
       faktor = Bewerbungsfaktor;
 
@@ -60,77 +61,77 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       frage = fragen.gibFragenobjekt();
       richtig = 0;
       /**
-      /* Grundoberflaeche wird mit Buttons 
+      /* Grundoberflaeche wird mit Buttons
       /* und Labels befüllt.
       **/
-      
+
       lbl1 = new JLabel(frage.gibFrage());
       lbl1.setLocation(20,40);
       lbl1.setSize(530,20);
       lbl1.setForeground(Color.BLUE);
       lbl1.addMouseListener(this);
       this.add(lbl1);
-      
+
       btn1 = new JRadioButton(frage.gibA());
       btn1.setLocation(20,70);
       btn1.setSize(460,20);
       this.add(btn1);
-      
+
       btn2 = new JRadioButton(frage.gibB());
       btn2.setLocation(20,100);
       btn2.setSize(460,20);
       this.add(btn2);
-      
+
       btn3 = new JRadioButton(frage.gibC());
       btn3.setLocation(20,130);
       btn3.setSize(460,20);
       this.add(btn3);
-      
+
       btn4 = new JRadioButton(frage.gibD());
       btn4.setLocation(20,160);
       btn4.setSize(460,20);
       this.add(btn4);
-      
-      
+
+
       group = new ButtonGroup();
       group.add(btn1);
       group.add(btn2);
       group.add(btn3);
       group.add(btn4);
-      
+
       //lbl2 gibt an, bei welcher Frage sich der Spieler befindet.
       lbl2 = new JLabel("Frage " + index + "/10");
       lbl2.setSize(70,20);
       lbl2.setLocation(450,10);
-      lbl2.setForeground(Color.ORANGE);
+      lbl2.setForeground(new Color(120,90,20));
       this.add(lbl2);
-      
+
       //lbl3 dient zur Mitteilung des Ergebnisses in Prozent
       lbl3 = new JLabel();
       lbl3.setSize(275,20);
       lbl3.setLocation(20,240);
       this.add(lbl3);
-      
+
       //lbl4 lässt Kreuz oder Hacken erscheinen.
       lbl4 = new JLabel();
       lbl4.setSize(40,40);
       lbl4.setLocation(490,btn1.getHeight()+20);
       lbl4.setVisible(false);
       this.add(lbl4);
-      
+
       // Lässt Animation am Ende erscheinen
       lbl5 = new JLabel(new ImageIcon(folder + "feuerwerk_test.gif"));
       lbl5.setSize(100,100);
       lbl5.setLocation(125,50);
       lbl5.setVisible(false);
       this.add(lbl5);
-      
+
       lbl7 = new JLabel(new ImageIcon(folder + "Feuerwerk603.gif"));
       lbl7.setSize(100,100);
       lbl7.setLocation(225,50);
       lbl7.setVisible(false);
       this.add(lbl7);
-      
+
       // gibt Ergebnis am Ende an.
       lbl6 = new JLabel("Herzlichen Glückwunsch! Sie haben den Job bekommen!");
       lbl6.setSize(500,20);
@@ -139,7 +140,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       lbl6.setForeground(new Color(0,122,0));
       lbl6.addMouseListener(this);
       this.add(lbl6);
-      
+
       btn = new JButton("Antwort");
       btn.setSize(100,30);
       btn.setLocation(175,210);
@@ -150,19 +151,19 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       btn.setEnabled(false);
       btn.setBorder(new LineBorder(Color.BLACK, 2));
       this.add(btn);
-      
+
       // Buttons erhalten Farben
       btn.addActionListener(this);
       btn1.addActionListener(this);
       btn2.addActionListener(this);
       btn3.addActionListener(this);
       btn4.addActionListener(this);
-      
+
       btn1.setForeground(Color.BLACK);
       btn2.setForeground(Color.BLACK);
       btn3.setForeground(Color.BLACK);
       btn4.setForeground(Color.BLACK);
-      
+
       btn1.setFocusPainted(false);
       btn2.setFocusPainted(false);
       btn3.setFocusPainted(false);
@@ -172,23 +173,23 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       btn2.setContentAreaFilled(false);
       btn3.setContentAreaFilled(false);
       btn4.setContentAreaFilled(false);
-      
+
       btn1.addMouseListener(this);
       btn2.addMouseListener(this);
       btn3.addMouseListener(this);
       btn4.addMouseListener(this);
-      
+
       btn1.setFont(new Font("Arial",1,12));
       btn2.setFont(new Font("Arial",1,12));
       btn3.setFont(new Font("Arial",1,12));
       btn4.setFont(new Font("Arial",1,12));
       lbl1.setFont(new Font("Arial",1,12));
-      
-      
-      
+
+
+
       bestanden = true;
       erfolgreich = true;
-      
+
       //Hintergrund
       area = new JLabel();
       area.setEnabled(false);
@@ -231,7 +232,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
             temp.setForeground(Color.GREEN);
             lbl4.setIcon(new ImageIcon(folder + "gruener_haken.png"));
             }
-            
+
          else{
              if(frage.gibAntwort() == 1)
              btn1.setForeground(Color.GREEN);
@@ -244,9 +245,9 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
              lbl4.setIcon(new ImageIcon(folder + "40px-Red_x.svg.png"));
              bestanden = false;
              }
-             
-             
-            
+
+
+
          lbl4.setVisible(true);
          btn.setText("Weiter");
          if(index == 10)
@@ -281,12 +282,12 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
          lbl4.setVisible(false);
          lbl3.setText("Sie haben " + richtig*10 + "% der Fragen korrekt beantwortet.");
          btn.setText("Beenden");
-         
+
          Bedürfnis[] dürfnisse = game.getBedürfnisse();
          Bedürfnis gesund = dürfnisse[1];
          if(gesund.getWert() < 30)
          bestanden = false;
-         
+
          if(!bestanden){
             lbl5.setSize(128,96);
             lbl5.setLocation(225-128,50);
@@ -307,7 +308,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
          lbl7.setLocation(225,50);
          erfolgreich = false;
          }
-         
+
          lbl5.setVisible(true);
          lbl6.setVisible(true);
          lbl7.setVisible(true);
@@ -318,14 +319,14 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       }
 
       }
-      
+
       private boolean job(){
       Random zufallsgenerator = new Random();
       if(zufallsgenerator.nextInt(faktor)+1 == 1)
       return true;
       return false;
       }
-      
+
       public void mouseEntered(MouseEvent evt){
       if(evt.getSource() == btn1)
       btn1.setFont(new Font("Arial",1,15));
@@ -340,7 +341,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       else if(evt.getSource() == lbl6)
       lbl6.setFont(new Font("Arial",1,15));
       }
-      
+
       public void mouseExited(MouseEvent evt){
       if(evt.getSource() == btn1)
       btn1.setFont(new Font("Arial",1,12));
@@ -356,31 +357,31 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       lbl6.setFont(new Font("Arial",1,12));
 
       }
-      
+
       public void mouseReleased(MouseEvent evt){
 
       }
-      
+
       public void mousePressed(MouseEvent evt){
 
       }
-      
+
       public void mouseClicked(MouseEvent evt){
       if(evt.getSource() == btn1||evt.getSource() == btn2||evt.getSource() == btn3||evt.getSource() == btn4)
       btn.setEnabled(true);
 
       }
-      
+
       public Information[] erfolgreich(){
       Information[] info;
       if(erfolgreich){
-  	    info = new Information[3];
+       info = new Information[3];
             info[0] = new Information(14,2,400);
             info[1] = new Information(12,2,-3);
             info[2] = new Information(7,2,15);
       }
       else{
-  	     info = new Information[1];
+        info = new Information[1];
          info[0] = new Information(5,2,-5);
       }
       return info;
@@ -389,12 +390,62 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
 
       public void start(Spiel spiel){
         game = spiel;
-        this.setVisible(true);
+
+
+      // gibt Ergebnis am Ende an.
+      lbl6.setText("Herzlichen Glückwunsch! Sie haben den Job bekommen!");
+      
+      index = 1;
+      richtig = 0;
+      
+      fragen = new Fragensammlung();
+      frage = fragen.gibFragenobjekt();
+      
+      lbl1.setText(frage.gibFrage());
+      lbl7.setIcon(new ImageIcon(folder + "Feuerwerk603.gif"));
+      lbl5.setIcon(new ImageIcon(folder + "feuerwerk_test.gif"));
+      btn1.setText(frage.gibA());
+      btn2.setText(frage.gibB());
+      btn3.setText(frage.gibC());
+      btn4.setText(frage.gibD());
+      lbl2.setText("Frage " + index + "/10");
+      
+      
+      btn1.setForeground(Color.BLACK);
+      btn2.setForeground(Color.BLACK);
+      btn3.setForeground(Color.BLACK);
+      btn4.setForeground(Color.BLACK);
+      
+      lbl6.setVisible(false);
+      lbl7.setVisible(false);
+      lbl5.setVisible(false);
+      lbl3.setVisible(false);
+      lbl1.setVisible(true);
+      lbl2.setVisible(true);
+      btn1.setVisible(true);
+      btn2.setVisible(true);
+      btn3.setVisible(true);
+      btn4.setVisible(true);
+      btn.setEnabled(false);
+      btn.setText("Antwort");
+
+
+
+      bestanden = true;
+      erfolgreich = true;
+
+      //Hintergrund
+      this.setVisible(true);
       }
       
-//      public static void main(String[] args)
-//      {
-//         new Bewerbungsflaeche(100);
-//      }
-      
+      public void berufsFaktorAendern(int neuerFaktor)
+      {
+           faktor = neuerFaktor;
+      }
+
+      public static void main(String[] args)
+      {
+         new Bewerbungsflaeche(100).setVisible(true);
+      }
+
 }
