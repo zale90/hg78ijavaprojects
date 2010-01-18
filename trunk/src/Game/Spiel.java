@@ -30,6 +30,7 @@ public class Spiel {
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
 	private ArrayList<Ereignis> erList;
+	private ArrayList<Integer> grenzenObenUndUnten, grenzeUnten, keineGrenze;
 	
 	/**
 	 * Ein neues Spielt wird anhand der Informationen
@@ -66,6 +67,8 @@ public class Spiel {
 				erList.add(er);
 			}
 		}
+		
+		grenzenErzeugen();
 	}
 	
 	public Bedürfnis[] getBedürfnisse() {
@@ -535,7 +538,7 @@ public class Spiel {
 		for(int i=0; i<infos.length; i++)
 		{
 			//Bedürfnisbereich
-			if(infos[i].getZuÄndern()<11)
+			if(grenzenObenUndUnten.contains(infos[i].getZuÄndern()));
 			{
 				int neuerWert = 0;
 				Bedürfnis referenz = null;
@@ -659,7 +662,7 @@ public class Spiel {
 						 break;
 				}
 			}
-			if(infos[i].getZuÄndern() == 11)
+			if(grenzeUnten.contains(infos[i].getZuÄndern()))
 			{
 				int neuerWert = zeit;
 				
@@ -714,7 +717,7 @@ public class Spiel {
 				}
 				zeit = neuerWert;
 			}
-			if(infos[i].getZuÄndern()>11 && infos[i].getZuÄndern()<15)
+			if(keineGrenze.contains(infos[i].getZuÄndern()))
 			{
 				int neuerWert = 0;
 				switch(infos[i].getZuÄndern())
@@ -773,5 +776,29 @@ public class Spiel {
 	public void minispielStarten(Minispiel minispiel)
 	{
 		minispiel.start(this);
+	}
+	
+	public void grenzenErzeugen()
+	{
+		grenzenObenUndUnten = new ArrayList<Integer>();
+		grenzenObenUndUnten.add(Information.AENDERN_NAHRUNG);
+		grenzenObenUndUnten.add(Information.AENDERN_NAHRUNGS_FAKTOR);
+		grenzenObenUndUnten.add(Information.AENDERN_GESUNDHEIT);
+		grenzenObenUndUnten.add(Information.AENDERN_GESUNDHEITS_FAKTOR);
+		grenzenObenUndUnten.add(Information.AENDERN_SOZIALES);
+		grenzenObenUndUnten.add(Information.AENDERN_SOZIALES_FAKTOR);
+		grenzenObenUndUnten.add(Information.AENDERN_LUXUS);
+		grenzenObenUndUnten.add(Information.AENDERN_LUXUS_FAKTOR);
+		grenzenObenUndUnten.add(Information.AENDERN_KINDER);
+		grenzenObenUndUnten.add(Information.AENDERN_KINDER_FAKTOR);
+		
+		grenzeUnten = new ArrayList<Integer>();
+		grenzeUnten.add(Information.AENDERN_ZEIT);
+		
+		keineGrenze = new ArrayList<Integer>();
+		keineGrenze.add(Information.AENDERN_ZEIT_PRO_RUNDE);
+		keineGrenze.add(Information.AENDERN_GELD);
+		keineGrenze.add(Information.AENDERN_GELD_PRO_MONAT);
+		
 	}
 }
