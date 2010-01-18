@@ -270,7 +270,7 @@ public class Spiel {
 				for(int i=0; i<infos.length; i++)
 				{
 					//Bedürfnisbereich
-					if(infos[i].getZuÄndern()<11)
+					if(grenzenObenUndUnten.contains(infos[i].getZuÄndern()))
 					{
 						int neuerWert = 0;
 						Bedürfnis referenz = null;
@@ -404,7 +404,7 @@ public class Spiel {
 								 break;
 						}
 					}
-					if(infos[i].getZuÄndern() == 11)
+					if(grenzeUnten.contains(infos[i].getZuÄndern()))
 					{
 						int neuerWert = zeit;
 						
@@ -455,7 +455,7 @@ public class Spiel {
 						if (neuerWert < 0)
 							rueckgabe.add("Zeit");
 					}
-					if(infos[i].getZuÄndern()>11 && infos[i].getZuÄndern()<15)
+					if(keineGrenze.contains(infos[i].getZuÄndern()))
 					{
 						int neuerWert = 0;
 						switch(infos[i].getZuÄndern())
