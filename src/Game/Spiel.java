@@ -538,7 +538,7 @@ public class Spiel {
 		for(int i=0; i<infos.length; i++)
 		{
 			//Bedürfnisbereich
-			if(grenzenObenUndUnten.contains(infos[i].getZuÄndern()));
+			if(grenzenObenUndUnten.contains(infos[i].getZuÄndern()))
 			{
 				int neuerWert = 0;
 				Bedürfnis referenz = null;
