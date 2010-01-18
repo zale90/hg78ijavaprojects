@@ -194,8 +194,7 @@ public class Initialisator
 	 * 
 	 * @return ArrayList mit allen Ereignissen.
 	 */
-	public static ArrayList<Ereignis> gibKinderEreignisse()
-	{
+	public static ArrayList<Ereignis> gibKinderEreignisse() {
 		ArrayList<Ereignis> erList = new ArrayList<Ereignis>();
 		
 		Ereignis e;
@@ -221,9 +220,14 @@ public class Initialisator
 		
 		return erList;
 	}
-	public static ArrayList<Aktionsobjekt> getAktionsobjekte(Spielbereich spielbereich)
-	{
+	
+	public static ArrayList<Aktionsobjekt> getAktionsobjekte(Spielbereich spielbereich) {
 		ArrayList<Aktionsobjekt> aktionsobjekte = new ArrayList<Aktionsobjekt>();
+		
+		Aktionsobjekt cheat = getCheat();
+		cheat.addMouseListener(spielbereich);
+		spielbereich.add(cheat);
+		aktionsobjekte.add(cheat);
 		
 		Aktionsobjekt tuer = getTuer();
 		tuer.addMouseListener(spielbereich);
@@ -243,8 +247,7 @@ public class Initialisator
 		return aktionsobjekte;
 	}
 	
-	public static Aktionsobjekt getKuehlschrank()
-	{
+	public static Aktionsobjekt getKuehlschrank() {
 		//Gemüse
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
 		Information gemueseInfos[] = new Information[4];
@@ -328,8 +331,7 @@ public class Initialisator
 		return kuehlschrank;
 	}
 	
-	public static Aktionsobjekt getTuer()
-	{
+	public static Aktionsobjekt getTuer() {
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
 		türAktionen.add(new Aktion("Kino besuchen", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
         türAktionen.add(new Aktion("Freunde besuchen", "(blue)Besuche deine Freunde", "Du hast deine Freunde besucht.", null, null));
@@ -346,14 +348,49 @@ public class Initialisator
 		return tuer;
 	}
 	
-	public static Aktionsobjekt getZeitung()
-	{
+	public static Aktionsobjekt getZeitung() {
 		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
-		zeitungsAktionen.add(new Aktion("Lesen", "(blue) Du liest...", "Du hast die Zeitung durch gelesen.", null, null));	
+		zeitungsAktionen.add(new Aktion("Lesen", "(blue)Du liest...", "Du hast die Zeitung durch gelesen.", null, null));	
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung("Zeitung", "Hier kannst du die Zeitung lesen, Kreuzworträtsel lösen und vieles mehr.", zeitungsAktionen, zeitungsVerzweigungen);
 		
 		Aktionsobjekt zeitung = new Aktionsobjekt("Zeitung lesen", new Point(100, 340), new Dimension(125, 64), "newspaperopen.png", "newspaperclosed.png", zeitungsMenu);
 		return zeitung;
+	}
+	
+	public static Aktionsobjekt getCheat() {
+		// Aktionen
+		ArrayList<Aktion> cheatAktionen = new ArrayList<Aktion>();
+		
+		// Bedürfnisse füllen
+		Information[] nutzBed = {
+				new Information(Information.AENDERN_NAHRUNG, Information.ART_AUF_WERT, 100),
+				new Information(Information.AENDERN_GESUNDHEIT, Information.ART_AUF_WERT, 100),
+				new Information(Information.AENDERN_SOZIALES, Information.ART_AUF_WERT, 100),
+				new Information(Information.AENDERN_LUXUS, Information.ART_AUF_WERT, 100),
+				new Information(Information.AENDERN_KINDER, Information.ART_AUF_WERT, 100)
+		};
+		cheatAktionen.add(new Aktion("Bedürfnisse füllen", "(blue)Fülle alle Bedürfnisse auf das Maximum auf!", "Du hast alle Bedürfnisse auf das Maximum aufgefüllt!", null, nutzBed));
+		
+		// Geld um 1.000 Euro erhöhen
+		Information[] nutzGeld = {
+				new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, 1000)
+		};
+		cheatAktionen.add(new Aktion("Geld verdienen", "(blue)Verdiene 1.000€! Ganz ohne Arbeit!", "Du hast ganz ohne Arbeit 1.000€ verdient!", null, nutzGeld));
+		
+		// Zeit um 1 erhöhen
+		Information[] nutzZeit = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, 1)
+		};
+		cheatAktionen.add(new Aktion("Zeit sparen", "(blue)Spare Zeit, indem du hier ganz einfach Cheatest!", "Du hast soviel Zeit gespart, dass du jetzt eine Aktion mehr hast!", null, nutzZeit));
+		
+		// Verzweigungen
+		ArrayList<Verzweigung> cheatVerzweigungen = new ArrayList<Verzweigung>();
+		
+		// Menü
+		Verzweigung cheatMenu = new Verzweigung("Cheaten", "Auch als HartzIV-Empfänger kannst du manchmal Chuck Norris spielen!", cheatAktionen, cheatVerzweigungen);
+		
+		Aktionsobjekt cheat = new Aktionsobjekt("", new Point(0, 498), new Dimension(10, 10), "", "", cheatMenu);	
+		return cheat;
 	}
 }
