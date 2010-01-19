@@ -32,14 +32,14 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
    private int richtig;
    private Frage frage;
    private int index = 1;
-   private int faktor;
+//   private int faktor;
    private boolean bestanden;
    private boolean erfolgreich;
    private Spiel game;
    private final String folder = "files/minigames/Bewerbungstest/";
    //Ende Attribute
 
-   public Bewerbungsflaeche(int Bewerbungsfaktor){
+   public Bewerbungsflaeche(){
       //Superklasse
       this.setLocation(300,200);
       this.setSize(550,300);
@@ -50,7 +50,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       this.setAlwaysOnTop(true);
 
       //Faktor für Wahrscheinlichkeit des Vorstellungsgespräches
-      faktor = Bewerbungsfaktor;
+//      faktor = Bewerbungsfaktor;
 
       /**
       /* Neue Liste mit Fragen wird
@@ -321,10 +321,10 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       }
 
       private boolean job(){
-      Random zufallsgenerator = new Random();
-      if(zufallsgenerator.nextInt(faktor)+1 == 1)
-      return true;
-      return false;
+    	  Random zufallsgenerator = new Random();
+    	  if(zufallsgenerator.nextInt(100) < game.getBewerbungsfaktor())
+    		  return true;
+    	  return false;
       }
 
       public void mouseEntered(MouseEvent evt){
@@ -438,14 +438,14 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener, MouseL
       this.setVisible(true);
       }
       
-      public void berufsFaktorAendern(int neuerFaktor)
-      {
-           faktor = neuerFaktor;
-      }
+//      public void berufsFaktorAendern(int neuerFaktor)
+//      {
+//           faktor = neuerFaktor;
+//      }
 
-      public static void main(String[] args)
-      {
-         new Bewerbungsflaeche(100).setVisible(true);
-      }
+//      public static void main(String[] args)
+//      {
+//         new Bewerbungsflaeche().setVisible(true);
+//      }
 
 }
