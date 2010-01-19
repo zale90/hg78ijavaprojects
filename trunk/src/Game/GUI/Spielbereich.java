@@ -235,4 +235,8 @@ public class Spielbereich extends JPanel implements MouseListener
 	public int getAktivesObjekt() {
 		return aktivesObjekt;
 	}
+	public Spieloberfläche getSpieloberfläche()
+	{
+		return spieloberfläche;
+	}
 }
