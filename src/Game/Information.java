@@ -27,6 +27,7 @@ public class Information {
 	public static final int AENDERN_ZEIT_PRO_RUNDE = 12;
 	public static final int AENDERN_GELD = 13;
 	public static final int AENDERN_GELD_PRO_MONAT = 14;
+	public static final int AENDERN_BEWERBUNGSFAKTOR = 15;
 	
 	/**
 	 * Setzt den Wert auf den übergebenen Wert fest. Dies geschieht unabhängig vom aktuellen Wert.

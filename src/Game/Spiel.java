@@ -27,6 +27,7 @@ public class Spiel {
 	private int geldProMonat;
 	private int aktuelleRunde;
 	private int punkte;
+	private int bewerbungsfaktor;
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
 	private ArrayList<Ereignis> erList;
@@ -51,6 +52,7 @@ public class Spiel {
 		aktuelleRunde = 0;
 		punkte = 0;
 		zeit = zeitProRunde;
+		bewerbungsfaktor = 1;
 		
 		// GUI
 		this.mainGUI = mainGUI;
@@ -664,7 +666,12 @@ public class Spiel {
 			}
 			if(grenzeUnten.contains(infos[i].getZuÄndern()))
 			{
-				int neuerWert = zeit;
+				int neuerWert = 0;
+				if(infos[i].getZuÄndern() == Information.AENDERN_ZEIT)	
+					neuerWert = zeit;
+				if(infos[i].getWert() == Information.AENDERN_BEWERBUNGSFAKTOR)
+					neuerWert = bewerbungsfaktor;
+				
 				
 				switch(infos[i].getÄnderungsart())
 				{
@@ -715,7 +722,11 @@ public class Spiel {
 						break;
 					}
 				}
-				zeit = neuerWert;
+				
+				if(infos[i].getZuÄndern() == Information.AENDERN_ZEIT)
+					zeit = neuerWert;
+				if(infos[i].getZuÄndern() == Information.AENDERN_BEWERBUNGSFAKTOR)
+					bewerbungsfaktor = neuerWert;
 			}
 			if(keineGrenze.contains(infos[i].getZuÄndern()))
 			{
@@ -794,6 +805,7 @@ public class Spiel {
 		
 		grenzeUnten = new ArrayList<Integer>();
 		grenzeUnten.add(Information.AENDERN_ZEIT);
+		grenzeUnten.add(Information.AENDERN_BEWERBUNGSFAKTOR);
 		
 		keineGrenze = new ArrayList<Integer>();
 		keineGrenze.add(Information.AENDERN_ZEIT_PRO_RUNDE);
