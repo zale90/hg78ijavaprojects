@@ -333,24 +333,50 @@ public class Initialisator
 	
 	public static Aktionsobjekt getTuer() {
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
-		türAktionen.add(new Aktion("Kino besuchen", "(blue)Gehe ins Kino", "Du bist ins Kino gegangen", null, null));
-        türAktionen.add(new Aktion("Freunde besuchen", "(blue)Besuche deine Freunde", "Du hast deine Freunde besucht.", null, null));
+		
+		Information[] kinoBesuchen = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
+				new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -15),
+				new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 5),
+				new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 15)
+		};
+		türAktionen.add(new Aktion("Kino besuchen", "(blue)Geh ins Kino und verbringe eine schöne Zeit mit deinen Freunden.", "Du bist ins Kino gegangen", kinoBesuchen, null));
+		
+        türAktionen.add(new Aktion("Freunde besuchen", "(blue)==Minispiel starten==", "Du hast deine Freunde besucht.", null, null));
         türAktionen.get(1).setMinispiel(new TicTacToe());
-        türAktionen.add(new Aktion("Theater besuchen", "(blue)Besuche ein Theater", "Du bist ins Theater gegangen.", null, null));
+        
+        Information[] theaterBesuchen = {
+        		new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
+        		new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -30),
+        		new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 10),
+        		new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 30)
+        };
+        türAktionen.add(new Aktion("Theater besuchen", "(blue)Besuch ein Theater und genieß die Kultur.", "Du bist ins Theater gegangen.", theaterBesuchen, null));
+        
 		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
 		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
-		sonstigesAktionen.add(new Aktion("Park", "(blue)Gehe in den Park ", "Du bist in den Park gegangen", null, null));
+		
+		Information[] parkBesuchen = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
+				new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 25),
+		};
+		sonstigesAktionen.add(new Aktion("Park", "(blue)Geh in den Park und triff ein paar nette Leute.", "Du bist in den Park gegangen", parkBesuchen, null));
+		
 		Verzweigung sonstiges = new Verzweigung("Sonstiges", "Sonstige Aktivitäten ausserhalb deiner Wohnung.", sonstigesAktionen, new ArrayList<Verzweigung>());
 		türVerzweigungen.add(sonstiges);
-		Verzweigung tuerMenu = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
 		
+		Verzweigung tuerMenu = new Verzweigung("Tür", "Hier kannst du Aktivitäten außerhalb deiner Wohnung auswählen", türAktionen, türVerzweigungen);
 		Aktionsobjekt tuer = new Aktionsobjekt("Wohnung verlassen", new Point(687, 90), new Dimension(81, 340), "dooropen.png","doorclosed.png", tuerMenu);
 		return tuer;
 	}
 	
 	public static Aktionsobjekt getZeitung() {
 		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
-		zeitungsAktionen.add(new Aktion("Lesen", "(blue)Du liest...", "Du hast die Zeitung durch gelesen.", null, null));	
+		Information[] zeitungLesen = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, 1),
+				new Information(Information.AENDERN_BEWERBUNGSFAKTOR, Information.ART_UM_WERT, 5)
+		};
+		zeitungsAktionen.add(new Aktion("Lesen", "(blue)Lesen bildet! Verbessere deine Allgemeinbildung und somit deine Chance, in einem Bewerbungsgespräch angenommen zu werden.", "Du hast die Zeitung durchgelesen.", zeitungLesen, null));	
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung("Zeitung", "Hier kannst du die Zeitung lesen, Kreuzworträtsel lösen und vieles mehr.", zeitungsAktionen, zeitungsVerzweigungen);
 		
@@ -378,9 +404,9 @@ public class Initialisator
 		};
 		cheatAktionen.add(new Aktion("Geld verdienen", "(blue)Verdiene 1.000€! Ganz ohne Arbeit!", "Du hast ganz ohne Arbeit 1.000€ verdient!", null, nutzGeld));
 		
-		// Zeit um 1 erhöhen
+		// Zeit um 5 erhöhen
 		Information[] nutzZeit = {
-				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, 1)
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, 5)
 		};
 		cheatAktionen.add(new Aktion("Zeit sparen", "(blue)Spare Zeit, indem du hier ganz einfach Cheatest!", "Du hast soviel Zeit gespart, dass du jetzt eine Aktion mehr hast!", null, nutzZeit));
 		
