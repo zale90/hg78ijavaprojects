@@ -156,11 +156,13 @@ public class Aktion extends JLabel {
 					case 11: datenfeld = "Zeit: ";
 							 break;
 					case 12: datenfeld = "Zeit pro Woche: ";
-					break;
+							 break;
 					case 13: datenfeld = "Geld: ";
-					break;
+							 break;
 					case 14: datenfeld = "Geld pro Monat: ";
-					break;
+							 break;
+					case 15: datenfeld = "Chance auf Job: ";
+							 break;
 					}
 					if (Verzweigung.getSpielbereich().getSpieloberfläche().getSpiel().getBedürfnisse().length > 4 || (infos[i].getZuÄndern() != 9 && infos[i].getZuÄndern() != 10))
 						rueckgabe[i] = farbe + datenfeld + operator + wert + einheit; 

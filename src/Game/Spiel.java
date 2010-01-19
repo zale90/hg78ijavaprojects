@@ -31,7 +31,7 @@ public class Spiel {
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
 	private ArrayList<Ereignis> erList;
-	private ArrayList<Integer> grenzenObenUndUnten, grenzeUnten, keineGrenze;
+	private ArrayList<Integer> grenzenObenUndUnten, grenzeUnten, keineGrenze, braucheWert, braucheFaktor;
 	
 	/**
 	 * Ein neues Spielt wird anhand der Informationen
@@ -549,38 +549,17 @@ public class Spiel {
 			{
 				int neuerWert = 0;
 				Bedürfnis referenz = null;
-				switch(infos[i].getZuÄndern())
+				if(braucheWert.contains(infos[i].getZuÄndern()))
 				{
-				case 1: {neuerWert = bedürfnisse[0].getWert();
-						referenz = bedürfnisse[0];
-						break;}
-				case 2: {neuerWert = bedürfnisse[0].getAbfallfaktor();
-						referenz = bedürfnisse[0];
-						break;}
-				case 3: {neuerWert = bedürfnisse[1].getWert();
-						referenz = bedürfnisse[1];
-						break;}
-				case 4: {neuerWert = bedürfnisse[1].getAbfallfaktor();
-						referenz = bedürfnisse[1];
-						break;}
-				case 5: {neuerWert = bedürfnisse[2].getWert();
-						referenz = bedürfnisse[2];
-						break;}
-				case 6: {neuerWert = bedürfnisse[2].getAbfallfaktor();
-						referenz = bedürfnisse[2];
-						break;}
-				case 7: {neuerWert = bedürfnisse[3].getWert();
-						referenz = bedürfnisse[3];
-						break;}
-				case 8: {neuerWert = bedürfnisse[3].getAbfallfaktor();
-						referenz = bedürfnisse[3];
-						break;}
-				case 9: {neuerWert = bedürfnisse[4].getWert();
-						referenz = bedürfnisse[4];
-						break;}
-				case 10: {neuerWert = bedürfnisse[4].getAbfallfaktor();
-						 referenz = bedürfnisse[4];
-						 break;}
+					int index = (infos[i].getZuÄndern()-1)/2;
+					neuerWert = bedürfnisse[index].getWert();
+					referenz = bedürfnisse[index];
+				}
+				if(braucheFaktor.contains(infos[i].getZuÄndern()))
+				{
+					int index = (infos[i].getZuÄndern()-2)/2;
+					neuerWert = bedürfnisse[index].getAbfallfaktor();
+					referenz = bedürfnisse[index];
 				}
 				
 				switch(infos[i].getÄnderungsart())
@@ -645,29 +624,16 @@ public class Spiel {
 					}
 				}
 				
-				switch(infos[i].getZuÄndern())
+				if(braucheWert.contains(infos[i].getZuÄndern()))
 				{
-				case 1: bedürfnisse[0].setWert(neuerWert);
-						break;
-				case 2: bedürfnisse[0].setAbfallfaktor(neuerWert);
-						break;
-				case 3: bedürfnisse[1].setWert(neuerWert);
-						break;
-				case 4: bedürfnisse[1].setAbfallfaktor(neuerWert);
-						break;
-				case 5: bedürfnisse[2].setWert(neuerWert);
-						break;
-				case 6: bedürfnisse[2].setAbfallfaktor(neuerWert);
-						break;
-				case 7: bedürfnisse[3].setWert(neuerWert);
-						break;		
-				case 8: bedürfnisse[3].setAbfallfaktor(neuerWert);
-						break;
-				case 9: bedürfnisse[4].setWert(neuerWert);
-				        break;
-				case 10: bedürfnisse[4].setAbfallfaktor(neuerWert);
-						 break;
+					int index = (infos[i].getZuÄndern()-1)/2;
+					bedürfnisse[index].setWert(neuerWert);
 				}
+				if(braucheFaktor.contains(infos[i].getZuÄndern()))
+				{
+					int index = (infos[i].getZuÄndern()-2)/2;
+					bedürfnisse[index].setAbfallfaktor(neuerWert);
+				}				
 			}
 			if(grenzeUnten.contains(infos[i].getZuÄndern()))
 			{
@@ -817,5 +783,18 @@ public class Spiel {
 		keineGrenze.add(Information.AENDERN_GELD);
 		keineGrenze.add(Information.AENDERN_GELD_PRO_MONAT);
 		
+		braucheWert = new ArrayList<Integer>();
+		braucheWert.add(Information.AENDERN_NAHRUNG);
+		braucheWert.add(Information.AENDERN_GESUNDHEIT);
+		braucheWert.add(Information.AENDERN_SOZIALES);
+		braucheWert.add(Information.AENDERN_LUXUS);
+		braucheWert.add(Information.AENDERN_KINDER);
+		
+		braucheFaktor = new ArrayList<Integer>();
+		braucheFaktor.add(Information.AENDERN_NAHRUNGS_FAKTOR);
+		braucheFaktor.add(Information.AENDERN_GESUNDHEITS_FAKTOR);
+		braucheFaktor.add(Information.AENDERN_SOZIALES_FAKTOR);
+		braucheFaktor.add(Information.AENDERN_LUXUS_FAKTOR);
+		braucheFaktor.add(Information.AENDERN_KINDER_FAKTOR);
 	}
 }
