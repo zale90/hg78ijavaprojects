@@ -373,7 +373,7 @@ public class Initialisator
 	public static Aktionsobjekt getZeitung() {
 		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
 		Information[] zeitungLesen = {
-				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, 1),
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
 				new Information(Information.AENDERN_BEWERBUNGSFAKTOR, Information.ART_UM_WERT, 5)
 		};
 		zeitungsAktionen.add(new Aktion("Lesen", "(blue)Lesen bildet! Verbessere deine Allgemeinbildung und somit deine Chance, in einem Bewerbungsgespräch angenommen zu werden.", "Du hast die Zeitung durchgelesen.", zeitungLesen, null));	

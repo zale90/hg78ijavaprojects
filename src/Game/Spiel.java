@@ -116,6 +116,11 @@ public class Spiel {
 	public int getAktuelleRunde() {
 		return aktuelleRunde;
 	}
+	
+	public int getBewerbungsfaktor()
+	{
+		return bewerbungsfaktor;
+	}
 
 	/**
 	 * Zeigt die aktuelle Spieloberfläche im Hauptfenster an!
@@ -669,7 +674,7 @@ public class Spiel {
 				int neuerWert = 0;
 				if(infos[i].getZuÄndern() == Information.AENDERN_ZEIT)	
 					neuerWert = zeit;
-				if(infos[i].getWert() == Information.AENDERN_BEWERBUNGSFAKTOR)
+				if(infos[i].getZuÄndern() == Information.AENDERN_BEWERBUNGSFAKTOR)
 					neuerWert = bewerbungsfaktor;
 				
 				
