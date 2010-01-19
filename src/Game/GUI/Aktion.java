@@ -52,7 +52,7 @@ public class Aktion extends JLabel {
 		String beduerfnistext = "\n\n";
 		for (int i = 0; i < beduerfnisse.length; i++)
 		{
-			beduerfnistext = beduerfnistext + beduerfnisse[i] + "\n";
+			beduerfnistext = beduerfnistext + beduerfnisse[i];
 		}
 		return beschreibung + beduerfnistext;
 	}
@@ -110,7 +110,7 @@ public class Aktion extends JLabel {
 			String datenfeld = "";
 			String operator = "";
 			String farbe = "(red)";
-			String einheit = "";
+			String einheit = "\n";
 			int wert = infos[i].getWert();
 			if (wert >= 0)
 				farbe = "(green)";
@@ -162,7 +162,10 @@ public class Aktion extends JLabel {
 					case 14: datenfeld = "Geld pro Monat: ";
 					break;
 					}
-					rueckgabe[i] = farbe + datenfeld + operator + wert + einheit; 
+					if (Verzweigung.getSpielbereich().getSpieloberfläche().getSpiel().getBedürfnisse().length > 4 || (infos[i].getZuÄndern() != 9 && infos[i].getZuÄndern() != 10))
+						rueckgabe[i] = farbe + datenfeld + operator + wert + einheit; 
+					else
+						rueckgabe[i] = "";
 		}
 
 		return rueckgabe;

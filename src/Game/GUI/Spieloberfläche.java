@@ -277,4 +277,8 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	{
 		return ereignisfenster;
 	}
+	public Spiel getSpiel()
+	{
+		return spiel;
+	}
 }

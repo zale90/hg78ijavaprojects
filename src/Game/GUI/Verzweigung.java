@@ -25,7 +25,7 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	{
 		this.name = name;
 		this.beschreibung = beschreibung;
-		aktionen = akt;
+		aktionen = akt; 
 		verzweigungen = verz;
 		verzweigungsButtons = new ArrayList<JLabel>();
 		
@@ -225,7 +225,6 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		beschreibungFuellen("(black)" + beschreibung);
-		
 	}
 	@Override
 	public void mousePressed(MouseEvent arg0) {
@@ -262,5 +261,9 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	{
 		letzteVerzweigung = lv;
 		zurueck.setVisible(true);
+	}
+	public static Spielbereich getSpielbereich()
+	{
+		return spielber;
 	}
 }
