@@ -270,12 +270,15 @@ public class Spiel {
 		gameGUI.aktualisiereDaten();
 	}
 	public ArrayList<String> getProblemBeduerfnisse(Information[] infos)
-	{
-			if (infos != null && infos.length != 0)
+	{	
+		if (infos != null && infos.length != 0)
+		{
+			ArrayList<String> rueckgabe = new ArrayList<String>();
+			for(int i=0; i<infos.length; i++)
 			{
-				ArrayList<String> rueckgabe = new ArrayList<String>();
-				for(int i=0; i<infos.length; i++)
-				{
+				if(!(bedürfnisse.length < 5 && 
+						(infos[i].getZuÄndern() == Information.AENDERN_KINDER || 
+						infos[i].getZuÄndern() == Information.AENDERN_KINDER_FAKTOR))){
 					//Bedürfnisbereich
 					if(grenzenObenUndUnten.contains(infos[i].getZuÄndern()))
 					{
@@ -499,9 +502,10 @@ public class Spiel {
 						}
 					}
 				}
-				return rueckgabe;
 			}
-			return null;
+			return rueckgabe;
+		}
+		return null;
 	}
 	
 	/**
@@ -544,195 +548,199 @@ public class Spiel {
 		{
 		for(int i=0; i<infos.length; i++)
 		{
-			//Bedürfnisbereich
-			if(grenzenObenUndUnten.contains(infos[i].getZuÄndern()))
-			{
-				int neuerWert = 0;
-				Bedürfnis referenz = null;
-				if(braucheWert.contains(infos[i].getZuÄndern()))
+			if(!(bedürfnisse.length < 5 && 
+				(infos[i].getZuÄndern() == Information.AENDERN_KINDER || 
+				infos[i].getZuÄndern() == Information.AENDERN_KINDER_FAKTOR))){
+				//Bedürfnisbereich
+				if(grenzenObenUndUnten.contains(infos[i].getZuÄndern()))
 				{
-					int index = (infos[i].getZuÄndern()-1)/2;
-					neuerWert = bedürfnisse[index].getWert();
-					referenz = bedürfnisse[index];
-				}
-				if(braucheFaktor.contains(infos[i].getZuÄndern()))
-				{
-					int index = (infos[i].getZuÄndern()-2)/2;
-					neuerWert = bedürfnisse[index].getAbfallfaktor();
-					referenz = bedürfnisse[index];
-				}
-				
-				switch(infos[i].getÄnderungsart())
-				{
-				case 1:
+					int neuerWert = 0;
+					Bedürfnis referenz = null;
+					if(braucheWert.contains(infos[i].getZuÄndern()))
 					{
-						if(infos[i].getWert()>=referenz.getMin() && infos[i].getWert()<=referenz.getMax())
-							neuerWert = infos[i].getWert();
-						else
-						{
-							if(infos[i].getWert()<referenz.getMin())
-								neuerWert = referenz.getMin();
-							else
-								neuerWert = referenz.getMax();
-						}
-						break;
+						int index = (infos[i].getZuÄndern()-1)/2;
+						neuerWert = bedürfnisse[index].getWert();
+						referenz = bedürfnisse[index];
 					}
-				case 2:
+					if(braucheFaktor.contains(infos[i].getZuÄndern()))
 					{
-						int tmp = neuerWert + infos[i].getWert();
-						if(tmp>=referenz.getMin() && tmp<=referenz.getMax())
-							neuerWert = tmp;
-						else
-						{
-							if(tmp<referenz.getMin())
-								neuerWert = referenz.getMin();
-							else
-								neuerWert = referenz.getMax();
-						}
-						break;
+						int index = (infos[i].getZuÄndern()-2)/2;
+						neuerWert = bedürfnisse[index].getAbfallfaktor();
+						referenz = bedürfnisse[index];
 					}
-				case 3:
+					
+					switch(infos[i].getÄnderungsart())
 					{
-						double tmp = neuerWert*infos[i].getWert()/100;
-						int tmp2 = (int)tmp; //so grob
-						if(tmp2>=referenz.getMin() && tmp2<=referenz.getMax())
-							neuerWert = tmp2;
-						else
+					case 1:
 						{
-							if(tmp2<referenz.getMin())
-								neuerWert = referenz.getMin();
+							if(infos[i].getWert()>=referenz.getMin() && infos[i].getWert()<=referenz.getMax())
+								neuerWert = infos[i].getWert();
 							else
-								neuerWert = referenz.getMax();
+							{
+								if(infos[i].getWert()<referenz.getMin())
+									neuerWert = referenz.getMin();
+								else
+									neuerWert = referenz.getMax();
+							}
+							break;
 						}
-						break;
+					case 2:
+						{
+							int tmp = neuerWert + infos[i].getWert();
+							if(tmp>=referenz.getMin() && tmp<=referenz.getMax())
+								neuerWert = tmp;
+							else
+							{
+								if(tmp<referenz.getMin())
+									neuerWert = referenz.getMin();
+								else
+									neuerWert = referenz.getMax();
+							}
+							break;
+						}
+					case 3:
+						{
+							double tmp = neuerWert*infos[i].getWert()/100;
+							int tmp2 = (int)tmp; //so grob
+							if(tmp2>=referenz.getMin() && tmp2<=referenz.getMax())
+								neuerWert = tmp2;
+							else
+							{
+								if(tmp2<referenz.getMin())
+									neuerWert = referenz.getMin();
+								else
+									neuerWert = referenz.getMax();
+							}
+							break;
+						}
+					case 4:
+						{
+							double tmp = neuerWert*infos[i].getWert();
+							int tmp2 = (int)tmp; //so grob
+							tmp2 = neuerWert + tmp2;
+							if(tmp2>=referenz.getMin() && tmp2<=referenz.getMax())
+								neuerWert = tmp2;
+							else
+							{
+								if(tmp2<referenz.getMin())
+									neuerWert = referenz.getMin();
+								else
+									neuerWert = referenz.getMax();
+							}
+							break;
+						}
 					}
-				case 4:
+					
+					if(braucheWert.contains(infos[i].getZuÄndern()))
 					{
-						double tmp = neuerWert*infos[i].getWert();
-						int tmp2 = (int)tmp; //so grob
-						tmp2 = neuerWert + tmp2;
-						if(tmp2>=referenz.getMin() && tmp2<=referenz.getMax())
-							neuerWert = tmp2;
-						else
+						int index = (infos[i].getZuÄndern()-1)/2;
+						bedürfnisse[index].setWert(neuerWert);
+					}
+					if(braucheFaktor.contains(infos[i].getZuÄndern()))
+					{
+						int index = (infos[i].getZuÄndern()-2)/2;
+						bedürfnisse[index].setAbfallfaktor(neuerWert);
+					}				
+				}
+				if(grenzeUnten.contains(infos[i].getZuÄndern()))
+				{
+					int neuerWert = 0;
+					if(infos[i].getZuÄndern() == Information.AENDERN_ZEIT)	
+						neuerWert = zeit;
+					if(infos[i].getZuÄndern() == Information.AENDERN_BEWERBUNGSFAKTOR)
+						neuerWert = bewerbungsfaktor;
+					
+					
+					switch(infos[i].getÄnderungsart())
+					{
+					case 1:
 						{
-							if(tmp2<referenz.getMin())
-								neuerWert = referenz.getMin();
+							if(infos[i].getWert()>0)
+								neuerWert = infos[i].getWert();
 							else
-								neuerWert = referenz.getMax();
+							{
+								neuerWert = 0;
+							}
+							break;
 						}
-						break;
+					case 2:
+						{
+							int tmp = neuerWert + infos[i].getWert();
+							if(tmp > 0)
+								neuerWert = tmp;
+							else
+							{
+								neuerWert = 0;
+							}
+							break;
+						}
+					case 3:
+						{
+							double tmp = neuerWert*infos[i].getWert()/100;
+							int tmp2 = (int)tmp; //so grob
+							if(tmp2>0)
+								neuerWert = tmp2;
+							else
+							{
+								neuerWert = 0;
+							}
+							break;
+						}
+					case 4:
+						{
+							double tmp = neuerWert*infos[i].getWert()/100;
+							int tmp2 = (int)tmp; //so grob
+							tmp2 = neuerWert + tmp2;
+							if(tmp2>0)
+								neuerWert = tmp2;
+							else
+							{
+								neuerWert = 0;
+							}
+							break;
+						}
+					}
+					
+					if(infos[i].getZuÄndern() == Information.AENDERN_ZEIT)
+						zeit = neuerWert;
+					if(infos[i].getZuÄndern() == Information.AENDERN_BEWERBUNGSFAKTOR)
+						bewerbungsfaktor = neuerWert;
+				}
+				if(keineGrenze.contains(infos[i].getZuÄndern()))
+				{
+					int neuerWert = 0;
+					switch(infos[i].getZuÄndern())
+					{
+					case 12: neuerWert = zeitProRunde;
+							 break;
+					case 13: neuerWert = kontostand;
+					         break;
+					case 14: neuerWert = geldProMonat;
+			         		 break;
+					}
+					switch(infos[i].getÄnderungsart())
+					{
+					case 1: neuerWert = infos[i].getWert();
+							break;
+					case 2: neuerWert = infos[i].getWert() + neuerWert;
+							break;
+					case 3: neuerWert = (int)(neuerWert * infos[i].getWert() / 100);
+							break;
+					case 4: neuerWert = neuerWert + (int)(neuerWert * infos[i].getWert() /100);
+							break;
+					}
+					switch(infos[i].getZuÄndern())
+					{
+					case 12: zeitProRunde = neuerWert;
+							 break;
+					case 13: kontostand = neuerWert;
+							 break;
+					case 14: geldProMonat = neuerWert;
+							 break;
 					}
 				}
-				
-				if(braucheWert.contains(infos[i].getZuÄndern()))
-				{
-					int index = (infos[i].getZuÄndern()-1)/2;
-					bedürfnisse[index].setWert(neuerWert);
-				}
-				if(braucheFaktor.contains(infos[i].getZuÄndern()))
-				{
-					int index = (infos[i].getZuÄndern()-2)/2;
-					bedürfnisse[index].setAbfallfaktor(neuerWert);
-				}				
 			}
-			if(grenzeUnten.contains(infos[i].getZuÄndern()))
-			{
-				int neuerWert = 0;
-				if(infos[i].getZuÄndern() == Information.AENDERN_ZEIT)	
-					neuerWert = zeit;
-				if(infos[i].getZuÄndern() == Information.AENDERN_BEWERBUNGSFAKTOR)
-					neuerWert = bewerbungsfaktor;
-				
-				
-				switch(infos[i].getÄnderungsart())
-				{
-				case 1:
-					{
-						if(infos[i].getWert()>0)
-							neuerWert = infos[i].getWert();
-						else
-						{
-							neuerWert = 0;
-						}
-						break;
-					}
-				case 2:
-					{
-						int tmp = neuerWert + infos[i].getWert();
-						if(tmp > 0)
-							neuerWert = tmp;
-						else
-						{
-							neuerWert = 0;
-						}
-						break;
-					}
-				case 3:
-					{
-						double tmp = neuerWert*infos[i].getWert()/100;
-						int tmp2 = (int)tmp; //so grob
-						if(tmp2>0)
-							neuerWert = tmp2;
-						else
-						{
-							neuerWert = 0;
-						}
-						break;
-					}
-				case 4:
-					{
-						double tmp = neuerWert*infos[i].getWert()/100;
-						int tmp2 = (int)tmp; //so grob
-						tmp2 = neuerWert + tmp2;
-						if(tmp2>0)
-							neuerWert = tmp2;
-						else
-						{
-							neuerWert = 0;
-						}
-						break;
-					}
-				}
-				
-				if(infos[i].getZuÄndern() == Information.AENDERN_ZEIT)
-					zeit = neuerWert;
-				if(infos[i].getZuÄndern() == Information.AENDERN_BEWERBUNGSFAKTOR)
-					bewerbungsfaktor = neuerWert;
 			}
-			if(keineGrenze.contains(infos[i].getZuÄndern()))
-			{
-				int neuerWert = 0;
-				switch(infos[i].getZuÄndern())
-				{
-				case 12: neuerWert = zeitProRunde;
-						 break;
-				case 13: neuerWert = kontostand;
-				         break;
-				case 14: neuerWert = geldProMonat;
-		         		 break;
-				}
-				switch(infos[i].getÄnderungsart())
-				{
-				case 1: neuerWert = infos[i].getWert();
-						break;
-				case 2: neuerWert = infos[i].getWert() + neuerWert;
-						break;
-				case 3: neuerWert = (int)(neuerWert * infos[i].getWert() / 100);
-						break;
-				case 4: neuerWert = neuerWert + (int)(neuerWert * infos[i].getWert() /100);
-						break;
-				}
-				switch(infos[i].getZuÄndern())
-				{
-				case 12: zeitProRunde = neuerWert;
-						 break;
-				case 13: kontostand = neuerWert;
-						 break;
-				case 14: geldProMonat = neuerWert;
-						 break;
-				}
-			}
-		}
 		}
 	}
 	

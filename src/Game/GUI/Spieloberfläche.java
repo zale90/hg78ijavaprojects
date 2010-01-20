@@ -234,15 +234,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 			if(evt.getSource() == bar) {
 				zeigeMausLabel(Bedürfnis.getName(i) + ": " + bar.getValue() + "%");
 			}
-		}
-		
-		// Buttoninfos anzeigen
-		if(evt.getSource() == rundeWeiter) {
-			//zeigeMausLabel("In die nächste Runde wechseln!");
-		} else if(evt.getSource() == spielNeuStarten) {
-			zeigeMausLabel("Zurück zur Charakterauswahl!");
-		}
-		
+		}		
 	}
 	
 	/**
