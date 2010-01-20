@@ -231,9 +231,9 @@ public class Spiel {
 				for (int i = 0; i < probleme.size(); i++)
 				{
 					gruendeFormatiert = gruendeFormatiert + probleme.get(i);
-					if ((i+2) == probs.size())
+					if ((i+2) == probleme.size())
 						gruendeFormatiert = gruendeFormatiert + " und ";
-					else if ((i+1) != probs.size())
+					else if ((i+1) != probleme.size())
 						gruendeFormatiert = gruendeFormatiert + ", ";
 				}
 				Object[] options = {"OK"};
