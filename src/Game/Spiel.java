@@ -284,38 +284,17 @@ public class Spiel {
 					{
 						int neuerWert = 0;
 						Bedürfnis referenz = null;
-						switch(infos[i].getZuÄndern())
+						if(braucheWert.contains(infos[i].getZuÄndern()))
 						{
-						case 1: {neuerWert = bedürfnisse[0].getWert();
-								referenz = bedürfnisse[0];
-								break;}
-						case 2: {neuerWert = bedürfnisse[0].getAbfallfaktor();
-								referenz = bedürfnisse[0];
-								break;}
-						case 3: {neuerWert = bedürfnisse[1].getWert();
-								referenz = bedürfnisse[1];
-								break;}
-						case 4: {neuerWert = bedürfnisse[1].getAbfallfaktor();
-								referenz = bedürfnisse[1];
-								break;}
-						case 5: {neuerWert = bedürfnisse[2].getWert();
-								referenz = bedürfnisse[2];
-								break;}
-						case 6: {neuerWert = bedürfnisse[2].getAbfallfaktor();
-								referenz = bedürfnisse[2];
-								break;}
-						case 7: {neuerWert = bedürfnisse[3].getWert();
-								referenz = bedürfnisse[3];
-								break;}
-						case 8: {neuerWert = bedürfnisse[3].getAbfallfaktor();
-								referenz = bedürfnisse[3];
-								break;}
-						case 9: {neuerWert = bedürfnisse[4].getWert();
-								referenz = bedürfnisse[4];
-								break;}
-						case 10: {neuerWert = bedürfnisse[4].getAbfallfaktor();
-								 referenz = bedürfnisse[4];
-								 break;}
+							int index = (infos[i].getZuÄndern()-1)/2;
+							neuerWert = bedürfnisse[index].getWert();
+							referenz = bedürfnisse[index];
+						}
+						if(braucheFaktor.contains(infos[i].getZuÄndern()))
+						{
+							int index = (infos[i].getZuÄndern()-2)/2;
+							neuerWert = bedürfnisse[index].getAbfallfaktor();
+							referenz = bedürfnisse[index];
 						}
 						
 						switch(infos[i].getÄnderungsart())
