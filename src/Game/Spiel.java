@@ -358,40 +358,18 @@ public class Spiel {
 								break;
 							}
 						}
-						
-						switch(infos[i].getZuÄndern())
+						if(braucheWert.contains(infos[i].getZuÄndern()))
 						{
-						case 1: if (bedürfnisse[0].getMin() >= neuerWert)
-									rueckgabe.add(bedürfnisse[0].getName());
-								break;
-						case 2: if (bedürfnisse[0].getMin() >= neuerWert)
-							rueckgabe.add(bedürfnisse[0].getName());
-								break;
-						case 3: if (bedürfnisse[1].getMin() >= neuerWert)
-							rueckgabe.add(bedürfnisse[0].getName());
-								break;
-						case 4: if (bedürfnisse[1].getMin() >= neuerWert)
-							rueckgabe.add(bedürfnisse[0].getName());
-								break;
-						case 5: if (bedürfnisse[2].getMin() >= neuerWert)
-							rueckgabe.add(bedürfnisse[0].getName());
-								break;
-						case 6: if (bedürfnisse[2].getMin() >= neuerWert)
-							rueckgabe.add(bedürfnisse[0].getName());
-								break;
-						case 7: if (bedürfnisse[3].getMin() >= neuerWert)
-							rueckgabe.add(bedürfnisse[0].getName());
-								break;		
-						case 8: if (bedürfnisse[3].getMin() >= neuerWert)
-							rueckgabe.add(bedürfnisse[0].getName());
-								break;
-						case 9: if (bedürfnisse[4].getMin() >= neuerWert)
-							rueckgabe.add(bedürfnisse[0].getName());
-						        break;
-						case 10: if (bedürfnisse[4].getMin() >= neuerWert)
-							rueckgabe.add(bedürfnisse[0].getName());
-								 break;
+							int index = (infos[i].getZuÄndern()-1)/2;
+							if(bedürfnisse[index].getMin() >= neuerWert)
+								rueckgabe.add(bedürfnisse[index].getName());
 						}
+						if(braucheFaktor.contains(infos[i].getZuÄndern()))
+						{
+							int index = (infos[i].getZuÄndern()-2)/2;
+							if(bedürfnisse[index].getMin() >= neuerWert)
+								rueckgabe.add(bedürfnisse[index].getName());
+						}	
 					}
 					if(grenzeUnten.contains(infos[i].getZuÄndern()))
 					{
