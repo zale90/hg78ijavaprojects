@@ -19,4 +19,7 @@ public class Optionen {
     public static final Font FONT_BIGGER = new Font("Arial", Font.BOLD, 14);
     public static final Font FONT_BUTTON = new Font("Arial", Font.PLAIN, 20);
     public static final Font FONT_ACTION_HEADER = new Font("Arial", Font.BOLD, 14);
+    public static final int NETWORK_PORT = 1337;
+    public static final String NETWORK_ADDRESS = "localhost";
+    
 }

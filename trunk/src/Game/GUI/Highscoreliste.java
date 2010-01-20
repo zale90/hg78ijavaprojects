@@ -17,9 +17,12 @@ public class Highscoreliste extends JPanel implements ActionListener {
 	private static final long serialVersionUID = -767260215399434697L;
 	
 	private JTable tblScores;
-	private JButton btnNeuesSpiel, btnBeendeSpiel;
+	private JButton btnNeuesSpiel, btnRefresh;
+	private Highscores scores;
 
 	public Highscoreliste(Highscores scores) {
+		this.scores = scores;
+		
 		this.setSize(995, 672);
 		this.setLocation(0, 0);
 		this.setLayout(null);
@@ -55,12 +58,11 @@ public class Highscoreliste extends JPanel implements ActionListener {
 		btnNeuesSpiel.addActionListener(this);
 		this.add(btnNeuesSpiel);
 		
-		btnBeendeSpiel = new JButton("Spiel beenden");
-		btnBeendeSpiel.setSize(200, 50);
-		btnBeendeSpiel.setLocation(250, 600);
-		btnBeendeSpiel.addActionListener(this);
-		btnBeendeSpiel.setEnabled(false);
-		this.add(btnBeendeSpiel);
+		btnRefresh = new JButton("Aktualisieren");
+		btnRefresh.setSize(200, 50);
+		btnRefresh.setLocation(250, 600);
+		btnRefresh.addActionListener(this);
+		this.add(btnRefresh);
 		
 		this.setVisible(true);
 	}
@@ -69,8 +71,9 @@ public class Highscoreliste extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent evt) {
 		if(evt.getSource() == btnNeuesSpiel) {
 			SpielAnwendung.zeigeCharakterauswahl();
-		} else if(evt.getSource() == btnBeendeSpiel) {
-			System.exit(0);
+		} else if(evt.getSource() == btnRefresh) {
+			scores.aktualisiereAusNetzwerk();
+			tblScores.repaint();
 		}
 	}
 	
