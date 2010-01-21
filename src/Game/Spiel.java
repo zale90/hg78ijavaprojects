@@ -713,12 +713,21 @@ public class Spiel {
 		int gesundheitP = bedürfnisse[1].getWert();
 		int sozialesP = bedürfnisse[2].getWert();
 		int luxusP = bedürfnisse[3].getWert();
+		int kinderP = 0;
+		if (avatarNr != 1)
+		{
+			kinderP = bedürfnisse[4].getWert();
+		}
 		int geldP = (int)(kontostand/15);
 		
 		int punkteAlt = punkte;
 		punkte = punkte + hungerP + gesundheitP + sozialesP + luxusP + geldP;
+		if(avatarNr != 0)
+		{
+			punkte = punkte + kinderP;
+		}
 		
-		gui.setzeWerte(hungerP, gesundheitP, sozialesP, luxusP, geldP, punkteAlt);
+		gui.setzeWerte(hungerP, gesundheitP, sozialesP, luxusP, kinderP, geldP, punkteAlt);
 	}
 	public void minispielStarten(Minispiel minispiel)
 	{
