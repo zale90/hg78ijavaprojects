@@ -43,7 +43,7 @@ public class Initialisator
 		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);  // Soziales
 		bedList[3] = new Bedürfnis(3, 50, 0, 100, 20);  // Luxus
 		bedList[4] = new Bedürfnis(4, 50, 0, 100, 30);  // Kinder
-		avList.add(new Avatar(3, "Jacqueline Chaves", "Schwierigkeitsgrad: schwer\n\nChantal ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.", bedList, 0, 600, 3));
+		avList.add(new Avatar(3, "Jacqueline Chaves", "Schwierigkeitsgrad: schwer\n\nChantal ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.", bedList, 50, 600, 3));
 		
 		return avList;
 	}
