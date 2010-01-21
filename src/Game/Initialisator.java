@@ -22,28 +22,28 @@ public class Initialisator
 		// Horst Terano
 		bedList = new Bedürfnis[4];		
 		bedList[0] = new Bedürfnis(0, 50, 0, 100, 25);  // Nahrung
-		bedList[1] = new Bedürfnis(1, 50, 0, 100, 25);  // Gesundheit
-		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);  // Soziales
-		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);  // Luxus
+		bedList[1] = new Bedürfnis(1, 50, 0, 100, 20);  // Gesundheit
+		bedList[2] = new Bedürfnis(2, 50, 0, 100, 30);  // Soziales
+		bedList[3] = new Bedürfnis(3, 50, 0, 100, 35);  // Luxus
 		avList.add(new Avatar(1, "Horst Terarno", "Schwierigkeitsgrad: leicht\n\nHorst ist ein 35jähriger, kinder- und arbeitsloser Akademiker. Er hat Immobilienmanagement studiert und danach bei Traumhaus.de gearbeitet. Aufgrund der Wirtschaftskrise und gescheiterter Aktienspekulationen verlor er seinen Arbeitsplatz und seine Rücklagen schrumpften auf 1500,-€. Trotz Hartz IV versucht er seinen Lebensstandard zu halten.", bedList, 1500, 400, 5));
 		
 		// Hasma Hamada
 		bedList = new Bedürfnis[5];		
-		bedList[0] = new Bedürfnis(0, 50, 0, 100, 25);  // Nahrung
+		bedList[0] = new Bedürfnis(0, 50, 0, 100, 50);  // Nahrung
 		bedList[1] = new Bedürfnis(1, 50, 0, 100, 25);  // Gesundheit
-		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);  // Soziales
+		bedList[2] = new Bedürfnis(2, 50, 0, 100, 20);  // Soziales
 		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);  // Luxus
-		bedList[4] = new Bedürfnis(4, 50, 0, 100, 25);  // Kinder
-		avList.add(new Avatar(2, "Hasma Hamada", "Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen  Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt mit einem 400€-Job zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 130,-€ verbuchen.", bedList, 130, 1500, 2));
+		bedList[4] = new Bedürfnis(4, 50, 0, 100, 30);  // Kinder
+		avList.add(new Avatar(2, "Hasma Hamada", "Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt mit einem 400€-Job zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 130,-€ verbuchen.", bedList, 130, 1500, 2));
 		
 		// Chantal-Jacqueline Chaves
 		bedList = new Bedürfnis[5];		
-		bedList[0] = new Bedürfnis(0, 50, 0, 100, 25);  // Nahrung
-		bedList[1] = new Bedürfnis(1, 50, 0, 100, 25);  // Gesundheit
+		bedList[0] = new Bedürfnis(0, 50, 0, 100, 35);  // Nahrung
+		bedList[1] = new Bedürfnis(1, 50, 0, 100, 30);  // Gesundheit
 		bedList[2] = new Bedürfnis(2, 50, 0, 100, 25);  // Soziales
-		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);  // Luxus
-		bedList[4] = new Bedürfnis(4, 50, 0, 100, 25);  // Kinder
-		avList.add(new Avatar(3, "Chantal-Jacqueline Chaves", "Schwierigkeitsgrad: schwer\n\nChantal ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.", bedList, 0, 600, 3));
+		bedList[3] = new Bedürfnis(3, 50, 0, 100, 20);  // Luxus
+		bedList[4] = new Bedürfnis(4, 50, 0, 100, 30);  // Kinder
+		avList.add(new Avatar(3, "Jacqueline Chaves", "Schwierigkeitsgrad: schwer\n\nChantal ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.", bedList, 0, 600, 3));
 		
 		return avList;
 	}
@@ -120,7 +120,7 @@ public class Initialisator
 		ja[1] = new Information(12, 2, 1);
 		nein = new Information[1];
 		nein[0] = new Information(13, 2, -20);
-		e = new Ereignis(12, "Waschmaschine defekt", "Deine Waschmaschiene scheint defekt zu sein. Zwar könnte ein Mechaniker das alte Gerät für 20€ reparieren, doch mit einer neuen, 400 Euro teuren Waschmaschine sparst du viel Zeit und hast somit einen Zug mehr pro Runde. Kaufst du die neue Maschine?", true, ja, nein);
+		e = new Ereignis(12, "Waschmaschine defekt", "Deine Waschmaschine scheint defekt zu sein. Zwar könnte ein Mechaniker das alte Gerät für 20€ reparieren, doch mit einer neuen, 400 Euro teuren Waschmaschine sparst du viel Zeit und hast somit einen Zug mehr pro Runde. Kaufst du die neue Maschine?", true, ja, nein);
 		erList.add(e);
 		
 		ja = new Information[1];
@@ -324,7 +324,7 @@ public class Initialisator
 		ffoodInfos[2] = new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 10);
 		ffoodInfos[3] = new Information(Information.AENDERN_GESUNDHEIT, Information.ART_UM_WERT, -10);
 		ffoodAktionen.add(new Aktion("ein paar Burger", "(blue)3 pappige Burger", "Du hast billiges Fleisch gekauft.", ffoodInfos.clone(), null));
-		kuehlschrankVerzweigung.add(new Verzweigung("Fast Food", "Betörend, billig, böse: Fast Food macht für wenig Geld erstaunlich satt. Doch die von Geschmacksverstärker durchzogenen Nahrungsmittel schaden der Gesundheit extrem.", ffoodAktionen, new ArrayList<Verzweigung>()));
+		kuehlschrankVerzweigung.add(new Verzweigung("Fast Food", "Betörend, billig, böse: Fast Food macht für wenig Geld erstaunlich satt. Doch die von Geschmacksverstärkern durchzogenen Nahrungsmittel schaden der Gesundheit extrem.", ffoodAktionen, new ArrayList<Verzweigung>()));
 		
 		Verzweigung kuehlschrankMenu = new Verzweigung("Kühlschrank", "Hier kannst du Lebensmittel einkaufen.", new ArrayList<Aktion>(), kuehlschrankVerzweigung);
 		Aktionsobjekt kuehlschrank = new Aktionsobjekt("Essen kaufen",new Point(522, 85), new Dimension(144, 241),"fridgeopen.png", "fridgeclosed.png", kuehlschrankMenu);
@@ -338,7 +338,8 @@ public class Initialisator
 				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
 				new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -15),
 				new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 5),
-				new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 15)
+				new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 15),
+				new Information(Information.AENDERN_KINDER, Information.ART_UM_WERT, 15)
 		};
 		türAktionen.add(new Aktion("Kino besuchen", "(blue)Geh ins Kino und verbringe eine schöne Zeit mit deinen Freunden.", "Du bist ins Kino gegangen", kinoBesuchen, null));
 		
@@ -349,7 +350,8 @@ public class Initialisator
         		new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
         		new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -30),
         		new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 10),
-        		new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 30)
+        		new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 30),
+        		new Information(Information.AENDERN_KINDER, Information.ART_UM_WERT, 10)
         };
         türAktionen.add(new Aktion("Theater besuchen", "(blue)Besuch ein Theater und genieß die Kultur.", "Du bist ins Theater gegangen.", theaterBesuchen, null));
         
