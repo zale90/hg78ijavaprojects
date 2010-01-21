@@ -208,7 +208,7 @@ public class Initialisator
 		
 		ja = new Information[1];
 		ja[0] = new Information(Information.AENDERN_KINDER, 1, 100);
-		e = new Ereignis(24, "Clown", "Asi, der lustige Clown kommt vorbei. Deine Kinder sind euphorisch!", false, ja, null);
+		e = new Ereignis(24, "Clown", "August, der lustige Clown kommt vorbei. Deine Kinder sind euphorisch!", false, ja, null);
 		erList.add(e);
 		
 		ja = new Information[2];
@@ -257,10 +257,19 @@ public class Initialisator
 		return aktionsobjekte;
 	}
 	
+	//kik, s.oliver, tommy hilfiger, gucci
+	
 	public static Aktionsobjekt getSchrank() {
+		ArrayList<Aktion> schrankAktionen = new ArrayList<Aktion>();
 		
-		Verzweigung schrankMenu = new Verzweigung("Kleiderschrank", "Hier kannst du dich einkleiden.", new ArrayList<Aktion>(), new ArrayList<Verzweigung>());
-		Aktionsobjekt schrank = new Aktionsobjekt("Kleiderschrank öffnen", new Point(92,45), new Dimension(137,230), "", "shrankclosed.png", schrankMenu);
+		Information kikInfos[] = new Information[5];
+		kikInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
+		kikInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -40);
+		kikInfos[2] = new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, )
+		
+		
+		Verzweigung schrankMenu = new Verzweigung("Kleiderschrank", "Kaufe neue Kleidung und erfüll dein Bedürfnis nach Luxus!", new ArrayList<Aktion>(), new ArrayList<Verzweigung>());
+		Aktionsobjekt schrank = new Aktionsobjekt("Kleidung kaufen", new Point(92,45), new Dimension(137,230), "", "shrankclosed.png", schrankMenu);
 		
 		return schrank;
 	}
@@ -401,7 +410,7 @@ public class Initialisator
 		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
 		Information[] zeitungLesen = {
 				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
-				new Information(Information.AENDERN_BEWERBUNGSFAKTOR, Information.ART_UM_WERT, 5)
+				new Information(Information.AENDERN_BEWERBUNGSFAKTOR, Information.ART_UM_WERT, 2)
 		};
 		zeitungsAktionen.add(new Aktion("Lesen", "(blue)Lesen bildet! Verbessere deine Allgemeinbildung und somit deine Chance, in einem Bewerbungsgespräch angenommen zu werden.", "Du hast die Zeitung durchgelesen.", zeitungLesen, null));	
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();

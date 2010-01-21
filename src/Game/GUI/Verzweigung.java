@@ -38,8 +38,8 @@ public class Verzweigung extends JPanel implements MouseListener, ActionListener
 	      this.addMouseListener(this);
 	      
 	      JLabel titel = new JLabel(name);
-	      titel.setSize(100, 20);
-	      titel.setLocation(100, 10);
+	      titel.setSize(140, 20);
+	      titel.setLocation(80, 10);
 	      titel.setHorizontalAlignment(SwingConstants.CENTER);
 	      titel.setFont(Optionen.FONT_BIGGER);
 	      this.add(titel);
