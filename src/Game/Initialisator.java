@@ -244,9 +244,21 @@ public class Initialisator
 		spielbereich.add(kuehlschrank);
 		aktionsobjekte.add(kuehlschrank);
 		
+		Aktionsobjekt schrank = getSchrank();
+		schrank.addMouseListener(spielbereich);
+		spielbereich.add(schrank);
+		aktionsobjekte.add(schrank);
+		
 		return aktionsobjekte;
 	}
 	
+	public static Aktionsobjekt getSchrank() {
+		
+		Verzweigung schrankMenu = new Verzweigung("Kleiderschrank", "Hier kannst du dich einkleiden.", new ArrayList<Aktion>(), new ArrayList<Verzweigung>());
+		Aktionsobjekt schrank = new Aktionsobjekt("Kleiderschrank öffnen", new Point(92,45), new Dimension(137,230), "", "shrankclosed.png", schrankMenu);
+		
+		return schrank;
+	}
 	public static Aktionsobjekt getKuehlschrank() {
 		//Gemüse
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
