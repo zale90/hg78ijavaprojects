@@ -37,6 +37,7 @@ public class ServerThread extends Thread {
 			
 			// Kommunikation
 			bearbeiteKommunikation();
+			
 		} catch (IOException e) {
 			AdminGUI.consoleText("Fehler: " + e.getMessage());
 		}
@@ -84,6 +85,8 @@ public class ServerThread extends Thread {
 			Highscores scores = ScoreServer.getList()[avNummer-1];
 			scores.insertIntoList(new Score(name, score));
 			AdminGUI.consoleText("Highscore eingefügt: " + name + " | " + score);
+			
+			ScoreServer.aktualisiereTabellen();
 			
 			pw.println("EmpfangenAbgeschlossen");
 		}

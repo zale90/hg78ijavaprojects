@@ -1,23 +1,18 @@
 package Server.GUI;
 
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import Game.Optionen;
-import Game.SpielAnwendung;
 import Server.Highscores;
 import Server.TableModelHighscore;
 
-public class HighscoreListe extends JPanel implements ActionListener {
+public class HighscoreListe extends JPanel {
 	
 	private static final long serialVersionUID = -767260215399434697L;
 	
 	private JTable tblScores;
-	private JButton btnNeuesSpiel, btnBeendeSpiel;
 
 	public HighscoreListe(Highscores scores) {
 		
@@ -48,13 +43,8 @@ public class HighscoreListe extends JPanel implements ActionListener {
 		this.setVisible(true);
 		
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent evt) {
-		if(evt.getSource() == btnNeuesSpiel) {
-			SpielAnwendung.zeigeCharakterauswahl();
-		} else if(evt.getSource() == btnBeendeSpiel) {
-			System.exit(0);
-		}
+	
+	public void aktualisiereTabelle() {
+		tblScores.repaint();
 	}
 }

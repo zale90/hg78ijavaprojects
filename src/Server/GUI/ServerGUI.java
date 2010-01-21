@@ -64,6 +64,12 @@ public class ServerGUI extends JFrame implements MouseListener {
 		
 		this.setVisible(true);
 	}
+	
+	public void aktualisiereTabellen() {
+		for(HighscoreListe list : scorePanels) {
+			list.aktualisiereTabelle();
+		}
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent evt) {
