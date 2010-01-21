@@ -18,6 +18,9 @@ public class PunkteGUI extends JPanel implements ActionListener
 	public PunkteGUI(Spiel spiel)
 	{
 		this.spiel = spiel;
+		int x = 0;
+		if(spiel.getAvatarNr() != 1)
+			x = 15;
 		
 		this.setSize(200,350);
 		this.setLocation(320, 135);
@@ -41,13 +44,13 @@ public class PunkteGUI extends JPanel implements ActionListener
 		
 		bedürfnis = new JLabel("Bedürfnisse");
 		bedürfnis.setSize(195,20);
-		bedürfnis.setLocation(5,145);
+		bedürfnis.setLocation(5,145+x);
 		bedürfnis.setFont(new Font("Arial", Font.BOLD, 14));
 		this.add(bedürfnis);
 		
-		bedürfnisse = new JLabel[4];
+		bedürfnisse = new JLabel[5];
 		int ort = 85;
-		for(int i = 0; i < 4; i++)
+		for(int i = 0; i < 5; i++)
 		{
 			bedürfnisse[i] = new JLabel();
 			bedürfnisse[i].setSize(95,15);
@@ -59,10 +62,14 @@ public class PunkteGUI extends JPanel implements ActionListener
 		bedürfnisse[1].setText("Gesundheit");
 		bedürfnisse[2].setText("Soziales");
 		bedürfnisse[3].setText("Luxus");
+		bedürfnisse[4].setText("Kinder");
 		
-		bPunkte = new JLabel[4];
+		if(spiel.getAvatarNr() == 1)
+			bedürfnisse[4].setVisible(false);
+		
+		bPunkte = new JLabel[5];
 		ort = 85;
-		for(int i = 0; i < 4; i++)
+		for(int i = 0; i < 5; i++)
 		{
 			bPunkte[i] = new JLabel();
 			bPunkte[i].setSize(95,15);
@@ -72,48 +79,51 @@ public class PunkteGUI extends JPanel implements ActionListener
 			ort = ort + 15;
 		}
 		
+		if(spiel.getAvatarNr() == 1)
+			bPunkte[4].setVisible(false);
+		
 		bSumme = new JLabel();
 		bSumme.setSize(95,20);
-		bSumme.setLocation(100,145);
+		bSumme.setLocation(100,145+x);
 		bSumme.setHorizontalAlignment(JLabel.RIGHT);
 		bSumme.setFont(new Font("Arial", Font.BOLD, 14));
 		this.add(bSumme);
 		
 		lGeld = new JLabel("Geld : 15");
 		lGeld.setSize(95,20);
-		lGeld.setLocation(5,170);
+		lGeld.setLocation(5,170+x);
 		lGeld.setFont(new Font("Arial", Font.BOLD, 14));
 		this.add(lGeld);
 		
 		gPunkt = new JLabel();
 		gPunkt.setSize(95,20);
-		gPunkt.setLocation(100,170);
+		gPunkt.setLocation(100,170+x);
 		gPunkt.setFont(new Font("Arial", Font.BOLD, 14));
 		gPunkt.setHorizontalAlignment(JLabel.RIGHT);
 		this.add(gPunkt);
 		
 		lGesamt = new JLabel("Gesamt");
 		lGesamt.setSize(95,20);
-		lGesamt.setLocation(5,200);
+		lGesamt.setLocation(5,200+x);
 		lGesamt.setFont(new Font("Arial", Font.BOLD, 16));
 		this.add(lGesamt);
 		
 		gesPunkt = new JLabel();
 		gesPunkt.setSize(95,20);
-		gesPunkt.setLocation(100,200);
+		gesPunkt.setLocation(100,200+x);
 		gesPunkt.setFont(new Font("Arial", Font.BOLD, 16));
 		gesPunkt.setHorizontalAlignment(JLabel.RIGHT);
 		this.add(gesPunkt);
 		
 		lVorher = new JLabel("Punkte vorher");
 		lVorher.setSize(95,20);
-		lVorher.setLocation(5, 220);
+		lVorher.setLocation(5, 220+x);
 		lVorher.setFont(new Font("Arial", Font.PLAIN, 14));
 		this.add(lVorher);
 		
 		pVorher = new JLabel();
 		pVorher.setSize(95,20);
-		pVorher.setLocation(100,220);
+		pVorher.setLocation(100,220+x);
 		pVorher.setFont(new Font("Arial", Font.PLAIN, 14));
 		pVorher.setHorizontalAlignment(JLabel.RIGHT);
 		this.add(pVorher);
@@ -144,7 +154,7 @@ public class PunkteGUI extends JPanel implements ActionListener
 		this.setVisible(false);
 	}
 
-	public void setzeWerte(int hunger, int gesundheit, int soziales, int luxus, int geld, int alt)
+	public void setzeWerte(int hunger, int gesundheit, int soziales, int luxus, int kinder, int geld, int alt)
 	{
 		this.setVisible(true);
 		// OK-Button Fokussieren
@@ -153,11 +163,15 @@ public class PunkteGUI extends JPanel implements ActionListener
 		bPunkte[1].setText(Integer.toString(gesundheit));
 		bPunkte[2].setText(Integer.toString(soziales));
 		bPunkte[3].setText(Integer.toString(luxus));
-		bSumme.setText(Integer.toString(hunger + gesundheit + soziales + luxus));
+		bPunkte[4].setText(Integer.toString(kinder));
+		int bSummeInt = hunger + gesundheit + soziales + luxus;
+		if(spiel.getAvatarNr() != 1)
+			bSummeInt = bSummeInt + kinder;
+		bSumme.setText(Integer.toString(bSummeInt));
 		gPunkt.setText(Integer.toString(geld));
-		gesPunkt.setText(Integer.toString(hunger + gesundheit + soziales + luxus + geld));
+		gesPunkt.setText(Integer.toString(bSummeInt + geld));
 		pVorher.setText(Integer.toString(alt));
-		pPunktestand.setText(Integer.toString(alt + hunger + gesundheit + soziales + luxus + geld));
+		pPunktestand.setText(Integer.toString(alt + bSummeInt + geld));
 	}
 	
 	public void actionPerformed(ActionEvent arg0) 
