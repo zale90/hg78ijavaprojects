@@ -229,6 +229,16 @@ public class Initialisator
 		spielbereich.add(cheat);
 		aktionsobjekte.add(cheat);
 		
+		Aktionsobjekt schrank = getSchrank();
+		schrank.addMouseListener(spielbereich);
+		spielbereich.add(schrank);
+		aktionsobjekte.add(schrank);
+		
+		Aktionsobjekt tv = getTV();
+		tv.addMouseListener(spielbereich);
+		spielbereich.add(tv);
+		aktionsobjekte.add(tv);
+		
 		Aktionsobjekt tuer = getTuer();
 		tuer.addMouseListener(spielbereich);
 		spielbereich.add(tuer);
@@ -243,12 +253,7 @@ public class Initialisator
 		kuehlschrank.addMouseListener(spielbereich);
 		spielbereich.add(kuehlschrank);
 		aktionsobjekte.add(kuehlschrank);
-		
-		Aktionsobjekt schrank = getSchrank();
-		schrank.addMouseListener(spielbereich);
-		spielbereich.add(schrank);
-		aktionsobjekte.add(schrank);
-		
+				
 		return aktionsobjekte;
 	}
 	
@@ -259,6 +264,14 @@ public class Initialisator
 		
 		return schrank;
 	}
+	
+	public static Aktionsobjekt getTV() {
+		Verzweigung tvMenu = new Verzweigung("Fernseher", "Hier kannst du Britt, DSDS und Hartz 4 TV gucken.", new ArrayList<Aktion>(), new ArrayList<Verzweigung>());
+		Aktionsobjekt tv = new Aktionsobjekt("TV anschaltren", new Point(10,257), new Dimension(79, 124), "tvopen.png", "tvclosed.png", tvMenu);
+		
+		return tv;
+	}
+	
 	public static Aktionsobjekt getKuehlschrank() {
 		//Gemüse
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
