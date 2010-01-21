@@ -16,6 +16,7 @@ public class ScoreServer {
 	
 	private boolean running = true;
 	private static Highscores[] list;
+	private static ServerGUI gui;
 	
 	/**
 	 * Startet einen neuen Server und zeigt die grafische Oberfläche an.
@@ -31,7 +32,7 @@ public class ScoreServer {
 		}
 		
 		// GUI erzeugen
-		new ServerGUI(list);
+		gui = new ServerGUI(list);
 		
 		// Server starten
 		startServer();
@@ -68,7 +69,12 @@ public class ScoreServer {
 		for(Highscores scores : list) {
 			scores.resetScores();
 		}
+		gui.aktualisiereTabellen();
 		AdminGUI.consoleText("Die Highscores aller Avatare wurden zurück gesetzt!");
+	}
+	
+	public static void aktualisiereTabellen() {
+		gui.aktualisiereTabellen();
 	}
 
 	public boolean isRunning() {

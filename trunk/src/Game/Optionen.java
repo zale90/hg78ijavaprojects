@@ -8,6 +8,10 @@
 package Game;
 
 import java.awt.Font;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Optionen {
 	
@@ -20,6 +24,21 @@ public class Optionen {
     public static final Font FONT_BUTTON = new Font("Arial", Font.PLAIN, 20);
     public static final Font FONT_ACTION_HEADER = new Font("Arial", Font.BOLD, 14);
     public static final int NETWORK_PORT = 1337;
-    public static final String NETWORK_ADDRESS = "localhost";
+    public static final String NETWORK_ADDRESS = getNetworkAddress();
+    
+    private static final String NETWORK_CONFIG = "files/data/network.config";
+    private static String getNetworkAddress() {
+    	String address = "";
+		try {
+	    	BufferedReader test;
+			test = new BufferedReader(new FileReader(NETWORK_CONFIG));
+	    	address = test.readLine().trim();
+		} catch (FileNotFoundException e) {
+			System.out.println("Netzwerkkonfiguration konnte nicht gefunden!");
+		} catch (IOException e) {
+			System.out.println("Fehler:\n" + e.getMessage());
+		}
+		return address;
+    }
     
 }
