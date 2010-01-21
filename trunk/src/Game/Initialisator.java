@@ -262,13 +262,40 @@ public class Initialisator
 	public static Aktionsobjekt getSchrank() {
 		ArrayList<Aktion> schrankAktionen = new ArrayList<Aktion>();
 		
-		Information kikInfos[] = new Information[5];
-		kikInfos[0] = new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1);
-		kikInfos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -40);
-		kikInfos[2] = new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, )
-		
-		
-		Verzweigung schrankMenu = new Verzweigung("Kleiderschrank", "Kaufe neue Kleidung und erfüll dein Bedürfnis nach Luxus!", new ArrayList<Aktion>(), new ArrayList<Verzweigung>());
+		Information[] kikInfos = {
+			new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
+			new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -40),
+			new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, +5),
+			new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, +15),
+			new Information(Information.AENDERN_KINDER, Information.ART_UM_WERT, +5)
+		};	
+		schrankAktionen.add(new Aktion("KiK", "(blue)Ein Kauf beim Textildiscounter sorgt für Kleidung.", "Du hast günstige Kleidung gekauft.", kikInfos, null));
+		Information[] sOliverInfos = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
+				new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -80),
+				new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, +15),
+				new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, +30),
+				new Information(Information.AENDERN_KINDER, Information.ART_UM_WERT, +10)
+			};	
+		schrankAktionen.add(new Aktion("s.Oliver", "(blue)Mittelpreisige Kleidung ist nicht nur schick, sondern auch angesagt.", "Du hast mittelpreisige Kleidung gekauft.", sOliverInfos, null));
+		Information[] tommyHilfigerInfos = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
+				new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -120),
+				new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, +25),
+				new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, +45),
+				new Information(Information.AENDERN_KINDER, Information.ART_UM_WERT, +15)
+			};	
+		schrankAktionen.add(new Aktion("Tommy Hilfiger", "(blue)Diese nicht ganz preiswerte Kleidung macht dich bekannt und beliebt.", "Du hast teure Kleidung gekauft.", tommyHilfigerInfos, null));
+		Information[] gucciInfos = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
+				new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -240),
+				new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, +55),
+				new Information(Information.AENDERN_LUXUS, Information.ART_AUF_WERT, 100),
+				new Information(Information.AENDERN_KINDER, Information.ART_UM_WERT, +30)
+			};	
+		schrankAktionen.add(new Aktion("Gucci", "(blue)Beste Kleidung aus den feinsten Stoffen zu horenden Preisen.", "Du hast Luxus-Kleidung gekauft. Du Verschwender!", gucciInfos, null));
+
+		Verzweigung schrankMenu = new Verzweigung("Kleiderschrank", "Kaufe neue Kleidung und erfüll dein Bedürfnis nach Luxus!", schrankAktionen, new ArrayList<Verzweigung>());
 		Aktionsobjekt schrank = new Aktionsobjekt("Kleidung kaufen", new Point(92,45), new Dimension(137,230), "", "shrankclosed.png", schrankMenu);
 		
 		return schrank;
@@ -382,7 +409,7 @@ public class Initialisator
         
         Information[] theaterBesuchen = {
         		new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
-        		new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -30),
+        		new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -55),
         		new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 10),
         		new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 30),
         		new Information(Information.AENDERN_KINDER, Information.ART_UM_WERT, 10)
