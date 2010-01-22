@@ -297,7 +297,7 @@ public class Initialisator
 		schrankAktionen.add(new Aktion("Gucci", "(blue)Beste Kleidung aus den feinsten Stoffen zu horenden Preisen.", "Du hast Luxus-Kleidung gekauft. Du Verschwender!", gucciInfos, null));
 
 		Verzweigung schrankMenu = new Verzweigung("Kleiderschrank", "Kaufe neue Kleidung und erfüll dein Bedürfnis nach Luxus!", schrankAktionen, new ArrayList<Verzweigung>());
-		Aktionsobjekt schrank = new Aktionsobjekt("Kleidung kaufen", new Point(92,45), new Dimension(137,230), "", "shrankclosed.png", schrankMenu);
+		Aktionsobjekt schrank = new Aktionsobjekt("Kleidung kaufen", new Point(92,45), new Dimension(137,230), "shrankopen.png", "shrankclosed.png", schrankMenu);
 		
 		return schrank;
 	}
@@ -462,7 +462,7 @@ public class Initialisator
 				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -3),
 		};
 		zeitungsAktionen.add(new Aktion("Bewerben", "(blue)Bewirb dich auf einen 400€-Job und versuch dich am Einstellungsverfahren.", "Du hast dich auf einen Job beworben.", bewerbenInfos, null));
-		zeitungsAktionen.get(1).setMinispiel(new Bewerbungsflaeche());
+		//zeitungsAktionen.get(1).setMinispiel(new Bewerbungsflaeche());
 		
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung("Zeitung", "Hier kannst du die Zeitung lesen, Kreuzworträtsel lösen und vieles mehr.", zeitungsAktionen, zeitungsVerzweigungen);
