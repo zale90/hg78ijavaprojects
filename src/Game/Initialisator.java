@@ -5,7 +5,8 @@ import java.awt.Point;
 import java.util.*;
 
 import Game.GUI.*;
-import Game.Minigames.TicTacToe.TicTacToe;
+import Game.Minigames.TicTacToe.*;
+import Game.Minigames.Bewerbungstest.*;
 
 public class Initialisator 
 {
@@ -34,7 +35,7 @@ public class Initialisator
 		bedList[2] = new Bedürfnis(2, 50, 0, 100, 20);  // Soziales
 		bedList[3] = new Bedürfnis(3, 50, 0, 100, 25);  // Luxus
 		bedList[4] = new Bedürfnis(4, 50, 0, 100, 30);  // Kinder
-		avList.add(new Avatar(2, "Hasma Hamada", "Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt mit einem 400€-Job zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 130,-€ verbuchen.", bedList, 130, 1500, 2));
+		avList.add(new Avatar(2, "Hasma Hamada", "Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt mit einem 400€-Job zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 130,-€ verbuchen.", bedList, 130, 1500, 3));
 		
 		// Chantal-Jacqueline Chaves
 		bedList = new Bedürfnis[5];		
@@ -302,7 +303,23 @@ public class Initialisator
 	}
 	
 	public static Aktionsobjekt getTV() {
-		Verzweigung tvMenu = new Verzweigung("Fernseher", "Hier kannst du Britt, DSDS und Hartz 4 TV gucken.", new ArrayList<Aktion>(), new ArrayList<Verzweigung>());
+		ArrayList<Aktion> tvAktionen = new ArrayList<Aktion>();
+		Information[] schauenInfos = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
+				new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 10)
+		};
+		tvAktionen.add(new Aktion("Fernsehen", "(blue)Schaue ein wenig fern und fühl dich gut!", "Du hast ferngesehen.", schauenInfos, null));
+		
+		Information[] dvdInfos = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1),
+				new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, -10),
+				new Information(Information.AENDERN_NAHRUNG, Information.ART_UM_WERT, 5),
+				new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 15),
+				new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 15)
+		};
+		tvAktionen.add(new Aktion("DVD-Abend", "(blue)Veranstalte einen DVD-Abend mit deinen Freunden!", "Du hast einen DVD-Abend veranstaltet.", dvdInfos, null));
+		
+		Verzweigung tvMenu = new Verzweigung("Fernseher", "Hier kannst du Britt, DSDS und Hartz 4 TV gucken.", tvAktionen, new ArrayList<Verzweigung>());
 		Aktionsobjekt tv = new Aktionsobjekt("TV anschaltren", new Point(10,257), new Dimension(79, 124), "tvopen.png", "tvclosed.png", tvMenu);
 		
 		return tv;
@@ -440,6 +457,13 @@ public class Initialisator
 				new Information(Information.AENDERN_BEWERBUNGSFAKTOR, Information.ART_UM_WERT, 2)
 		};
 		zeitungsAktionen.add(new Aktion("Lesen", "(blue)Lesen bildet! Verbessere deine Allgemeinbildung und somit deine Chance, in einem Bewerbungsgespräch angenommen zu werden.", "Du hast die Zeitung durchgelesen.", zeitungLesen, null));	
+				
+		Information[] bewerbenInfos = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -3),
+		};
+		zeitungsAktionen.add(new Aktion("Bewerben", "(blue)Bewirb dich auf einen 400€-Job und versuch dich am Einstellungsverfahren.", "Du hast dich auf einen Job beworben.", bewerbenInfos, null));
+		zeitungsAktionen.get(1).setMinispiel(new Bewerbungsflaeche());
+		
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung("Zeitung", "Hier kannst du die Zeitung lesen, Kreuzworträtsel lösen und vieles mehr.", zeitungsAktionen, zeitungsVerzweigungen);
 		
@@ -463,7 +487,7 @@ public class Initialisator
 		
 		// Geld um 1.000 Euro erhöhen
 		Information[] nutzGeld = {
-				new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, 1000)
+				new Information(Information.AENDERN_GELD, Information.ART_UM_WERT, 1000),
 		};
 		cheatAktionen.add(new Aktion("Geld verdienen", "(blue)Verdiene 1.000€! Ganz ohne Arbeit!", "Du hast ganz ohne Arbeit 1.000€ verdient!", null, nutzGeld));
 		
