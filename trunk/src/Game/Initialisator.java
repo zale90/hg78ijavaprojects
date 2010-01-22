@@ -7,6 +7,7 @@ import java.util.*;
 import Game.GUI.*;
 import Game.Minigames.TicTacToe.*;
 import Game.Minigames.Bewerbungstest.*;
+import Game.Minigames.Kniffel.*;
 
 public class Initialisator 
 {
@@ -463,6 +464,9 @@ public class Initialisator
 		};
 		zeitungsAktionen.add(new Aktion("Bewerben", "(blue)Bewirb dich auf einen 400€-Job und versuch dich am Einstellungsverfahren.", "Du hast dich auf einen Job beworben.", bewerbenInfos, null));
 		//zeitungsAktionen.get(1).setMinispiel(new Bewerbungsflaeche());
+		
+		zeitungsAktionen.add(new Aktion("Würfelspiel", "(blue)Spiel ein spannendes Würfelspiel und verbessere deine Haushaltskasse.", "Du hast ein Würfelspiel gespielt.", null, null));
+		zeitungsAktionen.get(2).setMinispiel(new Kniffel());
 		
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung("Zeitung", "Hier kannst du die Zeitung lesen, Kreuzworträtsel lösen und vieles mehr.", zeitungsAktionen, zeitungsVerzweigungen);
