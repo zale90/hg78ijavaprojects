@@ -9,23 +9,23 @@ import Server.Highscores;
 import Server.TableModelHighscore;
 
 public class HighscoreListe extends JPanel {
-	
+
 	private static final long serialVersionUID = -767260215399434697L;
-	
+
 	private JTable tblScores;
 
 	public HighscoreListe(Highscores scores) {
-		
+
 		this.setSize(300, 700);
 		this.setLayout(null);
 		this.setBackground(null);
-		
+
 		JLabel lbl‹berschrift = new JLabel(scores.getAvatarName());
 		lbl‹berschrift.setFont(Optionen.FONT_TITLE);
 		lbl‹berschrift.setSize(290, 50);
 		lbl‹berschrift.setLocation(10, 20);
 		this.add(lbl‹berschrift);
-		
+
 		// Tabelle anzeigen
 		tblScores = new JTable(new TableModelHighscore(scores));
 		tblScores.setSize(290, 500);
@@ -39,11 +39,11 @@ public class HighscoreListe extends JPanel {
 		tblScores.setBackground(null);
 		tblScores.setEnabled(false);
 		this.add(tblScores);
-		
+
 		this.setVisible(true);
-		
+
 	}
-	
+
 	public void aktualisiereTabelle() {
 		tblScores.repaint();
 	}

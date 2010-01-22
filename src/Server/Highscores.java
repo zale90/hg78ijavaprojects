@@ -13,31 +13,33 @@ import Game.Score;
 public class Highscores {
 
 	private final String scoreFileFolder = "files/data/";
-	
+
 	private ArrayList<Score> list;
 	private String scoreFile = "";
 	private String avatarName;
-	
+
 	/**
 	 * Erstellt eine neue Highscoreverwaltung mit de Übergebenen Daten.
 	 * 
-	 * @param avatarNr Nummer des Avatars.
-	 * @param avatarName Name des Avatars. Wird über der Liste angezeigt.
+	 * @param avatarNr
+	 *            Nummer des Avatars.
+	 * @param avatarName
+	 *            Name des Avatars. Wird über der Liste angezeigt.
 	 */
 	public Highscores(int avatarNr, String avatarName) {
-		
+
 		this.avatarName = avatarName;
-		
+
 		scoreFile = scoreFileFolder + "scores/highscores_" + avatarNr + ".dat";
-		
+
 		list = loadListFromFile();
-		
+
 	}
-	
+
 	public String getAvatarName() {
 		return avatarName;
 	}
-	
+
 	/**
 	 * Gibt die Highscoreliste zurück.
 	 * 
@@ -46,16 +48,16 @@ public class Highscores {
 	public ArrayList<Score> getHighscores() {
 		return list;
 	}
-	
+
 	/**
 	 * Liefert den Score auf dem letzten Platz der Highscoreliste.
 	 * 
 	 * @return Score auf dem letzten Platz der Highscoreliste.
 	 */
 	public Score getLast() {
-		return list.get(list.size()-1);
+		return list.get(list.size() - 1);
 	}
-	
+
 	/**
 	 * Liefert den Score auf Platz 1 der Highscoreliste.
 	 * 
@@ -64,21 +66,22 @@ public class Highscores {
 	public Score getFirst() {
 		return list.get(0);
 	}
-	
+
 	/**
-	 * Gibt den Score an der Übergebenen Position zurück.
-	 * Achtung Indizierung beginnt mit 0!
+	 * Gibt den Score an der Übergebenen Position zurück. Achtung Indizierung
+	 * beginnt mit 0!
 	 * 
-	 * @param pos Position des zu liefenden Scores.
+	 * @param pos
+	 *            Position des zu liefenden Scores.
 	 * @return Score an der übergebenen Position.
 	 */
 	public Score getScore(int pos) {
-		if(pos < list.size()) {
+		if (pos < list.size()) {
 			return list.get(pos);
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Gibt die Anzahl der vorhandenen Scores zurück.
 	 * 
@@ -87,27 +90,28 @@ public class Highscores {
 	public int getScoresSize() {
 		return list.size();
 	}
-	
+
 	/**
-	 * Fügt den übergebenen Score an der passenden Stelle in die Highscoreliste ein.
-	 * Gibt es den Score bereits wird der neue am Platz darunter eingefügt.
+	 * Fügt den übergebenen Score an der passenden Stelle in die Highscoreliste
+	 * ein. Gibt es den Score bereits wird der neue am Platz darunter eingefügt.
 	 * 
-	 * @param score Score der in die Highscoreliste eingefügt werden soll.
+	 * @param score
+	 *            Score der in die Highscoreliste eingefügt werden soll.
 	 * @return Platz an dem der neue Highscore eingefügt wurde.
 	 */
 	public int insertIntoList(Score score) {
 		int i = 0;
-		while(i < getScoresSize() && getScore(i).getValue() >  score.getValue()) {
+		while (i < getScoresSize() && getScore(i).getValue() > score.getValue()) {
 			i++;
 		}
-		if(getScoresSize() > i && score.getValue() == getScore(i).getValue()) {
+		if (getScoresSize() > i && score.getValue() == getScore(i).getValue()) {
 			i++;
 		}
 		list.add(i, score);
 		saveListToFile();
-		return i+1;
+		return i + 1;
 	}
-	
+
 	/**
 	 * Setzt die Scores zurück auf die voreingestellten.
 	 */
@@ -115,7 +119,7 @@ public class Highscores {
 		list = getStandardScores();
 		saveListToFile();
 	}
-	
+
 	/**
 	 * Gibt eine ArrayList mit vorgefertigten Scores zurück.
 	 * 
@@ -128,19 +132,20 @@ public class Highscores {
 		list.add(new Score("Spieler 3", 600));
 		list.add(new Score("Spieler 4", 400));
 		list.add(new Score("Spieler 5", 200));
-		
+
 		return list;
 	}
-	
+
 	/**
-	 * Läd die Highscoreliste aus der in scoreFile definierten Datei und gibt sie zurück.
+	 * Läd die Highscoreliste aus der in scoreFile definierten Datei und gibt
+	 * sie zurück.
 	 * 
 	 * @return geladene Highscoreliste
 	 */
 	@SuppressWarnings("unchecked")
 	private ArrayList<Score> loadListFromFile() {
-		ArrayList<Score> list = new ArrayList<Score>();		
-		
+		ArrayList<Score> list = new ArrayList<Score>();
+
 		InputStream fis = null;
 		try {
 			fis = new FileInputStream(scoreFile);
@@ -148,24 +153,25 @@ public class Highscores {
 			list = (ArrayList<Score>) in.readObject();
 			fis.close();
 			return list;
-		} catch(IOException e) {
+		} catch (IOException e) {
 			list = getStandardScores();
 			saveListToFile();
-			System.out.println("Neue Highscoreliste wurde erstellt und gespeichert!");
+			System.out
+					.println("Neue Highscoreliste wurde erstellt und gespeichert!");
 			return list;
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * Speichert die Highscoreliste in der in scoreFile definierten Datei.
 	 */
 	private void saveListToFile() {
 		OutputStream fos = null;
-		
+
 		try {
 			fos = new FileOutputStream(scoreFile);
 			ObjectOutputStream out = new ObjectOutputStream(fos);

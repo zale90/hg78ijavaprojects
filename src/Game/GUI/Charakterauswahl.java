@@ -11,10 +11,10 @@ public class Charakterauswahl extends JPanel {
 	public Charakterauswahl(ArrayList<Avatar> avaArray) {
 
 		this.setSize(995, 672);
-		this.setLocation(0,0);
+		this.setLocation(0, 0);
 		this.setLayout(null);
 		this.setBackground(null);
-		
+
 		JLabel lbl‹berschrift = new JLabel("W‰hle einen Charakter!");
 		lbl‹berschrift.setLocation(300, 10);
 		lbl‹berschrift.setSize(400, 50);
@@ -24,12 +24,12 @@ public class Charakterauswahl extends JPanel {
 		JPanel pnlCharacter1 = new CharakterGUI(avaArray.get(0), 0, 100);
 		JPanel pnlCharacter2 = new CharakterGUI(avaArray.get(1), 330, 100);
 		JPanel pnlCharacter3 = new CharakterGUI(avaArray.get(2), 660, 100);
-		
+
 		this.add(pnlCharacter1);
 		this.add(pnlCharacter2);
 		this.add(pnlCharacter3);
-		
+
 		this.setVisible(true);
 	}
-	
+
 }

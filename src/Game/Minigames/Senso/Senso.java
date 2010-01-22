@@ -9,6 +9,9 @@ import java.io.*;
 
 public class Senso extends JFrame implements Runnable, MouseListener,
 		Game.Minigames.Minispiel {
+
+	private static final long serialVersionUID = -2221887421394487038L;
+
 	// Labels
 	private JLabel us;
 	private JLabel punkte;
@@ -152,7 +155,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 
 		// spiel = new Thread(this);
 		zufall = new Random();
-		
+
 		läuft = true;
 
 		zahl = zufall.nextInt(4);
@@ -286,14 +289,14 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 		if (evt.getComponent() == beenden) {
 			this.setVisible(false);
 			Game.Information[] infos = null;
-			if (runde > 0)
-			{
-			infos = new Game.Information[2];
-			infos[0] = new Game.Information(
-					Game.Information.AENDERN_BEWERBUNGSFAKTOR,
-					Game.Information.ART_UM_WERT, runde);
-			infos[1] = new Game.Information(Game.Information.AENDERN_SOZIALES,
-					Game.Information.ART_UM_WERT, 5*runde);
+			if (runde > 0) {
+				infos = new Game.Information[2];
+				infos[0] = new Game.Information(
+						Game.Information.AENDERN_BEWERBUNGSFAKTOR,
+						Game.Information.ART_UM_WERT, runde);
+				infos[1] = new Game.Information(
+						Game.Information.AENDERN_SOZIALES,
+						Game.Information.ART_UM_WERT, 5 * runde);
 			}
 			s.minispielEnde(infos);
 			neustarten(false);
@@ -325,14 +328,14 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 								"files/Minigames/Senso/yellow_n.png"));
 						lblVerloren.setText("");
 						start.setText("3");
-						spiel.sleep(1000);
+						Thread.sleep(1000);
 						start.setText("2");
-						spiel.sleep(1000);
+						Thread.sleep(1000);
 						start.setText("1");
-						spiel.sleep(1000);
+						Thread.sleep(1000);
 						start.setLocation(start.getX() - 20, start.getY());
 						start.setText("Los!");
-						spiel.sleep(250);
+						Thread.sleep(250);
 						start.setText("");
 						start.setLocation(start.getX() + 20, start.getY());
 						rot.setIcon(new ImageIcon(
@@ -347,7 +350,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 						neu = true;
 					}
 					if (wiedergeben && !verloren) {
-						spiel.sleep(500);
+						Thread.sleep(500);
 						alteFarbe();
 					} else if (neu && !verloren)
 						neueFarbe();
@@ -393,7 +396,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 				rot.setIcon(new ImageIcon("files/Minigames/Senso/red_1.png"));
 				soundAbspielen(soundR);
 				einfuegen(runde, 1);
-				spiel.sleep(wait + 25);
+				Thread.sleep(wait + 25);
 				rot.setIcon(new ImageIcon("files/Minigames/Senso/red_0.png"));
 				break;
 			case (1):
@@ -402,7 +405,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 								"files/Minigames/Senso/green_1.png"));
 				soundAbspielen(soundG);
 				einfuegen(runde, 2);
-				spiel.sleep(wait + 25);
+				Thread.sleep(wait + 25);
 				gruen
 						.setIcon(new ImageIcon(
 								"files/Minigames/Senso/green_0.png"));
@@ -411,7 +414,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 				blau.setIcon(new ImageIcon("files/Minigames/Senso/blue_1.png"));
 				soundAbspielen(soundB);
 				einfuegen(runde, 3);
-				spiel.sleep(wait + 25);
+				Thread.sleep(wait + 25);
 				blau.setIcon(new ImageIcon("files/Minigames/Senso/blue_0.png"));
 				break;
 			case (3):
@@ -420,7 +423,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 								"files/Minigames/Senso/yellow_1.png"));
 				soundAbspielen(soundY);
 				einfuegen(runde, 4);
-				spiel.sleep(wait + 25);
+				Thread.sleep(wait + 25);
 				gelb
 						.setIcon(new ImageIcon(
 								"files/Minigames/Senso/yellow_0.png"));
@@ -440,14 +443,14 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 			for (int i = 0; i < farben.length; i++) {
 				durchgang++;
 				alt = farben[i];
-				spiel.sleep(wait);
+				Thread.sleep(wait);
 				switch (alt) {
 				case 1:
 					rot
 							.setIcon(new ImageIcon(
 									"files/Minigames/Senso/red_1.png"));
 					soundAbspielen(soundR);
-					spiel.sleep(wait + 25);
+					Thread.sleep(wait + 25);
 					rot
 							.setIcon(new ImageIcon(
 									"files/Minigames/Senso/red_0.png"));
@@ -456,7 +459,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 					gruen.setIcon(new ImageIcon(
 							"files/Minigames/Senso/green_1.png"));
 					soundAbspielen(soundG);
-					spiel.sleep(wait + 25);
+					Thread.sleep(wait + 25);
 					gruen.setIcon(new ImageIcon(
 							"files/Minigames/Senso/green_0.png"));
 					break;
@@ -464,7 +467,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 					blau.setIcon(new ImageIcon(
 							"files/Minigames/Senso/blue_1.png"));
 					soundAbspielen(soundB);
-					spiel.sleep(wait + 25);
+					Thread.sleep(wait + 25);
 					blau.setIcon(new ImageIcon(
 							"files/Minigames/Senso/blue_0.png"));
 					break;
@@ -472,7 +475,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 					gelb.setIcon(new ImageIcon(
 							"files/Minigames/Senso/yellow_1.png"));
 					soundAbspielen(soundY);
-					spiel.sleep(wait + 25);
+					Thread.sleep(wait + 25);
 					gelb.setIcon(new ImageIcon(
 							"files/Minigames/Senso/yellow_0.png"));
 					break;
@@ -560,13 +563,13 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 	private void leuchten(JLabel label, String farbe) {
 		try {
 			if (!leuchten) {
-				spiel.sleep(200);
+				Thread.sleep(200);
 				label.setIcon(new ImageIcon(farbe + "_0.png"));
-				spiel.sleep(200);
+				Thread.sleep(200);
 				label.setIcon(new ImageIcon(farbe + "_1.png"));
-				spiel.sleep(200);
+				Thread.sleep(200);
 				label.setIcon(new ImageIcon(farbe + "_0.png"));
-				spiel.sleep(200);
+				Thread.sleep(200);
 				label.setIcon(new ImageIcon(farbe + "_1.png"));
 				leuchten = true;
 			}

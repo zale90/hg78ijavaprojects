@@ -6,19 +6,17 @@ import java.awt.*;
 import Game.*;
 
 public class Aktionsobjekt extends JLabel {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
+	
 	private String headertext;
 	private Point headerpos;
 	private ImageIcon aktiv, inaktiv;
 	private Verzweigung menu;
-	
-	public Aktionsobjekt(String headertext, Point coords, Dimension dim, String aktiv, String inaktiv, Verzweigung menu)
-	{
+
+	public Aktionsobjekt(String headertext, Point coords, Dimension dim,
+			String aktiv, String inaktiv, Verzweigung menu) {
 		this.setHeadertext(headertext);
-		//this.setHeaderpos(headerpos);
 		this.setSize(dim);
 		this.setLocation(coords);
 		this.setOpaque(false);
@@ -68,8 +66,8 @@ public class Aktionsobjekt extends JLabel {
 	public ImageIcon getInaktiv() {
 		return inaktiv;
 	}
-	public void setAktiv(boolean act)
-	{
+
+	public void setAktiv(boolean act) {
 		if (act)
 			setIcon(aktiv);
 		else
