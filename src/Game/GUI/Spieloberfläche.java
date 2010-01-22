@@ -43,7 +43,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		lblHeading = new JLabel(Optionen.NAME);
 		lblHeading.setFont(Optionen.FONT_TITLE);
 		lblHeading.setSize(1000, 40);
-		lblHeading.setLocation(20, 20);
+		lblHeading.setLocation(20, 10);
 		this.add(lblHeading);
 		
 		// Konsole hinzufügen
