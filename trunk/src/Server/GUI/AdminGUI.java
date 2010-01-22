@@ -1,5 +1,6 @@
 package Server.GUI;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextPane;
+import javax.swing.border.LineBorder;
 
 import Server.ScoreServer;
 
@@ -15,7 +17,7 @@ public class AdminGUI extends JFrame implements ActionListener {
 	private static final long serialVersionUID = -6464529758980285571L;
 
 	private static JTextPane console;
-	private JButton btnReset;
+	private JButton btnReset, btnCleanConsole;
 
 	public AdminGUI() {
 		super("Administration");
@@ -33,11 +35,18 @@ public class AdminGUI extends JFrame implements ActionListener {
 		btnReset.addActionListener(this);
 		this.add(btnReset);
 
+		btnCleanConsole = new JButton("Konsole löschen");
+		btnCleanConsole.setSize(150, 30);
+		btnCleanConsole.setLocation(200, 20);
+		btnCleanConsole.addActionListener(this);
+		this.add(btnCleanConsole);
+
 		// Konsole
-		AdminGUI.console = new JTextPane();
-		AdminGUI.console.setSize(498, 150);
-		AdminGUI.console.setLocation(0, 100);
-		AdminGUI.console.setEditable(true);
+		console = new JTextPane();
+		console.setSize(494, 172);
+		console.setLocation(0, 80);
+		console.setEditable(true);
+		console.setBorder(new LineBorder(Color.BLACK));
 		this.add(console);
 
 		/*
@@ -49,15 +58,23 @@ public class AdminGUI extends JFrame implements ActionListener {
 		 */
 	}
 
+	/**
+	 * Fügt den übergebenen Text in die Admin-Konsole ein.
+	 * 
+	 * @param text
+	 *            Text der in die Konsole eingefügt werden soll.
+	 */
 	public static void consoleText(String text) {
-		AdminGUI.console.setText(text + "\n" + console.getText());
-		AdminGUI.console.setCaretPosition(0);
+		console.setText(text + "\n" + console.getText());
+		console.setCaretPosition(0);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 		if (evt.getSource() == btnReset) {
 			ScoreServer.resetHighscores();
+		} else if (evt.getSource() == btnCleanConsole) {
+			console.setText("");
 		}
 	}
 

@@ -11,7 +11,7 @@ public class GameLauncher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SpielAnwendung.zeigeCharakterauswahl();
+		SpielAnwendung.zeigeSplashscreen();
 	}
 
 }

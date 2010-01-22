@@ -71,7 +71,7 @@ public class Highscoreliste extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent evt) {
 		if (evt.getSource() == btnNeuesSpiel) {
-			SpielAnwendung.zeigeCharakterauswahl();
+			SpielAnwendung.zeigeSplashscreen();
 		} else if (evt.getSource() == btnRefresh) {
 			scores.aktualisiereAusNetzwerk();
 			tblScores.repaint();
