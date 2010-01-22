@@ -1,10 +1,3 @@
-/**
- * Speichert wichtige Informationen.
- * 
- * @author Philipp S.
- * @version 17.12.2009
- */
-
 package Game;
 
 import java.awt.Font;
@@ -15,8 +8,8 @@ import java.io.IOException;
 
 public class Optionen {
 	
-	public static final String NAME = "Ich bin arm - Holt mich hier raus!";
-	public static final String VERSION = "0.2009.12.17";
+	public static final String NAME = "Hartz 4.0 - Sackgasse mit Wendemöglichkeit?";
+	public static final String VERSION = "0.20100122";
     public static final String ICON_PATH_GAME = "files/gameImages/";
     public static final String ICON_PATH_AVATAR = "files/avatarImages/";
     public static final Font FONT_TITLE = new Font("Arial", Font.BOLD, 28);
