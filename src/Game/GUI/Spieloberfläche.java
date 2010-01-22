@@ -42,7 +42,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		// GUI-Elemente erzeugen
 		lblHeading = new JLabel(Optionen.NAME);
 		lblHeading.setFont(Optionen.FONT_TITLE);
-		lblHeading.setSize(1000, 20);
+		lblHeading.setSize(1000, 40);
 		lblHeading.setLocation(20, 20);
 		this.add(lblHeading);
 		
