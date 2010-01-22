@@ -3,7 +3,7 @@ package Main;
 import Server.ScoreServer;
 
 public class ServerLauncher {
-	
+
 	/**
 	 * Startet den Highscore-Server!
 	 * 

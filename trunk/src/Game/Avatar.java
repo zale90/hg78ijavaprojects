@@ -1,33 +1,35 @@
-/**
- * Repräsentiert einen vorgefertigten Charakter.
- * 
- * @author Philipp S.
- * @version 17.12.2009
- */
-
 package Game;
 
 public class Avatar {
-	
+
 	private int avatarNummer;
 	private String name;
 	private String beschreibung;
 	private Bedürfnis[] bedürfnisse;
 	private int kontostand, einkommen, zeitProRunde;
 	private String bild;
-	
+
 	/**
 	 * Ein Avatar mit den übergebenen Startwerten.
 	 * 
-	 * @param nummer Nummer, die eindeutig zu vergeben ist.
-	 * @param name Vor- und Nachname
-	 * @param beschreibung Beschreibung des Avatars.
-	 * @param bedürfnisse Array mit allen Anfangsbedürfnissen.
-	 * @param kontostand Anfangskontostand.
-	 * @param einkommen Einkommen, welches der Avatar jedem >Monat< bekommt.
-	 * @param zeitProRunde Für den Avatar verfügbare Zeit pro >Runde<.
+	 * @param nummer
+	 *            Nummer, die eindeutig zu vergeben ist.
+	 * @param name
+	 *            Vor- und Nachname
+	 * @param beschreibung
+	 *            Beschreibung des Avatars.
+	 * @param bedürfnisse
+	 *            Array mit allen Anfangsbedürfnissen.
+	 * @param kontostand
+	 *            Anfangskontostand.
+	 * @param einkommen
+	 *            Einkommen, welches der Avatar jedem >Monat< bekommt.
+	 * @param zeitProRunde
+	 *            Für den Avatar verfügbare Zeit pro >Runde<.
 	 */
-	public Avatar(int nummer, String name , String beschreibung, Bedürfnis[] bedürfnisse, int kontostand, int einkommen, int zeitProRunde) {
+	public Avatar(int nummer, String name, String beschreibung,
+			Bedürfnis[] bedürfnisse, int kontostand, int einkommen,
+			int zeitProRunde) {
 		super();
 		this.avatarNummer = nummer;
 		this.setName(name);
@@ -46,7 +48,8 @@ public class Avatar {
 	}
 
 	/**
-	 * @param beschreibung the beschreibung to set
+	 * @param beschreibung
+	 *            the beschreibung to set
 	 */
 	public void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
@@ -60,7 +63,8 @@ public class Avatar {
 	}
 
 	/**
-	 * @param bedürfnisse the bedürfnisse to set
+	 * @param bedürfnisse
+	 *            the bedürfnisse to set
 	 */
 	public void setBedürfnisse(Bedürfnis[] bedürfnisse) {
 		this.bedürfnisse = bedürfnisse;
@@ -74,12 +78,13 @@ public class Avatar {
 	}
 
 	/**
-	 * @param kontostand the kontostand to set
+	 * @param kontostand
+	 *            the kontostand to set
 	 */
 	public void setKontostand(int kontostand) {
 		this.kontostand = kontostand;
 	}
-	
+
 	/**
 	 * @return the kontostand
 	 */
@@ -88,21 +93,23 @@ public class Avatar {
 	}
 
 	/**
-	 * @param avatarNummer the avatarNummer to set
+	 * @param avatarNummer
+	 *            the avatarNummer to set
 	 */
 	public void setAvatarNummer(int avatarNummer) {
 		this.avatarNummer = avatarNummer;
 	}
-	
+
 	/**
 	 * @return the URL to the Avatar-Image
 	 */
 	public String getBildURL() {
 		return bild;
 	}
-	
+
 	/**
-	 * @param bildURL the URL to the Image of the Avatar
+	 * @param bildURL
+	 *            the URL to the Image of the Avatar
 	 */
 	public void setBildURL(String bildURL) {
 		this.bild = bildURL;
@@ -115,7 +122,7 @@ public class Avatar {
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setZeitProRunde(int zeitProRunde) {
 		this.zeitProRunde = zeitProRunde;
 	}
@@ -131,5 +138,5 @@ public class Avatar {
 	public int getEinkommen() {
 		return einkommen;
 	}
-	
+
 }

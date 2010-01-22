@@ -12,42 +12,41 @@ import Game.Optionen;
 import Server.Highscores;
 
 public class ServerGUI extends JFrame implements MouseListener {
-	
+
 	private static final long serialVersionUID = -1046827739949356186L;
-	
+
 	private JLabel lblAdmin;
 	private AdminGUI adminGUI;
 	private HighscoreListe[] scorePanels;
 
 	public ServerGUI(Highscores[] list) {
-		super("Highscores");
+		super("Highscores: " + Optionen.NAME);
 		this.setSize(1000, 700);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setLayout(null);
 		this.setNativeLookAndFeel();
-        
-        this.setIconImage(new ImageIcon("files/Icon-Europa.png").getImage());
-		
+
+		this.setIconImage(new ImageIcon("files/Icon-Europa.png").getImage());
+
 		JLabel lblHeader = new JLabel("Highscores:" + Optionen.NAME);
 		lblHeader.setSize(900, 50);
 		lblHeader.setLocation(20, 20);
 		lblHeader.setFont(Optionen.FONT_TITLE);
 		this.add(lblHeader);
-		
+
 		// Highscores anzeigen
 		int xPos = 20;
 		int yPos = 70;
 		scorePanels = new HighscoreListe[list.length];
-		for(int i = 0; i < list.length; i++) {
+		for (int i = 0; i < list.length; i++) {
 			scorePanels[i] = new HighscoreListe(list[i]);
 			scorePanels[i].setLocation(xPos, yPos);
 			this.add(scorePanels[i]);
 			xPos += 320;
 		}
-		
-		
+
 		// Admin
 		lblAdmin = new JLabel("Admin");
 		lblAdmin.setSize(80, 30);
@@ -59,21 +58,21 @@ public class ServerGUI extends JFrame implements MouseListener {
 		lblAdmin.setBorder(new LineBorder(Color.BLACK));
 		lblAdmin.setHorizontalAlignment(0);
 		this.add(lblAdmin);
-		
+
 		adminGUI = new AdminGUI();
-		
+
 		this.setVisible(true);
 	}
-	
+
 	public void aktualisiereTabellen() {
-		for(HighscoreListe list : scorePanels) {
+		for (HighscoreListe list : scorePanels) {
 			list.aktualisiereTabelle();
 		}
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent evt) {
-		if(evt.getSource() == lblAdmin) {
+		if (evt.getSource() == lblAdmin) {
 			adminGUI.setVisible(true);
 		}
 	}
@@ -93,14 +92,14 @@ public class ServerGUI extends JFrame implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 	}
-	
+
 	/**
 	 * Setzt das Windows Look & Feel!
 	 */
-    private void setNativeLookAndFeel() {
-        try {
-            UIManager.setLookAndFeel(
-                UIManager.getSystemLookAndFeelClassName() );
-        } catch( Exception e ) {}
-    }
+	private void setNativeLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+		}
+	}
 }

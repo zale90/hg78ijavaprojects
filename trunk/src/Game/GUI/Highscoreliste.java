@@ -15,28 +15,29 @@ import Game.TableModelHighscore;
 public class Highscoreliste extends JPanel implements ActionListener {
 
 	private static final long serialVersionUID = -767260215399434697L;
-	
+
 	private JTable tblScores;
 	private JButton btnNeuesSpiel, btnRefresh;
 	private Highscores scores;
 
 	public Highscoreliste(Highscores scores) {
 		this.scores = scores;
-		
+
 		this.setSize(995, 672);
 		this.setLocation(0, 0);
 		this.setLayout(null);
 		this.setBackground(null);
-		
+
 		// Credits anzeigen
 		this.add(new Credits());
-		
-		JLabel lbl‹berschrift = new JLabel("Highscores: " + scores.getAvatarName());
+
+		JLabel lbl‹berschrift = new JLabel("Highscores: "
+				+ scores.getAvatarName());
 		lbl‹berschrift.setFont(Optionen.FONT_TITLE);
 		lbl‹berschrift.setSize(460, 50);
 		lbl‹berschrift.setLocation(20, 20);
 		this.add(lbl‹berschrift);
-		
+
 		// Tabelle anzeigen
 		tblScores = new JTable(new TableModelHighscore(scores));
 		tblScores.setSize(300, 500);
@@ -50,31 +51,31 @@ public class Highscoreliste extends JPanel implements ActionListener {
 		tblScores.setBackground(null);
 		tblScores.setEnabled(false);
 		this.add(tblScores);
-		
+
 		// Buttons anzeigen
 		btnNeuesSpiel = new JButton("Neues Spiel starten");
 		btnNeuesSpiel.setSize(200, 50);
 		btnNeuesSpiel.setLocation(20, 600);
 		btnNeuesSpiel.addActionListener(this);
 		this.add(btnNeuesSpiel);
-		
+
 		btnRefresh = new JButton("Aktualisieren");
 		btnRefresh.setSize(200, 50);
 		btnRefresh.setLocation(250, 600);
 		btnRefresh.addActionListener(this);
 		this.add(btnRefresh);
-		
+
 		this.setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent evt) {
-		if(evt.getSource() == btnNeuesSpiel) {
+		if (evt.getSource() == btnNeuesSpiel) {
 			SpielAnwendung.zeigeCharakterauswahl();
-		} else if(evt.getSource() == btnRefresh) {
+		} else if (evt.getSource() == btnRefresh) {
 			scores.aktualisiereAusNetzwerk();
 			tblScores.repaint();
 		}
 	}
-	
+
 }
