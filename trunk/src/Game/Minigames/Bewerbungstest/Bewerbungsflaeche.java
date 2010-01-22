@@ -10,15 +10,15 @@ import Game.Minigames.*;
 
 public class Bewerbungsflaeche extends JDialog implements ActionListener,
       MouseListener, Minispiel {
+	
    private static final long serialVersionUID = 4243815262315495694L;
-   // Anfang Attribute
+   
    private JLabel lbl1;
    private JLabel lbl2;
    private JLabel lbl3;
    private JLabel lbl4;
    private JLabel lbl5;
    private JLabel lbl6;
-   private JLabel lbl7;
    private JLabel area;
    private JRadioButton btn1;
    private JRadioButton btn2;
@@ -37,9 +37,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
    private Spiel game;
    private final String folder = "files/minigames/Bewerbungstest/";
 
-   // Ende Attribute
-
-   public Bewerbungsflaeche(int Bewerbungsfaktor) {
+   public Bewerbungsflaeche() {
       // Superklasse
       this.setLocation(300, 200);
       this.setSize(550, 300);
@@ -114,17 +112,11 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
       this.add(lbl4);
 
       // Lässt Animation am Ende erscheinen
-      lbl5 = new JLabel(new ImageIcon(folder + "feuerwerk_test.gif"));
-      lbl5.setSize(100, 100);
+      lbl5 = new JLabel(new ImageIcon(folder + "haende.gif"));
+      lbl5.setSize(101, 120);
       lbl5.setLocation(125, 50);
       lbl5.setVisible(false);
       this.add(lbl5);
-
-      lbl7 = new JLabel(new ImageIcon(folder + "Feuerwerk603.gif"));
-      lbl7.setSize(100, 100);
-      lbl7.setLocation(225, 50);
-      lbl7.setVisible(false);
-      this.add(lbl7);
 
       // gibt Ergebnis am Ende an.
       lbl6 = new JLabel("Herzlichen Glückwunsch! Sie haben den Job bekommen!");
@@ -285,30 +277,24 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
             bestanden = false;
 
          if (!bestanden) {
-            lbl5.setSize(128, 96);
-            lbl5.setLocation(225 - 128, 50);
-            lbl5.setIcon(new ImageIcon(folder + "alien.gif"));
+            lbl5.setSize(160, 160);
+            lbl5.setLocation(225 - 80, 50);
+            lbl5.setIcon(new ImageIcon(folder + "smiley-traurig.gif"));
             lbl6.setForeground(Color.YELLOW);
             lbl6.setText("Schade. Sie haben es nicht geschafft.");
             if (gesund.getWert() < 30)
                lbl6
                      .setText("Aufgrund fehlender Hygiene wurden Sie nicht genommen.");
-            lbl7.setIcon(new ImageIcon(folder + "Gesicht102.gif"));
-            lbl7.setSize(128, 96);
-            lbl7.setLocation(225, 50);
             erfolgreich = false;
          } else if (!job()) {
-            lbl6
-                  .setText("Sie haben den Test bestanden. Jedoch ist Ihr Vorstellungsgespräch daneben gegangen.");
-            lbl7.setIcon(new ImageIcon(folder + "Gesicht102.gif"));
-            lbl7.setSize(128, 96);
-            lbl7.setLocation(225, 50);
+            lbl6.setText("Sie haben den Test bestanden. Jedoch ist Ihr Vorstellungsgespräch daneben gegangen.");
+            lbl5.setLocation(225 - 80, 50);
+            lbl5.setIcon(new ImageIcon(folder + "smiley-traurig.gif"));
             erfolgreich = false;
          }
 
          lbl5.setVisible(true);
          lbl6.setVisible(true);
-         lbl7.setVisible(true);
       } else if (evt.getSource() == btn) {
          game.minispielEnde(erfolgreich(), lbl6.getText());
          this.setVisible(false);
@@ -401,8 +387,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
       frage = fragen.gibFragenobjekt();
 
       lbl1.setText(frage.gibFrage());
-      lbl7.setIcon(new ImageIcon(folder + "Feuerwerk603.gif"));
-      lbl5.setIcon(new ImageIcon(folder + "feuerwerk_test.gif"));
+      lbl5.setIcon(new ImageIcon(folder + "haende.gif"));
       btn1.setText(frage.gibA());
       btn2.setText(frage.gibB());
       btn3.setText(frage.gibC());
@@ -415,7 +400,6 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
       btn4.setForeground(Color.BLACK);
 
       lbl6.setVisible(false);
-      lbl7.setVisible(false);
       lbl5.setVisible(false);
       lbl3.setVisible(false);
       lbl1.setVisible(true);
@@ -433,10 +417,5 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
       // Hintergrund
       this.setVisible(true);
    }
-
-   // public static void main(String[] args)
-   // {
-   // new Bewerbungsflaeche(100).setVisible(true);
-   // }
 
 }
