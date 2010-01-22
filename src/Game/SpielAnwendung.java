@@ -10,6 +10,14 @@ public class SpielAnwendung {
 	public static final Hauptfenster mainGUI = new Hauptfenster();
 
 	/**
+	 * Zeigt den Splashscreen an, bei dem man anschließend die möglichkeit hat
+	 * zur Charakterauswahl zu wechseln.
+	 */
+	public static void zeigeSplashscreen() {
+		mainGUI.zeigePanel(new SplashScreen());
+	}
+
+	/**
 	 * Zeigt die Charakterauswahl für alle Avatare an. Diese werden aus dem
 	 * Initialisator geladen.
 	 */

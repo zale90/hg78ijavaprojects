@@ -6,6 +6,8 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.UIManager;
 import javax.swing.border.LineBorder;
 import Game.Optionen;
@@ -30,7 +32,7 @@ public class ServerGUI extends JFrame implements MouseListener {
 
 		this.setIconImage(new ImageIcon("files/Icon-Europa.png").getImage());
 
-		JLabel lblHeader = new JLabel("Highscores:" + Optionen.NAME);
+		JLabel lblHeader = new JLabel("Highscores:  " + Optionen.NAME);
 		lblHeader.setSize(900, 50);
 		lblHeader.setLocation(20, 20);
 		lblHeader.setFont(Optionen.FONT_TITLE);
@@ -73,7 +75,17 @@ public class ServerGUI extends JFrame implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent evt) {
 		if (evt.getSource() == lblAdmin) {
-			adminGUI.setVisible(true);
+			// Prüfen ob Kennwort richtig, dann Admin-Konsole anzeigen!
+	        JPasswordField passwordField = new JPasswordField(30);
+	        passwordField.setToolTipText("Bitte Kennwort eingeben");
+	        JOptionPane.showMessageDialog(this, passwordField, "Bitte Kennwort für Admin-Zugriff eingeben:", JOptionPane.OK_OPTION);
+	        String input = String.valueOf(passwordField.getPassword());
+	        
+			if(input.equals("1337")) {
+				adminGUI.setVisible(true);
+			} else {
+				JOptionPane.showMessageDialog(this, "Das eingegebene Kennwort ist leider falsch! Sie haben keinen Zugriff auf die Einstellungen!", "Kennwort falsch", JOptionPane.ERROR_MESSAGE);
+			}
 		}
 	}
 
