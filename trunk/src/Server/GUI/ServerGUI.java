@@ -30,7 +30,7 @@ public class ServerGUI extends JFrame implements MouseListener {
         
         this.setIconImage(new ImageIcon("files/Icon-Europa.png").getImage());
 		
-		JLabel lblHeader = new JLabel("Highscores des Spiels " + Optionen.NAME);
+		JLabel lblHeader = new JLabel("Highscores:" + Optionen.NAME);
 		lblHeader.setSize(900, 50);
 		lblHeader.setLocation(20, 20);
 		lblHeader.setFont(Optionen.FONT_TITLE);

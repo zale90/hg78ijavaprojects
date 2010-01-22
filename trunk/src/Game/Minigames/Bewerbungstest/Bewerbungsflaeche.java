@@ -283,8 +283,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
             lbl6.setForeground(Color.YELLOW);
             lbl6.setText("Schade. Sie haben es nicht geschafft.");
             if (gesund.getWert() < 30)
-               lbl6
-                     .setText("Aufgrund fehlender Hygiene wurden Sie nicht genommen.");
+               lbl6.setText("Aufgrund fehlender Hygiene wurden Sie nicht genommen.");
             erfolgreich = false;
          } else if (!job()) {
             lbl6.setText("Sie haben den Test bestanden. Jedoch ist Ihr Vorstellungsgespräch daneben gegangen.");
@@ -293,6 +292,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
             erfolgreich = false;
          }
 
+         aufgeben.setVisible(false);
          lbl5.setVisible(true);
          lbl6.setVisible(true);
       } else if (evt.getSource() == btn) {
@@ -413,6 +413,8 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
 
       bestanden = true;
       erfolgreich = true;
+      
+      aufgeben.setVisible(true);
 
       // Hintergrund
       this.setVisible(true);
