@@ -152,6 +152,7 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		erklärung.setEditable(false);
 		erklärung.setForeground(new Color(234, 139, 0));
 		erklärung.setOpaque(false);
+		erklärung.setFont(new Font("Arial", Font.PLAIN, 12));
 		this.add(erklärung);
 
 		rand1 = new JPanel();
