@@ -189,7 +189,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		if (arg0.getSource() == spielNeuStarten) {
-			SpielAnwendung.zeigeCharakterauswahl();
+			SpielAnwendung.zeigeSplashscreen();
 		} else if (arg0.getSource() == rundeWeiter) {
 			nächsteRunde();
 		}
