@@ -121,9 +121,18 @@ public class Spiel {
 	 * Beendet die aktuelle Runde und wechselt in die nächste.
 	 */
 	public void naechsteRunde() {
+		// Überprüfen ob Maximale Rundezahl erreicht ist
+		if(aktuelleRunde == Optionen.ANZAHL_RUNDEN) {
+			String text = "Du hast es geschafft!\nDu hast " + getPunkte() + " erspielt!";
+			spielBeenden(text, "Geschafft!");
+			return;
+		}
 		// Überprüfen ob Spieler verloren hat
-		if (istBedürfnisAufMinimum()) {
-			spielBeenden();
+		if(istBedürfnisAufMinimum()) {
+			String text = "Du hast das Leben leider nicht meistern können. \nDas Spiel ist deshalb für dich Leider vorbei. \n\nImmerhin hast du "
+					+ getPunkte()
+					+ " Punkte erspielt.";
+			spielBeenden(text, "Verloren!");
 			return;
 		}
 		// gameGUI.setzeAktiviert(true);
@@ -174,12 +183,10 @@ public class Spiel {
 	 * Dialog zur Eingabe des Namens wird angezeigt. Anschließend wird das Spiel
 	 * beendet und man sieht die Highscoreliste.
 	 */
-	private void spielBeenden() {
-		String text = "Du hast das Leben leider nicht meistern können. \nDas Spiel ist deshalb für dich Leider vorbei. \n\nImmerhin hast du "
-				+ getPunkte()
-				+ " Punkte erspielt. \n\nUm in dich in die Highscoreliste einzutragen, gib hier deinen Namen ein:";
+	private void spielBeenden(String text, String title) {
+		text += "\n\nUm in dich in die Highscoreliste einzutragen, gib hier deinen Namen ein:";
 		String antwort = JOptionPane.showInputDialog(SpielAnwendung.mainGUI,
-				text, "Verloren!", JOptionPane.PLAIN_MESSAGE);
+				text, title, JOptionPane.PLAIN_MESSAGE);
 		if (antwort == null || antwort.trim().equals("")) {
 			SpielAnwendung.beendeSpiel(getAvatarNr(), getAvatarName());
 		} else {
