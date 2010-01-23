@@ -1,6 +1,9 @@
 package Game;
 
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import Game.GUI.Highscoreliste;
 
 public class Highscores {
@@ -30,11 +33,16 @@ public class Highscores {
 
 		Network net = new Network(Optionen.NETWORK_ADDRESS,
 				Optionen.NETWORK_PORT);
-		net.sendeScore(score, avatarNr);
-		list = net.empfangeHighscores(avatarNr);
-		net.beendeKommunikation();
+		if(!net.hasError()) {
+			net.sendeScore(score, avatarNr);
+			list = net.empfangeHighscores(avatarNr);
+			net.beendeKommunikation();
 
-		zeigeHighscores();
+			zeigeHighscores();
+		} else {
+			SpielAnwendung.zeigeSplashscreen();
+			showNetworkError();
+		}
 	}
 
 	/**
@@ -51,10 +59,15 @@ public class Highscores {
 
 		Network net = new Network(Optionen.NETWORK_ADDRESS,
 				Optionen.NETWORK_PORT);
-		list = net.empfangeHighscores(avatarNr);
-		net.beendeKommunikation();
+		if(!net.hasError()) {
+			list = net.empfangeHighscores(avatarNr);
+			net.beendeKommunikation();
 
-		zeigeHighscores();
+			zeigeHighscores();
+		} else {
+			SpielAnwendung.zeigeSplashscreen();
+			showNetworkError();
+		}
 	}
 
 	public String getAvatarName() {
@@ -128,6 +141,10 @@ public class Highscores {
 	private void zeigeHighscores() {
 		Highscoreliste scoreGUI = new Highscoreliste(this);
 		SpielAnwendung.mainGUI.zeigePanel(scoreGUI);
+	}
+	
+	private void showNetworkError() {
+		JOptionPane.showMessageDialog(SpielAnwendung.mainGUI, "Es gab ein Problem bei der Netzwerkkommunikation.\nDer Highscore kann leider zum aktuellen Zeitpunkt nicht hochgeladen werden! \nEin neues Spiel wird gestartet!", "Netzwerk-Fehler!", JOptionPane.ERROR_MESSAGE);
 	}
 
 }

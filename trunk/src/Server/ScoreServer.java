@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import Game.Avatar;
 import Game.Initialisator;
 import Game.Optionen;
+import Game.Score;
 import Server.GUI.AdminGUI;
 import Server.GUI.ServerGUI;
 
@@ -71,8 +72,28 @@ public class ScoreServer {
 			scores.resetScores();
 		}
 		gui.aktualisiereTabellen();
-		AdminGUI
-				.consoleText("Die Highscores aller Avatare wurden zurück gesetzt!");
+		AdminGUI.consoleText("Die Highscores aller Avatare wurden zurück gesetzt!");
+	}
+
+	/**
+	 * Löscht den Highscore an der übergebenen Position und in der übergebenen
+	 * Liste.
+	 * 
+	 * @param scoreNr
+	 *            Position des Scores in seiner Liste.
+	 * @param listNr
+	 *            Liste aus der der Score gelöscht werden soll (1 - 3).
+	 */
+	public static void deleteScore(int scoreNr, int listNr) {
+		if (listNr >= 1 && listNr <= list.length) {
+			Score score = list[listNr-1].deleteScore(scoreNr);
+			if(score != null) {
+				AdminGUI.consoleText("Score wurde gelöscht: " + score.getValue() + " | " + score.getName());
+			} else {
+				AdminGUI.consoleText("Highscore konnte nicht gelöscht werden: Score: " + scoreNr + " | Liste: " + listNr);
+			}
+		}
+		gui.aktualisiereTabellen();
 	}
 
 	public static void aktualisiereTabellen() {

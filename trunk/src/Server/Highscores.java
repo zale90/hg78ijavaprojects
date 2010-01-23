@@ -39,6 +39,20 @@ public class Highscores {
 	public String getAvatarName() {
 		return avatarName;
 	}
+	
+	/**
+	 * Löscht den Highscore an der übergebenen Positioin.
+	 * 
+	 * @param nr Position des zu löschenden Highscores (1 - anzahl Scores).
+	 */
+	public Score deleteScore(int nr) {
+		if(nr >= 1 && nr <= list.size()) {
+			Score score = list.remove(nr-1);
+			saveListToFile();
+			return score;
+		}
+		return null;
+	}
 
 	/**
 	 * Gibt die Highscoreliste zurück.
