@@ -15,6 +15,7 @@ public class Network {
 	private BufferedReader br;
 	private ObjectInputStream ois;
 	private Socket server;
+	private boolean hasError = false;
 
 	/**
 	 * Erstellt ein neues Netzwerk-Objekt zur Kommunikation mit dem Game-Server.
@@ -33,11 +34,9 @@ public class Network {
 					.getInputStream()));
 			ois = new ObjectInputStream(server.getInputStream());
 		} catch (UnknownHostException e) {
-			System.out
-					.println("Highscore-Server konnte nicht gefunden werden!");
+			printError(new Exception("Highscore-Server konnte nicht gefunden werden!"));
 		} catch (IOException e) {
-			System.out.println("Fehler:");
-			System.out.println(e.getMessage());
+			printError(e);
 		}
 
 	}
@@ -129,7 +128,11 @@ public class Network {
 				pw.println("Bye");
 				if (br.readLine().equals("Bye")) {
 					server.close();
+				} else {
+					hasError = true;
 				}
+			} else {
+				hasError = true;
 			}
 		} catch (IOException e) {
 			printError(e);
@@ -143,7 +146,12 @@ public class Network {
 	 *            Exception dessen Fehler ausgegeben werden soll.
 	 */
 	private void printError(Exception e) {
-		System.out.println("Fehler:");
+		hasError = true;
+		System.out.println("Netzwerk-Fehler:");
 		System.out.println(e.getMessage());
+	}
+	
+	public boolean hasError() {
+		return hasError;
 	}
 }
