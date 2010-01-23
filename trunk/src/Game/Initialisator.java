@@ -6,7 +6,9 @@ import java.util.*;
 
 import Game.GUI.*;
 import Game.Minigames.TicTacToe.*;
+import Game.Minigames.Bewerbungstest.*;
 import Game.Minigames.Kniffel.*;
+import Game.Minigames.Kreuzworträtsel.*;
 
 public class Initialisator {
 
@@ -759,14 +761,18 @@ public class Initialisator {
 						"(blue)Bewirb dich auf einen 400€-Job und versuch dich am Einstellungsverfahren.",
 						"Du hast dich auf einen Job beworben.", bewerbenInfos,
 						null));
-		// zeitungsAktionen.get(1).setMinispiel(new Bewerbungsflaeche());
+		zeitungsAktionen.get(1).setMinispiel(new Bewerbungsflaeche());
 
+		Information[] kreuzwortInfos =
+		{
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1)
+		};
 		zeitungsAktionen
 				.add(new Aktion(
-						"Würfelspiel",
-						"(blue)Spiel ein spannendes Würfelspiel und verbessere deine Haushaltskasse.",
-						"Du hast ein Würfelspiel gespielt.", null, null));
-		zeitungsAktionen.get(2).setMinispiel(new Kniffel());
+						"Kreuzworträtsel",
+						"(blue)Löse ein Kreuzworträtsel und gewinne eine Tagesfahrt nach Bad Münster Eifel.",
+						"Du hast versucht, ein Kreuzworträtsel zu lösen.", kreuzwortInfos, null));
+		zeitungsAktionen.get(2).setMinispiel(new KreuzGUI());
 
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung(
