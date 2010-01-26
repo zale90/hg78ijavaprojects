@@ -639,6 +639,7 @@ public class Spiel {
 					}
 					if (keineGrenze.contains(infos[i].getZuÄndern())) {
 						int neuerWert = 0;
+						int vorher = kontostand;
 						switch (infos[i].getZuÄndern()) {
 						case 12:
 							neuerWert = zeitProRunde;
@@ -676,6 +677,8 @@ public class Spiel {
 							geldProMonat = neuerWert;
 							break;
 						}
+						int nachher = kontostand;
+						finanzen.rundenAusgabenÄndern(nachher-vorher);
 					}
 				}
 			}
