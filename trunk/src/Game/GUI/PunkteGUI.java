@@ -177,7 +177,7 @@ public class PunkteGUI extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		if (arg0.getSource() == ok) {
 			this.setVisible(false);
-			spiel.naechsteRunde();
+			spiel.zeigeFinanzen();
 		}
 	}
 }
