@@ -45,13 +45,13 @@ public class Spiel {
 		punkte = 0;
 		zeit = zeitProRunde;
 		bewerbungsfaktor = 1;
-
-		finanzen = new Finanzen();
+		finanzen = new Finanzen(this);
 		
 		// GUI
 		this.mainGUI = mainGUI;
-		gameGUI = new Spieloberfläche(this, avatar.getName());
+		gameGUI = new Spieloberfläche(this, avatar.getName(), finanzen);
 		zeigeSpielGUI();
+		finanzen.setGameGUI(gameGUI);
 
 		// Ereignisse erzeugen
 		erList = Initialisator.gibEreignisse();
@@ -63,6 +63,9 @@ public class Spiel {
 		}
 
 		grenzenErzeugen();
+		
+		gameGUI.setzeAktiviert(false);
+		finanzen.aktualisiereFinanzenGUI();
 	}
 
 	public Bedürfnis[] getBedürfnisse() {
@@ -712,14 +715,10 @@ public class Spiel {
 	
 	public void zeigeFinanzen()
 	{
-		if(aktuelleRunde % 4 == 0)
-		{
+		if((aktuelleRunde+1) % 4 == 0)
 			finanzen.aktualisiereFinanzenGUI();
-		}
 		else
-		{
 			naechsteRunde();
-		}
 	}
 
 	public void grenzenErzeugen() {

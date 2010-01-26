@@ -10,7 +10,7 @@ public class Optionen {
 
 	public static final String NAME = "Hartz 4.0 - Sackgasse mit Wendemöglichkeit?";
 	public static final String VERSION = "0.20100122";
-	public static final int ANZAHL_RUNDEN = 12;
+	public static final int ANZAHL_RUNDEN = 11; //Runde 0 zählt mit!
 	public static final String ICON_PATH_GAME = "files/gameImages/";
 	public static final String ICON_PATH_AVATAR = "files/avatarImages/";
 	public static final Font FONT_TITLE = new Font("Arial", Font.BOLD, 28);
