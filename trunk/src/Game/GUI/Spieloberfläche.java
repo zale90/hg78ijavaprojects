@@ -192,7 +192,12 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		if (arg0.getSource() == spielNeuStarten) {
-			SpielAnwendung.zeigeSplashscreen();
+			Object[] options = { "Ja", "Nein" };
+			if (JOptionPane.showOptionDialog(SpielAnwendung.mainGUI,
+					"Willst du wirklich ein neues Spiel starten?",
+					"Bestätigung", JOptionPane.YES_NO_OPTION,
+					JOptionPane.INFORMATION_MESSAGE, null, options, options[1]) == JOptionPane.YES_OPTION)
+				SpielAnwendung.zeigeSplashscreen();
 		} else if (arg0.getSource() == rundeWeiter) {
 			nächsteRunde();
 		}

@@ -284,7 +284,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
 				lbl6.setText("Schade. Sie haben es nicht geschafft.");
 				if (gesund.getWert() < 30)
 					lbl6
-							.setText("Aufgrund fehlender Hygiene wurden Sie nicht genommen.");
+							.setText("Aufgrund ihrer schlechten Gesundheit wurden Sie nicht genommen.");
 				erfolgreich = false;
 			} else if (!job()) {
 				lbl6
