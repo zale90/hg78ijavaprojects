@@ -22,7 +22,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	private MausLabel lblMaus;
 	private JLabel rundeWeiter, spielNeuStarten;
 
-	public Spieloberfläche(Spiel spiel, String charName) {
+	public Spieloberfläche(Spiel spiel, String charName, Finanzen finanzen) {
 		this.setSize(995, 672);
 		this.setLocation(0, 0);
 		this.setLayout(null);
@@ -32,7 +32,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 
 		punkteGUI = new PunkteGUI(spiel);
 		this.add(punkteGUI);
-		finanzen = new Finanzen();
+		this.finanzen = finanzen;
 		this.add(finanzen);
 		ereignisfenster = new Ereignisfenster(spiel, this);
 		this.add(ereignisfenster);
