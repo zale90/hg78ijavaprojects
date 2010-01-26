@@ -46,7 +46,7 @@ public class Spiel {
 		zeit = zeitProRunde;
 		bewerbungsfaktor = 1;
 		finanzen = new Finanzen(this);
-		
+
 		// GUI
 		this.mainGUI = mainGUI;
 		gameGUI = new Spieloberfläche(this, avatar.getName(), finanzen);
@@ -63,7 +63,7 @@ public class Spiel {
 		}
 
 		grenzenErzeugen();
-		
+
 		gameGUI.setzeAktiviert(false);
 		finanzen.aktualisiereFinanzenGUI();
 	}
@@ -127,18 +127,18 @@ public class Spiel {
 	 * Beendet die aktuelle Runde und wechselt in die nächste.
 	 */
 	public void naechsteRunde() {
-		// Überprüfen ob Maximale Rundezahl erreicht ist
-		if(aktuelleRunde == Optionen.ANZAHL_RUNDEN) {
-			String text = "Du hast es geschafft!\nDu hast " + getPunkte() + " erspielt!";
-			spielBeenden(text, "Geschafft!");
+		// Überprüfen ob Spieler verloren hat
+		if (istBedürfnisAufMinimum()) {
+			String text = "Du hast das Leben leider nicht meistern können. \nDas Spiel ist deshalb für dich Leider vorbei. \n\nImmerhin hast du "
+					+ getPunkte() + " Punkte erspielt.";
+			spielBeenden(text, "Verloren!");
 			return;
 		}
-		// Überprüfen ob Spieler verloren hat
-		if(istBedürfnisAufMinimum()) {
-			String text = "Du hast das Leben leider nicht meistern können. \nDas Spiel ist deshalb für dich Leider vorbei. \n\nImmerhin hast du "
-					+ getPunkte()
-					+ " Punkte erspielt.";
-			spielBeenden(text, "Verloren!");
+		// Überprüfen ob Maximale Rundezahl erreicht ist
+		if (aktuelleRunde == Optionen.ANZAHL_RUNDEN) {
+			String text = "Du hast es geschafft!\nDu hast " + getPunkte()
+					+ " erspielt!";
+			spielBeenden(text, "Geschafft!");
 			return;
 		}
 		// gameGUI.setzeAktiviert(true);
@@ -246,7 +246,9 @@ public class Spiel {
 						options[0]);
 				return;
 			} else {
-				String gruendeFormatiert = "";
+				String gruendeFormatiert = "Wenn du diese Aktion ausführst werden die Bedürfnisse ";
+				if (probs.size() < 2)
+					gruendeFormatiert = "Wenn du diese Aktion ausführst wird das Bedürfnis ";
 				for (int i = 0; i < probs.size(); i++) {
 					gruendeFormatiert = gruendeFormatiert + probs.get(i);
 					if ((i + 2) == probs.size())
@@ -254,13 +256,13 @@ public class Spiel {
 					else if ((i + 1) != probs.size())
 						gruendeFormatiert = gruendeFormatiert + ", ";
 				}
+
 				Object[] options = { "Ja", "Nein" };
 				if (JOptionPane
 						.showOptionDialog(
 								SpielAnwendung.mainGUI,
-								"Wenn du diese Aktion ausführst werden die Bedürfnisse "
-										+ gruendeFormatiert
-										+ " auf ihr Minimum sinken.\nWillst du diese Aktion wirklich ausführen?",
+								gruendeFormatiert
+										+ " auf Null sinken.\nWillst du diese Aktion wirklich ausführen?",
 								"Warnung", JOptionPane.YES_NO_OPTION,
 								JOptionPane.INFORMATION_MESSAGE, null, options,
 								options[0]) == JOptionPane.NO_OPTION)
@@ -712,10 +714,9 @@ public class Spiel {
 	public void minispielStarten(Minispiel minispiel) {
 		minispiel.start(this);
 	}
-	
-	public void zeigeFinanzen()
-	{
-		if((aktuelleRunde+1) % 4 == 0)
+
+	public void zeigeFinanzen() {
+		if ((aktuelleRunde + 1) % 4 == 0)
 			finanzen.aktualisiereFinanzenGUI();
 		else
 			naechsteRunde();
