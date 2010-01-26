@@ -21,6 +21,7 @@ public class Spiel {
 	private int bewerbungsfaktor;
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
+	private Finanzen finanzen;
 	private ArrayList<Ereignis> erList;
 	private ArrayList<Integer> grenzenObenUndUnten, grenzeUnten, keineGrenze,
 			braucheWert, braucheFaktor;
@@ -45,6 +46,8 @@ public class Spiel {
 		zeit = zeitProRunde;
 		bewerbungsfaktor = 1;
 
+		finanzen = new Finanzen();
+		
 		// GUI
 		this.mainGUI = mainGUI;
 		gameGUI = new Spieloberfläche(this, avatar.getName());
@@ -705,6 +708,18 @@ public class Spiel {
 
 	public void minispielStarten(Minispiel minispiel) {
 		minispiel.start(this);
+	}
+	
+	public void zeigeFinanzen()
+	{
+		if(aktuelleRunde % 4 == 0)
+		{
+			finanzen.aktualisiereFinanzenGUI();
+		}
+		else
+		{
+			naechsteRunde();
+		}
 	}
 
 	public void grenzenErzeugen() {
