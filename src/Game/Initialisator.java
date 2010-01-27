@@ -1,13 +1,14 @@
 package Game;
 
-import java.awt.Dimension;
-import java.awt.Point;
+import javax.swing.*;
+import java.awt.*;
 import java.util.*;
 
 import Game.GUI.*;
 import Game.Minigames.TicTacToe.*;
 import Game.Minigames.Bewerbungstest.*;
 import Game.Minigames.Kreuzworträtsel.*;
+import Game.Minigames.*;
 
 public class Initialisator {
 
@@ -771,7 +772,7 @@ public class Initialisator {
 		türAktionen.add(new Aktion("Freunde besuchen",
 				"(blue)==Minispiel starten==",
 				"Du hast deine Freunde besucht.", null, null));
-		türAktionen.get(1).setMinispiel(new TicTacToe());
+		türAktionen.get(1).setMinispiel(positionMinigame(new TicTacToe()));
 
 		Information[] theaterBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
@@ -836,7 +837,7 @@ public class Initialisator {
 						"(blue)Bewirb dich auf einen 400€-Job und versuch dich am Einstellungsverfahren.",
 						"Du hast dich auf einen Job beworben.", bewerbenInfos,
 						null));
-		zeitungsAktionen.get(1).setMinispiel(new Bewerbungsflaeche());
+		zeitungsAktionen.get(1).setMinispiel(positionMinigame(new Bewerbungsflaeche()));
 
 		Information[] kreuzwortInfos =
 		{
@@ -847,7 +848,7 @@ public class Initialisator {
 						"Kreuzworträtsel",
 						"(blue)Löse ein Kreuzworträtsel und gewinne eine Tagesfahrt nach Bad Münster Eifel.",
 						"Du hast versucht, ein Kreuzworträtsel zu lösen.", kreuzwortInfos, null));
-		zeitungsAktionen.get(2).setMinispiel(new KreuzGUI());
+		zeitungsAktionen.get(2).setMinispiel(positionMinigame(new KreuzGUI()));
 
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung(
@@ -911,5 +912,10 @@ public class Initialisator {
 		Aktionsobjekt cheat = new Aktionsobjekt("", new Point(0, 498),
 				new Dimension(10, 10), "", "", cheatMenu);
 		return cheat;
+	}
+	private static Minispiel positionMinigame(Minispiel minispiel)
+	{
+		minispiel.setLocation(Spiel.getSuitableLocation(minispiel.getSize()));
+		return minispiel;
 	}
 }
