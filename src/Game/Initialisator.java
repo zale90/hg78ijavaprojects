@@ -402,6 +402,11 @@ public class Initialisator {
 		schrank.addMouseListener(spielbereich);
 		spielbereich.add(schrank);
 		aktionsobjekte.add(schrank);
+		
+		Aktionsobjekt casino = getCasino();
+		casino.addMouseListener(spielbereich);
+		spielbereich.add(casino);
+		aktionsobjekte.add(casino);
 
 		Aktionsobjekt tv = getTV();
 		tv.addMouseListener(spielbereich);
@@ -426,6 +431,23 @@ public class Initialisator {
 		return aktionsobjekte;
 	}
 
+	public static Aktionsobjekt getCasino() {
+		ArrayList<Aktion> casinoAktionen = new ArrayList<Aktion>();
+		
+		Verzweigung casinoMenu = new Verzweigung("Casino", 
+						"Gehe ins Casino und spiele an diversen Automaten.",
+						casinoAktionen,
+						new ArrayList<Verzweigung>());
+		
+		Aktionsobjekt casino = new Aktionsobjekt("Casino aufsuchen", 
+						new Point(371,43),
+						new Dimension(84, 56),
+						"casinoOn.png",
+						"casinoOff.png",
+						casinoMenu);
+		return casino;
+	}
+	
 	// kik, s.oliver, tommy hilfiger, gucci
 
 	public static Aktionsobjekt getSchrank() {
@@ -536,7 +558,7 @@ public class Initialisator {
 		Verzweigung tvMenu = new Verzweigung("Fernseher",
 				"Hier kannst du Britt, DSDS und Hartz 4 TV gucken.",
 				tvAktionen, new ArrayList<Verzweigung>());
-		Aktionsobjekt tv = new Aktionsobjekt("TV anschaltren", new Point(10,
+		Aktionsobjekt tv = new Aktionsobjekt("TV anschalten", new Point(10,
 				257), new Dimension(79, 124), "tvopen.png", "tvclosed.png",
 				tvMenu);
 
