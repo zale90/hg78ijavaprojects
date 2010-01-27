@@ -1,12 +1,14 @@
 package Game;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
 import Game.GUI.*;
+import Game.Minigames.Senso.Senso;
 import Game.Minigames.TicTacToe.*;
+import Game.Minigames.Automat.Kontrolle;
 import Game.Minigames.Bewerbungstest.*;
+import Game.Minigames.Kniffel.Kniffel;
 import Game.Minigames.Kreuzworträtsel.*;
 import Game.Minigames.*;
 
@@ -335,58 +337,58 @@ public class Initialisator {
 
 		return erList;
 	}
-	
-	public static ArrayList<GeldBetrag> getHorstEinnahmen(){
+
+	public static ArrayList<GeldBetrag> getHorstEinnahmen() {
 		ArrayList<GeldBetrag> einnahmen = new ArrayList<GeldBetrag>();
-		
+
 		einnahmen.add(new GeldBetrag("Hartz IV", 359));
 		einnahmen.add(new GeldBetrag("Mieterstattung", 477));
-		
+
 		return einnahmen;
 	}
-	
-	public static ArrayList<GeldBetrag> getHasmaEinnahmen(){
+
+	public static ArrayList<GeldBetrag> getHasmaEinnahmen() {
 		ArrayList<GeldBetrag> einnahmen = new ArrayList<GeldBetrag>();
-		
+
 		einnahmen.add(new GeldBetrag("Hartz IV", 646));
 		einnahmen.add(new GeldBetrag("Kindergeld", 498));
 		einnahmen.add(new GeldBetrag("Mieterstattung", 478));
-		
+
 		return einnahmen;
 	}
-	
-	public static ArrayList<GeldBetrag> getJaquelineEinnahmen(){
+
+	public static ArrayList<GeldBetrag> getJaquelineEinnahmen() {
 		ArrayList<GeldBetrag> einnahmen = new ArrayList<GeldBetrag>();
-		
+
 		einnahmen.add(new GeldBetrag("Hartz IV", 359));
 		einnahmen.add(new GeldBetrag("Kindergeld", 607));
 		einnahmen.add(new GeldBetrag("Mieterstattung", 407));
-		
+
 		return einnahmen;
 	}
-	
-	public static ArrayList<GeldBetrag> getHorstAusgaben(){
+
+	public static ArrayList<GeldBetrag> getHorstAusgaben() {
 		ArrayList<GeldBetrag> ausgaben = new ArrayList<GeldBetrag>();
-		
+
 		ausgaben.add(new GeldBetrag("Miete", 477));
-		
+
 		return ausgaben;
 	}
-	
-	public static ArrayList<GeldBetrag> getHasmaAusgaben(){
+
+	public static ArrayList<GeldBetrag> getHasmaAusgaben() {
 		ArrayList<GeldBetrag> ausgaben = new ArrayList<GeldBetrag>();
-		
+
 		ausgaben.add(new GeldBetrag("Miete", 478));
-		
+
 		return ausgaben;
 	}
-	
-	public static ArrayList<GeldBetrag> getJaquelineAusgaben(){
+
+	public static ArrayList<GeldBetrag> getJaquelineAusgaben() {
 		ArrayList<GeldBetrag> ausgaben = new ArrayList<GeldBetrag>();
-		
+
 		ausgaben.add(new GeldBetrag("Rate", 100));
 		ausgaben.add(new GeldBetrag("Miete", 407));
-		
+
 		return ausgaben;
 	}
 
@@ -403,8 +405,8 @@ public class Initialisator {
 		schrank.addMouseListener(spielbereich);
 		spielbereich.add(schrank);
 		aktionsobjekte.add(schrank);
-		
-		Aktionsobjekt casino = getCasino();
+
+		Aktionsobjekt casino = getCasino(spielbereich);
 		casino.addMouseListener(spielbereich);
 		spielbereich.add(casino);
 		aktionsobjekte.add(casino);
@@ -432,23 +434,44 @@ public class Initialisator {
 		return aktionsobjekte;
 	}
 
-	public static Aktionsobjekt getCasino() {
+	public static Aktionsobjekt getCasino(Spielbereich spielbereich) {
 		ArrayList<Aktion> casinoAktionen = new ArrayList<Aktion>();
-		
-		Verzweigung casinoMenu = new Verzweigung("Casino", 
-						"Gehe ins Casino und spiele an diversen Automaten.",
-						casinoAktionen,
-						new ArrayList<Verzweigung>());
-		
-		Aktionsobjekt casino = new Aktionsobjekt("Casino aufsuchen", 
-						new Point(371,43),
-						new Dimension(84, 56),
-						"casinoOn.png",
-						"casinoOff.png",
-						casinoMenu);
+		casinoAktionen
+				.add(new Aktion(
+						"Slot Machine",
+						"(blue)Versuche dein großes Glück an diesem Automaten. Aber Achtung: Verspiele nicht alles!",
+						"Du warst im Kasino und hast dein Glück an der Slot Machine versucht!",
+						null, null));
+		casinoAktionen.get(0).setMinispiel(
+				positionMinigame(new Kontrolle(), spielbereich));
+
+		casinoAktionen
+				.add(new Aktion(
+						"Senso",
+						"(blue)Zeige deine Geschicklichkeit im Spiel \"Senso\"!",
+						"Du warst im Kasino und hast dich am Spiel \"Senso\" versucht!",
+						null, null));
+		casinoAktionen.get(1).setMinispiel(
+				positionMinigame(new Senso(), spielbereich));
+
+		casinoAktionen
+				.add(new Aktion(
+						"Kniffel",
+						"(blue)Jeder kennt es wahrscheinlich: das beliebte Kniffel! Hier kannst du sogar etwas gewinnen.",
+						"Du hast Kniffel gespielt.", null, null));
+		casinoAktionen.get(1).setMinispiel(
+				positionMinigame(new Kniffel(), spielbereich));
+
+		Verzweigung casinoMenu = new Verzweigung("Casino",
+				"Gehe ins Casino und spiele an diversen Automaten.",
+				casinoAktionen, new ArrayList<Verzweigung>());
+
+		Aktionsobjekt casino = new Aktionsobjekt("Casino aufsuchen", new Point(
+				371, 43), new Dimension(84, 56), "casinoOn.png",
+				"casinoOff.png", casinoMenu);
 		return casino;
 	}
-	
+
 	// kik, s.oliver, tommy hilfiger, gucci
 
 	public static Aktionsobjekt getSchrank() {
@@ -559,9 +582,9 @@ public class Initialisator {
 		Verzweigung tvMenu = new Verzweigung("Fernseher",
 				"Hier kannst du Britt, DSDS und Hartz 4 TV gucken.",
 				tvAktionen, new ArrayList<Verzweigung>());
-		Aktionsobjekt tv = new Aktionsobjekt("TV anschalten", new Point(10,
-				257), new Dimension(79, 124), "tvopen.png", "tvclosed.png",
-				tvMenu);
+		Aktionsobjekt tv = new Aktionsobjekt("TV anschalten",
+				new Point(10, 257), new Dimension(79, 124), "tvopen.png",
+				"tvclosed.png", tvMenu);
 
 		return tv;
 	}
@@ -769,10 +792,13 @@ public class Initialisator {
 						"(blue)Geh ins Kino und verbringe eine schöne Zeit mit deinen Freunden.",
 						"Du bist ins Kino gegangen", kinoBesuchen, null));
 
-		türAktionen.add(new Aktion("Freunde besuchen",
-				"(blue)==Minispiel starten==",
-				"Du hast deine Freunde besucht.", null, null));
-		türAktionen.get(1).setMinispiel(positionMinigame(new TicTacToe(),spielbereich));
+		türAktionen
+				.add(new Aktion(
+						"Freunde besuchen",
+						"(blue)Besuche deine Freunde und spiele mit ihene Tic Tac Toe.",
+						"Du hast deine Freunde besucht.", null, null));
+		türAktionen.get(1).setMinispiel(
+				positionMinigame(new TicTacToe(), spielbereich));
 
 		Information[] theaterBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
@@ -837,18 +863,19 @@ public class Initialisator {
 						"(blue)Bewirb dich auf einen 400€-Job und versuch dich am Einstellungsverfahren.",
 						"Du hast dich auf einen Job beworben.", bewerbenInfos,
 						null));
-		zeitungsAktionen.get(1).setMinispiel(positionMinigame(new Bewerbungsflaeche(), spielbereich));
+		zeitungsAktionen.get(1).setMinispiel(
+				positionMinigame(new Bewerbungsflaeche(), spielbereich));
 
-		Information[] kreuzwortInfos =
-		{
-				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1)
-		};
+		Information[] kreuzwortInfos = { new Information(
+				Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1) };
 		zeitungsAktionen
 				.add(new Aktion(
 						"Kreuzworträtsel",
 						"(blue)Löse ein Kreuzworträtsel und gewinne eine Tagesfahrt nach Bad Münster Eifel.",
-						"Du hast versucht, ein Kreuzworträtsel zu lösen.", kreuzwortInfos, null));
-		zeitungsAktionen.get(2).setMinispiel(positionMinigame(new KreuzGUI(), spielbereich));
+						"Du hast versucht, ein Kreuzworträtsel zu lösen.",
+						kreuzwortInfos, null));
+		zeitungsAktionen.get(2).setMinispiel(
+				positionMinigame(new KreuzGUI(), spielbereich));
 
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung(
@@ -913,11 +940,19 @@ public class Initialisator {
 				new Dimension(10, 10), "", "", cheatMenu);
 		return cheat;
 	}
-	private static Minispiel positionMinigame(Minispiel minispiel, Spielbereich spielber)
-	{
+
+	private static Minispiel positionMinigame(Minispiel minispiel,
+			Spielbereich spielber) {
 		Point newLocation = SpielAnwendung.getHauptfenster().getLocation();
-		newLocation.setLocation(newLocation.getX()+spielber.getLocation().getX(), newLocation.getY()+spielber.getLocation().getY());
-		newLocation.setLocation((int)(newLocation.getLocation().getX()+(20 + (800 - minispiel.getSize().getWidth()) / 2)),(int)(newLocation.getLocation().getY()+(60 + (500 - minispiel.getSize().getHeight()+50) / 2)));
+		newLocation.setLocation(newLocation.getX()
+				+ spielber.getLocation().getX(), newLocation.getY()
+				+ spielber.getLocation().getY());
+		newLocation
+				.setLocation(
+						(int) (newLocation.getLocation().getX() + (20 + (800 - minispiel
+								.getSize().getWidth()) / 2)),
+						(int) (newLocation.getLocation().getY() + (60 + (500 - minispiel
+								.getSize().getHeight() + 50) / 2)));
 		minispiel.setLocation(newLocation);
 		return minispiel;
 	}

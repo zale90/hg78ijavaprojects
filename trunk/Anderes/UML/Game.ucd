@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1336,1217" id="Game" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D3130303020486172747A49562F4D722E476F726F">
-  <children xsi:type="editmodel:ClassEditModel" name="Avatar" location="564,50" size="184,481" id="Game/Avatar" runTimeClassModel="setBedürfnisse([LGame.Bedürfnis;),getBildURL(),kontostand,setName(Ljava.lang.String;),beschreibung,getKontostand(),getZeitProRunde(),setBildURL(Ljava.lang.String;),bedürfnisse,getBedürfnisse(),avatarNummer,setZeitProRunde(I),getName(),setBeschreibung(Ljava.lang.String;),setAvatarNummer(I),setKontostand(I),getEinkommen(),getAvatarNummer(),name,Avatar(ILjava.lang.String;Ljava.lang.String;[LGame.Bedürfnis;III),einkommen,zeitProRunde,setEinkommen(I),getBeschreibung()">
+  <children xsi:type="editmodel:ClassEditModel" name="Avatar" location="564,50" size="184,481" id="Game/Avatar" runTimeClassModel="getBildURL(),setBedürfnisse([LGame.Bedürfnis;),kontostand,setName(Ljava.lang.String;),getKontostand(),beschreibung,getZeitProRunde(),setBildURL(Ljava.lang.String;),bedürfnisse,getBedürfnisse(),avatarNummer,getName(),setZeitProRunde(I),setBeschreibung(Ljava.lang.String;),setAvatarNummer(I),setKontostand(I),getEinkommen(),getAvatarNummer(),name,Avatar(ILjava.lang.String;Ljava.lang.String;[LGame.Bedürfnis;III),einkommen,zeitProRunde,setEinkommen(I),getBeschreibung()">
     <children xsi:type="editmodel:CompartmentEditModel" size="161,126">
       <children xsi:type="editmodel:AttributeEditModel" name="avatarNummer" id="Game/Avatar#avatarNummer"/>
       <children xsi:type="editmodel:AttributeEditModel" name="bedürfnisse" id="Game/Avatar#bedürfnisse"/>
@@ -32,7 +32,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Bedürfnis" location="1001,50" size="124,463" id="Game/Bedürfnis" runTimeClassModel="setMin(I),min,setName(I),getWert(),wert,max,getAbfallfaktor(),lUXUS,getMax(),nAHRUNG,setMax(I),getName(I),setAbfallfaktor(I),getName(),kINDER,abfallfaktor,sOZIALES,getMin(),istMinimum(),name,setWert(I),Bedürfnis(IIIII),gESUNDHEIT">
+  <children xsi:type="editmodel:ClassEditModel" name="Bedürfnis" location="1001,50" size="124,463" id="Game/Bedürfnis" runTimeClassModel="setMin(I),min,setName(I),getWert(),wert,getAbfallfaktor(),max,lUXUS,getMax(),nAHRUNG,setMax(I),getName(I),setAbfallfaktor(I),getName(),kINDER,abfallfaktor,sOZIALES,getMin(),istMinimum(),name,setWert(I),Bedürfnis(IIIII),gESUNDHEIT">
     <children xsi:type="editmodel:CompartmentEditModel" size="98,180">
       <children xsi:type="editmodel:AttributeEditModel" name="abfallfaktor" id="Game/Bedürfnis#abfallfaktor"/>
       <children xsi:type="editmodel:AttributeEditModel" name="gESUNDHEIT" id="Game/Bedürfnis#gESUNDHEIT"/>
@@ -63,7 +63,7 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Ereignis" location="798,50" size="153,499" id="Game/Ereignis" runTimeClassModel="getNummer(),tYP_JA_NEIN,getJa(),getMinispiel(),getName(),setNummer(I),nein,name,minispiel,getNein(),setNein([LGame.Information;),setText(Ljava.lang.String;),ausführen(),text,setTyp(Z),setName(Ljava.lang.String;),nummer,Ereignis(ILjava.lang.String;Ljava.lang.String;Z[LGame.Information;[LGame.Information;),getText(),tYP_OK,setJa([LGame.Information;),getTyp(),typ,ja,setMinispiel(LGame.Minigames.Minispiel;)">
+  <children xsi:type="editmodel:ClassEditModel" name="Ereignis" location="798,50" size="153,499" id="Game/Ereignis" runTimeClassModel="getNummer(),tYP_JA_NEIN,getJa(),getMinispiel(),setNummer(I),getName(),nein,name,minispiel,getNein(),setNein([LGame.Information;),setText(Ljava.lang.String;),ausführen(),text,setTyp(Z),setName(Ljava.lang.String;),nummer,Ereignis(ILjava.lang.String;Ljava.lang.String;Z[LGame.Information;[LGame.Information;),getText(),tYP_OK,getTyp(),setJa([LGame.Information;),typ,setMinispiel(LGame.Minigames.Minispiel;),ja">
     <children xsi:type="editmodel:CompartmentEditModel" size="130,162">
       <children xsi:type="editmodel:AttributeEditModel" name="ja" id="Game/Ereignis#ja"/>
       <children xsi:type="editmodel:AttributeEditModel" name="minispiel" id="Game/Ereignis#minispiel"/>
@@ -148,36 +148,48 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Initialisator" location="511,779" size="148,229" id="Game/Initialisator" runTimeClassModel="getKuehlschrank(),getCheat(),getTV(),gibAvatare(),getAktionsobjekte(LGame.GUI.Spielbereich;),gibKinderEreignisse(),gibEreignisse(),getSchrank(),getTuer(),getZeitung()">
+  <children xsi:type="editmodel:ClassEditModel" name="Initialisator" location="511,779" size="165,391" id="Game/Initialisator" runTimeClassModel="getZeitung(LGame.GUI.Spielbereich;),getTV(),gibAvatare(),gibKinderEreignisse(),getSchrank(),getHorstEinnahmen(),getHasmaEinnahmen(),getKuehlschrank(),getHasmaAusgaben(),getJaquelineEinnahmen(),getCheat(),getTuer(LGame.GUI.Spielbereich;),getAktionsobjekte(LGame.GUI.Spielbereich;),gibEreignisse(),getHorstAusgaben(),getCasino(LGame.GUI.Spielbereich;),getJaquelineAusgaben()">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <children xsi:type="editmodel:CompartmentEditModel" size="125,180">
+    <children xsi:type="editmodel:CompartmentEditModel" size="142,342">
       <children xsi:type="editmodel:MethodEditModel" name="getAktionsobjekte" id="Game/Initialisator#getAktionsobjekte(LGame.GUI.Spielbereich;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getCheat" id="Game/Initialisator#getCheat()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getKuehlschrank" id="Game/Initialisator#getKuehlschrank()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getSchrank" id="Game/Initialisator#getSchrank()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getTV" id="Game/Initialisator#getTV()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getTuer" id="Game/Initialisator#getTuer()"/>
-      <children xsi:type="editmodel:MethodEditModel" name="getZeitung" id="Game/Initialisator#getZeitung()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTuer"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getZeitung"/>
       <children xsi:type="editmodel:MethodEditModel" name="gibAvatare" id="Game/Initialisator#gibAvatare()"/>
       <children xsi:type="editmodel:MethodEditModel" name="gibEreignisse" id="Game/Initialisator#gibEreignisse()"/>
       <children xsi:type="editmodel:MethodEditModel" name="gibKinderEreignisse" id="Game/Initialisator#gibKinderEreignisse()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getJaquelineAusgaben" id="Game/Initialisator#getJaquelineAusgaben()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTuer" id="Game/Initialisator#getTuer(LGame.GUI.Spielbereich;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHasmaEinnahmen" id="Game/Initialisator#getHasmaEinnahmen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getCasino" id="Game/Initialisator#getCasino(LGame.GUI.Spielbereich;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getZeitung" id="Game/Initialisator#getZeitung(LGame.GUI.Spielbereich;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHorstEinnahmen" id="Game/Initialisator#getHorstEinnahmen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getJaquelineEinnahmen" id="Game/Initialisator#getJaquelineEinnahmen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHasmaAusgaben" id="Game/Initialisator#getHasmaAusgaben()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHorstAusgaben" id="Game/Initialisator#getHorstAusgaben()"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Network" location="1156,779" size="160,121" id="Game/Network" runTimeClassModel="sendeScore(LGame.Score;I),Network(Ljava.lang.String;I),empfangeHighscores(I),beendeKommunikation()">
-    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
-    <children xsi:type="editmodel:CompartmentEditModel" size="137,72">
+  <children xsi:type="editmodel:ClassEditModel" name="Network" location="1156,779" size="160,157" id="Game/Network" runTimeClassModel="Network(Ljava.lang.String;I),sendeScore(LGame.Score;I),hasError(),hasError,empfangeHighscores(I),beendeKommunikation()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="105,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="hasError" id="Game/Network#hasError"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="137,90">
       <children xsi:type="editmodel:MethodEditModel" name="Network" id="Game/Network#Network(Ljava.lang.String;I)"/>
       <children xsi:type="editmodel:MethodEditModel" name="beendeKommunikation" id="Game/Network#beendeKommunikation()"/>
       <children xsi:type="editmodel:MethodEditModel" name="empfangeHighscores" id="Game/Network#empfangeHighscores(I)"/>
       <children xsi:type="editmodel:MethodEditModel" name="sendeScore" id="Game/Network#sendeScore(LGame.Score;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="hasError" id="Game/Network#hasError()"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Optionen" location="50,779" size="187,219" id="Game/Optionen" runTimeClassModel="nETWORK_PORT,vERSION,fONT_BIGGER,nETWORK_ADDRESS,iCON_PATH_GAME,nAME,iCON_PATH_AVATAR,fONT_TITLE,fONT_BUTTON,fONT_ACTION_HEADER">
-    <children xsi:type="editmodel:CompartmentEditModel" size="164,180">
+  <children xsi:type="editmodel:ClassEditModel" name="Optionen" location="50,779" size="187,237" id="Game/Optionen" runTimeClassModel="nETWORK_PORT,aNZAHL_RUNDEN,vERSION,fONT_BIGGER,nETWORK_ADDRESS,iCON_PATH_GAME,nAME,iCON_PATH_AVATAR,fONT_TITLE,fONT_BUTTON,fONT_ACTION_HEADER">
+    <children xsi:type="editmodel:CompartmentEditModel" size="164,198">
       <children xsi:type="editmodel:AttributeEditModel" name="fONT_ACTION_HEADER" id="Game/Optionen#fONT_ACTION_HEADER"/>
       <children xsi:type="editmodel:AttributeEditModel" name="fONT_BIGGER" id="Game/Optionen#fONT_BIGGER"/>
       <children xsi:type="editmodel:AttributeEditModel" name="fONT_BUTTON" id="Game/Optionen#fONT_BUTTON"/>
@@ -188,12 +200,13 @@
       <children xsi:type="editmodel:AttributeEditModel" name="nETWORK_ADDRESS" id="Game/Optionen#nETWORK_ADDRESS"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nETWORK_PORT" id="Game/Optionen#nETWORK_PORT"/>
       <children xsi:type="editmodel:AttributeEditModel" name="vERSION" id="Game/Optionen#vERSION"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="aNZAHL_RUNDEN" id="Game/Optionen#aNZAHL_RUNDEN"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Score" location="50,1058" size="102,139" id="Game/Score" runTimeClassModel="getValue(),getName(),name,value,Score(Ljava.lang.String;J)">
+  <children xsi:type="editmodel:ClassEditModel" name="Score" location="50,1058" size="102,139" id="Game/Score" runTimeClassModel="getName(),getValue(),name,value,Score(Ljava.lang.String;J)">
     <children xsi:type="editmodel:CompartmentEditModel" size="79,36">
       <children xsi:type="editmodel:AttributeEditModel" name="name" id="Game/Score#name"/>
       <children xsi:type="editmodel:AttributeEditModel" name="value" id="Game/Score#value"/>
@@ -206,8 +219,8 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Spiel" location="50,50" size="184,679" id="Game/Spiel" runTimeClassModel="infosUmsetzen([LGame.Information;),grenzenErzeugen(),setBedürfnisse([LGame.Bedürfnis;),getAktuelleRunde(),getProblemBeduerfnisse([LGame.Information;),zeit,getBewerbungsfaktor(),getZeitProRunde(),minispielEnde([LGame.Information;),getErList(),bedürfnisse,avatarName,aktuelleRunde,Spiel(LGame.Avatar;LGame.GUI.Hauptfenster;),zeigeSpielGUI(),getAvatarName(),zeitProRunde,getPunkte(),kontostand,naechsteRunde(),avatarNr,getZeit(),punkteBerechnen(LGame.GUI.PunkteGUI;),geldProMonat,getKontostand(),getBedürfnisse(),bewerbungsfaktor,getRandomEreignis(),minispielStarten(LGame.Minigames.Minispiel;),getAvatarNr(),aktionAusfuehren(LGame.GUI.Aktion;),punkte,minispielEnde([LGame.Information;Ljava.lang.String;),erList,getGeldProMonat()">
-    <children xsi:type="editmodel:CompartmentEditModel" size="161,198">
+  <children xsi:type="editmodel:ClassEditModel" name="Spiel" location="50,50" size="184,751" id="Game/Spiel" runTimeClassModel="infosUmsetzen([LGame.Information;),grenzenErzeugen(),setBedürfnisse([LGame.Bedürfnis;),getAktuelleRunde(),getBewerbungsfaktor(),getProblemBeduerfnisse([LGame.Information;),zeit,getZeitProRunde(),minispielEnde([LGame.Information;),getErList(),bedürfnisse,avatarName,aktuelleRunde,Spiel(LGame.Avatar;LGame.GUI.Hauptfenster;),zeigeSpielGUI(),finanzen,getAvatarName(),zeitProRunde,getPunkte(),naechsteRunde(),kontostand,avatarNr,getZeit(),getKontostand(),geldProMonat,punkteBerechnen(LGame.GUI.PunkteGUI;),getBedürfnisse(),getRandomEreignis(),bewerbungsfaktor,minispielStarten(LGame.Minigames.Minispiel;),getAvatarNr(),aktionAusfuehren(LGame.GUI.Aktion;),punkte,minispielEnde([LGame.Information;Ljava.lang.String;),erList,getFinanzen(),zeigeFinanzen(),getSuitableLocation(Ljava.awt.Dimension;),getGeldProMonat()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="161,216">
       <children xsi:type="editmodel:AttributeEditModel" name="aktuelleRunde" id="Game/Spiel#aktuelleRunde"/>
       <children xsi:type="editmodel:AttributeEditModel" name="avatarName" id="Game/Spiel#avatarName"/>
       <children xsi:type="editmodel:AttributeEditModel" name="avatarNr" id="Game/Spiel#avatarNr"/>
@@ -219,8 +232,9 @@
       <children xsi:type="editmodel:AttributeEditModel" name="punkte" id="Game/Spiel#punkte"/>
       <children xsi:type="editmodel:AttributeEditModel" name="zeit" id="Game/Spiel#zeit"/>
       <children xsi:type="editmodel:AttributeEditModel" name="zeitProRunde" id="Game/Spiel#zeitProRunde"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="finanzen" id="Game/Spiel#finanzen"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="148,432">
+    <children xsi:type="editmodel:CompartmentEditModel" size="148,486">
       <children xsi:type="editmodel:MethodEditModel" name="Spiel" location="21,238" id="Game/Spiel#Spiel(LGame.Avatar;LGame.GUI.Hauptfenster;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="aktionAusfuehren" id="Game/Spiel#aktionAusfuehren(LGame.GUI.Aktion;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getAktuelleRunde" id="Game/Spiel#getAktuelleRunde()"/>
@@ -245,20 +259,24 @@
       <children xsi:type="editmodel:MethodEditModel" name="punkteBerechnen" id="Game/Spiel#punkteBerechnen(LGame.GUI.PunkteGUI;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="minispielEnde" id="Game/Spiel#minispielEnde([LGame.Information;Ljava.lang.String;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="zeigeSpielGUI" id="Game/Spiel#zeigeSpielGUI()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSuitableLocation" id="Game/Spiel#getSuitableLocation(Ljava.awt.Dimension;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFinanzen" id="Game/Spiel#getFinanzen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="zeigeFinanzen" id="Game/Spiel#zeigeFinanzen()"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="SpielAnwendung" location="709,779" size="168,157" id="Game/SpielAnwendung" runTimeClassModel="beendeSpiel(ILjava.lang.String;),zeigeSplashscreen(),starteSpiel(LGame.Avatar;),zeigeCharakterauswahl(),mainGUI,beendeSpiel(ILjava.lang.String;LGame.Score;)">
+  <children xsi:type="editmodel:ClassEditModel" name="SpielAnwendung" location="709,779" size="168,175" id="Game/SpielAnwendung" runTimeClassModel="beendeSpiel(ILjava.lang.String;),zeigeSplashscreen(),starteSpiel(LGame.Avatar;),zeigeCharakterauswahl(),getHauptfenster(),mainGUI,beendeSpiel(ILjava.lang.String;LGame.Score;)">
     <children xsi:type="editmodel:CompartmentEditModel" size="127,18">
       <children xsi:type="editmodel:AttributeEditModel" name="mainGUI" id="Game/SpielAnwendung#mainGUI"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="145,90">
+    <children xsi:type="editmodel:CompartmentEditModel" size="145,108">
       <children xsi:type="editmodel:MethodEditModel" name="beendeSpiel" id="Game/SpielAnwendung#beendeSpiel(ILjava.lang.String;LGame.Score;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="beendeSpiel" id="Game/SpielAnwendung#beendeSpiel(ILjava.lang.String;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="starteSpiel" id="Game/SpielAnwendung#starteSpiel(LGame.Avatar;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="zeigeCharakterauswahl" id="Game/SpielAnwendung#zeigeCharakterauswahl()"/>
       <children xsi:type="editmodel:MethodEditModel" name="zeigeSplashscreen" id="Game/SpielAnwendung#zeigeSplashscreen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHauptfenster" id="Game/SpielAnwendung#getHauptfenster()"/>
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
