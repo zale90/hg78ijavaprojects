@@ -2,7 +2,8 @@ package Game;
 
 import java.util.*;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
 
 import Game.GUI.*;
 import Game.Minigames.Minispiel;
@@ -204,6 +205,11 @@ public class Spiel {
 			bedürfnisse[i].setWert(bedürfnisse[i].getWert()
 					- bedürfnisse[i].getAbfallfaktor());
 		}
+	}
+	
+	public static Point getSuitableLocation(Dimension d)
+	{
+		return new Point((int)(20 + (800 - d.getWidth()) / 2),(int)(60 + (500 - d.getHeight() + 100) / 2));
 	}
 
 	/**
