@@ -1,6 +1,7 @@
 package Game;
 
 import Game.GUI.*;
+import java.awt.Point;
 
 public class SpielAnwendung {
 
@@ -8,6 +9,11 @@ public class SpielAnwendung {
 	 * Das Fenster in dem das Spiel abläuft.
 	 */
 	public static final Hauptfenster mainGUI = new Hauptfenster();
+	
+	public static Hauptfenster getHauptfenster()
+	{
+		return mainGUI;
+	}
 
 	/**
 	 * Zeigt den Splashscreen an, bei dem man anschließend die möglichkeit hat

@@ -414,12 +414,12 @@ public class Initialisator {
 		spielbereich.add(tv);
 		aktionsobjekte.add(tv);
 
-		Aktionsobjekt tuer = getTuer();
+		Aktionsobjekt tuer = getTuer(spielbereich);
 		tuer.addMouseListener(spielbereich);
 		spielbereich.add(tuer);
 		aktionsobjekte.add(tuer);
 
-		Aktionsobjekt zeitung = getZeitung();
+		Aktionsobjekt zeitung = getZeitung(spielbereich);
 		zeitung.addMouseListener(spielbereich);
 		spielbereich.add(zeitung);
 		aktionsobjekte.add(zeitung);
@@ -749,7 +749,7 @@ public class Initialisator {
 		return kuehlschrank;
 	}
 
-	public static Aktionsobjekt getTuer() {
+	public static Aktionsobjekt getTuer(Spielbereich spielbereich) {
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
 
 		Information[] kinoBesuchen = {
@@ -772,7 +772,7 @@ public class Initialisator {
 		türAktionen.add(new Aktion("Freunde besuchen",
 				"(blue)==Minispiel starten==",
 				"Du hast deine Freunde besucht.", null, null));
-		türAktionen.get(1).setMinispiel(positionMinigame(new TicTacToe()));
+		türAktionen.get(1).setMinispiel(positionMinigame(new TicTacToe(),spielbereich));
 
 		Information[] theaterBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
@@ -816,7 +816,7 @@ public class Initialisator {
 		return tuer;
 	}
 
-	public static Aktionsobjekt getZeitung() {
+	public static Aktionsobjekt getZeitung(Spielbereich spielbereich) {
 		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
 		Information[] zeitungLesen = {
 				new Information(Information.AENDERN_ZEIT,
@@ -837,7 +837,7 @@ public class Initialisator {
 						"(blue)Bewirb dich auf einen 400€-Job und versuch dich am Einstellungsverfahren.",
 						"Du hast dich auf einen Job beworben.", bewerbenInfos,
 						null));
-		zeitungsAktionen.get(1).setMinispiel(positionMinigame(new Bewerbungsflaeche()));
+		zeitungsAktionen.get(1).setMinispiel(positionMinigame(new Bewerbungsflaeche(), spielbereich));
 
 		Information[] kreuzwortInfos =
 		{
@@ -848,7 +848,7 @@ public class Initialisator {
 						"Kreuzworträtsel",
 						"(blue)Löse ein Kreuzworträtsel und gewinne eine Tagesfahrt nach Bad Münster Eifel.",
 						"Du hast versucht, ein Kreuzworträtsel zu lösen.", kreuzwortInfos, null));
-		zeitungsAktionen.get(2).setMinispiel(positionMinigame(new KreuzGUI()));
+		zeitungsAktionen.get(2).setMinispiel(positionMinigame(new KreuzGUI(), spielbereich));
 
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung(
@@ -913,9 +913,12 @@ public class Initialisator {
 				new Dimension(10, 10), "", "", cheatMenu);
 		return cheat;
 	}
-	private static Minispiel positionMinigame(Minispiel minispiel)
+	private static Minispiel positionMinigame(Minispiel minispiel, Spielbereich spielber)
 	{
-		minispiel.setLocation(Spiel.getSuitableLocation(minispiel.getSize()));
+		Point newLocation = SpielAnwendung.getHauptfenster().getLocation();
+		newLocation.setLocation(newLocation.getX()+spielber.getLocation().getX(), newLocation.getY()+spielber.getLocation().getY());
+		newLocation.setLocation((int)(newLocation.getLocation().getX()+(20 + (800 - minispiel.getSize().getWidth()) / 2)),(int)(newLocation.getLocation().getY()+(60 + (500 - minispiel.getSize().getHeight()+50) / 2)));
+		minispiel.setLocation(newLocation);
 		return minispiel;
 	}
 }
