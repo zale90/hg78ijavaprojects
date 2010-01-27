@@ -1,6 +1,7 @@
 package Game.Minigames.Kreuzworträtsel;
 
 import javax.swing.*;
+import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import Game.*;
@@ -57,23 +58,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener, Mou
               
               pos = 0;
               
-              m.matrixFaerben(1, 1, Color.BLACK, false);
-              m.matrixFaerben(1, 8, Color.BLACK, false);
-              m.matrixFaerben(2, 1, Color.BLACK, false);
-              m.matrixFaerben(4, 5, Color.BLACK, false);
-              m.matrixFaerben(4, 6, Color.BLACK, false);
-              m.matrixFaerben(4, 7, Color.BLACK, false);
-              m.matrixFaerben(5, 5, Color.BLACK, false);
-              m.matrixFaerben(5, 6, Color.BLACK, false);
-              m.matrixFaerben(5, 7, Color.BLACK, false);
-              m.matrixFaerben(6, 5, Color.BLACK, false);
-              m.matrixFaerben(6, 6, Color.BLACK, false);
-              m.matrixFaerben(6, 7, Color.BLACK, false);
-              m.matrixFaerben(7, 4, Color.BLACK, false);
-              m.matrixFaerben(7, 5, Color.BLACK, false);
-              m.matrixFaerben(7, 6, Color.BLACK, false);
-              m.matrixFaerben(7, 7, Color.BLACK, false);
-              m.matrixFaerben(7, 8, Color.BLACK, false);
+              matrixSchwaerzen();
               
               this.setVisible(false);
         }
@@ -251,6 +236,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener, Mou
 	   matrixEinfuegen(25, 25);
 	   m.addActionListener(this);
        m.addMouseListener(this);
+       matrixSchwaerzen();
    }
    
    public void matrixEntfernen() 
@@ -259,5 +245,25 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener, Mou
       {
           this.remove(m.gibKaest()[i]);
       }
+   }
+   public void matrixSchwaerzen()
+   {
+       m.matrixFaerben(1, 1, Color.BLACK, false);
+       m.matrixFaerben(1, 8, Color.BLACK, false);
+       m.matrixFaerben(2, 1, Color.BLACK, false);
+       m.matrixFaerben(4, 5, Color.BLACK, false);
+       m.matrixFaerben(4, 6, Color.BLACK, false);
+       m.matrixFaerben(4, 7, Color.BLACK, false);
+       m.matrixFaerben(5, 5, Color.BLACK, false);
+       m.matrixFaerben(5, 6, Color.BLACK, false);
+       m.matrixFaerben(5, 7, Color.BLACK, false);
+       m.matrixFaerben(6, 5, Color.BLACK, false);
+       m.matrixFaerben(6, 6, Color.BLACK, false);
+       m.matrixFaerben(6, 7, Color.BLACK, false);
+       m.matrixFaerben(7, 4, Color.BLACK, false);
+       m.matrixFaerben(7, 5, Color.BLACK, false);
+       m.matrixFaerben(7, 6, Color.BLACK, false);
+       m.matrixFaerben(7, 7, Color.BLACK, false);
+       m.matrixFaerben(7, 8, Color.BLACK, false);
    }
 }
