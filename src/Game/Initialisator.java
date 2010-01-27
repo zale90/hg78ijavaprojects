@@ -335,6 +335,60 @@ public class Initialisator {
 
 		return erList;
 	}
+	
+	public static ArrayList<GeldBetrag> getHorstEinnahmen(){
+		ArrayList<GeldBetrag> einnahmen = new ArrayList<GeldBetrag>();
+		
+		einnahmen.add(new GeldBetrag("Hartz IV", 359));
+		einnahmen.add(new GeldBetrag("Mieterstattung", 477));
+		
+		return einnahmen;
+	}
+	
+	public static ArrayList<GeldBetrag> getHasmaEinnahmen(){
+		ArrayList<GeldBetrag> einnahmen = new ArrayList<GeldBetrag>();
+		
+		einnahmen.add(new GeldBetrag("Hartz IV", 646));
+		einnahmen.add(new GeldBetrag("Kindergeld", 498));
+		einnahmen.add(new GeldBetrag("Mieterstattung", 478));
+		
+		return einnahmen;
+	}
+	
+	public static ArrayList<GeldBetrag> getJaquelineEinnahmen(){
+		ArrayList<GeldBetrag> einnahmen = new ArrayList<GeldBetrag>();
+		
+		einnahmen.add(new GeldBetrag("Hartz IV", 359));
+		einnahmen.add(new GeldBetrag("Kindergeld", 607));
+		einnahmen.add(new GeldBetrag("Mieterstattung", 407));
+		
+		return einnahmen;
+	}
+	
+	public static ArrayList<GeldBetrag> getHorstAusgaben(){
+		ArrayList<GeldBetrag> ausgaben = new ArrayList<GeldBetrag>();
+		
+		ausgaben.add(new GeldBetrag("Miete", 477));
+		
+		return ausgaben;
+	}
+	
+	public static ArrayList<GeldBetrag> getHasmaAusgaben(){
+		ArrayList<GeldBetrag> ausgaben = new ArrayList<GeldBetrag>();
+		
+		ausgaben.add(new GeldBetrag("Miete", 478));
+		
+		return ausgaben;
+	}
+	
+	public static ArrayList<GeldBetrag> getJaquelineAusgaben(){
+		ArrayList<GeldBetrag> ausgaben = new ArrayList<GeldBetrag>();
+		
+		ausgaben.add(new GeldBetrag("Rate", 100));
+		ausgaben.add(new GeldBetrag("Miete", 407));
+		
+		return ausgaben;
+	}
 
 	public static ArrayList<Aktionsobjekt> getAktionsobjekte(
 			Spielbereich spielbereich) {

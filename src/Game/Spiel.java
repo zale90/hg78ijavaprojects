@@ -46,6 +46,24 @@ public class Spiel {
 		zeit = zeitProRunde;
 		bewerbungsfaktor = 1;
 		finanzen = new Finanzen(this);
+		
+		switch(avatarNr){
+		case 1:{
+			finanzen.einnahmeHinzufügen(Initialisator.getHorstEinnahmen());
+			finanzen.ausgabeHinzufügen(Initialisator.getHorstAusgaben());
+			break;
+		}
+		case 2:{
+			finanzen.einnahmeHinzufügen(Initialisator.getHasmaEinnahmen());
+			finanzen.ausgabeHinzufügen(Initialisator.getHasmaAusgaben());
+			break;
+		}
+		case 3:{
+			finanzen.einnahmeHinzufügen(Initialisator.getJaquelineEinnahmen());
+			finanzen.ausgabeHinzufügen(Initialisator.getJaquelineAusgaben());
+			break;
+		}
+		}
 
 		// GUI
 		this.mainGUI = mainGUI;

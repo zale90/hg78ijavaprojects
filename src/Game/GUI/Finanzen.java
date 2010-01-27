@@ -22,6 +22,7 @@ public class Finanzen extends JPanel implements ActionListener
 	private Spiel spiel;
 	private Spieloberfläche gameGUI;
 	private JButton ok;
+	private Color gruen, rot;
 	
 	public Finanzen(Spiel spiel)
 	{
@@ -30,6 +31,9 @@ public class Finanzen extends JPanel implements ActionListener
 		ausgaben = new ArrayList<GeldBetrag>();
 		rundenAusgaben = new GeldBetrag("Ausgaben", 0);
 		monat = 1;
+		
+		gruen = Color.GREEN;
+		rot = Color.RED;
 		
 		zeilenBerechnen();
 		this.setSize(350, (200 + zeilen * 15));
@@ -50,9 +54,25 @@ public class Finanzen extends JPanel implements ActionListener
 		einnahmen.add(new GeldBetrag(name, betrag));
 	}
 	
+	public void einnahmeHinzufügen(ArrayList<GeldBetrag> einnahmen)
+	{
+		for(GeldBetrag e: einnahmen)
+		{
+			this.einnahmen.add(e);
+		}
+	}
+	
 	public void ausgabeHinzufügen(String name, int betrag)
 	{
 		ausgaben.add(new GeldBetrag(name, betrag));
+	}
+	
+	public void ausgabeHinzufügen(ArrayList<GeldBetrag> ausgaben)
+	{
+		for(GeldBetrag a: ausgaben)
+		{
+			this.ausgaben.add(a);
+		}
 	}
 	
 	public void einnahmeEntfernen(String name)
@@ -126,7 +146,7 @@ public class Finanzen extends JPanel implements ActionListener
 		if(monat != 1)
 			 verschubR = 20;
 		int verschubG = verschubZ + verschubR;
-		this.setSize(350, (90 + verschubG));
+		this.setSize(350, (110 + verschubG));
 		this.setLocation((int)(20 + (800 - this.getWidth()) / 2), (int)(60 + (500 - this.getHeight()) / 2));
 		
 		JLabel ueberschrift = new JLabel("Monat " + monat);
@@ -135,7 +155,7 @@ public class Finanzen extends JPanel implements ActionListener
 		ueberschrift.setFont(new Font("Arial", Font.BOLD, 20));
 		this.add(ueberschrift);
 		
-		JLabel lErwirtschaftet = new JLabel("Einnahmen letzter Monat: " );
+		JLabel lErwirtschaftet = new JLabel("Bilanz letzter Monat: " );
 		lErwirtschaftet.setSize(340, 20);
 		lErwirtschaftet.setLocation(5, 30);
 		if(monat == 1)
@@ -153,9 +173,33 @@ public class Finanzen extends JPanel implements ActionListener
 			iErwirtschaftet.setVisible(false);
 		this.add(iErwirtschaftet);
 		
+		JLabel lEinnahmen = new JLabel("Einnahmen");
+		lEinnahmen.setSize(140, 20);
+		lEinnahmen.setLocation(15,(30 + verschubR));
+		lEinnahmen.setFont(new Font("Arial", Font.PLAIN, 16));
+		lEinnahmen.setForeground(gruen);
+		this.add(lEinnahmen);
+		
+		int zeile = 0;
+		for(GeldBetrag e : einnahmen)
+		{
+			JLabel einnahmeName = new JLabel(e.getName());
+			einnahmeName.setSize(100,15);
+			einnahmeName.setLocation(15, (55 + verschubR + zeile));
+			this.add(einnahmeName);
+			
+			JLabel einnahmeWert = new JLabel(Integer.toString(e.getBetrag()));
+			einnahmeWert.setSize(40, 15);
+			einnahmeWert.setLocation(115, (55 + verschubR + zeile));
+			//einnahmeWert.setHorizontalAlignment(alignment)
+			this.add(einnahmeWert);
+			
+			zeile = zeile + 15;
+		}
+		
 		ok = new JButton("Weiter");
 		ok.setSize(90, 30);
-		ok.setLocation(130, 50+verschubG);
+		ok.setLocation(130, 75+verschubG);
 		ok.setFont(new Font("Arial", Font.BOLD, 16));
 		ok.setForeground(new Color(0, 0, 0));
 		ok.setHorizontalAlignment(JLabel.CENTER);
