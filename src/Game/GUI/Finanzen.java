@@ -30,7 +30,7 @@ public class Finanzen extends JPanel implements ActionListener
 		einnahmen = new ArrayList<GeldBetrag>();
 		ausgaben = new ArrayList<GeldBetrag>();
 		rundenAusgaben = new GeldBetrag("Ausgaben", 0);
-		monat = 1;
+		monat = 2;
 		
 		gruen = new Color(65, 115, 50);
 		rot = Color.RED;
