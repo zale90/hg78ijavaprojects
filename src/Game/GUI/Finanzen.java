@@ -273,6 +273,7 @@ public class Finanzen extends JPanel implements ActionListener
 		this.add(ok);
 		
 		this.setVisible(true);
+		ok.requestFocusInWindow();
 	}
 
 	@Override
