@@ -1,16 +1,15 @@
 package Game.Minigames.Automat;
-
 import java.awt.*;
-import java.text.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.*;
-import javax.swing.border.*;
 import java.awt.event.MouseListener;
 
 public class Kontrolle extends JFrame implements MouseListener,
 		Game.Minigames.Minispiel {
-	private int einsatz, guthaben;
+
+	private static final long serialVersionUID = -6408480780542078083L;
+
+	private int guthaben;
 	private JLabel bg, info, gH, info2, money;
 	private JLabel v1, v2, v3, beenden;
 	private Game.Spiel s;
@@ -21,8 +20,6 @@ public class Kontrolle extends JFrame implements MouseListener,
 		this.setSize(350, 350);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setUndecorated(true);
-
-		einsatz = 0;
 
 		info = new JLabel("Wie viel Geld wollen Sie einsetzen?");
 		info.setSize(350, 20);
@@ -127,7 +124,7 @@ public class Kontrolle extends JFrame implements MouseListener,
 				info2.setVisible(true);
 		}
 		if (e.getSource() == v2) {
-			v2.setForeground(new Color(183,215,238));
+			v2.setForeground(new Color(183, 215, 238));
 			if (guthaben < 4)
 				info2.setVisible(true);
 		}

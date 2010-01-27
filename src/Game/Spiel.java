@@ -23,8 +23,11 @@ public class Spiel {
 	private Spieloberfläche gameGUI;
 	private Finanzen finanzen;
 	private ArrayList<Ereignis> erList;
-	private ArrayList<Integer> grenzenObenUndUnten, grenzeUnten, keineGrenze,
-			braucheWert, braucheFaktor;
+	private ArrayList<Integer> grenzenObenUndUnten;
+	private ArrayList<Integer> grenzeUnten;
+	private ArrayList<Integer> keineGrenze;
+	private ArrayList<Integer> braucheWert;
+	private ArrayList<Integer> braucheFaktor;
 
 	/**
 	 * Ein neues Spielt wird anhand der Informationen eines Avatars erstellt und

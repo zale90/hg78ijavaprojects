@@ -7,7 +7,6 @@ import java.util.*;
 import Game.GUI.*;
 import Game.Minigames.TicTacToe.*;
 import Game.Minigames.Bewerbungstest.*;
-import Game.Minigames.Kniffel.*;
 import Game.Minigames.Kreuzworträtsel.*;
 
 public class Initialisator {
