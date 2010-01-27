@@ -128,6 +128,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener, Mou
 		   {
 			   spiel.minispielEnde(null, "Leider hat deine Leistung im Kreuzworträtsel nicht gereicht.");
 		   }
+		   reset();
 		   this.setVisible(false);
 	   }
 
@@ -228,5 +229,23 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener, Mou
    {
 	   //KreuzGUI guiKreuz = new KreuzGUI();
 	   this.setVisible(true);
+   }
+   
+   public void reset()
+   {
+	   matrixEntfernen();
+	   m = new Matrix(9, 9, this, this);
+	   pos = 0;
+	   matrixEinfuegen(25, 25);
+	   m.addActionListener(this);
+       m.addMouseListener(this);
+   }
+   
+   public void matrixEntfernen() 
+   { 
+      for(int i = 0; i< m.gibGroesse(); i++) 
+      {
+          this.remove(m.gibKaest()[i]);
+      }
    }
 }
