@@ -75,13 +75,13 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		tfBargeld.setLocation(230, 155);
 		tfBargeld.setEditable(false);
 		this.add(tfBargeld);
-		
-		try{
-      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        }
-        catch(Exception e) {
-      	  }
-		
+
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
+
 		int x = 70;
 		for (int i = 0; i < anzahlWuerfel; i++) {
 			int y = 195;
@@ -180,21 +180,20 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		this.add(hintergrund);
 
 		this.setVisible(false);
-		
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
+
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+		}
 
 	}
 
 	private void reset() {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
 		zustand = Zustand.Start;
 		for (int i = 0; i < checkboxes.length; i++) {
 			checkboxes[i].setSelected(false);
@@ -206,19 +205,18 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		btnVerdoppeln.setEnabled(false);
 		btnPlus.setEnabled(true);
 		btnMinus.setEnabled(true);
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 		if (e.getSource() == btnPlus) {
 			double bargeld = Double.parseDouble(tfBargeld.getText());
 			int einsatz = Integer.parseInt(tfEinsatz.getText());
@@ -234,20 +232,19 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 				tfBargeld.setText(bargeld + 1 + "");
 			}
 		}
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	public void wuerfelGefallen(int position) {
-	
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
+
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
 		checkboxes[position].setEnabled(true);
 		boolean ende = true;
 		for (JCheckBox cb : checkboxes) {
@@ -259,19 +256,18 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 			endeErsterWurf();
 		else if (ende && zustand == Zustand.Wurf2)
 			endeZweiterWurf();
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	private void endeZweiterWurf() {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
 		btnAktion.setEnabled(true);
 		int[] ergebnisse = new int[wuerfel.length];
 		int[] anzahlZahlen = new int[zahlen.length];
@@ -382,71 +378,67 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		for (JCheckBox cb : checkboxes) {
 			cb.setEnabled(false);
 		}
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	private int getZahl(int position) {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
 		for (int i = 0; i < zahlen.length; i++)
 			if (wuerfel[position].getIcon().equals(zahlen[i]))
 				return i + 1;
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 		return 0;
 	}
 
 	private void endeErsterWurf() {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
 		btnAktion.setEnabled(true);
 		btnVerdoppeln.setEnabled(true);
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	private void wuerfelWerfen() {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
 		for (int i = 0; i < wuerfel.length; i++) {
 			if (!checkboxes[i].isSelected()) {
 				new Thread(new Wuerfler(i, this)).start();
 				checkboxes[i].setEnabled(false);
 			}
 		}
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	// @Override
 	public void mouseClicked(MouseEvent e) {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 		if (e.getSource() == btnVerdoppeln && btnVerdoppeln.isEnabled()) {
 			double bargeld = Double.parseDouble(tfBargeld.getText());
 			int einsatz = Integer.parseInt(tfEinsatz.getText());
@@ -507,26 +499,25 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 					Information.ART_AUF_WERT, geldInt) };
 			this.setVisible(false);
 			spiel.minispielEnde(infos);
-			try{
-		      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		        }
-		        catch(Exception f) {
-		      	  }
+			try {
+				UIManager.setLookAndFeel(UIManager
+						.getCrossPlatformLookAndFeelClassName());
+			} catch (Exception f) {
+			}
 		}
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	// @Override
 	public void mouseEntered(MouseEvent e) {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 		if (e.getSource() == btnVerdoppeln) {
 			btnVerdoppeln.setForeground(Color.red);
 		} else if (e.getSource() == btnAktion) {
@@ -534,20 +525,19 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		} else if (e.getSource() == btnbeenden) {
 			btnbeenden.setForeground(Color.red);
 		}
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	// @Override
 	public void mouseExited(MouseEvent e) {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 		if (e.getSource() == btnVerdoppeln) {
 			btnVerdoppeln.setForeground(new Color(159, 250, 138));
 		} else if (e.getSource() == btnAktion) {
@@ -555,57 +545,53 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		} else if (e.getSource() == btnbeenden) {
 			btnbeenden.setForeground(new Color(159, 250, 138));
 		}
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	// @Override
 	public void mousePressed(MouseEvent arg0) {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
-	        try{
-		      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		        }
-		        catch(Exception f) {
-		      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	// @Override
 	public void mouseReleased(MouseEvent arg0) {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
-	        try{
-		      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		        }
-		        catch(Exception f) {
-		      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 
 	@Override
 	public void start(Spiel spiel) {
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-	        }
-	        catch(Exception e) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager
+					.getCrossPlatformLookAndFeelClassName());
+		} catch (Exception e) {
+		}
 		this.spiel = spiel;
 		this.setVisible(true);
 		bargeld = spiel.getKontostand();
 		tfBargeld.setText(bargeld + "");
 		new Kniffel();
-		try{
-	      	  UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-	        }
-	        catch(Exception f) {
-	      	  }
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception f) {
+		}
 	}
 }

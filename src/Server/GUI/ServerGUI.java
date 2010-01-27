@@ -81,7 +81,7 @@ public class ServerGUI extends JFrame implements MouseListener {
 	        JOptionPane.showMessageDialog(this, passwordField, "Bitte Kennwort für Admin-Zugriff eingeben:", JOptionPane.OK_OPTION);
 	        String input = String.valueOf(passwordField.getPassword());
 	        
-			if(input.equals("1337")) {
+			if(input.equals("PlankalküL")) {
 				adminGUI.setVisible(true);
 			} else {
 				JOptionPane.showMessageDialog(this, "Das eingegebene Kennwort ist leider falsch! Sie haben keinen Zugriff auf die Einstellungen!", "Kennwort falsch", JOptionPane.ERROR_MESSAGE);

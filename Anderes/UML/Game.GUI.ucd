@@ -1,5 +1,236 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" id="Game.GUI" metadata="uml2-1.0" tag="1000" key="32303037303533312D3130303020486172747A49562F4D722E476F726F">
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1419,1001" id="Game.GUI" metadata="uml2-1.0" initialized="true" scrolledY="42" tag="1000" key="32303037303533312D3130303020486172747A49562F4D722E476F726F">
+  <children xsi:type="editmodel:ClassEditModel" name="Aktion" location="304,50" size="189,391" id="Game.GUI/Aktion" runTimeClassModel="nutzen,getKosten(),konsolenausgabe,setName(Ljava.lang.String;),beschreibung,setKonsolenausgabe(Ljava.lang.String;),getMinispiel(),Aktion(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;[LGame.Information;[LGame.Information;),getName(),setBeschreibung(Ljava.lang.String;),getNutzen(),kosten,name,minispiel,setMinispiel(LGame.Minigames.Minispiel;),getBedürfnisveränderungen([LGame.Information;),getVeraenderungen(),getKonsolenausgabe(),getBeschreibung()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="142,108">
+      <children xsi:type="editmodel:AttributeEditModel" name="beschreibung" id="Game.GUI/Aktion#beschreibung"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="konsolenausgabe" id="Game.GUI/Aktion#konsolenausgabe"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="kosten" id="Game.GUI/Aktion#kosten"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="minispiel" id="Game.GUI/Aktion#minispiel"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" id="Game.GUI/Aktion#name"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nutzen" id="Game.GUI/Aktion#nutzen"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="166,234">
+      <children xsi:type="editmodel:MethodEditModel" name="Aktion" id="Game.GUI/Aktion#Aktion(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;[LGame.Information;[LGame.Information;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBedürfnisveränderungen" id="Game.GUI/Aktion#getBedürfnisveränderungen([LGame.Information;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBeschreibung" id="Game.GUI/Aktion#getBeschreibung()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getKonsolenausgabe" id="Game.GUI/Aktion#getKonsolenausgabe()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getKosten" id="Game.GUI/Aktion#getKosten()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMinispiel" id="Game.GUI/Aktion#getMinispiel()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getName" id="Game.GUI/Aktion#getName()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getNutzen" id="Game.GUI/Aktion#getNutzen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getVeraenderungen" id="Game.GUI/Aktion#getVeraenderungen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setBeschreibung" id="Game.GUI/Aktion#setBeschreibung(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setKonsolenausgabe" id="Game.GUI/Aktion#setKonsolenausgabe(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMinispiel" id="Game.GUI/Aktion#setMinispiel(LGame.Minigames.Minispiel;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setName" id="Game.GUI/Aktion#setName(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Aktionsobjekt" location="50,491" size="139,355" id="Game.GUI/Aktionsobjekt" runTimeClassModel="getMenu(),menu,setHeadertext(Ljava.lang.String;),getInaktiv(),setAktiv(Z),setMenu(LGame.GUI.Verzweigung;),setHeaderpos(Ljava.awt.Point;),getHeaderpos(),setAktiv(Ljavax.swing.ImageIcon;),getHeadertext(),getAktiv(),inaktiv,aktiv,Aktionsobjekt(Ljava.lang.String;Ljava.awt.Point;Ljava.awt.Dimension;Ljava.lang.String;Ljava.lang.String;LGame.GUI.Verzweigung;),setInaktiv(Ljavax.swing.ImageIcon;),headerpos,headertext">
+    <children xsi:type="editmodel:CompartmentEditModel" size="116,90">
+      <children xsi:type="editmodel:AttributeEditModel" name="aktiv" id="Game.GUI/Aktionsobjekt#aktiv"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="headerpos" id="Game.GUI/Aktionsobjekt#headerpos"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="headertext" id="Game.GUI/Aktionsobjekt#headertext"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="inaktiv" id="Game.GUI/Aktionsobjekt#inaktiv"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="menu" id="Game.GUI/Aktionsobjekt#menu"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="98,216">
+      <children xsi:type="editmodel:MethodEditModel" name="Aktionsobjekt" id="Game.GUI/Aktionsobjekt#Aktionsobjekt(Ljava.lang.String;Ljava.awt.Point;Ljava.awt.Dimension;Ljava.lang.String;Ljava.lang.String;LGame.GUI.Verzweigung;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAktiv" id="Game.GUI/Aktionsobjekt#getAktiv()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeaderpos" id="Game.GUI/Aktionsobjekt#getHeaderpos()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeadertext" id="Game.GUI/Aktionsobjekt#getHeadertext()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getInaktiv" id="Game.GUI/Aktionsobjekt#getInaktiv()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getMenu" id="Game.GUI/Aktionsobjekt#getMenu()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAktiv" id="Game.GUI/Aktionsobjekt#setAktiv(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAktiv" id="Game.GUI/Aktionsobjekt#setAktiv(Ljavax.swing.ImageIcon;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHeaderpos" id="Game.GUI/Aktionsobjekt#setHeaderpos(Ljava.awt.Point;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHeadertext" id="Game.GUI/Aktionsobjekt#setHeadertext(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setInaktiv" id="Game.GUI/Aktionsobjekt#setInaktiv(Ljavax.swing.ImageIcon;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setMenu" id="Game.GUI/Aktionsobjekt#setMenu(LGame.GUI.Verzweigung;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Charakterauswahl" location="617,633" size="157,67" id="Game.GUI/Charakterauswahl" runTimeClassModel="Charakterauswahl(Ljava.util.ArrayList;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="119,18">
+      <children xsi:type="editmodel:MethodEditModel" name="Charakterauswahl" id="Game.GUI/Charakterauswahl#Charakterauswahl(Ljava.util.ArrayList;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="CharakterGUI" location="425,485" size="141,139" id="Game.GUI/CharakterGUI" runTimeClassModel="CharakterGUI(LGame.Avatar;II),actionPerformed(Ljava.awt.event.ActionEvent;),getAvatar(),avatar,setAvatar(LGame.Avatar;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="88,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="avatar" id="Game.GUI/CharakterGUI#avatar"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="109,72">
+      <children xsi:type="editmodel:MethodEditModel" name="CharakterGUI" id="Game.GUI/CharakterGUI#CharakterGUI(LGame.Avatar;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="actionPerformed" id="Game.GUI/CharakterGUI#actionPerformed(Ljava.awt.event.ActionEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAvatar" id="Game.GUI/CharakterGUI#getAvatar()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAvatar" id="Game.GUI/CharakterGUI#setAvatar(LGame.Avatar;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Credits" location="803,734" size="87,67" id="Game.GUI/Credits" runTimeClassModel="Credits()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="64,18">
+      <children xsi:type="editmodel:MethodEditModel" name="Credits" id="Game.GUI/Credits#Credits()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Ereignisfenster" location="617,495" size="136,103" id="Game.GUI/Ereignisfenster" runTimeClassModel="Ereignisfenster(LGame.Spiel;LGame.GUI.Spieloberfläche;),fensterZeigen(LGame.Ereignis;),actionPerformed(Ljava.awt.event.ActionEvent;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="109,54">
+      <children xsi:type="editmodel:MethodEditModel" name="Ereignisfenster" id="Game.GUI/Ereignisfenster#Ereignisfenster(LGame.Spiel;LGame.GUI.Spieloberfläche;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="actionPerformed" id="Game.GUI/Ereignisfenster#actionPerformed(Ljava.awt.event.ActionEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="fensterZeigen" id="Game.GUI/Ereignisfenster#fensterZeigen(LGame.Ereignis;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Finanzen" location="225,491" size="173,301" id="Game.GUI/Finanzen" runTimeClassModel="einnahmeEntfernen(Ljava.lang.String;),einnahmeHinzufügen(Ljava.util.ArrayList;),rundenAusgabenÄndern(I),einnahmeHinzufügen(Ljava.lang.String;I),setGameGUI(LGame.GUI.Spieloberfläche;),ausgabeHinzufügen(Ljava.util.ArrayList;),berechneEinkommen(),Finanzen(LGame.Spiel;),actionPerformed(Ljava.awt.event.ActionEvent;),ausgabeEntfernen(Ljava.lang.String;),gameGUI,aktualisiereFinanzenGUI(),ausgabeHinzufügen(Ljava.lang.String;I),zeilenBerechnen()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="143,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="gameGUI" id="Game.GUI/Finanzen#gameGUI"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="150,234">
+      <children xsi:type="editmodel:MethodEditModel" name="Finanzen" id="Game.GUI/Finanzen#Finanzen(LGame.Spiel;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="actionPerformed" id="Game.GUI/Finanzen#actionPerformed(Ljava.awt.event.ActionEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="aktualisiereFinanzenGUI" id="Game.GUI/Finanzen#aktualisiereFinanzenGUI()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ausgabeEntfernen" id="Game.GUI/Finanzen#ausgabeEntfernen(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ausgabeHinzufügen" id="Game.GUI/Finanzen#ausgabeHinzufügen(Ljava.lang.String;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ausgabeHinzufügen" id="Game.GUI/Finanzen#ausgabeHinzufügen(Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="berechneEinkommen" id="Game.GUI/Finanzen#berechneEinkommen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="einnahmeEntfernen" id="Game.GUI/Finanzen#einnahmeEntfernen(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="einnahmeHinzufügen" id="Game.GUI/Finanzen#einnahmeHinzufügen(Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="einnahmeHinzufügen" id="Game.GUI/Finanzen#einnahmeHinzufügen(Ljava.lang.String;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="rundenAusgabenÄndern" id="Game.GUI/Finanzen#rundenAusgabenÄndern(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setGameGUI" id="Game.GUI/Finanzen#setGameGUI(LGame.GUI.Spieloberfläche;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="zeilenBerechnen" id="Game.GUI/Finanzen#zeilenBerechnen()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Hauptfenster" location="425,640" size="136,85" id="Game.GUI/Hauptfenster" runTimeClassModel="zeigePanel(Ljavax.swing.JPanel;),Hauptfenster()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="93,36">
+      <children xsi:type="editmodel:MethodEditModel" name="Hauptfenster" id="Game.GUI/Hauptfenster#Hauptfenster()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="zeigePanel" id="Game.GUI/Hauptfenster#zeigePanel(Ljavax.swing.JPanel;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Highscoreliste" location="619,725" size="132,85" id="Game.GUI/Highscoreliste" runTimeClassModel="actionPerformed(Ljava.awt.event.ActionEvent;),Highscoreliste(LGame.Highscores;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="109,36">
+      <children xsi:type="editmodel:MethodEditModel" name="Highscoreliste" id="Game.GUI/Highscoreliste#Highscoreliste(LGame.Highscores;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="actionPerformed" id="Game.GUI/Highscoreliste#actionPerformed(Ljava.awt.event.ActionEvent;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="MausLabel" location="430,745" size="132,85" id="Game.GUI/MausLabel" runTimeClassModel="MausLabel(Ljava.awt.Component;),run()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="82,36">
+      <children xsi:type="editmodel:MethodEditModel" name="MausLabel" id="Game.GUI/MausLabel#MausLabel(Ljava.awt.Component;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="run" id="Game.GUI/MausLabel#run()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PunkteGUI" location="803,495" size="132,103" id="Game.GUI/PunkteGUI" runTimeClassModel="setzeWerte(IIIIIII),actionPerformed(Ljava.awt.event.ActionEvent;),PunkteGUI(LGame.Spiel;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="109,54">
+      <children xsi:type="editmodel:MethodEditModel" name="PunkteGUI" id="Game.GUI/PunkteGUI#PunkteGUI(LGame.Spiel;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="actionPerformed" id="Game.GUI/PunkteGUI#actionPerformed(Ljava.awt.event.ActionEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setzeWerte" id="Game.GUI/PunkteGUI#setzeWerte(IIIIIII)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Spielbereich" location="787,50" size="197,301" id="Game.GUI/Spielbereich" runTimeClassModel="Spielbereich(IILGame.GUI.Spieloberfläche;),mouseEntered(Ljava.awt.event.MouseEvent;),mouseClicked(Ljava.awt.event.MouseEvent;),mouseExited(Ljava.awt.event.MouseEvent;),showActionComponent(Ljava.awt.Point;Ljava.awt.Component;Ljavax.swing.JComponent;),aktivesObjekt,getAktivesObjekt(),getSpieloberfläche(),aktionAusfuehren(LGame.GUI.Aktion;),spieloberfläche,mousePressed(Ljava.awt.event.MouseEvent;),setzeAktiviert(Z),mouseReleased(Ljava.awt.event.MouseEvent;),aktionsObjektAbwaehlen()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="174,36">
+      <children xsi:type="editmodel:AttributeEditModel" name="aktivesObjekt" id="Game.GUI/Spielbereich#aktivesObjekt"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="spieloberfläche" id="Game.GUI/Spielbereich#spieloberfläche"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="150,216">
+      <children xsi:type="editmodel:MethodEditModel" name="Spielbereich" id="Game.GUI/Spielbereich#Spielbereich(IILGame.GUI.Spieloberfläche;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="aktionAusfuehren" id="Game.GUI/Spielbereich#aktionAusfuehren(LGame.GUI.Aktion;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="aktionsObjektAbwaehlen" id="Game.GUI/Spielbereich#aktionsObjektAbwaehlen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAktivesObjekt" id="Game.GUI/Spielbereich#getAktivesObjekt()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSpieloberfläche" id="Game.GUI/Spielbereich#getSpieloberfläche()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseClicked" id="Game.GUI/Spielbereich#mouseClicked(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseEntered" id="Game.GUI/Spielbereich#mouseEntered(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseExited" id="Game.GUI/Spielbereich#mouseExited(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mousePressed" id="Game.GUI/Spielbereich#mousePressed(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseReleased" id="Game.GUI/Spielbereich#mouseReleased(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setzeAktiviert" id="Game.GUI/Spielbereich#setzeAktiviert(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="showActionComponent" id="Game.GUI/Spielbereich#showActionComponent(Ljava.awt.Point;Ljava.awt.Component;Ljavax.swing.JComponent;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Spieloberfläche" location="543,50" size="194,337" id="Game.GUI/Spieloberfläche" runTimeClassModel="aktualisiereDaten(),getSpiel(),mouseClicked(Ljava.awt.event.MouseEvent;),mouseEntered(Ljava.awt.event.MouseEvent;),mouseExited(Ljava.awt.event.MouseEvent;),spielbereich,Spieloberfläche(LGame.Spiel;Ljava.lang.String;LGame.GUI.Finanzen;),ereignisfenster,getEreignisfenster(),zeigeNachrichtInKonsole(Ljava.lang.String;),mousePressed(Ljava.awt.event.MouseEvent;),getSpielbereich(),setzeAktiviert(Z),mouseReleased(Ljava.awt.event.MouseEvent;),aktion(LGame.GUI.Aktion;),spiel">
+    <children xsi:type="editmodel:CompartmentEditModel" size="171,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="ereignisfenster" id="Game.GUI/Spieloberfläche#ereignisfenster"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="spiel" id="Game.GUI/Spieloberfläche#spiel"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="spielbereich" id="Game.GUI/Spieloberfläche#spielbereich"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="149,234">
+      <children xsi:type="editmodel:MethodEditModel" name="Spieloberfläche" id="Game.GUI/Spieloberfläche#Spieloberfläche(LGame.Spiel;Ljava.lang.String;LGame.GUI.Finanzen;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="aktion" id="Game.GUI/Spieloberfläche#aktion(LGame.GUI.Aktion;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="aktualisiereDaten" id="Game.GUI/Spieloberfläche#aktualisiereDaten()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEreignisfenster" id="Game.GUI/Spieloberfläche#getEreignisfenster()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSpiel" id="Game.GUI/Spieloberfläche#getSpiel()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSpielbereich" id="Game.GUI/Spieloberfläche#getSpielbereich()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseClicked" id="Game.GUI/Spieloberfläche#mouseClicked(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseEntered" id="Game.GUI/Spieloberfläche#mouseEntered(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseExited" id="Game.GUI/Spieloberfläche#mouseExited(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mousePressed" id="Game.GUI/Spieloberfläche#mousePressed(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseReleased" id="Game.GUI/Spieloberfläche#mouseReleased(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setzeAktiviert" id="Game.GUI/Spieloberfläche#setzeAktiviert(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="zeigeNachrichtInKonsole" id="Game.GUI/Spieloberfläche#zeigeNachrichtInKonsole(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="SplashScreen" location="803,630" size="132,85" id="Game.GUI/SplashScreen" runTimeClassModel="actionPerformed(Ljava.awt.event.ActionEvent;),SplashScreen()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="109,36">
+      <children xsi:type="editmodel:MethodEditModel" name="SplashScreen" id="Game.GUI/SplashScreen#SplashScreen()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="actionPerformed" id="Game.GUI/SplashScreen#actionPerformed(Ljava.awt.event.ActionEvent;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Verzweigung" location="50,50" size="204,373" id="Game.GUI/Verzweigung" runTimeClassModel="letzteVerzweigung,setSpielbereich(LGame.GUI.Spielbereich;),isVisible(),beschreibung,mouseEntered(Ljava.awt.event.MouseEvent;),mouseClicked(Ljava.awt.event.MouseEvent;),mouseExited(Ljava.awt.event.MouseEvent;),Verzweigung(Ljava.lang.String;Ljava.lang.String;Ljava.util.ArrayList;Ljava.util.ArrayList;),beschreibungFuellen(Ljava.lang.String;),setLetzteVerzweigung(LGame.GUI.Verzweigung;),getName(),actionPerformed(Ljava.awt.event.ActionEvent;),name,mousePressed(Ljava.awt.event.MouseEvent;),getSpielbereich(),setVisible(Z),mouseReleased(Ljava.awt.event.MouseEvent;),getBeschreibung()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="181,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="beschreibung" id="Game.GUI/Verzweigung#beschreibung"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="letzteVerzweigung" id="Game.GUI/Verzweigung#letzteVerzweigung"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="name" id="Game.GUI/Verzweigung#name"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="140,270">
+      <children xsi:type="editmodel:MethodEditModel" name="Verzweigung" id="Game.GUI/Verzweigung#Verzweigung(Ljava.lang.String;Ljava.lang.String;Ljava.util.ArrayList;Ljava.util.ArrayList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="actionPerformed" id="Game.GUI/Verzweigung#actionPerformed(Ljava.awt.event.ActionEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="beschreibungFuellen" id="Game.GUI/Verzweigung#beschreibungFuellen(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getBeschreibung" id="Game.GUI/Verzweigung#getBeschreibung()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getName" id="Game.GUI/Verzweigung#getName()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSpielbereich" id="Game.GUI/Verzweigung#getSpielbereich()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isVisible" id="Game.GUI/Verzweigung#isVisible()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseClicked" id="Game.GUI/Verzweigung#mouseClicked(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseEntered" id="Game.GUI/Verzweigung#mouseEntered(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseExited" id="Game.GUI/Verzweigung#mouseExited(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mousePressed" id="Game.GUI/Verzweigung#mousePressed(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="mouseReleased" id="Game.GUI/Verzweigung#mouseReleased(Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setLetzteVerzweigung" id="Game.GUI/Verzweigung#setLetzteVerzweigung(LGame.GUI.Verzweigung;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSpielbereich" id="Game.GUI/Verzweigung#setSpielbereich(LGame.GUI.Spielbereich;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setVisible" id="Game.GUI/Verzweigung#setVisible(Z)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
   <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=1;Product=eUML2" autoName="false"/>
   <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
     <leftRuler/>

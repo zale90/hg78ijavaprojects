@@ -1,7 +1,6 @@
 package Game;
 
 import Game.GUI.*;
-import java.awt.Point;
 
 public class SpielAnwendung {
 
