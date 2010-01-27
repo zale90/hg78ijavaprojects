@@ -15,7 +15,6 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	private JProgressBar[] bedürfnisBars;
 	private Spiel spiel;
 	private PunkteGUI punkteGUI;
-	private Finanzen finanzen;
 	private Ereignisfenster ereignisfenster;
 	private Spielbereich spielbereich;
 	private Thread threadlblMaus;
@@ -32,7 +31,6 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 
 		punkteGUI = new PunkteGUI(spiel);
 		this.add(punkteGUI);
-		this.finanzen = finanzen;
 		this.add(finanzen);
 		ereignisfenster = new Ereignisfenster(spiel, this);
 		this.add(ereignisfenster);

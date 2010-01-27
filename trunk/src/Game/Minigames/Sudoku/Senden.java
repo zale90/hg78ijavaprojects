@@ -4,20 +4,15 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-/**
- * Write a description of class FensterAbschicken here.
- * 
- * @version 22.01.2010
- */
 public class Senden extends JFrame implements ActionListener, MouseListener {
-	// Anfang Attribute
+
+	private static final long serialVersionUID = 5135781123566465591L;
+
 	private JButton bestätigen, abbrechen;
 	private JTextArea text;
 	private JLabel lab;
 	private Sudoku2 su2;
 	private Sudoku su;
-
-	// Ende Attribute
 
 	public Senden(Sudoku2 s2, Sudoku s) {
 		super("Sudoku");
@@ -158,5 +153,4 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 			abbrechen.setForeground(Color.lightGray);
 		}
 	}
-	// Ende Methoden
 }
