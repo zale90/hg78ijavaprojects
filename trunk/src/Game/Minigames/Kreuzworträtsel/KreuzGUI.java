@@ -19,6 +19,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener, Mou
        private MausLabel lblMaus;
        private Thread threadlblMaus;
        private Spiel spiel;
+       private char[] alph;
        
        public KreuzGUI()
        {
@@ -35,6 +36,8 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener, Mou
               }
               catch(Exception e) {
             	  }
+              
+              alph = new char[]{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
               
               exit = new JButton("Abschicken");
               exit.setSize(250,60);
@@ -149,12 +152,21 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener, Mou
    {
 	   try
 	   {	   
-		   if(pos <= gelb.length)
-			   gelb[pos].setText(String.valueOf(Character.toUpperCase(e.getKeyChar())));
-		 
-		   pos++;   
+		   char t = Character.toUpperCase(e.getKeyChar());
 		   
-		   gelb[pos+1].requestFocus();
+		   for(int i = 0; i < alph.length; i++)
+		   {
+			   if(t == alph[i])
+			   {
+				   if(pos <= gelb.length)
+					   gelb[pos].setText(String.valueOf(t));
+			   
+				   pos++; 
+			   }
+				   
+		   }
+		   
+		   gelb[pos].requestFocus();
 	   }
 	   catch(Exception exp){
 		   }
@@ -180,7 +192,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener, Mou
 		   	{
 		   		fZzt[i].setBackground(new Color(255,246,133));	
 		   		
-				   if(!fZzt[i].getText().equals(""))
+				   if(!fZzt[3].getText().equals(""))
 					   fZzt[i].setText("");
 		   	}    
 		    gelb = fZzt;
