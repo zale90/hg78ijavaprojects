@@ -39,7 +39,6 @@ public class Spiel {
 	public Spiel(Avatar avatar, Hauptfenster mainGUI) {
 		bedürfnisse = avatar.getBedürfnisse().clone();
 		kontostand = avatar.getKontostand();
-		geldProMonat = avatar.getEinkommen();
 		zeitProRunde = avatar.getZeitProRunde();
 		avatarNr = avatar.getAvatarNummer();
 		avatarName = avatar.getName();
@@ -68,6 +67,8 @@ public class Spiel {
 			break;
 		}
 		}
+		
+		geldProMonat = finanzen.berechneEinkommen();
 
 		// GUI
 		this.mainGUI = mainGUI;
@@ -85,9 +86,6 @@ public class Spiel {
 		}
 
 		grenzenErzeugen();
-
-		gameGUI.setzeAktiviert(false);
-		finanzen.aktualisiereFinanzenGUI();
 	}
 
 	public Bedürfnis[] getBedürfnisse() {
@@ -124,6 +122,10 @@ public class Spiel {
 
 	public int getPunkte() {
 		return punkte;
+	}
+	
+	public Finanzen getFinanzen() {
+		return finanzen;
 	}
 
 	public ArrayList<Ereignis> getErList() {
@@ -174,6 +176,7 @@ public class Spiel {
 
 		// Bedürfnisse um Abfallfaktor reduzieren
 		bedürfnisseFallen();
+		geldProMonat = finanzen.berechneEinkommen();
 		gameGUI.aktualisiereDaten();
 
 		// Ereignisse auslösen
