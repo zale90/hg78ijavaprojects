@@ -6,6 +6,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.util.Random;
 import Game.*;
+import Game.GUI.*;
 import Game.Minigames.*;
 
 public class Bewerbungsflaeche extends JDialog implements ActionListener,
@@ -36,6 +37,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
 	private boolean erfolgreich;
 	private Spiel game;
 	private final String folder = "files/minigames/Bewerbungstest/";
+	private Finanzen finanzen;
 
 	public Bewerbungsflaeche() {
 		// Superklasse
@@ -364,10 +366,11 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
 	public Information[] erfolgreich() {
 		Information[] info;
 		if (erfolgreich) {
-			info = new Information[3];
-			info[0] = new Information(14, 2, 400);
-			info[1] = new Information(12, 2, -3);
-			info[2] = new Information(7, 2, 15);
+			info = new Information[2];
+			info[0] = new Information(12, 2, -3);
+			info[1] = new Information(7, 2, 15);
+			
+			finanzen.einnahmeHinzufügen("Arbeitsstelle", 400);
 		} else {
 			info = new Information[1];
 			info[0] = new Information(5, 2, -5);
@@ -378,6 +381,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
 
 	public void start(Spiel spiel) {
 		game = spiel;
+		finanzen = spiel.getFinanzen();
 
 		// gibt Ergebnis am Ende an.
 		lbl6.setText("Herzlichen Glückwunsch! Sie haben den Job bekommen!");
