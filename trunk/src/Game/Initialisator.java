@@ -97,7 +97,7 @@ public class Initialisator {
 		e = new Ereignis(
 				2,
 				"Krankheit",
-				"Du hast Atemschwierigkeiten und starkes Fieber und kannst Ihren Arzt besuchen. Dabei fallen 10€ Praxisgebühren an. Gehst du nicht zum Arzt leiden Ihre Bedürfnisse darunter. Möchtest du den Arzt besuchen?",
+				"Du hast Atemschwierigkeiten und starkes Fieber und kannst deinen Arzt besuchen. Dabei fallen 10€ Praxisgebühren an. Gehst du nicht zum Arzt leiden deine Bedürfnisse darunter. Möchtest du den Arzt besuchen?",
 				true, ja, nein);
 		erList.add(e);
 
@@ -152,7 +152,7 @@ public class Initialisator {
 		e = new Ereignis(
 				9,
 				"Ohne Licht gefahren",
-				"Während du mit deinem Fahrrad ohne Licht unterwegs warst, wurdest du erwischt und mußt 10€ Strafe zahlen.",
+				"Während du mit deinem Fahrrad ohne Licht unterwegs warst, wurdest du erwischt und musst 10€ Strafe zahlen.",
 				false, ja, null);
 		erList.add(e);
 
@@ -171,7 +171,7 @@ public class Initialisator {
 		e = new Ereignis(
 				11,
 				"Rückgeld",
-				"Die Kassiererin bei kik gibt dir 12€ zu viel zurück. Du kannst das Geld einstecken, doch das würde dein soziales Ansehen senken. Gibst du das Geld zurück?",
+				"Die Kassiererin bei KiK gibt dir 12€ zu viel zurück. Du kannst das Geld einstecken, doch das würde dein soziales Ansehen senken. Gibst du das Geld zurück?",
 				true, null, nein);
 		erList.add(e);
 
@@ -259,7 +259,7 @@ public class Initialisator {
 		e = new Ereignis(
 				20,
 				"Todesfall",
-				"Dein Onkel ist plötzlich verstorben. Der Rest deiner Verwandschaft schlägt vor, dass du dich mit 70€ an der Beerdigung beteiligst. Bist du einverstanden? Wenn nicht, sinkt dein Ansehen.",
+				"Dein Onkel ist plötzlich verstorben. Der Rest deiner Verwandtschaft schlägt vor, dass du dich mit 70€ an der Beerdigung beteiligst. Bist du einverstanden? Wenn nicht, sinkt dein Ansehen.",
 				true, ja, nein);
 		erList.add(e);
 
@@ -286,7 +286,7 @@ public class Initialisator {
 		e = new Ereignis(
 				23,
 				"McDonalds ruft an",
-				"McDonalds ruft an: Deine Mutter ist in der Rutsche stecken geblieben. Du musst 10€ für Fett zahlen um sie wieder heraus zu holen.",
+				"McDonalds ruft an: Deine Mutter ist in der Rutsche stecken geblieben. Du musst 10€ für Fett zahlen, um sie wieder heraus zu holen.",
 				false, ja, null);
 		erList.add(e);
 
@@ -306,8 +306,9 @@ public class Initialisator {
 		Information[] ja, nein;
 		// Random zufall = new Random();
 
-		ja = new Information[1];
+		ja = new Information[2];
 		ja[0] = new Information(13, 2, -70);
+		ja[1] = new Information(Information.AENDERN_KINDER, 2, 40);
 		e = new Ereignis(
 				7,
 				"Schulausflug",
@@ -457,7 +458,7 @@ public class Initialisator {
 		casinoAktionen
 				.add(new Aktion(
 						"Kniffel",
-						"(blue)Jeder kennt es wahrscheinlich: das beliebte Kniffel! Hier kannst du sogar etwas gewinnen.",
+						"(blue)Jeder kennt es wahrscheinlich: Das beliebte Kniffel! Hier kannst du sogar etwas gewinnen.",
 						"Du hast Kniffel gespielt.", null, null));
 		casinoAktionen.get(2).setMinispiel(
 				positionMinigame(new Kniffel(), spielbereich));
@@ -760,7 +761,7 @@ public class Initialisator {
 		kuehlschrankVerzweigung
 				.add(new Verzweigung(
 						"Fast Food",
-						"Betörend, billig, böse: Fast Food macht für wenig Geld erstaunlich satt. Doch die von Geschmacksverstärkern durchzogenen Nahrungsmittel schaden der Gesundheit extrem.",
+						"Betörend, billig, böse: Fast Food macht für wenig Geld erstaunlich satt. Doch die, von Geschmacksverstärkern durchzogenen Nahrungsmittel, schaden der Gesundheit extrem.",
 						ffoodAktionen, new ArrayList<Verzweigung>()));
 
 		Verzweigung kuehlschrankMenu = new Verzweigung("Kühlschrank",
@@ -812,7 +813,7 @@ public class Initialisator {
 				new Information(Information.AENDERN_KINDER,
 						Information.ART_UM_WERT, 10) };
 		türAktionen.add(new Aktion("Theater besuchen",
-				"(blue)Besuch ein Theater und genieß die Kultur.",
+				"(blue)Besuche ein Theater und genieße die Kultur.",
 				"Du bist ins Theater gegangen.", theaterBesuchen, null));
 
 		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
@@ -828,7 +829,7 @@ public class Initialisator {
 				"Du bist in den Park gegangen", parkBesuchen, null));
 
 		Verzweigung sonstiges = new Verzweigung("Sonstiges",
-				"Sonstige Aktivitäten ausserhalb deiner Wohnung.",
+				"Sonstige Aktivitäten außerhalb deiner Wohnung.",
 				sonstigesAktionen, new ArrayList<Verzweigung>());
 		türVerzweigungen.add(sonstiges);
 
