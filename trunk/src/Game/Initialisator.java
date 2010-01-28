@@ -459,7 +459,7 @@ public class Initialisator {
 						"Kniffel",
 						"(blue)Jeder kennt es wahrscheinlich: das beliebte Kniffel! Hier kannst du sogar etwas gewinnen.",
 						"Du hast Kniffel gespielt.", null, null));
-		casinoAktionen.get(1).setMinispiel(
+		casinoAktionen.get(2).setMinispiel(
 				positionMinigame(new Kniffel(), spielbereich));
 
 		Verzweigung casinoMenu = new Verzweigung("Casino",
