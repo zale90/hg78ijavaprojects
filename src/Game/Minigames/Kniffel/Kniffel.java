@@ -46,7 +46,7 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 	JPanel rand1;
 	private int bargeld = 0;
 	private final String folder = "files/minigames/Gewinnspiel/";
-	String text = "Um zu gewinnen, müsst du 3,4 oder 5 gleiche Zahlen Würfeln.\nDu kannst auch gewinnen, indem du ein Fullhouse,eine kleine\nStraße oder eine große Straße würfelst.";
+	String text = "Um zu gewinnen, musst du 3,4 oder 5 gleiche Zahlen Würfeln.\nDu kannst auch gewinnen, indem du ein Fullhouse,eine kleine\nStraße oder eine große Straße würfelst.";
 	String text1 = "Markiere nun die Würfel die du halten willst.\nDu kannst auch Verdoppeln um mehr Gewinn zu bekommen.";
 
 	String wurf1 = "1. Wurf", wurf2 = "2. Wurf", neuesSpiel = "Neues Spiel";
