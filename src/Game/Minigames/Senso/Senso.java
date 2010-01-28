@@ -296,7 +296,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 						Game.Information.ART_UM_WERT, runde);
 				infos[1] = new Game.Information(
 						Game.Information.AENDERN_SOZIALES,
-						Game.Information.ART_UM_WERT, 5 * runde);
+						Game.Information.ART_UM_WERT, 2 * runde);
 			}
 			s.minispielEnde(infos);
 			neustarten(false);
