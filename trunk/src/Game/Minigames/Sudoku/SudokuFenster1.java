@@ -23,6 +23,8 @@ public class SudokuFenster1 extends JFrame implements ActionListener,
 		this.setLocation(300, 160);
 		this.setLayout(null);
 		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		this.setUndecorated(true);
 
 		ButtonGroup btng = new ButtonGroup();
 		ImageIcon icon = new ImageIcon("files/minigames/Sudoku/beispiel2.jpg");
@@ -108,13 +110,16 @@ public class SudokuFenster1 extends JFrame implements ActionListener,
 		} else if (evt.getSource() == btnStart) {
 			if (rbn.isSelected() == true) {
 				preis = "20";
-				new Sudoku("Leicht", spiel);
+				Sudoku s = new Sudoku("Leicht", spiel);
+				s.setLocationRelativeTo(this);
 			} else if (rbn2.isSelected() == true) {
 				preis = "50";
-				new Sudoku("Mittel", spiel);
+				Sudoku s = new Sudoku("Mittel", spiel);
+				s.setLocationRelativeTo(this);
 			} else if (rbn3.isSelected() == true) {
 				preis = "100";
-				new Sudoku2(spiel);
+				Sudoku2 s = new Sudoku2(spiel);
+				s.setLocationRelativeTo(this);
 			}
 			this.setVisible(false);
 		}

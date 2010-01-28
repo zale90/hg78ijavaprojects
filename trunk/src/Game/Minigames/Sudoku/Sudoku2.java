@@ -33,6 +33,8 @@ public class Sudoku2 extends JFrame implements ActionListener, MouseListener {
 		this.setLocation(300, 100);
 		this.setLayout(null);
 		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		this.setUndecorated(true);
 
 		Icon bild = new ImageIcon(
 				"files/minigames/Sudoku/sudokuBildFenster.jpg");
@@ -196,7 +198,8 @@ public class Sudoku2 extends JFrame implements ActionListener, MouseListener {
 	}
 
 	private void überprüfen() {
-		new Senden(this, null);
+		Senden s = new Senden(this, null);
+		s.setLocationRelativeTo(this);
 	}
 
 	public void actionPerformed(ActionEvent evt) {

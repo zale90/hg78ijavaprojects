@@ -23,6 +23,8 @@ public class FensterFehler extends JFrame implements ActionListener,
 		this.setLocation(330, 150);
 		this.setLayout(null);
 		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		this.setUndecorated(true);
 
 		Icon bild = new ImageIcon(
 				"files/minigames/Sudoku/sudokuBildFensterAbschicken.jpg");

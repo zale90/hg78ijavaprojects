@@ -21,8 +21,11 @@ public class Sudoku extends JFrame implements ActionListener, MouseListener {
 		super("Sudoku");
 		this.setSize(355, 470);
 		this.setLocation(200, 200);
+//		this.setLocation(location);
 		this.setLayout(null);
 		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		this.setUndecorated(true);
 
 		ImageIcon icon = new ImageIcon("files/minigames/Sudoku/beispiel2.jpg");
 		icon.setImage(icon.getImage().getScaledInstance(500, 700, Image.SCALE_DEFAULT));
@@ -213,7 +216,8 @@ public class Sudoku extends JFrame implements ActionListener, MouseListener {
 			if (abschicken.isEnabled() == true) {
 				abschicken.setEnabled(false);
 			}
-			new Senden(null, this);
+			Senden s = new Senden(null, this);
+			s.setLocationRelativeTo(this);
 		}
 	}
 
