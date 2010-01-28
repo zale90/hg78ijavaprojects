@@ -159,7 +159,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 			for (int i = 0; i < fZzt.length; i++) {
 				fZzt[i].setBackground(new Color(255, 246, 133));
 
-				if (!fZzt[3].getText().equals(""))
+				if (!fZzt[0].getText().equals(""))
 					fZzt[i].setText("");
 			}
 			gelb = fZzt;
