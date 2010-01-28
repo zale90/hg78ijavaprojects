@@ -1752,35 +1752,9 @@ public class TicTacToe extends JFrame implements Runnable, ActionListener,
 
 	public void los() {
 		try {
-			o1.setVisible(false);
-			o2.setVisible(false);
-			o3.setVisible(false);
-			o4.setVisible(false);
-			o5.setVisible(false);
-			o6.setVisible(false);
-			o7.setVisible(false);
-			o8.setVisible(false);
-			o9.setVisible(false);
 
-			x4.setText("L");
-			x4.setVisible(true);
-			Thread.sleep(100);
-			x5.setText("O");
-			x5.setVisible(true);
-			Thread.sleep(100);
-			x6.setText("S!");
-			x6.setVisible(true);
-			Thread.sleep(250);
-
-			x4.setVisible(false);
-			x5.setVisible(false);
-			x6.setVisible(false);
-			x4.setText(X);
-			x5.setText(X);
-			x6.setText(X);
+			los = false;
 			
-			Thread.sleep(100);
-
 			o1.setVisible(true);
 			o2.setVisible(true);
 			o3.setVisible(true);
@@ -1790,10 +1764,11 @@ public class TicTacToe extends JFrame implements Runnable, ActionListener,
 			o7.setVisible(true);
 			o8.setVisible(true);
 			o9.setVisible(true);
-
-			los = false;
+			
 			stop();
 			thread = new Thread(this);
+			
+			
 		}
 
 		catch (Exception e) {
