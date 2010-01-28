@@ -1778,6 +1778,8 @@ public class TicTacToe extends JFrame implements Runnable, ActionListener,
 			x4.setText(X);
 			x5.setText(X);
 			x6.setText(X);
+			
+			Thread.sleep(100);
 
 			o1.setVisible(true);
 			o2.setVisible(true);
