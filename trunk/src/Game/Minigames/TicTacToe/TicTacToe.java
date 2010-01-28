@@ -514,6 +514,10 @@ public class TicTacToe extends JFrame implements Runnable, ActionListener,
 
 	public void start(Spiel spiel) {
 		this.spiel = spiel;
+		gewinn = 0;
+		verlust = 0;
+		ausgleich = 0;
+		versuche = 0;
 		name = spiel.getAvatarName();
 		plcpu.setText(name + " - FREUND");
 		cpupl.setText("FREUND - " + name);
@@ -2189,6 +2193,10 @@ public class TicTacToe extends JFrame implements Runnable, ActionListener,
 				spiel.minispielEnde(infos);
 				neuStarten();
 				this.setVisible(false);
+				gewinn = 0;
+				verlust = 0;
+				ausgleich = 0;
+				versuche = 0;
 			}
 
 			if (event.getSource() == hauptmenu) {
