@@ -56,6 +56,7 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		this.setSize(400, 400);
 		this.setLayout(null);
 		this.setLocation(500, 330);
+		this.setAlwaysOnTop(true);
 
 		zahlen[0] = new ImageIcon(folder + "Nummer11.gif");
 		zahlen[1] = new ImageIcon(folder + "Nummer12.gif");
@@ -442,7 +443,8 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		if (e.getSource() == btnVerdoppeln && btnVerdoppeln.isEnabled()) {
 			double bargeld = Double.parseDouble(tfBargeld.getText());
 			int einsatz = Integer.parseInt(tfEinsatz.getText());
-			if (bargeld - (einsatz) >= 1) {
+//			if (bargeld - (einsatz) >= 1) {
+			if (bargeld >= einsatz) {
 				tfEinsatz.setText(einsatz + einsatz + "");
 				tfBargeld.setText(bargeld - (einsatz) + "");
 				btnVerdoppeln.setEnabled(false);
