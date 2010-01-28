@@ -19,6 +19,8 @@ public class FensterVerloren extends JFrame implements ActionListener,
 		this.setSize(350, 220);
 		this.setLocation(300, 100);
 		this.setLayout(null);
+		this.setResizable(false);
+		this.setUndecorated(true);
 
 		Icon bild = new ImageIcon(
 				"files/minigames/Sudoku/sudokuBildFensterAbschicken.jpg");

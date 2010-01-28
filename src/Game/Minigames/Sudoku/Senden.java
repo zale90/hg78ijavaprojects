@@ -21,6 +21,8 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 		this.getContentPane().setBackground(Color.lightGray);
 		this.setLayout(null);
 		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		this.setUndecorated(true);
 
 		su2 = s2;
 		su = s;
@@ -37,7 +39,7 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 		text = new JTextArea("Wenn Sie Ihre Lösung dieses Sudokus \n"
 				+ "abschicken möchten, um " + SudokuFenster1.getPreis()
 				+ " Euro zu \n" + "gewinnen müssen Sie einen frankierten \n"
-				+ "Brief im Wert von 0,55 Euro bis zum \n"
+				+ "Brief im Wert von 5 Euro bis zum \n"
 				+ "31.03.2010 an folgende Adresse schicken: \n\n"
 				+ "         Dülmener Zeitung \n" + "         Marktstraße 25 \n"
 				+ "         48249 Dülmen");
@@ -104,9 +106,11 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 					}
 				}
 				if (i == 81) {
-					new Abschluss("Richtig", su, su2);
+					Abschluss a = new Abschluss("Richtig", su, su2);
+					a.setLocationRelativeTo(this);
 				} else {
-					new Abschluss("Falsch", su, su2);
+					Abschluss a = new Abschluss("Falsch", su, su2);
+					a.setLocationRelativeTo(this);
 				}
 			} else if (su2 != null) {
 				int i = 0;
@@ -114,10 +118,12 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 					if (su2.getTextfeld().get(i).getText().equals(
 							su2.getMuster().sudokuLösungPrüfen(i, su2.getR()))) {
 						if (i == 80) {
-							new Abschluss("Richtig", su, su2);
+							Abschluss a = new Abschluss("Richtig", su, su2);
+							a.setLocationRelativeTo(this);
 						}
 					} else {
-						new Abschluss("Falsch", su, su2);
+						Abschluss a = new Abschluss("Falsch", su, su2);
+						a.setLocationRelativeTo(this);
 						i = 80;
 					}
 					i++;

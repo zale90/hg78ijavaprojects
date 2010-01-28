@@ -20,6 +20,8 @@ public class FensterAbschicken extends JFrame implements ActionListener,
 		this.setLocation(300, 100);
 		this.setLayout(null);
 		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		this.setUndecorated(true);
 
 		Icon bild = new ImageIcon(
 				"files/minigames/Sudoku/sudokuBildFensterAbschicken.jpg");

@@ -17,6 +17,7 @@ public class Abschluss extends JFrame implements ActionListener, MouseListener {
 	private Random zufall;
 	private Sudoku su;
 	private Sudoku2 su2;
+	private String w;
 
 	public Abschluss(String wahl, Sudoku s, Sudoku2 s2) {
 		super("Sudoku-Abschluss");
@@ -24,9 +25,12 @@ public class Abschluss extends JFrame implements ActionListener, MouseListener {
 		this.setLocation(250, 300);
 		this.setLayout(null);
 		this.setAlwaysOnTop(true);
+		this.setResizable(false);
+		this.setUndecorated(true);
 
 		su = s;
 		su2 = s2;
+		w = wahl;
 
 		ImageIcon icon = new ImageIcon("files/minigames/Sudoku/beispiel2.jpg");
 		icon.setImage(icon.getImage().getScaledInstance(290, 135,
@@ -84,17 +88,25 @@ public class Abschluss extends JFrame implements ActionListener, MouseListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == ok) {
 			Information[] infos = new Information[1];
-			if (SudokuFenster1.getPreis().equals("20")) {
+			if (w.equals("Richtig")) {
+				if (SudokuFenster1.getPreis().equals("20")) {
+					infos[0] = new Information(Information.AENDERN_GELD,
+							Information.ART_UM_WERT, 20);
+					SudokuFenster1.getSpiel().minispielEnde(infos);
+				} else if (SudokuFenster1.getPreis().equals("50")) {
+					infos[0] = new Information(Information.AENDERN_GELD,
+							Information.ART_UM_WERT, 50);
+					SudokuFenster1.getSpiel().minispielEnde(infos);
+				} else {
+					infos[0] = new Information(Information.AENDERN_GELD,
+							Information.ART_UM_WERT, 100);
+					SudokuFenster1.getSpiel().minispielEnde(infos);
+				}
+			}
+			else
+			{
 				infos[0] = new Information(Information.AENDERN_GELD,
-						Information.ART_UM_WERT, 20);
-				SudokuFenster1.getSpiel().minispielEnde(infos);
-			} else if (SudokuFenster1.getPreis().equals("50")) {
-				infos[0] = new Information(Information.AENDERN_GELD,
-						Information.ART_UM_WERT, 50);
-				SudokuFenster1.getSpiel().minispielEnde(infos);
-			} else {
-				infos[0] = new Information(Information.AENDERN_GELD,
-						Information.ART_UM_WERT, 100);
+						Information.ART_UM_WERT, -5);
 				SudokuFenster1.getSpiel().minispielEnde(infos);
 			}
 			this.setVisible(false);
