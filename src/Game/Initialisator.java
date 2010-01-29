@@ -4,7 +4,8 @@ import java.awt.*;
 import java.util.*;
 
 import Game.GUI.*;
-import Game.Minigames.Senso.Senso;
+import Game.Minigames.Senso.*;
+import Game.Minigames.Sudoku.*;
 import Game.Minigames.TicTacToe.*;
 import Game.Minigames.Automat.Kontrolle;
 import Game.Minigames.Bewerbungstest.*;
@@ -62,7 +63,7 @@ public class Initialisator {
 						3,
 						"Jacqueline Chaves",
 						"Schwierigkeitsgrad: schwer\n\nChantal ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.",
-						bedList, 50, 600, 3));
+						bedList, 100, 600, 3));
 
 		return avList;
 	}
@@ -775,7 +776,9 @@ public class Initialisator {
 
 	public static Aktionsobjekt getTuer(Spielbereich spielbereich) {
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
-
+		ArrayList<Aktion> kulturAktionen = new ArrayList<Aktion>();
+		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
+		
 		Information[] kinoBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
 						Information.ART_UM_WERT, -1),
@@ -787,19 +790,27 @@ public class Initialisator {
 						Information.ART_UM_WERT, 15),
 				new Information(Information.AENDERN_KINDER,
 						Information.ART_UM_WERT, 15) };
-		türAktionen
+		kulturAktionen
 				.add(new Aktion(
-						"Kino besuchen",
+						"Kino",
 						"(blue)Geh ins Kino und verbringe eine schöne Zeit mit deinen Freunden.",
 						"Du bist ins Kino gegangen", kinoBesuchen, null));
-
-		türAktionen
-				.add(new Aktion(
-						"Freunde besuchen",
-						"(blue)Besuche deine Freunde und spiele mit ihene Tic Tac Toe.",
-						"Du hast deine Freunde besucht.", null, null));
-		türAktionen.get(1).setMinispiel(
-				positionMinigame(new TicTacToe(), spielbereich));
+		
+		Information[] konzertBesuchen = {
+				new Information(Information.AENDERN_ZEIT,
+						Information.ART_UM_WERT, -1),
+				new Information(Information.AENDERN_GELD,
+						Information.ART_UM_WERT, -30),
+				new Information(Information.AENDERN_SOZIALES,
+						Information.ART_UM_WERT, 7),
+				new Information(Information.AENDERN_LUXUS,
+						Information.ART_UM_WERT, 22),
+				new Information(Information.AENDERN_KINDER,
+						Information.ART_UM_WERT, 12)
+		};
+		kulturAktionen.add(new Aktion("Konzert",
+				"(blue)Schau deinem Lieblingsmusiker beim Musizieren zu.",
+				"Du hast ein Konzert besucht.", konzertBesuchen, null));
 
 		Information[] theaterBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
@@ -812,26 +823,51 @@ public class Initialisator {
 						Information.ART_UM_WERT, 30),
 				new Information(Information.AENDERN_KINDER,
 						Information.ART_UM_WERT, 10) };
-		türAktionen.add(new Aktion("Theater besuchen",
+		kulturAktionen.add(new Aktion("Theater",
 				"(blue)Besuche ein Theater und genieße die Kultur.",
 				"Du bist ins Theater gegangen.", theaterBesuchen, null));
+		
+		Verzweigung kultur = new Verzweigung("Kultur",
+				"Genieße ein Stück Kultur und vergiss den Alltag.",
+				kulturAktionen, new ArrayList<Verzweigung>());
+		türVerzweigungen.add(kultur);
 
-		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
-		ArrayList<Aktion> sonstigesAktionen = new ArrayList<Aktion>();
-
+		Information[] freundeBesuchen = {
+				new Information(Information.AENDERN_ZEIT,
+						Information.ART_UM_WERT, -1)
+		};
+		türAktionen
+				.add(new Aktion(
+						"Freunde besuchen",
+						"(blue)Besuche deine Freunde und spiele mit ihene Tic Tac Toe.\nSoziales steigt um 5 pro Runde!",
+						"Du hast deine Freunde besucht.", freundeBesuchen, null));
+		türAktionen.get(0).setMinispiel(
+				positionMinigame(new TicTacToe(), spielbereich));
+		
 		Information[] parkBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
 						Information.ART_UM_WERT, -1),
+				new Information(Information.AENDERN_GESUNDHEIT,
+						Information.ART_UM_WERT, 10),
 				new Information(Information.AENDERN_SOZIALES,
-						Information.ART_UM_WERT, 25), };
-		sonstigesAktionen.add(new Aktion("Park",
+						Information.ART_UM_WERT, 25),
+				new Information(Information.AENDERN_KINDER,
+						Information.ART_UM_WERT, 15)};
+		türAktionen.add(new Aktion("Park",
 				"(blue)Geh in den Park und triff ein paar nette Leute.",
-				"Du bist in den Park gegangen", parkBesuchen, null));
-
-		Verzweigung sonstiges = new Verzweigung("Sonstiges",
-				"Sonstige Aktivitäten außerhalb deiner Wohnung.",
-				sonstigesAktionen, new ArrayList<Verzweigung>());
-		türVerzweigungen.add(sonstiges);
+				"Du bist in den Park gegangen.", parkBesuchen, null));
+		
+		Information[] arztBesuchen = {
+				new Information(Information.AENDERN_ZEIT,
+						Information.ART_UM_WERT, -3),
+				new Information(Information.AENDERN_GELD,
+						Information.ART_UM_WERT, -10),
+				new Information(Information.AENDERN_GESUNDHEIT,
+						Information.ART_UM_WERT, 25)
+		};
+		türAktionen.add(new Aktion("Arzt",
+				"(blue)Besuch den Arzt, zahle Praxisgebühren und setz dich in's Wartezimmer.",
+				"Du bist zum Arzt gegangen.", arztBesuchen, null));
 
 		Verzweigung tuerMenu = new Verzweigung(
 				"Tür",
@@ -877,6 +913,15 @@ public class Initialisator {
 						kreuzwortInfos, null));
 		zeitungsAktionen.get(2).setMinispiel(
 				positionMinigame(new KreuzGUI(), spielbereich));
+		
+		Information[] sudokuInfos = {
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1)
+		};
+		zeitungsAktionen.add(new Aktion("Sudoku lösen",
+				"(blue)Versuche ein Sudoku zu lösen und dabei noch etwas zu gewinnen.",
+				"Du hast versucht, ein Sudoku zu lösen.",
+				sudokuInfos, null));
+		zeitungsAktionen.get(3).setMinispiel(positionMinigame(new SudokuFenster1(), spielbereich));
 
 		ArrayList<Verzweigung> zeitungsVerzweigungen = new ArrayList<Verzweigung>();
 		Verzweigung zeitungsMenu = new Verzweigung(

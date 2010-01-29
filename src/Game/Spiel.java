@@ -662,8 +662,13 @@ public class Spiel {
 						}
 						}
 
-						if (infos[i].getZuÄndern() == Information.AENDERN_ZEIT)
+						if (infos[i].getZuÄndern() == Information.AENDERN_ZEIT){
 							zeit = neuerWert;
+							if(zeit <= 0)
+							{
+								gameGUI.nächsteRunde();
+							}
+						}
 						if (infos[i].getZuÄndern() == Information.AENDERN_BEWERBUNGSFAKTOR)
 							bewerbungsfaktor = neuerWert;
 					}
