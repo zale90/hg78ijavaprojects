@@ -1750,31 +1750,20 @@ public class TicTacToe extends JFrame implements Runnable, ActionListener,
 		}
 	}
 
-	public void los() {
-		try {
+	public void los()
+    {
+      try
+      {
+          Thread.sleep(100);
+          los = false;
+          stop();
+          thread = new Thread(this);
+      }
 
-			los = false;
-			
-			o1.setVisible(true);
-			o2.setVisible(true);
-			o3.setVisible(true);
-			o4.setVisible(true);
-			o5.setVisible(true);
-			o6.setVisible(true);
-			o7.setVisible(true);
-			o8.setVisible(true);
-			o9.setVisible(true);
-			
-			stop();
-			thread = new Thread(this);
-			
-			
-		}
-
-		catch (Exception e) {
-			System.out.println("FEHLER");
-		}
-	}
+       catch(Exception e)
+      {   System.out.println("FEHLER");
+       }
+    }
 
 	public void spielerDarf() {
 		hauptmenu.setVisible(false);
