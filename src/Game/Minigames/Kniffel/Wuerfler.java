@@ -25,6 +25,8 @@ public class Wuerfler implements Runnable {
 
 				e.printStackTrace();
 			}
+			if (sleep == 0)
+				sleep += 100;
 			laufzeit -= sleep;
 		}
 		spiel.wuerfelGefallen(position);

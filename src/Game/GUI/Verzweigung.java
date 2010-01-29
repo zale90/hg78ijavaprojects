@@ -116,11 +116,6 @@ public class Verzweigung extends JPanel implements MouseListener,
 		StyleConstants.setBold(style, true);
 		beschreibungFuellen("(black)" + beschreibung);
 
-		JScrollPane beschreibungsscroller = new JScrollPane(beschreibungsfeld);
-		beschreibungsscroller.setSize(beschreibungsfeld.getSize());
-		beschreibungsscroller.setLocation(beschreibungsfeld.getLocation());
-		this.add(beschreibungsscroller);
-
 		spielber.add(this);
 
 		this.setVisible(false);

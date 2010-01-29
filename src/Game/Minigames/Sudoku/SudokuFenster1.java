@@ -106,6 +106,7 @@ public class SudokuFenster1 extends JFrame implements ActionListener,
 	public void actionPerformed(ActionEvent evt) {
 
 		if (evt.getSource() == btnBeenden) {
+			spiel.minispielEnde(null);
 			this.dispose();
 		} else if (evt.getSource() == btnStart) {
 			if (rbn.isSelected() == true) {
