@@ -59,7 +59,7 @@ public class PunkteGUI extends JPanel implements ActionListener {
 			this.add(bedürfnisse[i]);
 			ort = ort + 15;
 		}
-		bedürfnisse[0].setText("Hunger");
+		bedürfnisse[0].setText("Nahrung");
 		bedürfnisse[1].setText("Gesundheit");
 		bedürfnisse[2].setText("Soziales");
 		bedürfnisse[3].setText("Luxus");
