@@ -51,18 +51,18 @@ public class Matrix
 			f2[1] = new Frage("Bekleidung für Damen", "Rock", true, 3, 2);
 			f2[2] = new Frage("Gunst des Schicksals", "Chance", false, 1, 3);
 			f2[3] = new Frage("Asiatische Bevölkerungsgruppe", "Thai", true, 3, 1);
-			f2[4] = new Frage("Verbrechen", "Mord", false, 8, 2);
+			f2[4] = new Frage("Nicht verjährbares Verbrechen", "Mord", false, 8, 2);
 			f2[5] = new Frage("KFZ-Bayreuth", "BT", false, 2, 7);
 			f2[6] = new Frage("Sinnflutartiger Regen", "Taifun", true, 3, 9);
 			f2[7] = new Frage("Franz. Kaiser", "Napoleon", false, 9, 1);
 			f2[8] = new Frage("Kosten für Post", "Porto", true, 4, 8);
 			f2[9] = new Frage("Öffnung im Erdreich", "Spalt", false, 3, 3);
-			f2[10] = new Frage("Inhalt oder Grund einer Sache", "Thema", true, 4, 3);
+			f2[10] = new Frage("Leitmotiv einer Sache", "Thema", true, 4, 3);
 			f2[11] = new Frage("Auszeichnung oder Titel", "Dr", false, 4, 4);
 
 			f3[0] = new Frage("Gegenteil Differenz", "Summe", false, 2, 1); 
 			f3[1] = new Frage("Schöpfer im Christentum", "Gott", true, 3, 2);
-			f3[2] = new Frage("Zeiteinheit", "Minute", false, 1, 3);
+			f3[2] = new Frage("Teil einer Stunde", "Minute", false, 1, 3);
 			f3[3] = new Frage("öffentliches Verkehrsmittel", "Bahn", true, 3, 1);
 			f3[4] = new Frage("Erfolgreicher Bekämpfer des Bösen", "Held", false, 8, 2);
 			f3[5] = new Frage("KFZ Dresden", "DD", false, 2, 7);
