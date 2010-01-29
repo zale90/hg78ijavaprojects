@@ -89,22 +89,24 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == exit) {
-
-			JOptionPane.showMessageDialog(this, "Du hast "
-					+ antwortenAuslesen()
-					+ " Punkte von 12 möglichen Punkten erreicht.");
+		if (e.getSource() == exit) {			
 			if (antwortenAuslesen() == 12) {
+				JOptionPane.showMessageDialog(this, "Du hast eine Reise nach Bad Münster Eifel und 50 \u20AC gewonnen !");
+				
 				Information[] infos = {
 						new Information(Information.AENDERN_LUXUS,
 								Information.ART_UM_WERT, 15),
 						new Information(Information.AENDERN_SOZIALES,
-								Information.ART_UM_WERT, 10) };
+								Information.ART_UM_WERT, 10), 
+						new Information(Information.AENDERN_GELD,
+								Information.ART_UM_WERT, 50) };
 
 				spiel
 						.minispielEnde(infos,
-								"Du hast eine Tagesfahrt nach Bad Münster Eifel gewonnen!");
+								"Du hast eine Tagesfahrt nach Bad Münster Eifel und 50 \20AC gewonnen!");
 			} else {
+				JOptionPane.showMessageDialog(this, "Du hast leider nicht gewonnen.");
+				
 				spiel
 						.minispielEnde(null,
 								"Leider hat deine Leistung im Kreuzworträtsel nicht gereicht.");
@@ -160,7 +162,11 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 				fZzt[i].setBackground(new Color(255, 246, 133));
 
 				if (!fZzt[0].getText().equals(""))
-					fZzt[i].setText("");
+				{
+					for(int j = 0; j< fZzt.length; j++)
+						fZzt[j].setText("");
+				}
+					
 			}
 			gelb = fZzt;
 		} catch (Exception exp) {
