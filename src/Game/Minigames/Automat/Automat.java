@@ -155,7 +155,7 @@ public class Automat extends JFrame implements MouseListener, Runnable {
 		this.add(sApfel);
 
 		sEuro = new JLabel("X3>10€", new ImageIcon(
-				"files/Minigames/Automat/symbole/€.png"), 0);
+				"files/Minigames/Automat/symbole/euro.png"), 0);
 		sEuro.setSize(120, 30);
 		sEuro.setLocation(0, 160);
 		sEuro.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
