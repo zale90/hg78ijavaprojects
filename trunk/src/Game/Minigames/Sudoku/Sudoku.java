@@ -40,9 +40,10 @@ public class Sudoku extends JFrame implements ActionListener, MouseListener {
 		texten(grad);
 
 		einleitung = new JLabel(einl);
-		einleitung.setSize(400, 20);
-		einleitung.setLocation(30, 20);
+		einleitung.setSize(255, 20);
+		einleitung.setLocation(50, 20);
 		einleitung.setForeground(Color.white);
+		einleitung.setHorizontalAlignment(0);
 		lab.add(einleitung);
 
 		speicher = new Sudokuspeicher();

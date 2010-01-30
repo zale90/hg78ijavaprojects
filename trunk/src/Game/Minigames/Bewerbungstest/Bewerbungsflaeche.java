@@ -280,18 +280,18 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
 
 			if (!bestanden) {
 				lbl5.setSize(160, 160);
-				lbl5.setLocation(225 - 80, 50);
+				lbl5.setLocation(225 - 80, 15);
 				lbl5.setIcon(new ImageIcon(folder + "smiley-traurig.gif"));
 				lbl6.setForeground(Color.YELLOW);
 				lbl6.setText("Schade. Sie haben es nicht geschafft.");
 				if (gesund.getWert() < 30)
-					lbl6
-							.setText("Aufgrund ihrer schlechten Gesundheit wurden Sie nicht genommen.");
+					lbl6.setText("Aufgrund ihrer schlechten Gesundheit wurden Sie nicht genommen.");
 				erfolgreich = false;
 			} else if (!job()) {
-				lbl6
-						.setText("Sie haben den Test bestanden. Jedoch ist Ihr Vorstellungsgespräch daneben gegangen.");
-				lbl5.setLocation(225 - 80, 50);
+				lbl6.setForeground(Color.YELLOW);
+				lbl6.setText("Der Betrieb hat sich leider für einen anderen Bewerber entschieden.");
+				lbl5.setSize(160,160);
+				lbl5.setLocation(225 - 80, 15);
 				lbl5.setIcon(new ImageIcon(folder + "smiley-traurig.gif"));
 				erfolgreich = false;
 			}

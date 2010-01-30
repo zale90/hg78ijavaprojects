@@ -21,12 +21,16 @@ public class Abschluss extends JFrame implements ActionListener, MouseListener {
 
 	public Abschluss(String wahl, Sudoku s, Sudoku2 s2) {
 		super("Sudoku-Abschluss");
-		this.setSize(275, 135);
+		this.setSize(270, 135);
 		this.setLocation(250, 300);
 		this.setLayout(null);
 		this.setAlwaysOnTop(true);
 		this.setResizable(false);
 		this.setUndecorated(true);
+		if (s == null)
+			this.setLocationRelativeTo(s2);
+		else
+			this.setLocationRelativeTo(s);
 
 		su = s;
 		su2 = s2;
@@ -45,6 +49,7 @@ public class Abschluss extends JFrame implements ActionListener, MouseListener {
 		text.setSize(250, 20);
 		text.setLocation(10, 10);
 		text.setForeground(Color.white);
+		text.setHorizontalAlignment(0);
 		lab.add(text);
 
 		text2 = new JLabel();

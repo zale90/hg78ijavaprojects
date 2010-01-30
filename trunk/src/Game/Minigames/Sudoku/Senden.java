@@ -36,15 +36,15 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 		lab.setLocation(0, 0);
 		this.add(lab);
 
-		text = new JTextArea("Wenn Sie Ihre Lösung dieses Sudokus \n"
-				+ "abschicken möchten, um " + SudokuFenster1.getPreis()
-				+ " Euro zu \n" + "gewinnen müssen Sie einen frankierten \n"
-				+ "Brief im Wert von 5 Euro bis zum \n"
-				+ "31.03.2010 an folgende Adresse schicken: \n\n"
+		text = new JTextArea("Wenn Sie Ihre Lösung dieses \nSudokus "
+				+ "abschicken möchten, um \n" + SudokuFenster1.getPreis()
+				+ " Euro zu " + "gewinnen, müssen Sie \neinen frankierten "
+				+ "Brief im Wert \nvon 5 Euro bis zum "
+				+ "31.03.2010 an \nfolgende Adresse schicken: \n\n"
 				+ "         Dülmener Zeitung \n" + "         Marktstraße 25 \n"
 				+ "         48249 Dülmen");
-		text.setSize(250, 145);
-		text.setLocation(20, 10);
+		text.setSize(270, 165);
+		text.setLocation(10, 10);
 		text.setEditable(false);
 		text.setBackground(Color.black);
 		text.setOpaque(false);
@@ -53,7 +53,7 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 
 		bestätigen = new JButton("Bestätigen");
 		bestätigen.setSize(152, 30);
-		bestätigen.setLocation(5, 180);
+		bestätigen.setLocation(5, 200);
 		bestätigen.setBorderPainted(false);
 		bestätigen.setBackground(Color.lightGray);
 		bestätigen.setForeground(Color.lightGray);
@@ -67,7 +67,7 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 
 		abbrechen = new JButton("Abbrechen");
 		abbrechen.setSize(150, 30);
-		abbrechen.setLocation(140, 180);
+		abbrechen.setLocation(140, 200);
 		abbrechen.setBorderPainted(false);
 		abbrechen.setBackground(Color.lightGray);
 		abbrechen.setForeground(Color.lightGray);
@@ -107,10 +107,10 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 				}
 				if (i == 81) {
 					Abschluss a = new Abschluss("Richtig", su, su2);
-					a.setLocationRelativeTo(this);
+//					a.setLocationRelativeTo(this);
 				} else {
 					Abschluss a = new Abschluss("Falsch", su, su2);
-					a.setLocationRelativeTo(this);
+//					a.setLocationRelativeTo(this);
 				}
 			} else if (su2 != null) {
 				int i = 0;
@@ -119,11 +119,11 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 							su2.getMuster().sudokuLösungPrüfen(i, su2.getR()))) {
 						if (i == 80) {
 							Abschluss a = new Abschluss("Richtig", su, su2);
-							a.setLocationRelativeTo(this);
+//							a.setLocationRelativeTo(this);
 						}
 					} else {
 						Abschluss a = new Abschluss("Falsch", su, su2);
-						a.setLocationRelativeTo(this);
+//						a.setLocationRelativeTo(this);
 						i = 80;
 					}
 					i++;

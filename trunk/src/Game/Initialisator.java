@@ -299,7 +299,7 @@ public class Initialisator {
 		e = new Ereignis(
 				22,
 				"Europafest",
-				"Du besuchst das Europafest zum Thema \"Armut und Ausgrenzung\" und spielst ein tolles Spiel. Das Bedürfnis nach Luxus sinkt.",
+				"Du besuchst das Europafest zum Thema \"Armut und Ausgrenzung\" und spielst ein tolles Spiel. Dein Verlangen nach Luxus wurde teilweise gestillt.",
 				false, ja, null);
 		erList.add(e);
 
