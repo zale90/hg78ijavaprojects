@@ -46,9 +46,10 @@ public class Sudoku2 extends JFrame implements ActionListener, MouseListener {
 
 		lbl2 = new JLabel("Sudoku");
 		lbl2.setSize(200, 75);
-		lbl2.setLocation(120, 14);
-		lbl2.setFont(new Font("Vladimir Script", Font.BOLD, 60));// "Bickley Script"
+		lbl2.setLocation(100, 14);
+		lbl2.setFont(new Font("Vladimir Script", Font.BOLD, 40));// "Bickley Script"
 		lbl2.setForeground(new Color(50, 200, 225));
+		lbl2.setHorizontalAlignment(0);
 		lbl1.add(lbl2);
 
 		btn1 = new JButton("Abschicken");
