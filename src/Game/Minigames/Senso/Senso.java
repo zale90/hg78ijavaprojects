@@ -279,7 +279,17 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 						soundAbspielen(soundY);
 					}
 				} else if (evt.getComponent() == beenden)
-					System.exit(0);
+				{
+					this.setVisible(false);
+					s.minispielEnde(null);
+					neustarten(false);
+					if (spiel != null)
+						spiel.interrupt();
+					spiel = new Thread(this);
+					if (intro)
+						spiel.start();
+				}
+				
 			}
 		} catch (Exception e) {
 		}
