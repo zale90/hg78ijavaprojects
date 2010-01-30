@@ -26,7 +26,7 @@ public class Automat extends JFrame implements MouseListener, Runnable {
 	public Automat(int v, int ein, Kontrolle kontrolle) {
 		super("SpielAutomat");
 		this.setSize(350, 500);
-		this.setLocation(450, 250);
+		this.setLocationRelativeTo(kontrolle);
 		this.setLayout(null);
 		this.setUndecorated(true);
 		this.setResizable(false);
