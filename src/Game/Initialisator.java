@@ -100,6 +100,8 @@ public class Initialisator {
 				"Krankheit",
 				"Du hast Atemschwierigkeiten und starkes Fieber und kannst deinen Arzt besuchen. Dabei fallen 10€ Praxisgebühren an. Gehst du nicht zum Arzt leiden deine Bedürfnisse darunter. Möchtest du den Arzt besuchen?",
 				true, ja, nein);
+		e.setJaAusgabe("Dein Arzt behandelt dich und verschreibt dir wirksame Medikamente.");
+		e.setNeinAusgabe("Da du nicht zum Arzt gegangen bist sinkt deine Gesundheit stark.");
 		erList.add(e);
 
 		ja = new Information[2];
@@ -168,12 +170,16 @@ public class Initialisator {
 
 		nein = new Information[2];
 		nein[0] = new Information(13, 2, 12);
-		nein[1] = new Information(5, 4, -60);
+		nein[1] = new Information(5, 4, -10);
+		ja = new Information[1];
+		ja[0] = new Information(5, 4, 5);
 		e = new Ereignis(
 				11,
 				"Rückgeld",
 				"Die Kassiererin bei KiK gibt dir 12€ zu viel zurück. Du kannst das Geld einstecken, doch das würde dein soziales Ansehen senken. Gibst du das Geld zurück?",
-				true, null, nein);
+				true, ja, nein);
+		e.setJaAusgabe("Du hast das Geld zurückgegeben und fühlst dich deshalb sehr gut.");
+		e.setNeinAusgabe("Du hast das Geld eingesteckt und bekommst deshalb leichte Gewissensbisse");
 		erList.add(e);
 
 		ja = new Information[2];
@@ -186,6 +192,8 @@ public class Initialisator {
 				"Waschmaschine defekt",
 				"Deine Waschmaschine scheint defekt zu sein. Zwar könnte ein Mechaniker das alte Gerät für 20€ reparieren, doch mit einer neuen, 400 Euro teuren Waschmaschine sparst du viel Zeit und hast somit einen Zug mehr pro Runde. Kaufst du die neue Maschine?",
 				true, ja, nein);
+		e.setJaAusgabe("Du hast dir für 400 Euro eine neue Waschmaschine gekauft. Dadurch musst du nun weniger Zeit pro Woche in deine schmutzige Wäsche investieren.");
+		e.setNeinAusgabe("Du hast dich entschieden, deine alte Waschmaschine reparieren zu lassen. Dadurch sparst du zwar Geld, musst aber weiterhin mit der alten langsamen Maschine waschen.");
 		erList.add(e);
 
 		ja = new Information[1];
@@ -198,15 +206,24 @@ public class Initialisator {
 		erList.add(e);
 
 		ja = new Information[1];
+		String ausgabe = "";
 		if (zufall.nextBoolean())
+		{
 			ja[0] = new Information(13, 2, 75);
+			ausgabe = "Du hast die Verhandlung gewonnen! Dein Schadensersatz beträgt 75 Euro.";
+		}
 		else
+		{
 			ja[0] = new Information(13, 4, -15);
+			ausgabe = "Der Richter hat gegen dich entschieden. Du musst die Prozesskosten von 15 Euro (Es war ein sehr kleiner Prozess!) übernehmen.";
+		}
 		e = new Ereignis(
 				14,
 				"Gericht",
 				"Du wurdest von einem Reichen angepöbelt. Möchtest du Schadensersatz fordern? Obwohl Geld winkt, musst du bei einer Niederlage des Prozesses einen Teil der Gerichtskosten übernehmen.",
 				true, ja, null);
+		e.setJaAusgabe(ausgabe);
+		e.setNeinAusgabe("Du entscheidest dich, den Reichen nicht zu verklagen.");
 		erList.add(e);
 
 		ja = new Information[1];
@@ -229,12 +246,14 @@ public class Initialisator {
 		ja = new Information[1];
 		ja[0] = new Information(13, 2, -30);
 		nein = new Information[1];
-		nein[0] = new Information(5, 4, -75);
+		nein[0] = new Information(5, 4, -50);
 		e = new Ereignis(
 				17,
 				"Ausflug",
 				"Einer deiner Freunde fragt, ob du an einem Ausflug teilnehmen willst. Du müsstest 30€ bezahlen, andernfalls sinkt dein soziales Bedürfnis. Nimmst du teil?",
 				true, ja, nein);
+		e.setJaAusgabe("Du nimmst an dem Ausflug mit deinen Freunden Teil und hast viel Spaß.");
+		e.setNeinAusgabe("Du lehnst den Ausflug ab und deine Freunde sind enttäuscht.");
 		erList.add(e);
 
 		ja = new Information[1];
@@ -256,12 +275,14 @@ public class Initialisator {
 		ja = new Information[1];
 		ja[0] = new Information(13, 2, -70);
 		nein = new Information[1];
-		nein[0] = new Information(5, 1, 0);
+		nein[0] = new Information(5, Information.ART_UM_WERT, -50);
 		e = new Ereignis(
 				20,
 				"Todesfall",
 				"Dein Onkel ist plötzlich verstorben. Der Rest deiner Verwandtschaft schlägt vor, dass du dich mit 70€ an der Beerdigung beteiligst. Bist du einverstanden? Wenn nicht, sinkt dein Ansehen.",
 				true, ja, nein);
+		e.setJaAusgabe("Du beteiligst dich an der Beerdigung und deine Verwandschaft ist zufrieden mit dir.");
+		e.setNeinAusgabe("Du lehnst eine Beteiligung an der Beerdigung ab, worauf deine Verwandschaft sich lautstark beschwert.");
 		erList.add(e);
 
 		ja = new Information[1];
@@ -336,7 +357,8 @@ public class Initialisator {
 				"Spielzeugwunsch",
 				"Deine Kinder wollen unbedingt ein neues Spielzeug für 50 Euro. Kaufst du es und machst dein Kind glücklich oder wirst du es enttäuschen?",
 				true, ja, nein);
-
+		e.setJaAusgabe("Du kaufst deinen Kindern ein Spielzeug und sie sind glücklich.");
+		e.setNeinAusgabe("Du erklärst deinen Kindern, dass du dir momentan keine neuen Spielzeuge leisten kannst, wodurch sie sehr traurig werden.");
 		return erList;
 	}
 
@@ -570,13 +592,13 @@ public class Initialisator {
 				new Information(Information.AENDERN_ZEIT,
 						Information.ART_UM_WERT, -1),
 				new Information(Information.AENDERN_GELD,
-						Information.ART_UM_WERT, -10),
+						Information.ART_UM_WERT, -20),
 				new Information(Information.AENDERN_NAHRUNG,
 						Information.ART_UM_WERT, 5),
 				new Information(Information.AENDERN_SOZIALES,
-						Information.ART_UM_WERT, 15),
+						Information.ART_UM_WERT, 10),
 				new Information(Information.AENDERN_LUXUS,
-						Information.ART_UM_WERT, 15) };
+						Information.ART_UM_WERT, 10) };
 		tvAktionen.add(new Aktion("DVD-Abend",
 				"(blue)Veranstalte einen DVD-Abend mit deinen Freunden!",
 				"Du hast einen DVD-Abend veranstaltet.", dvdInfos, null));
@@ -598,7 +620,7 @@ public class Initialisator {
 		gemueseInfos[0] = new Information(Information.AENDERN_ZEIT,
 				Information.ART_UM_WERT, -1);
 		gemueseInfos[1] = new Information(Information.AENDERN_GELD,
-				Information.ART_UM_WERT, -20);
+				Information.ART_UM_WERT, -30);
 		gemueseInfos[2] = new Information(Information.AENDERN_NAHRUNG,
 				Information.ART_UM_WERT, 20);
 		gemueseInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
@@ -611,7 +633,7 @@ public class Initialisator {
 		gemueseInfos[0] = new Information(Information.AENDERN_ZEIT,
 				Information.ART_UM_WERT, -1);
 		gemueseInfos[1] = new Information(Information.AENDERN_GELD,
-				Information.ART_UM_WERT, -15);
+				Information.ART_UM_WERT, -20);
 		gemueseInfos[2] = new Information(Information.AENDERN_NAHRUNG,
 				Information.ART_UM_WERT, 15);
 		gemueseInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
@@ -623,7 +645,7 @@ public class Initialisator {
 		gemueseInfos[0] = new Information(Information.AENDERN_ZEIT,
 				Information.ART_UM_WERT, -1);
 		gemueseInfos[1] = new Information(Information.AENDERN_GELD,
-				Information.ART_UM_WERT, -10);
+				Information.ART_UM_WERT, -15);
 		gemueseInfos[2] = new Information(Information.AENDERN_NAHRUNG,
 				Information.ART_UM_WERT, 10);
 		gemueseInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
@@ -641,20 +663,21 @@ public class Initialisator {
 
 		// Fleisch
 		ArrayList<Aktion> fleischAktionen = new ArrayList<Aktion>();
-		Information fleischInfos[] = new Information[4];
+		Information fleischInfos[] = new Information[3];
 		fleischInfos[0] = new Information(Information.AENDERN_ZEIT,
 				Information.ART_UM_WERT, -1);
 		fleischInfos[1] = new Information(Information.AENDERN_GELD,
 				Information.ART_UM_WERT, -20);
 		fleischInfos[2] = new Information(Information.AENDERN_NAHRUNG,
 				Information.ART_UM_WERT, 30);
-		fleischInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
-				Information.ART_UM_WERT, -15);
+//		fleischInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
+//				Information.ART_UM_WERT, 0);
 		fleischAktionen
 				.add(new Aktion("Hochwertig",
 						"(blue)Kaufe hochwertiges Fleisch",
 						"Du hast Qualitätsfleisch gekauft.", fleischInfos
 								.clone(), null));
+		fleischInfos = new Information[4];
 		fleischInfos[0] = new Information(Information.AENDERN_ZEIT,
 				Information.ART_UM_WERT, -1);
 		fleischInfos[1] = new Information(Information.AENDERN_GELD,
@@ -662,7 +685,7 @@ public class Initialisator {
 		fleischInfos[2] = new Information(Information.AENDERN_NAHRUNG,
 				Information.ART_UM_WERT, 25);
 		fleischInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
-				Information.ART_UM_WERT, -10);
+				Information.ART_UM_WERT, -5);
 		fleischAktionen.add(new Aktion("Mittelmäßig",
 				"(blue)Kaufe mittelmäßiges Fleisch",
 				"Du hast mittelmäßiges Fleisch gekauft.", fleischInfos.clone(),
@@ -674,7 +697,7 @@ public class Initialisator {
 		fleischInfos[2] = new Information(Information.AENDERN_NAHRUNG,
 				Information.ART_UM_WERT, 20);
 		fleischInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
-				Information.ART_UM_WERT, -5);
+				Information.ART_UM_WERT, -10);
 		fleischAktionen
 				.add(new Aktion("Billig", "(blue)Kaufe billiges Fleisch",
 						"Du hast billiges Fleisch gekauft.", fleischInfos
@@ -682,7 +705,7 @@ public class Initialisator {
 		kuehlschrankVerzweigung
 				.add(new Verzweigung(
 						"Fleisch",
-						"Fleisch macht extrem satt, ist aber auch recht teuer. Leider macht es auf Dauer fett und schadet somit der Gesundheit.",
+						"Fleisch macht extrem satt, ist aber auch recht teuer. Leider macht besonders billiges Fleisch auf Dauer fett und schadet somit der Gesundheit.",
 						fleischAktionen, new ArrayList<Verzweigung>()));
 
 		// Brot
@@ -859,11 +882,11 @@ public class Initialisator {
 		
 		Information[] arztBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -3),
+						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_GELD,
 						Information.ART_UM_WERT, -10),
 				new Information(Information.AENDERN_GESUNDHEIT,
-						Information.ART_UM_WERT, 25)
+						Information.ART_UM_WERT, 50)
 		};
 		türAktionen.add(new Aktion("Arzt",
 				"(blue)Besuch den Arzt, zahle Praxisgebühren und setz dich in's Wartezimmer.",

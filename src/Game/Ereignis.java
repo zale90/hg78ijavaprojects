@@ -12,7 +12,9 @@ public class Ereignis {
 	// True = Ja / Nein | False = OK (Informationen in ja)
 	private boolean typ;
 	private Information[] ja;
+	private String jaAusgabe;
 	private Information[] nein;
+	private String neinAusgabe;
 
 	private Minispiel minispiel;
 
@@ -180,6 +182,22 @@ public class Ereignis {
 
 	public Minispiel getMinispiel() {
 		return minispiel;
+	}
+
+	public void setJaAusgabe(String jaAusgabe) {
+		this.jaAusgabe = jaAusgabe;
+	}
+
+	public String getJaAusgabe() {
+		return jaAusgabe;
+	}
+
+	public void setNeinAusgabe(String neinAusgabe) {
+		this.neinAusgabe = neinAusgabe;
+	}
+
+	public String getNeinAusgabe() {
+		return neinAusgabe;
 	}
 
 }
