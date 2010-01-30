@@ -32,7 +32,7 @@ public class Panel extends JPanel implements Runnable {
 		apfel.setSize(60, 60);
 		this.add(apfel);
 
-		euro = new JLabel(new ImageIcon("files/Minigames/Automat/€.png"));
+		euro = new JLabel(new ImageIcon("files/Minigames/Automat/euro.png"));
 		euro.setLocation(1, 60);
 		euro.setSize(60, 60);
 		this.add(euro);
@@ -79,7 +79,7 @@ public class Panel extends JPanel implements Runnable {
 					apfel.setSize(60, 60);
 					euro
 							.setIcon(new ImageIcon(
-									"files/Minigames/Automat/€.png"));
+									"files/Minigames/Automat/euro.png"));
 					euro.setSize(60, 60);
 					banane.setIcon(new ImageIcon(
 							"files/Minigames/Automat/banane.png"));
@@ -201,7 +201,7 @@ public class Panel extends JPanel implements Runnable {
 	private void setBild() {
 		apfel.setIcon(new ImageIcon("files/Minigames/Automat/apfel_blur.png"));
 		apfel.setSize(58, 78);
-		euro.setIcon(new ImageIcon("files/Minigames/Automat/€_blur.png"));
+		euro.setIcon(new ImageIcon("files/Minigames/Automat/euro_blur.png"));
 		euro.setSize(42, 74);
 		banane
 				.setIcon(new ImageIcon(
