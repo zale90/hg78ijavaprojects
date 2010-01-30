@@ -111,6 +111,8 @@ public class Ereignisfenster extends JPanel implements ActionListener {
 			ok.setVisible(false);
 			this.setVisible(false);
 			spiel.infosUmsetzen(er.getJa());
+			if (er.getJaAusgabe() != null && er.getJaAusgabe() != "")
+				gameGUI.zeigeNachrichtInKonsole(er.getJaAusgabe());
 			gameGUI.aktualisiereDaten();
 			if (er.getMinispiel() != null)
 				spiel.minispielStarten(er.getMinispiel());
@@ -122,6 +124,8 @@ public class Ereignisfenster extends JPanel implements ActionListener {
 			nein.setVisible(false);
 			this.setVisible(false);
 			spiel.infosUmsetzen(er.getJa());
+			if (er.getJaAusgabe() != null && er.getJaAusgabe() != "")
+				gameGUI.zeigeNachrichtInKonsole(er.getJaAusgabe());
 			gameGUI.aktualisiereDaten();
 			gameGUI.setzeAktiviert(true);
 		}
@@ -130,6 +134,8 @@ public class Ereignisfenster extends JPanel implements ActionListener {
 			nein.setVisible(false);
 			this.setVisible(false);
 			spiel.infosUmsetzen(er.getNein());
+			if (er.getNeinAusgabe() != null && er.getNeinAusgabe() != "")
+				gameGUI.zeigeNachrichtInKonsole(er.getNeinAusgabe());
 			gameGUI.aktualisiereDaten();
 			gameGUI.setzeAktiviert(true);
 		}

@@ -161,7 +161,7 @@ public class Spiel {
 		// Überprüfen ob Maximale Rundezahl erreicht ist
 		if (aktuelleRunde == Optionen.ANZAHL_RUNDEN) {
 			String text = "Du hast es geschafft!\nDu hast " + getPunkte()
-					+ " erspielt!";
+					+ " Punkte erspielt!";
 			spielBeenden(text, "Geschafft!");
 			return;
 		}
