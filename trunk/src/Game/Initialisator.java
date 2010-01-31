@@ -34,7 +34,7 @@ public class Initialisator {
 				.add(new Avatar(
 						1,
 						"Horst Terarno",
-						"Schwierigkeitsgrad: leicht\n\nHorst ist ein 35jähriger, kinder- und arbeitsloser Akademiker. Er hat Immobilienmanagement studiert und danach bei Traumhaus.de gearbeitet. Aufgrund der Wirtschaftskrise und gescheiterter Aktienspekulationen verlor er seinen Arbeitsplatz und seine Rücklagen schrumpften auf 1500,-€. Trotz Hartz IV versucht er seinen Lebensstandard zu halten.",
+						"Schwierigkeitsgrad: leicht\n\nHorst ist ein 35jähriger, kinder- und arbeitsloser Akademiker. Er hat Immobilienmanagement studiert und danach bei Traumhaus.de gearbeitet. Aufgrund der Wirtschaftskrise und gescheiterter Aktienspekulationen verlor er seinen Arbeitsplatz und seine Rücklagen schrumpften auf 500,-€. Trotz Hartz IV versucht er seinen Lebensstandard zu halten.",
 						bedList, 500, 400, 16, 1));
 
 		// Hasma Hamada
@@ -48,7 +48,7 @@ public class Initialisator {
 				.add(new Avatar(
 						2,
 						"Hasma Hamada",
-						"Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt mit einem 400€-Job zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 130,-€ verbuchen.",
+						"Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 200,-€ verbuchen.",
 						bedList, 200, 1500, 13, 5));
 
 		// Chantal-Jacqueline Chaves
@@ -62,7 +62,7 @@ public class Initialisator {
 				.add(new Avatar(
 						3,
 						"Jacqueline Chaves",
-						"Schwierigkeitsgrad: schwer\n\nJaqueline ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.",
+						"Schwierigkeitsgrad: schwer\n\nJaqueline ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen nur eine Rücklage von 100,-€ und knabbert an einer monatlichen Rate von 120,-€ für diverse Haushaltsgeräte.",
 						bedList, 100, 600, 10, 3));
 
 		return avList;
@@ -409,6 +409,7 @@ public class Initialisator {
 		ArrayList<GeldBetrag> ausgaben = new ArrayList<GeldBetrag>();
 
 		ausgaben.add(new GeldBetrag("Miete", 478));
+		ausgaben.add(new GeldBetrag("Zigaretten", 150));
 
 		return ausgaben;
 	}
@@ -416,7 +417,7 @@ public class Initialisator {
 	public static ArrayList<GeldBetrag> getJaquelineAusgaben() {
 		ArrayList<GeldBetrag> ausgaben = new ArrayList<GeldBetrag>();
 
-		ausgaben.add(new GeldBetrag("Rate", 100));
+		ausgaben.add(new GeldBetrag("Rate", 120));
 		ausgaben.add(new GeldBetrag("Miete", 407));
 
 		return ausgaben;
@@ -954,7 +955,7 @@ public class Initialisator {
 		zeitungsAktionen
 				.add(new Aktion(
 						"Bewerben",
-						"(blue)Bewirb dich auf einen 400€-Job und versuch dich am Einstellungsverfahren.",
+						"(blue)Bewirb dich auf einen 400€-Job und versuch dich am Einstellungsverfahren. Die Stelle bringt Geld, doch du hast weniger Zeit.",
 						"Du hast dich auf einen Job beworben.", bewerbenInfos,
 						null));
 		zeitungsAktionen.get(1).setMinispiel(

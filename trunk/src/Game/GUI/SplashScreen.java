@@ -52,7 +52,7 @@ public class SplashScreen extends JPanel implements ActionListener {
 				"Nebenbei soll es natürlich auch Spaß machen. " +
 				"Dir stehen 3 Charaktere mit unterschiedlichen Schwierigkeitsgraden zur Verfügung, aus denen du wählen kannst. " +
 				"\n" +
-				"\nDas Spiel läuft rundenweise ab. Eine Runde im Spiel entspricht einer Woche im Leben deines Charakters. " +
+				"\nDas Spiel läuft rundenweise ab. Du spielst 3 Monate. Eine Runde im Spiel entspricht einer Woche im Leben deines Charakters. " +
 				"Am rechten Bildschirmrand siehst du Informationen zu deinem Charakter und seinen Bedürfnissen. Je voller die Balken, desto besser für dich. " +
 				"Achtung: Wenn einer oder mehrere Balken leer sind und du die Runde beendest, verlierst du! " +
 				"Die Zeitanzeige sagt dir, wie viele Aktionen du in der laufenden Runde noch ausführen kannst. " +
@@ -74,7 +74,7 @@ public class SplashScreen extends JPanel implements ActionListener {
 
 		JTextPane tpInfo = new JTextPane(dokument);
 		tpInfo.setSize(850, 140);
-		tpInfo.setLocation(85, 460);
+		tpInfo.setLocation(85, 452);
 		tpInfo.setBackground(null);
 		tpInfo.setEditable(false);
 		this.add(tpInfo);
@@ -82,7 +82,7 @@ public class SplashScreen extends JPanel implements ActionListener {
 		// Starten Button
 		JButton btnStart = new JButton("Spiel starten!");
         btnStart.setSize(300, 50);
-        btnStart.setLocation(345, 600);
+        btnStart.setLocation(345, 603);
 		btnStart.addActionListener(this);
 		this.add(btnStart);
 	}
