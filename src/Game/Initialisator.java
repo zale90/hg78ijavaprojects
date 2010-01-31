@@ -35,7 +35,7 @@ public class Initialisator {
 						1,
 						"Horst Terarno",
 						"Schwierigkeitsgrad: leicht\n\nHorst ist ein 35jähriger, kinder- und arbeitsloser Akademiker. Er hat Immobilienmanagement studiert und danach bei Traumhaus.de gearbeitet. Aufgrund der Wirtschaftskrise und gescheiterter Aktienspekulationen verlor er seinen Arbeitsplatz und seine Rücklagen schrumpften auf 1500,-€. Trotz Hartz IV versucht er seinen Lebensstandard zu halten.",
-						bedList, 1500, 400, 5, 1));
+						bedList, 500, 400, 20, 1));
 
 		// Hasma Hamada
 		bedList = new Bedürfnis[5];
@@ -49,7 +49,7 @@ public class Initialisator {
 						2,
 						"Hasma Hamada",
 						"Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt mit einem 400€-Job zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 130,-€ verbuchen.",
-						bedList, 130, 1500, 3, 5));
+						bedList, 200, 1500, 15, 5));
 
 		// Chantal-Jacqueline Chaves
 		bedList = new Bedürfnis[5];
@@ -63,7 +63,7 @@ public class Initialisator {
 						3,
 						"Jacqueline Chaves",
 						"Schwierigkeitsgrad: schwer\n\nChantal ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.",
-						bedList, 100, 600, 3, 3));
+						bedList, 100, 600, 10, 3));
 
 		return avList;
 	}
@@ -466,29 +466,42 @@ public class Initialisator {
 
 	public static Aktionsobjekt getCasino(Spielbereich spielbereich) {
 		ArrayList<Aktion> casinoAktionen = new ArrayList<Aktion>();
+		
+		Information[] slotInfos = {
+				new Information(Information.AENDERN_ZEIT,
+						Information.ART_UM_WERT, -3)
+		};
 		casinoAktionen
 				.add(new Aktion(
 						"Slot Machine",
 						"(blue)Versuche dein großes Glück an diesem Automaten. Aber Achtung: Verspiele nicht alles!",
 						"Du warst im Kasino und hast dein Glück an der Slot Machine versucht!",
-						null, null));
+						slotInfos, null));
 		casinoAktionen.get(0).setMinispiel(
 				positionMinigame(new Kontrolle(), spielbereich));
 
+		Information[] sensoInfos = {
+				new Information(Information.AENDERN_ZEIT,
+						Information.ART_UM_WERT, -3)
+		};
 		casinoAktionen
 				.add(new Aktion(
 						"Senso",
 						"(blue)Zeige deine Geschicklichkeit im Spiel \"Senso\"!",
 						"Du warst im Kasino und hast dich am Spiel \"Senso\" versucht!",
-						null, null));
+						sensoInfos, null));
 		casinoAktionen.get(1).setMinispiel(
 				positionMinigame(new Senso(), spielbereich));
 
+		Information[] kniffelInfos = {
+				new Information(Information.AENDERN_ZEIT,
+						Information.ART_UM_WERT, -3)
+		};
 		casinoAktionen
 				.add(new Aktion(
-						"Kniffel",
-						"(blue)Jeder kennt es wahrscheinlich: Das beliebte Kniffel! Hier kannst du sogar etwas gewinnen.",
-						"Du hast Kniffel gespielt.", null, null));
+						"Würfelspiel",
+						"(blue)Wirf 5 Würfel und versuche Würfelkombinationen zu bekommen. Hier kannst du sogar etwas gewinnen.",
+						"Du hast ein Würfelspiel gespielt.", kniffelInfos, null));
 		casinoAktionen.get(2).setMinispiel(
 				positionMinigame(new Kniffel(), spielbereich));
 
@@ -587,16 +600,19 @@ public class Initialisator {
 		ArrayList<Aktion> tvAktionen = new ArrayList<Aktion>();
 		Information[] schauenInfos = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_LUXUS,
-						Information.ART_UM_WERT, 10) };
+						Information.ART_UM_WERT, 15),
+				new Information(Information.AENDERN_BEWERBUNGSFAKTOR,
+						Information.ART_UM_WERT, -1)
+		};
 		tvAktionen.add(new Aktion("Fernsehen",
-				"(blue)Schaue ein wenig fern und fühl dich gut!",
+				"(blue)Schaue ein wenig fern und fühl dich gut! Bedenke: Fernsehen macht doof!",
 				"Du hast ferngesehen.", schauenInfos, null));
 
 		Information[] dvdInfos = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -3),
 				new Information(Information.AENDERN_GELD,
 						Information.ART_UM_WERT, -20),
 				new Information(Information.AENDERN_NAHRUNG,
@@ -616,7 +632,7 @@ public class Initialisator {
 						Information.ART_UM_WERT, 15)
 		};
 		tvAktionen.add(new Aktion("Tele-GYM schauen",
-				"(blue)Lass vor'm TV die Hüften kreisen und tu nebenbei etwas für deine Figur.",
+				"(blue)Lass vor deinem TV die Hüften kreisen und tu nebenbei etwas für deine Figur.",
 				"Du hast gymnastische Übungen gemacht.", gymInfos, null));
 
 		Verzweigung tvMenu = new Verzweigung("Fernseher",
@@ -820,7 +836,7 @@ public class Initialisator {
 		
 		Information[] kinoBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_GELD,
 						Information.ART_UM_WERT, -15),
 				new Information(Information.AENDERN_SOZIALES,
@@ -837,7 +853,7 @@ public class Initialisator {
 		
 		Information[] konzertBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -3),
 				new Information(Information.AENDERN_GELD,
 						Information.ART_UM_WERT, -30),
 				new Information(Information.AENDERN_SOZIALES,
@@ -853,7 +869,7 @@ public class Initialisator {
 
 		Information[] theaterBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -3),
 				new Information(Information.AENDERN_GELD,
 						Information.ART_UM_WERT, -55),
 				new Information(Information.AENDERN_SOZIALES,
@@ -873,7 +889,7 @@ public class Initialisator {
 
 		Information[] freundeBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1)
+						Information.ART_UM_WERT, -3)
 		};
 		türAktionen
 				.add(new Aktion(
@@ -885,11 +901,11 @@ public class Initialisator {
 		
 		Information[] parkBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_GESUNDHEIT,
 						Information.ART_UM_WERT, 10),
 				new Information(Information.AENDERN_SOZIALES,
-						Information.ART_UM_WERT, 25),
+						Information.ART_UM_WERT, 20),
 				new Information(Information.AENDERN_KINDER,
 						Information.ART_UM_WERT, 15)};
 		türAktionen.add(new Aktion("Park",
@@ -898,7 +914,7 @@ public class Initialisator {
 		
 		Information[] arztBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -2),
+						Information.ART_UM_WERT, -4),
 				new Information(Information.AENDERN_GELD,
 						Information.ART_UM_WERT, -10),
 				new Information(Information.AENDERN_GESUNDHEIT,
@@ -924,7 +940,7 @@ public class Initialisator {
 				new Information(Information.AENDERN_ZEIT,
 						Information.ART_UM_WERT, -1),
 				new Information(Information.AENDERN_BEWERBUNGSFAKTOR,
-						Information.ART_UM_WERT, 2) };
+						Information.ART_UM_WERT, 5) };
 		zeitungsAktionen
 				.add(new Aktion(
 						"Lesen",
@@ -932,7 +948,7 @@ public class Initialisator {
 						"Du hast die Zeitung durchgelesen.", zeitungLesen, null));
 
 		Information[] bewerbenInfos = { new Information(
-				Information.AENDERN_ZEIT, Information.ART_UM_WERT, -3), };
+				Information.AENDERN_ZEIT, Information.ART_UM_WERT, -5), };
 		zeitungsAktionen
 				.add(new Aktion(
 						"Bewerben",
@@ -943,7 +959,7 @@ public class Initialisator {
 				positionMinigame(new Bewerbungsflaeche(), spielbereich));
 
 		Information[] kreuzwortInfos = { new Information(
-				Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1) };
+				Information.AENDERN_ZEIT, Information.ART_UM_WERT, -3) };
 		zeitungsAktionen
 				.add(new Aktion(
 						"Kreuzworträtsel",
@@ -954,7 +970,7 @@ public class Initialisator {
 				positionMinigame(new KreuzGUI(), spielbereich));
 		
 		Information[] sudokuInfos = {
-				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -1)
+				new Information(Information.AENDERN_ZEIT, Information.ART_UM_WERT, -3)
 		};
 		zeitungsAktionen.add(new Aktion("Sudoku lösen",
 				"(blue)Versuche ein Sudoku zu lösen und dabei noch etwas zu gewinnen.",
