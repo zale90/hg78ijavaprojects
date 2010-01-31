@@ -41,10 +41,10 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		threadlblMaus = new Thread(lblMaus);
 
 		// GUI-Elemente erzeugen
-		lblHeading = new JLabel(Optionen.NAME);
+		lblHeading = new JLabel(new ImageIcon("files/Ueberschrift.jpg"));
 		lblHeading.setFont(Optionen.FONT_TITLE);
-		lblHeading.setSize(1000, 40);
-		lblHeading.setLocation(20, 10);
+		lblHeading.setSize(1000, 60);
+		lblHeading.setLocation(-70, 0);
 		this.add(lblHeading);
 
 		// Konsole hinzufügen
