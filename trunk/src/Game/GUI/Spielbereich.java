@@ -33,7 +33,7 @@ public class Spielbereich extends JPanel implements MouseListener {
 		this.add(lblMaus);
 		threadlblMaus = new Thread(lblMaus);
 
-		aktionsObjekte = Initialisator.getAktionsobjekte(this);
+		aktionsObjekte = Initialisator.getAktionsobjekte(this, spieloberfläche.getSpiel().getFamilienmitglieder());
 
 		// Hintergrund und Spielbereichgröße
 		lblbackGround = new JLabel(new ImageIcon(Optionen.ICON_PATH_GAME
