@@ -8,22 +8,16 @@ import java.awt.event.*;
 public class Matrix
 {
        private Kaestchen[] kaestchenens;
-       
        private Frage[] f1, f2, f3, f4, f5, fragen;
        private Frage[][] f;
        private Random rnd;
        private int x, y;
-       private MouseListener mouseList;
-       private KeyListener keyList;
        
-       public Matrix(int xAnz, int yAnz, MouseListener msL, KeyListener keyL)
+       public Matrix(int xAnz, int yAnz)
        {
     	   x = xAnz;
     	   y = yAnz;
     	   kaestchenens = new Kaestchen[x*y];
-    	   
-    	   mouseList = msL;
-    	   keyList = keyL;
     	   
     	   f1 = new Frage[12];
     	   f2 = new Frage[12];
@@ -51,18 +45,18 @@ public class Matrix
 			f2[1] = new Frage("Bekleidung für Damen", "Rock", true, 3, 2);
 			f2[2] = new Frage("Gunst des Schicksals", "Chance", false, 1, 3);
 			f2[3] = new Frage("Asiatische Bevölkerungsgruppe", "Thai", true, 3, 1);
-			f2[4] = new Frage("Nicht verjährbares Verbrechen", "Mord", false, 8, 2);
+			f2[4] = new Frage("Nicht verjähbares Verbrechen", "Mord", false, 8, 2);
 			f2[5] = new Frage("KFZ-Bayreuth", "BT", false, 2, 7);
 			f2[6] = new Frage("Sinnflutartiger Regen", "Taifun", true, 3, 9);
-			f2[7] = new Frage("Franz. Kaiser", "Napoleon", false, 9, 1);
+			f2[7] = new Frage("Franz. Kaiser und General", "Napoleon", false, 9, 1);
 			f2[8] = new Frage("Kosten für Post", "Porto", true, 4, 8);
 			f2[9] = new Frage("Öffnung im Erdreich", "Spalt", false, 3, 3);
-			f2[10] = new Frage("Leitmotiv einer Sache", "Thema", true, 4, 3);
+			f2[10] = new Frage("Flüßiges Gestein des Erdinneren", "Magma", true, 4, 3);
 			f2[11] = new Frage("Auszeichnung oder Titel", "Dr", false, 4, 4);
 
 			f3[0] = new Frage("Gegenteil Differenz", "Summe", false, 2, 1); 
 			f3[1] = new Frage("Schöpfer im Christentum", "Gott", true, 3, 2);
-			f3[2] = new Frage("Teil einer Stunde", "Minute", false, 1, 3);
+			f3[2] = new Frage("60 Sekunden", "Minute", false, 1, 3);
 			f3[3] = new Frage("öffentliches Verkehrsmittel", "Bahn", true, 3, 1);
 			f3[4] = new Frage("Erfolgreicher Bekämpfer des Bösen", "Held", false, 8, 2);
 			f3[5] = new Frage("KFZ Dresden", "DD", false, 2, 7);
@@ -110,18 +104,7 @@ public class Matrix
 			fragenZusammenstellen();
 			matrixErstellen();
 			fragenMatrix();
-       }
-       
-       public void erschaffeMatrix()
-       {
-    	   for(int i = 0; i < y; i++)
-    	   {
-    		   for(int j = 0; j < x; j++)
-    		   {
-    			   kaestchenens[j+(i*y)] = new Kaestchen(null, null);
-    		   }
-    	   }
-       }    
+       } 
        
        public void fragenZusammenstellen()
        {
@@ -133,9 +116,6 @@ public class Matrix
     	   for(int i = 0; i < kaestchenens.length; i++)
     	   {
     		  kaestchenens[i] = new Kaestchen(null, null);
-    		  kaestchenens[i].setOpaque(true);
-    		  kaestchenens[i].addKeyListener(keyList);
-    		  kaestchenens[i].addMouseListener(mouseList);
     	   }
        }
        
@@ -194,19 +174,19 @@ public class Matrix
     	   kaestchenens[(((x*(xS-1))+yS)-1)].setEnabled(enabled);
        }
        
-       public void addActionListener(ActionListener a)
-       {
-    	   for(int i = 0; i < kaestchenens.length; i++)
-    	   {
-    		   kaestchenens[i].addActionListener(a);
-    	   }
-       }
-       
        public void addMouseListener(MouseListener m)
        {
     	   for(int i = 0; i < kaestchenens.length; i++)
     	   {
     		   kaestchenens[i].addMouseListener(m);
+    	   }
+       }
+       
+       public void addKeyListener(KeyListener k)
+       {
+    	   for(int i = 0; i < kaestchenens.length; i++)
+    	   {
+    		   kaestchenens[i].addKeyListener(k);
     	   }
        }
        

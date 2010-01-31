@@ -12,6 +12,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 	private static final long serialVersionUID = 1L;
 	private Matrix m;
 	private JButton exit;
+	private JLabel lblCap;
 	private Kaestchen[] gelb, fZzt;
 	private int pos, punkte;
 	private MausLabel lblMaus;
@@ -21,8 +22,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 
 	public KreuzGUI() {
 		super();
-		this.setSize(505, 605);
-		this.setLocation(350, 150);
+		this.setSize(505, 655);
 		this.setLayout(null);
 		this.setAlwaysOnTop(true);
 		this.setUndecorated(true);
@@ -38,27 +38,31 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 
 		exit = new JButton("Abschicken");
 		exit.setSize(250, 60);
-		exit.setLocation(127, 495);
-		exit.setOpaque(true);
+		exit.setLocation(127, 545);
 		exit.addActionListener(this);
 		this.add(exit);
+		
+		lblCap = new JLabel("Kreuzworträtsel");
+		lblCap.setSize(505, 50);
+		lblCap.setLocation(0, 15);
+		lblCap.setFont(new Font("Arial", Font.BOLD, 50));
+		lblCap.setHorizontalAlignment(SwingConstants.CENTER);
+		this.add(lblCap);
 
 		lblMaus = new MausLabel(this);
 		this.add(lblMaus);
 		threadlblMaus = new Thread(lblMaus);
 
-		m = new Matrix(9, 9, this, this);
-		matrixEinfuegen(25, 25);
-		m.addActionListener(this);
+		m = new Matrix(9, 9);
+		matrixEinfuegen(25, 75);
 		m.addMouseListener(this);
+		m.addKeyListener(this);
 
 		pos = 0;
 
 		matrixSchwaerzen();
-
-		this.setVisible(false);
 	}
-
+	
 	public void matrixEinfuegen(int x, int y) {
 		m.matrixVerbildschirmen(x, y);
 
@@ -86,12 +90,59 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 	public void start(Spiel spiel) {
 		this.spiel = spiel;
 		this.setVisible(true);
+		m.gibKaest()[3].requestFocus();
+	}
+	
+	public void reset() {
+		
+		matrixEntfernen();
+
+		m = new Matrix(9, 9);
+		m.addKeyListener(this);
+		m.addMouseListener(this);
+
+		pos = 0;
+		gelb = null;
+		fZzt = null;
+		
+		matrixEinfuegen(25, 75);
+		matrixSchwaerzen();
+		
+		this.repaint();
+	}
+
+	public void matrixEntfernen() {
+		for (int i = 0; i < m.gibGroesse(); i++) {
+			this.remove(m.gibKaest()[i]);
+			m.gibKaest()[i].removeKeyListener(this);
+			m.gibKaest()[i].removeMouseListener(this);
+		}
+	}
+
+	public void matrixSchwaerzen() {
+		m.matrixFaerben(1, 1, Color.BLACK, false);
+		m.matrixFaerben(1, 8, Color.BLACK, false);
+		m.matrixFaerben(2, 1, Color.BLACK, false);
+		m.matrixFaerben(4, 5, Color.BLACK, false);
+		m.matrixFaerben(4, 6, Color.BLACK, false);
+		m.matrixFaerben(4, 7, Color.BLACK, false);
+		m.matrixFaerben(5, 5, Color.BLACK, false);
+		m.matrixFaerben(5, 6, Color.BLACK, false);
+		m.matrixFaerben(5, 7, Color.BLACK, false);
+		m.matrixFaerben(6, 5, Color.BLACK, false);
+		m.matrixFaerben(6, 6, Color.BLACK, false);
+		m.matrixFaerben(6, 7, Color.BLACK, false);
+		m.matrixFaerben(7, 4, Color.BLACK, false);
+		m.matrixFaerben(7, 5, Color.BLACK, false);
+		m.matrixFaerben(7, 6, Color.BLACK, false);
+		m.matrixFaerben(7, 7, Color.BLACK, false);
+		m.matrixFaerben(7, 8, Color.BLACK, false);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == exit) {			
 			if (antwortenAuslesen() == 12) {
-				JOptionPane.showMessageDialog(this, "Du hast eine Reise nach Bad Münster Eifel und 50 \u20AC gewonnen !");
+				JOptionPane.showMessageDialog(this, "Du hast eine Reise nach Bad Münster Eifel und 50 € gewonnen !");
 				
 				Information[] infos = {
 						new Information(Information.AENDERN_LUXUS,
@@ -103,7 +154,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 
 				spiel
 						.minispielEnde(infos,
-								"Du hast eine Tagesfahrt nach Bad Münster Eifel und 50 \20AC gewonnen!");
+								"Du hast eine Tagesfahrt nach Bad Münster Eifel und 50 € gewonnen!");
 			} else {
 				JOptionPane.showMessageDialog(this, "Du hast leider nicht gewonnen.");
 				
@@ -138,7 +189,6 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 				}
 
 			}
-
 			gelb[pos].requestFocus();
 		} catch (Exception exp) {
 		}
@@ -199,46 +249,5 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 
 	public void mouseReleased(MouseEvent e) {
 
-	}
-
-	public void starten(int x, int y) {
-		// KreuzGUI guiKreuz = new KreuzGUI();
-		this.setVisible(true);
-	}
-
-	public void reset() {
-		matrixEntfernen();
-		m = new Matrix(9, 9, this, this);
-		pos = 0;
-		matrixEinfuegen(25, 25);
-		m.addActionListener(this);
-		m.addMouseListener(this);
-		matrixSchwaerzen();
-	}
-
-	public void matrixEntfernen() {
-		for (int i = 0; i < m.gibGroesse(); i++) {
-			this.remove(m.gibKaest()[i]);
-		}
-	}
-
-	public void matrixSchwaerzen() {
-		m.matrixFaerben(1, 1, Color.BLACK, false);
-		m.matrixFaerben(1, 8, Color.BLACK, false);
-		m.matrixFaerben(2, 1, Color.BLACK, false);
-		m.matrixFaerben(4, 5, Color.BLACK, false);
-		m.matrixFaerben(4, 6, Color.BLACK, false);
-		m.matrixFaerben(4, 7, Color.BLACK, false);
-		m.matrixFaerben(5, 5, Color.BLACK, false);
-		m.matrixFaerben(5, 6, Color.BLACK, false);
-		m.matrixFaerben(5, 7, Color.BLACK, false);
-		m.matrixFaerben(6, 5, Color.BLACK, false);
-		m.matrixFaerben(6, 6, Color.BLACK, false);
-		m.matrixFaerben(6, 7, Color.BLACK, false);
-		m.matrixFaerben(7, 4, Color.BLACK, false);
-		m.matrixFaerben(7, 5, Color.BLACK, false);
-		m.matrixFaerben(7, 6, Color.BLACK, false);
-		m.matrixFaerben(7, 7, Color.BLACK, false);
-		m.matrixFaerben(7, 8, Color.BLACK, false);
 	}
 }
