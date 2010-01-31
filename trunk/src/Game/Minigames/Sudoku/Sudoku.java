@@ -169,9 +169,9 @@ public class Sudoku extends JFrame implements ActionListener, MouseListener {
 	// Anfang Methoden
 	public void texten(String grad) {
 		if (grad.equals("Leicht")) {
-			einl = "Lösen Sie das Sudoku und gewinnen Sie 20 Euro!";
+			einl = "Lösen Sie das Sudoku und gewinnen Sie 100 Euro!";
 		} else if (grad.equals("Mittel")) {
-			einl = "Lösen Sie das Sudoku und gewinnen Sie 50 Euro!";
+			einl = "Lösen Sie das Sudoku und gewinnen Sie 200 Euro!";
 		}
 	}
 
