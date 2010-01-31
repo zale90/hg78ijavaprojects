@@ -408,6 +408,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                 btn3.setText(frage.gibC());
                 btn4.setText(frage.gibD());
                 lbl2.setText("Frage " + index + "/10");
+                lbl4.setIcon(null);
 
 
                 btn1.setForeground(Color.BLACK);
