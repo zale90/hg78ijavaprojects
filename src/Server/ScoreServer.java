@@ -22,7 +22,7 @@ public class ScoreServer {
 	/**
 	 * Startet einen neuen Server und zeigt die grafische Oberfläche an.
 	 */
-	public ScoreServer() {
+	public ScoreServer(boolean fullscreen) {
 
 		// Verwaltung initialisieren
 		ArrayList<Avatar> avList = Initialisator.gibAvatare();
@@ -33,7 +33,7 @@ public class ScoreServer {
 		}
 
 		// GUI erzeugen
-		gui = new ServerGUI(list);
+		gui = new ServerGUI(list, fullscreen);
 
 		// Server starten
 		startServer();

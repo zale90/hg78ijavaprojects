@@ -92,21 +92,16 @@ public class AdminGUI extends JFrame implements ActionListener {
 	private void deleteScore() {
 		JTextField tfScore = new JTextField(20);
 		JTextField tfList = new JTextField(20);
-		Object[] options = {
-				new JLabel("Nummer des Scores:"), 
-				tfScore,
-				new JLabel("Nummer des Liste (1-3):"), 
-				tfList,
-				"OK", 
-				"Abbrechen",
-		};
-		int btnReturn = JOptionPane.showOptionDialog(
+		Object[] options = { new JLabel("Nummer des Liste (1-3):"), tfList,
+				new JLabel("Nummer des Scores:"), tfScore, "OK", "Abbrechen", };
+		int btnReturn = JOptionPane
+				.showOptionDialog(
 						this,
-						"Bitte geben Sie die Nummer des Scores\nund die Nummer des Liste an,\naus der ein Score gelöscht werde soll:",
+						"Bitte gib die Nummer des Scores und die Nummer der Liste an, aus der ein Score gelöscht werden soll:",
 						"Score löschen", JOptionPane.OK_CANCEL_OPTION,
 						JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
-		
-		if(btnReturn == 4) {
+
+		if (btnReturn == 4) {
 			int scoreNr = Integer.valueOf(tfScore.getText());
 			int listNr = Integer.valueOf(tfList.getText());
 			ScoreServer.deleteScore(scoreNr, listNr);

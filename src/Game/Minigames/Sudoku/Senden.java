@@ -106,11 +106,9 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 					}
 				}
 				if (i == 81) {
-					Abschluss a = new Abschluss("Richtig", su, su2);
-//					a.setLocationRelativeTo(this);
+					new Abschluss("Richtig", su, su2);
 				} else {
-					Abschluss a = new Abschluss("Falsch", su, su2);
-//					a.setLocationRelativeTo(this);
+					new Abschluss("Falsch", su, su2);
 				}
 			} else if (su2 != null) {
 				int i = 0;
@@ -118,11 +116,10 @@ public class Senden extends JFrame implements ActionListener, MouseListener {
 					if (su2.getTextfeld().get(i).getText().equals(
 							su2.getMuster().sudokuLösungPrüfen(i, su2.getR()))) {
 						if (i == 80) {
-							Abschluss a = new Abschluss("Richtig", su, su2);
-//							a.setLocationRelativeTo(this);
+							new Abschluss("Richtig", su, su2);
 						}
 					} else {
-						Abschluss a = new Abschluss("Falsch", su, su2);
+						new Abschluss("Falsch", su, su2);
 //						a.setLocationRelativeTo(this);
 						i = 80;
 					}
