@@ -314,7 +314,7 @@ public class Spiel {
 						.showOptionDialog(
 								SpielAnwendung.mainGUI,
 								gruendeFormatiert
-										+ " auf Null sinken.\nWillst du diese Aktion wirklich ausführen?",
+										+ " auf 0 sinken.\nWillst du diese Aktion wirklich ausführen?",
 								"Warnung", JOptionPane.YES_NO_OPTION,
 								JOptionPane.INFORMATION_MESSAGE, null, options,
 								options[0]) == JOptionPane.NO_OPTION)
