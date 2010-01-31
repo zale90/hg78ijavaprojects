@@ -46,12 +46,13 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 	JPanel rand1;
 	private int bargeld = 0;
 	private final String folder = "files/minigames/Gewinnspiel/";
-	String text = "Um zu gewinnen musst du 3, 4 oder 5 gleiche Zahlen würfeln.\nDu kannst auch gewinnen, indem du ein Fullhouse, eine kleine\nStraße oder eine große Straße würfelst.";
-	String text1 = "Markiere nun die Würfel, die du halten willst.\nDu kannst auch Verdoppeln, um mehr Gewinn zu bekommen.";
+	String text = "Um zu gewinnen, musst du 3, 4 oder 5 gleiche Zahlen würfeln.\nDu kannst auch gewinnen, indem du ein Full House, eine kleine\nStraße oder eine große Straße würfelst.";
+	String text1 = "Markiere nun die Würfel, die du halten willst.\nDu kannst auch verdoppeln, um mehr Gewinn zu bekommen.";
 
 	String wurf1 = "1. Wurf", wurf2 = "2. Wurf", neuesSpiel = "Neues Spiel";
 
 	public Kniffel() {
+		
 		super();
 		this.setSize(400, 400);
 		this.setLayout(null);
@@ -221,7 +222,7 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		if (e.getSource() == btnPlus) {
 			double bargeld = Double.parseDouble(tfBargeld.getText());
 			int einsatz = Integer.parseInt(tfEinsatz.getText());
-			if (bargeld >= 1 && einsatz < 10) {
+			if (bargeld >= 1 && einsatz < 20) {
 				tfEinsatz.setText(einsatz + 1 + "");
 				tfBargeld.setText(bargeld - 1 + "");
 			}
@@ -285,7 +286,7 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 		if (maxAnzahlGleicherZahlen == 3) {
 			if (maxAnzahlGleicherZahlen2 == 2) {
 				erklärung
-						.setText("Du hast eine Fullhouse!\nDu gewinnst das doppelte deines Einsatzes.\nVersuch dein Glück doch noch einmal!");
+						.setText("Du hast eine Full House gewürfelt!\nDu gewinnst das Doppelte deines Einsatzes.\nVersuch dein Glück doch noch einmal!");
 				tfEinsatz.setText("0");
 				tfBargeld.setText(bargeld + einsatz + einsatz + "");
 			} else {
@@ -296,12 +297,12 @@ public class Kniffel extends JWindow implements MouseListener, Minispiel,
 			}
 		} else if (maxAnzahlGleicherZahlen == 4) {
 			erklärung
-					.setText("Du hast gewonnen!\nDu bekommst das doppelte deines Einsatzes!\nVersuch dein Glück doch noch einmal!");
+					.setText("Du hast gewonnen!\nDu bekommst das Doppelte deines Einsatzes!\nVersuch dein Glück doch noch einmal!");
 			tfEinsatz.setText("0");
 			tfBargeld.setText(bargeld + einsatz + einsatz + "");
 		} else if (maxAnzahlGleicherZahlen == 5) {
 			erklärung
-					.setText("Du hast gewonnen!\nDu bekommst das dreifache deines Einsatzes!\nVersuch dein Glück doch noch einmal!");
+					.setText("Du hast gewonnen!\nDu bekommst das Dreifache deines Einsatzes!\nVersuch dein Glück doch noch einmal!");
 			tfEinsatz.setText("0");
 			tfBargeld.setText(bargeld + einsatz + einsatz + "");
 		}
