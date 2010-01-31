@@ -591,7 +591,7 @@ public class Spiel {
 							break;
 						}
 						case 4: {
-							double tmp = neuerWert * infos[i].getWert();
+							double tmp = neuerWert * infos[i].getWert() /100;
 							int tmp2 = (int) tmp; // so grob
 							tmp2 = neuerWert + tmp2;
 							if (tmp2 >= referenz.getMin()
