@@ -22,7 +22,7 @@ public class HighscoreListe extends JPanel {
 
 		JLabel lbl‹berschrift = new JLabel(scores.getAvatarName());
 		lbl‹berschrift.setFont(Optionen.FONT_TITLE);
-		lbl‹berschrift.setSize(290, 50);
+		lbl‹berschrift.setSize(360, 50);
 		lbl‹berschrift.setLocation(10, 20);
 		this.add(lbl‹berschrift);
 

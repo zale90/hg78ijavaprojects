@@ -10,7 +10,13 @@ public class ServerLauncher {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new ScoreServer();
+		if(args.length > 0) {
+			if(args[0].equals("fullscreen=1")) {
+				new ScoreServer(true);
+			}
+		} else {
+			new ScoreServer(false);
+		}
 	}
 
 }
