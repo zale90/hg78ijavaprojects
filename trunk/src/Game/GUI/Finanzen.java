@@ -30,7 +30,7 @@ public class Finanzen extends JPanel implements ActionListener
 		einnahmen = new ArrayList<GeldBetrag>();
 		ausgaben = new ArrayList<GeldBetrag>();
 		rundenAusgaben = new GeldBetrag("Ausgaben", 0);
-		monat = 2;
+		monat = 1;
 		
 		gruen = new Color(65, 115, 50);
 		rot = Color.RED;
@@ -286,6 +286,8 @@ public class Finanzen extends JPanel implements ActionListener
 				gameGUI.setzeAktiviert(true);
 				monat++;
 				rundenAusgaben = new GeldBetrag("Ausgaben", 0);
+				spiel.zahleGehalt();
+				spiel.datenAktualisieren();
 			}
 			else
 			{

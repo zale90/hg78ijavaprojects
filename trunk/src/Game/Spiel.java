@@ -88,6 +88,9 @@ public class Spiel {
 		}
 
 		grenzenErzeugen();
+		
+		gameGUI.setzeAktiviert(false);
+		finanzen.aktualisiereFinanzenGUI();
 	}
 
 	public Bedürfnis[] getBedürfnisse() {
@@ -184,6 +187,16 @@ public class Spiel {
 		// Ereignisse auslösen
 		Ereignis er = getRandomEreignis();
 		gameGUI.getEreignisfenster().fensterZeigen(er);
+	}
+	
+	public void zahleGehalt()
+	{
+		kontostand = kontostand + finanzen.berechneEinkommen();
+	}
+	
+	public void datenAktualisieren()
+	{
+		gameGUI.aktualisiereDaten();
 	}
 
 	/**
