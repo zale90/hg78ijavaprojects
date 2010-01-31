@@ -89,25 +89,29 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		initializeBars(spiel.getBedürfnisse());
 
 		// Verbleibende Zeit anzeigen
-		JLabel lblVerbleibendeZeit = new JLabel("Verbleibende Zeit:");
+		JLabel lblVerbleibendeZeit = new JLabel("Übrige Zeit:");
 		lblVerbleibendeZeit.setSize(100, 20);
 		lblVerbleibendeZeit.setLocation(840, 445);
+		lblVerbleibendeZeit.setFont(new Font("Arial", Font.BOLD, 12));
 		this.add(lblVerbleibendeZeit);
 
 		lblZeit = new JLabel("" + spiel.getZeit());
 		lblZeit.setSize(100, 20);
-		lblZeit.setLocation(935, 445);
+		lblZeit.setLocation(930, 445);
+		lblZeit.setFont(new Font("Arial", Font.BOLD, 12));
 		this.add(lblZeit);
 
 		// Kontostand anzeigen
 		JLabel lblKontostand = new JLabel("Kontostand:");
 		lblKontostand.setSize(100, 20);
 		lblKontostand.setLocation(840, 465);
+		lblKontostand.setFont(new Font("Arial", Font.BOLD, 12));
 		this.add(lblKontostand);
 
 		lblGeld = new JLabel("" + zahlFormatieren(spiel.getKontostand()));
 		lblGeld.setSize(100, 20);
-		lblGeld.setLocation(935, 465);
+		lblGeld.setLocation(930, 465);
+		lblGeld.setFont(new Font("Arial", Font.BOLD, 12));
 		this.add(lblGeld);
 
 		JLabel lblEinkommen = new JLabel("Einkommen:");
@@ -117,7 +121,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 
 		lblGeldProMonat = new JLabel(zahlFormatieren(spiel.getGeldProMonat()) + "");
 		lblGeldProMonat.setSize(100, 20);
-		lblGeldProMonat.setLocation(935, 485);
+		lblGeldProMonat.setLocation(930, 485);
 		this.add(lblGeldProMonat);
 		
 		JLabel lblPunktestand = new JLabel("Punktestand:");
@@ -127,12 +131,12 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		
 		lblPunkte = new JLabel("0");
 		lblPunkte.setSize(100, 20);
-		lblPunkte.setLocation(935, 505);
+		lblPunkte.setLocation(930, 505);
 		this.add(lblPunkte);
 
 		lblZeitpunkt = new JLabel("1. Woche, 1. Monat");
 		lblZeitpunkt.setSize(140, 20);
-		lblZeitpunkt.setLocation(840, 540);
+		lblZeitpunkt.setLocation(840, 535);
 		lblZeitpunkt.setHorizontalAlignment(0);
 		this.add(lblZeitpunkt);
 
@@ -298,7 +302,11 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	}
 	public static String zahlFormatieren(int zahl)
 	{
-		String rueckgabe = zahl + "";
+		String rueckgabe;
+		if (zahl < 0)
+			rueckgabe = -zahl + "";
+		else
+			rueckgabe = zahl + "";
 		int anzahlPunkte = (int)(rueckgabe.length() / 3);
 		if ((rueckgabe.length() % 3) == 0)
 			anzahlPunkte--;
@@ -308,6 +316,8 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 			anzahlPunkte--;
 		}
 		rueckgabe = rueckgabe + ",00 €";
+		if (zahl < 0)
+			rueckgabe = "-" + rueckgabe;
 		return rueckgabe;
 	}
 }
