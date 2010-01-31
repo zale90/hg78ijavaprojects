@@ -754,8 +754,10 @@ public class Spiel {
 	}
 
 	public void zeigeFinanzen() {
-		if ((aktuelleRunde + 1) % 4 == 0)
+		if ((aktuelleRunde + 1) % 4 == 0){
+			gameGUI.setzeAktiviert(false);
 			finanzen.aktualisiereFinanzenGUI();
+		}
 		else
 			naechsteRunde();
 	}
