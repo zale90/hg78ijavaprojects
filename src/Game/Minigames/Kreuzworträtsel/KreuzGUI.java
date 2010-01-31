@@ -34,7 +34,7 @@ public class KreuzGUI extends JFrame implements ActionListener, KeyListener,
 
 		alph = new char[] { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
 				'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-				'W', 'X', 'Y', 'Z' };
+				'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
 		exit = new JButton("Abschicken");
 		exit.setSize(250, 60);
