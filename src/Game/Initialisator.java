@@ -423,7 +423,7 @@ public class Initialisator {
 	}
 
 	public static ArrayList<Aktionsobjekt> getAktionsobjekte(
-			Spielbereich spielbereich) {
+			Spielbereich spielbereich, int familienmitglieder) {
 		ArrayList<Aktionsobjekt> aktionsobjekte = new ArrayList<Aktionsobjekt>();
 
 		Aktionsobjekt cheat = getCheat();
@@ -431,32 +431,32 @@ public class Initialisator {
 		spielbereich.add(cheat);
 		aktionsobjekte.add(cheat);
 
-		Aktionsobjekt schrank = getSchrank();
+		Aktionsobjekt schrank = getSchrank(familienmitglieder);
 		schrank.addMouseListener(spielbereich);
 		spielbereich.add(schrank);
 		aktionsobjekte.add(schrank);
 
-		Aktionsobjekt casino = getCasino(spielbereich);
+		Aktionsobjekt casino = getCasino(spielbereich, familienmitglieder);
 		casino.addMouseListener(spielbereich);
 		spielbereich.add(casino);
 		aktionsobjekte.add(casino);
 
-		Aktionsobjekt tv = getTV();
+		Aktionsobjekt tv = getTV(familienmitglieder);
 		tv.addMouseListener(spielbereich);
 		spielbereich.add(tv);
 		aktionsobjekte.add(tv);
 
-		Aktionsobjekt tuer = getTuer(spielbereich);
+		Aktionsobjekt tuer = getTuer(spielbereich, familienmitglieder);
 		tuer.addMouseListener(spielbereich);
 		spielbereich.add(tuer);
 		aktionsobjekte.add(tuer);
 
-		Aktionsobjekt zeitung = getZeitung(spielbereich);
+		Aktionsobjekt zeitung = getZeitung(spielbereich, familienmitglieder);
 		zeitung.addMouseListener(spielbereich);
 		spielbereich.add(zeitung);
 		aktionsobjekte.add(zeitung);
 
-		Aktionsobjekt kuehlschrank = getKuehlschrank();
+		Aktionsobjekt kuehlschrank = getKuehlschrank(familienmitglieder);
 		kuehlschrank.addMouseListener(spielbereich);
 		spielbereich.add(kuehlschrank);
 		aktionsobjekte.add(kuehlschrank);
@@ -464,7 +464,7 @@ public class Initialisator {
 		return aktionsobjekte;
 	}
 
-	public static Aktionsobjekt getCasino(Spielbereich spielbereich) {
+	public static Aktionsobjekt getCasino(Spielbereich spielbereich, int familienmitglieder) {
 		ArrayList<Aktion> casinoAktionen = new ArrayList<Aktion>();
 		
 		Information[] slotInfos = {
@@ -517,7 +517,7 @@ public class Initialisator {
 
 	// kik, s.oliver, tommy hilfiger, gucci
 
-	public static Aktionsobjekt getSchrank() {
+	public static Aktionsobjekt getSchrank(int familienmitglieder) {
 		ArrayList<Aktion> schrankAktionen = new ArrayList<Aktion>();
 
 		Information[] kikInfos = {
@@ -596,7 +596,7 @@ public class Initialisator {
 		return schrank;
 	}
 
-	public static Aktionsobjekt getTV() {
+	public static Aktionsobjekt getTV(int familienmitglieder) {
 		ArrayList<Aktion> tvAktionen = new ArrayList<Aktion>();
 		Information[] schauenInfos = {
 				new Information(Information.AENDERN_ZEIT,
@@ -645,7 +645,7 @@ public class Initialisator {
 		return tv;
 	}
 
-	public static Aktionsobjekt getKuehlschrank() {
+	public static Aktionsobjekt getKuehlschrank(int familienmitglieder) {
 		// Gemüse
 		ArrayList<Aktion> gemueseAktionen = new ArrayList<Aktion>();
 		Information gemueseInfos[] = new Information[4];
@@ -829,7 +829,7 @@ public class Initialisator {
 		return kuehlschrank;
 	}
 
-	public static Aktionsobjekt getTuer(Spielbereich spielbereich) {
+	public static Aktionsobjekt getTuer(Spielbereich spielbereich, int familienmitglieder) {
 		ArrayList<Aktion> türAktionen = new ArrayList<Aktion>();
 		ArrayList<Aktion> kulturAktionen = new ArrayList<Aktion>();
 		ArrayList<Verzweigung> türVerzweigungen = new ArrayList<Verzweigung>();
@@ -934,7 +934,7 @@ public class Initialisator {
 		return tuer;
 	}
 
-	public static Aktionsobjekt getZeitung(Spielbereich spielbereich) {
+	public static Aktionsobjekt getZeitung(Spielbereich spielbereich, int familienmitglieder) {
 		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
 		Information[] zeitungLesen = {
 				new Information(Information.AENDERN_ZEIT,
