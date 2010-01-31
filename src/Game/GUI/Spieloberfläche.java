@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
+import java.text.NumberFormat;
 import Game.*;
 
 public class Spieloberfläche extends JPanel implements MouseListener {
@@ -20,6 +21,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	private Thread threadlblMaus;
 	private MausLabel lblMaus;
 	private JLabel rundeWeiter, spielNeuStarten;
+	private NumberFormat formatierer;
 
 	public Spieloberfläche(Spiel spiel, String charName, Finanzen finanzen) {
 		this.setSize(995, 672);
@@ -28,6 +30,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		this.setBackground(null);
 
 		this.spiel = spiel;
+//		formatierer = new NumberFormat();
 
 		punkteGUI = new PunkteGUI(spiel);
 		this.add(punkteGUI);
@@ -104,7 +107,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		lblKontostand.setLocation(840, 465);
 		this.add(lblKontostand);
 
-		lblGeld = new JLabel("" + spiel.getKontostand());
+		lblGeld = new JLabel("" + zahlFormatieren(spiel.getKontostand()));
 		lblGeld.setSize(100, 20);
 		lblGeld.setLocation(935, 465);
 		this.add(lblGeld);
@@ -223,7 +226,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		for (int i = 0; i < bedürfnisse.length; i++) {
 			bedürfnisBars[i].setValue(bedürfnisse[i].getWert());
 		}
-		lblGeld.setText(spiel.getKontostand() + "");
+		lblGeld.setText(zahlFormatieren(spiel.getKontostand()) + "");
 		lblGeldProMonat.setText(spiel.getGeldProMonat() + "");
 		lblZeit.setText(spiel.getZeit() + "");
 		lblZeitpunkt.setText(((spiel.getAktuelleRunde() % 4) + 1) + ". Woche, "
@@ -283,5 +286,19 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	public Spielbereich getSpielbereich()
 	{
 		return spielbereich;
+	}
+	public String zahlFormatieren(int zahl)
+	{
+		String rueckgabe = zahl + "";
+		int anzahlPunkte = (int)(rueckgabe.length() / 3);
+		if ((rueckgabe.length() % 3) == 0)
+			anzahlPunkte--;
+		while (anzahlPunkte > 0)
+		{
+			rueckgabe = rueckgabe.substring(0,((rueckgabe.length())-(3*anzahlPunkte)))+ "." + rueckgabe.substring(((rueckgabe.length()) -(3*anzahlPunkte)));//, rueckgabe.length()-1);
+			anzahlPunkte--;
+		}
+		rueckgabe = rueckgabe + ",00 €";
+		return rueckgabe;
 	}
 }
