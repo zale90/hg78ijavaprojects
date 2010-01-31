@@ -522,9 +522,9 @@ public class Initialisator {
 
 		Information[] kikInfos = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_GELD,
-						Information.ART_UM_WERT, -40),
+						Information.ART_UM_WERT, -20),
 				new Information(Information.AENDERN_SOZIALES,
 						Information.ART_UM_WERT, +5),
 				new Information(Information.AENDERN_LUXUS,
@@ -536,9 +536,9 @@ public class Initialisator {
 				"Du hast günstige Kleidung gekauft.", kikInfos, null));
 		Information[] sOliverInfos = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_GELD,
-						Information.ART_UM_WERT, -80),
+						Information.ART_UM_WERT, -40),
 				new Information(Information.AENDERN_SOZIALES,
 						Information.ART_UM_WERT, +15),
 				new Information(Information.AENDERN_LUXUS,
@@ -553,9 +553,9 @@ public class Initialisator {
 						sOliverInfos, null));
 		Information[] tommyHilfigerInfos = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_GELD,
-						Information.ART_UM_WERT, -120),
+						Information.ART_UM_WERT, -60),
 				new Information(Information.AENDERN_SOZIALES,
 						Information.ART_UM_WERT, +25),
 				new Information(Information.AENDERN_LUXUS,
@@ -570,9 +570,9 @@ public class Initialisator {
 						null));
 		Information[] gucciInfos = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_GELD,
-						Information.ART_UM_WERT, -240),
+						Information.ART_UM_WERT, -120),
 				new Information(Information.AENDERN_SOZIALES,
 						Information.ART_UM_WERT, +55),
 				new Information(Information.AENDERN_LUXUS,
@@ -938,7 +938,7 @@ public class Initialisator {
 		ArrayList<Aktion> zeitungsAktionen = new ArrayList<Aktion>();
 		Information[] zeitungLesen = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -1),
+						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_BEWERBUNGSFAKTOR,
 						Information.ART_UM_WERT, 5) };
 		zeitungsAktionen
