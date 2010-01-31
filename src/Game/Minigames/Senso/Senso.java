@@ -156,7 +156,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 		// spiel = new Thread(this);
 		zufall = new Random();
 
-		läuft = true;
+		läuft = false;
 
 		zahl = zufall.nextInt(4);
 		// this.setVisible(true);
@@ -172,6 +172,7 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 		// new Senso();
 		s = senso;
 		neustarten(true);
+		läuft = true;
 		spiel = new Thread(this);
 		spiel.start();
 	}
@@ -278,17 +279,18 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 								"files/Minigames/Senso/yellow_1.png"));
 						soundAbspielen(soundY);
 					}
-				} else if (evt.getComponent() == beenden)
-				{
-					this.setVisible(false);
-					s.minispielEnde(null);
-					neustarten(false);
-					if (spiel != null)
-						spiel.interrupt();
-					spiel = new Thread(this);
-					if (intro)
-						spiel.start();
-				}
+				} 
+//				else if (evt.getComponent() == beenden)
+//				{
+//					this.setVisible(false);
+//					s.minispielEnde(null);
+//					if (spiel != null)
+//						spiel.interrupt();
+//					neustarten(false);
+//					spiel = new Thread(this);
+//					if (intro)
+//						spiel.start();
+//				}
 				
 			}
 		} catch (Exception e) {
@@ -309,12 +311,13 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 						Game.Information.ART_UM_WERT, 2 * runde);
 			}
 			s.minispielEnde(infos);
-			neustarten(false);
-			if (spiel != null)
-				spiel.interrupt();
-			spiel = new Thread(this);
-			if (intro)
-				spiel.start();
+			läuft = false;
+//			if (spiel != null)
+//				spiel.interrupt();
+//			neustarten(false);
+//			spiel = new Thread(this);
+//			if (intro)
+//				spiel.start();
 		} else if (evt.getComponent() == neustart && verloren)
 			neustarten(true);
 
@@ -498,6 +501,8 @@ public class Senso extends JFrame implements Runnable, MouseListener,
 	}
 
 	private void soundAbspielen(File sound) {
+		if (!läuft)
+			return;
 		try {
 			audioInputStream = AudioSystem.getAudioInputStream(sound);
 			af = audioInputStream.getFormat();
