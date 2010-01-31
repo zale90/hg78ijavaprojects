@@ -168,6 +168,8 @@ public class Aktion extends JLabel {
 					break;
 				case 13:
 					datenfeld = "Geld: ";
+					if (wert < 0)
+						wert = wert * (Verzweigung.getSpielbereich().getSpieloberfläche().getSpiel().getFamilienmitglieder());
 					break;
 				case 14:
 					datenfeld = "Geld pro Monat: ";

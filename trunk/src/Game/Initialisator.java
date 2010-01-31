@@ -35,7 +35,7 @@ public class Initialisator {
 						1,
 						"Horst Terarno",
 						"Schwierigkeitsgrad: leicht\n\nHorst ist ein 35jähriger, kinder- und arbeitsloser Akademiker. Er hat Immobilienmanagement studiert und danach bei Traumhaus.de gearbeitet. Aufgrund der Wirtschaftskrise und gescheiterter Aktienspekulationen verlor er seinen Arbeitsplatz und seine Rücklagen schrumpften auf 1500,-€. Trotz Hartz IV versucht er seinen Lebensstandard zu halten.",
-						bedList, 1500, 400, 5));
+						bedList, 1500, 400, 5, 1));
 
 		// Hasma Hamada
 		bedList = new Bedürfnis[5];
@@ -49,7 +49,7 @@ public class Initialisator {
 						2,
 						"Hasma Hamada",
 						"Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt mit einem 400€-Job zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 130,-€ verbuchen.",
-						bedList, 130, 1500, 3));
+						bedList, 130, 1500, 3, 5));
 
 		// Chantal-Jacqueline Chaves
 		bedList = new Bedürfnis[5];
@@ -63,7 +63,7 @@ public class Initialisator {
 						3,
 						"Jacqueline Chaves",
 						"Schwierigkeitsgrad: schwer\n\nChantal ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.",
-						bedList, 100, 600, 3));
+						bedList, 100, 600, 3, 3));
 
 		return avList;
 	}

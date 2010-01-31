@@ -20,6 +20,7 @@ public class Spiel {
 	private int aktuelleRunde;
 	private int punkte;
 	private int bewerbungsfaktor;
+	private int familienmitglieder;
 	private Hauptfenster mainGUI;
 	private Spieloberfläche gameGUI;
 	private Finanzen finanzen;
@@ -42,6 +43,7 @@ public class Spiel {
 		zeitProRunde = avatar.getZeitProRunde();
 		avatarNr = avatar.getAvatarNummer();
 		avatarName = avatar.getName();
+		familienmitglieder = avatar.getFamilienmitglieder();
 
 		// Startwerte
 		aktuelleRunde = 0;
@@ -299,7 +301,7 @@ public class Spiel {
 					return;
 			}
 		}
-		infosUmsetzen(aktion.getVeraenderungen());
+		infosUmsetzen(aktion.getVeraenderungen(), familienmitglieder);
 		if (aktion.getMinispiel() != null) {
 			gameGUI.setzeAktiviert(false);
 			minispielStarten(aktion.getMinispiel());
@@ -504,7 +506,7 @@ public class Spiel {
 			gameGUI.zeigeNachrichtInKonsole(konsolennachricht);
 
 		// Infos verarbeiten
-		infosUmsetzen(infos);
+		infosUmsetzen(infos, 1);
 		gameGUI.setzeAktiviert(true);
 		gameGUI.aktualisiereDaten();
 	}
@@ -527,7 +529,7 @@ public class Spiel {
 	 * @param infos
 	 *            Infos die umgesetzt werden sollen.
 	 */
-	public void infosUmsetzen(Information[] infos) {
+	public void infosUmsetzen(Information[] infos, int faktor) {
 		if (infos == null) {
 		} else {
 			for (int i = 0; i < infos.length; i++) {
@@ -692,6 +694,8 @@ public class Spiel {
 							break;
 						case 2:
 							neuerWert = infos[i].getWert() + neuerWert;
+							if (infos[i].getZuÄndern() == 13 && infos[i].getWert() < 0)
+								neuerWert = (neuerWert + ((infos[i].getWert()*(faktor-1))));
 							break;
 						case 3:
 							neuerWert = (int) (neuerWert * infos[i].getWert() / 100);
@@ -760,6 +764,10 @@ public class Spiel {
 		}
 		else
 			naechsteRunde();
+	}
+	public int getFamilienmitglieder()
+	{
+		return familienmitglieder;
 	}
 
 	public void grenzenErzeugen() {
