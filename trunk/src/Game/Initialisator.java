@@ -603,6 +603,8 @@ public class Initialisator {
 						Information.ART_UM_WERT, -2),
 				new Information(Information.AENDERN_LUXUS,
 						Information.ART_UM_WERT, 15),
+				new Information(Information.AENDERN_KINDER,
+						Information.ART_UM_WERT, 10),
 				new Information(Information.AENDERN_BEWERBUNGSFAKTOR,
 						Information.ART_UM_WERT, -1)
 		};
@@ -901,13 +903,13 @@ public class Initialisator {
 		
 		Information[] parkBesuchen = {
 				new Information(Information.AENDERN_ZEIT,
-						Information.ART_UM_WERT, -2),
+						Information.ART_UM_WERT, -3),
 				new Information(Information.AENDERN_GESUNDHEIT,
 						Information.ART_UM_WERT, 10),
 				new Information(Information.AENDERN_SOZIALES,
 						Information.ART_UM_WERT, 20),
 				new Information(Information.AENDERN_KINDER,
-						Information.ART_UM_WERT, 15)};
+						Information.ART_UM_WERT, 20)};
 		türAktionen.add(new Aktion("Park",
 				"(blue)Geh in den Park und triff ein paar nette Leute.",
 				"Du bist in den Park gegangen.", parkBesuchen, null));
