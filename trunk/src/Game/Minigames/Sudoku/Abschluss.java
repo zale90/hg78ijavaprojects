@@ -92,11 +92,14 @@ public class Abschluss extends JFrame implements ActionListener, MouseListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == ok) {
-			Information[] infos = new Information[1];
+			
 			if (w.equals("Richtig")) {
+				Information[] infos = new Information[2];
 //				if (SudokuFenster1.getPreis().equals("20")) {
 					infos[0] = new Information(Information.AENDERN_GELD,
 							Information.ART_UM_WERT, Integer.parseInt(SudokuFenster1.getPreis()));
+					infos[1] = new Information(Information.AENDERN_GELD, Information.ART_UM_WERT,
+							-5);
 					SudokuFenster1.getSpiel().minispielEnde(infos);
 //				} else if (SudokuFenster1.getPreis().equals("50")) {
 //					infos[0] = new Information(Information.AENDERN_GELD,
@@ -110,6 +113,7 @@ public class Abschluss extends JFrame implements ActionListener, MouseListener {
 			}
 			else
 			{
+				Information[] infos = new Information[1];
 				infos[0] = new Information(Information.AENDERN_GELD,
 						Information.ART_UM_WERT, -5);
 				SudokuFenster1.getSpiel().minispielEnde(infos);

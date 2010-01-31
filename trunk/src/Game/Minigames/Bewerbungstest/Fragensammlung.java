@@ -61,7 +61,7 @@ public class Fragensammlung
        bewerbung.add(new Frage("In welchem Jahr endete der 1. Weltkrieg? ","1.) 1912","2.) 1918 ","3.) 1933","4.) 1945",2));
        bewerbung.add(new Frage("Was ist keine Inselgruppe? ","1.) McDonald-Inseln","2.) Burgerking-Inseln","3.) Spitzbergen","4.) Franz-Joseph-Land",2));
        bewerbung.add(new Frage("Was ist keine Programmiersprache? ","1.) Plankalkül","2.) C++","3.) C#","4.) C - -",4));
-       bewerbung.add(new Frage("Welche Spannung kommt aus den deutschen Haushaltssteckdose? ","1.) 220 Watt","2.) 220 Volt","3.) 230 Watt","4.) 230 Volt",4));
+       bewerbung.add(new Frage("Welche Spannung kommt aus den deutschen Haushaltssteckdose? ","1.) 220 Watt","2.) 200 Volt","3.) 230 Watt","4.) 230 Volt",4));
        bewerbung.add(new Frage("Was gibt die Funktion f ‘(x) an der Stelle x für die Funktion f(x) an?","1.) Schnittpunkt","2.) Steigung","3.) gar nichts","4.) Abstand zur x-Achse",2));
        bewerbung.add(new Frage("Wie heißt unser Verteidigungsminister? ","1.) Wolfgang Schäuble","2.) Guido Westerwelle","3.) Dr. Karl Theodor Freiherr zu Gutenberg","4.) Franz Josef Jung",3));
        bewerbung.add(new Frage("Wie nennen die Finnen ihr eigenes Land ","1.) Sumami","2.) Supapi","3.) Suomi","4.) Suopi",3));

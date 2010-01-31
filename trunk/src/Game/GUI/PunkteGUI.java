@@ -89,7 +89,7 @@ public class PunkteGUI extends JPanel implements ActionListener {
 		bSumme.setFont(new Font("Arial", Font.BOLD, 14));
 		this.add(bSumme);
 
-		lGeld = new JLabel("Geld : 15");
+		lGeld = new JLabel("Geld");
 		lGeld.setSize(95, 20);
 		lGeld.setLocation(5, 170 + x);
 		lGeld.setFont(new Font("Arial", Font.BOLD, 14));
