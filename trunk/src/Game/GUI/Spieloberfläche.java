@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
-import java.text.NumberFormat;
 import Game.*;
 
 public class Spieloberfläche extends JPanel implements MouseListener {
@@ -21,7 +20,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	private Thread threadlblMaus;
 	private MausLabel lblMaus;
 	private JLabel rundeWeiter, spielNeuStarten;
-	private NumberFormat formatierer;
+	private JLabel lblPunkte;
 
 	public Spieloberfläche(Spiel spiel, String charName, Finanzen finanzen) {
 		this.setSize(995, 672);
@@ -30,7 +29,6 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		this.setBackground(null);
 
 		this.spiel = spiel;
-//		formatierer = new NumberFormat();
 
 		punkteGUI = new PunkteGUI(spiel);
 		this.add(punkteGUI);
@@ -117,14 +115,24 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 		lblEinkommen.setLocation(840, 485);
 		this.add(lblEinkommen);
 
-		lblGeldProMonat = new JLabel(spiel.getGeldProMonat() + "");
+		lblGeldProMonat = new JLabel(zahlFormatieren(spiel.getGeldProMonat()) + "");
 		lblGeldProMonat.setSize(100, 20);
 		lblGeldProMonat.setLocation(935, 485);
 		this.add(lblGeldProMonat);
+		
+		JLabel lblPunktestand = new JLabel("Punktestand:");
+		lblPunktestand.setSize(100, 20);
+		lblPunktestand.setLocation(840, 505);
+		this.add(lblPunktestand);
+		
+		lblPunkte = new JLabel("0");
+		lblPunkte.setSize(100, 20);
+		lblPunkte.setLocation(935, 505);
+		this.add(lblPunkte);
 
 		lblZeitpunkt = new JLabel("1. Woche, 1. Monat");
 		lblZeitpunkt.setSize(140, 20);
-		lblZeitpunkt.setLocation(840, 520);
+		lblZeitpunkt.setLocation(840, 540);
 		lblZeitpunkt.setHorizontalAlignment(0);
 		this.add(lblZeitpunkt);
 
@@ -227,8 +235,9 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 			bedürfnisBars[i].setValue(bedürfnisse[i].getWert());
 		}
 		lblGeld.setText(zahlFormatieren(spiel.getKontostand()) + "");
-		lblGeldProMonat.setText(spiel.getGeldProMonat() + "");
+		lblGeldProMonat.setText(zahlFormatieren(spiel.getGeldProMonat()) + "");
 		lblZeit.setText(spiel.getZeit() + "");
+		lblPunkte.setText(spiel.getPunkte() + "");
 		lblZeitpunkt.setText(((spiel.getAktuelleRunde() % 4) + 1) + ". Woche, "
 				+ (((int) spiel.getAktuelleRunde() / 4) + 1) + ". Monat");
 	}
@@ -287,7 +296,7 @@ public class Spieloberfläche extends JPanel implements MouseListener {
 	{
 		return spielbereich;
 	}
-	public String zahlFormatieren(int zahl)
+	public static String zahlFormatieren(int zahl)
 	{
 		String rueckgabe = zahl + "";
 		int anzahlPunkte = (int)(rueckgabe.length() / 3);
