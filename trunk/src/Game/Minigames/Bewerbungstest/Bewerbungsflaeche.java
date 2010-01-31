@@ -281,7 +281,8 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
 			if (!bestanden) {
 				lbl5.setSize(160, 160);
 				lbl5.setLocation(225 - 80, 15);
-				lbl5.setIcon(new ImageIcon(folder + "smiley-traurig.gif"));
+				lbl5.setIcon(null);
+				//lbl5.setIcon(new ImageIcon(folder + "smiley-traurig.gif"));
 				lbl6.setForeground(Color.YELLOW);
 				lbl6.setText("Schade. Sie haben es nicht geschafft.");
 				if (gesund.getWert() < 30)
