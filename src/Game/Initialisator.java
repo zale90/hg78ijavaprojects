@@ -266,7 +266,7 @@ public class Initialisator {
 		erList.add(e);
 
 		ja = new Information[1];
-		ja[0] = new Information(1, 3, 100);
+		ja[0] = new Information(1, 4, 100);
 		e = new Ereignis(19, "Essen bei Mutter",
 				"Deine Mutter hat dich am Wochenende zum Essen eingeladen!",
 				false, ja, null);
@@ -374,8 +374,12 @@ public class Initialisator {
 	public static ArrayList<GeldBetrag> getHasmaEinnahmen() {
 		ArrayList<GeldBetrag> einnahmen = new ArrayList<GeldBetrag>();
 
-		einnahmen.add(new GeldBetrag("Hartz IV", 646));
-		einnahmen.add(new GeldBetrag("Kindergeld", 498));
+		einnahmen.add(new GeldBetrag("Hartz IV Mann", 323));
+		einnahmen.add(new GeldBetrag("Hartz IV Frau", 323));
+		einnahmen.add(new GeldBetrag("Kind 6-13 Jahre", 251));
+		einnahmen.add(new GeldBetrag("Kind 6-13 Jahre", 251));
+		einnahmen.add(new GeldBetrag("Kind 6-13 Jahre", 251));
+		einnahmen.add(new GeldBetrag("Zuverdienst Ehefrau", 160));
 		einnahmen.add(new GeldBetrag("Mieterstattung", 478));
 
 		return einnahmen;
@@ -385,7 +389,9 @@ public class Initialisator {
 		ArrayList<GeldBetrag> einnahmen = new ArrayList<GeldBetrag>();
 
 		einnahmen.add(new GeldBetrag("Hartz IV", 359));
-		einnahmen.add(new GeldBetrag("Kindergeld", 607));
+		einnahmen.add(new GeldBetrag("Kind 0-6 Jahre", 215));
+		einnahmen.add(new GeldBetrag("Schwangerschaft", 61));
+		einnahmen.add(new GeldBetrag("Alleinerziehend",129));
 		einnahmen.add(new GeldBetrag("Mieterstattung", 407));
 
 		return einnahmen;
@@ -602,6 +608,16 @@ public class Initialisator {
 		tvAktionen.add(new Aktion("DVD-Abend",
 				"(blue)Veranstalte einen DVD-Abend mit deinen Freunden!",
 				"Du hast einen DVD-Abend veranstaltet.", dvdInfos, null));
+		
+		Information[] gymInfos = {
+				new Information(Information.AENDERN_ZEIT,
+						Information.ART_UM_WERT, -2),
+				new Information(Information.AENDERN_GESUNDHEIT,
+						Information.ART_UM_WERT, 15)
+		};
+		tvAktionen.add(new Aktion("Tele-GYM schauen",
+				"(blue)Lass vor'm TV die Hüften kreisen und tu nebenbei etwas für deine Figur.",
+				"Du hast gymnastische Übungen gemacht.", gymInfos, null));
 
 		Verzweigung tvMenu = new Verzweigung("Fernseher",
 				"Hier kannst du Britt, DSDS und Hartz 4 TV gucken.",
