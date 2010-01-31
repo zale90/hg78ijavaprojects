@@ -110,15 +110,15 @@ public class SudokuFenster1 extends JFrame implements ActionListener,
 			this.dispose();
 		} else if (evt.getSource() == btnStart) {
 			if (rbn.isSelected() == true) {
-				preis = "20";
+				preis = "100";
 				Sudoku s = new Sudoku("Leicht", spiel);
 				s.setLocationRelativeTo(this);
 			} else if (rbn2.isSelected() == true) {
-				preis = "50";
+				preis = "200";
 				Sudoku s = new Sudoku("Mittel", spiel);
 				s.setLocationRelativeTo(this);
 			} else if (rbn3.isSelected() == true) {
-				preis = "100";
+				preis = "300";
 				Sudoku2 s = new Sudoku2(spiel);
 				s.setLocationRelativeTo(this);
 			}
