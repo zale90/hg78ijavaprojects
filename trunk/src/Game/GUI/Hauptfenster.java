@@ -15,7 +15,7 @@ public class Hauptfenster extends JFrame {
 		this.setSize(1000, 700);
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		this.setResizable(false);
 
 		this.setIconImage(new ImageIcon("files/Icon-Europa.png").getImage());

@@ -243,8 +243,11 @@ public class Initialisator {
 				false, ja, null);
 		erList.add(e);
 
-		ja = new Information[1];
+		ja = new Information[4];
 		ja[0] = new Information(13, 2, -30);
+		ja[1] = new Information(Information.AENDERN_SOZIALES, Information.ART_UM_WERT, 15);
+		ja[2] = new Information(Information.AENDERN_LUXUS, Information.ART_UM_WERT, 10);
+		ja[3] = new Information(Information.AENDERN_KINDER, Information.ART_UM_WERT, 15);
 		nein = new Information[1];
 		nein[0] = new Information(5, 4, -50);
 		e = new Ereignis(
@@ -792,7 +795,7 @@ public class Initialisator {
 		ffoodInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
 				Information.ART_UM_WERT, -30);
 		ffoodAktionen.add(new Aktion("Maximenü",
-				"(blue)Der Koloss unter den Burgern",
+				"(blue)Der Koloss unter den Burgern mit fettiger Beilage.",
 				"Du hast ein Maximenü gekauft.", ffoodInfos.clone(), null));
 		ffoodInfos[0] = new Information(Information.AENDERN_ZEIT,
 				Information.ART_UM_WERT, -1);
@@ -803,7 +806,7 @@ public class Initialisator {
 		ffoodInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
 				Information.ART_UM_WERT, -20);
 		ffoodAktionen.add(new Aktion("Sparmenü",
-				"(blue)Ein ansehnlicher Haufen Fleisch",
+				"(blue)Ein ansehnlicher Haufen Fleisch.",
 				"Du hast mittelmäßiges Fleisch gekauft.", ffoodInfos.clone(),
 				null));
 		ffoodInfos[0] = new Information(Information.AENDERN_ZEIT,
@@ -815,12 +818,12 @@ public class Initialisator {
 		ffoodInfos[3] = new Information(Information.AENDERN_GESUNDHEIT,
 				Information.ART_UM_WERT, -10);
 		ffoodAktionen.add(new Aktion("ein paar Burger",
-				"(blue)3 pappige Burger", "Du hast billiges Fleisch gekauft.",
+				"(blue)Du kaufst drei pappige Burger.", "Du hast billiges Fleisch gekauft.",
 				ffoodInfos.clone(), null));
 		kuehlschrankVerzweigung
 				.add(new Verzweigung(
 						"Fast Food",
-						"Betörend, billig, böse: Fast Food macht für wenig Geld erstaunlich satt. Doch die, von Geschmacksverstärkern durchzogenen Nahrungsmittel, schaden der Gesundheit extrem.",
+						"Betörend, billig, böse: Fast Food macht für wenig Geld erstaunlich satt. Doch die von Geschmacksverstärkern durchzogenen Nahrungsmittel schaden der Gesundheit extrem.",
 						ffoodAktionen, new ArrayList<Verzweigung>()));
 
 		Verzweigung kuehlschrankMenu = new Verzweigung("Kühlschrank",
