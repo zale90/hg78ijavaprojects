@@ -314,10 +314,14 @@ public class Spiel {
 					return;
 			}
 		}
-		infosUmsetzen(aktion.getVeraenderungen(), familienmitglieder);
+	    infosUmsetzen(aktion.getVeraenderungen(), familienmitglieder);
 		if (aktion.getMinispiel() != null) {
 			gameGUI.setzeAktiviert(false);
 			minispielStarten(aktion.getMinispiel());
+		}
+		else if (zeit <= 0)
+		{
+			gameGUI.nächsteRunde();
 		}
 		gameGUI.zeigeNachrichtInKonsole(aktion.getKonsolenausgabe());
 		gameGUI.aktualisiereDaten();
@@ -472,6 +476,8 @@ public class Spiel {
 							break;
 						case 2:
 							neuerWert = infos[i].getWert() + neuerWert;
+							if (infos[i].getZuÄndern() == 13 && infos[i].getWert() < 0)
+								neuerWert = (neuerWert + ((infos[i].getWert()*(familienmitglieder-1))));
 							break;
 						case 3:
 							neuerWert = (int) (neuerWert * infos[i].getWert() / 100);
@@ -522,6 +528,8 @@ public class Spiel {
 		infosUmsetzen(infos, 1);
 		gameGUI.setzeAktiviert(true);
 		gameGUI.aktualisiereDaten();
+		if (zeit <= 0)
+			gameGUI.nächsteRunde();
 	}
 
 	/**
@@ -679,10 +687,6 @@ public class Spiel {
 
 						if (infos[i].getZuÄndern() == Information.AENDERN_ZEIT){
 							zeit = neuerWert;
-							if(zeit <= 0)
-							{
-								gameGUI.nächsteRunde();
-							}
 						}
 						if (infos[i].getZuÄndern() == Information.AENDERN_BEWERBUNGSFAKTOR)
 							bewerbungsfaktor = neuerWert;
