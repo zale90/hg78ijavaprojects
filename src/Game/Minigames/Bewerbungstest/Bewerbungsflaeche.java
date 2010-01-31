@@ -127,7 +127,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                 this.add(lbl5);
 
                 // gibt Ergebnis am Ende an.
-                lbl6 = new JLabel("Herzlichen Glückwunsch! Sie haben den Job bekommen!");
+                lbl6 = new JLabel("Herzlichen Glückwunsch! Du hast den Job bekommen!");
                 lbl6.setSize(500, 20);
                 lbl6.setLocation(25, 170);
                 lbl6.setVisible(false);
@@ -277,7 +277,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                         lbl1.setVisible(false);
                         lbl2.setVisible(false);
                         lbl4.setVisible(false);
-                        lbl3.setText("Sie haben " + richtig * 10
+                        lbl3.setText("Du hast " + richtig * 10
                                         + "% der Fragen korrekt beantwortet.");
                         btn.setText("Beenden");
 
@@ -292,9 +292,9 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                                 lbl5.setIcon(null);
                                 //lbl5.setIcon(new ImageIcon(folder + "smiley-traurig.gif"));
                                 lbl6.setForeground(Color.YELLOW);
-                                lbl6.setText("Schade. Sie haben es nicht geschafft.");
+                                lbl6.setText("Schade. Du hast es nicht geschafft.");
                                 if (gesund.getWert() < 30)
-                                        lbl6.setText("Aufgrund ihrer schlechten Gesundheit wurden Sie nicht genommen.");
+                                        lbl6.setText("Aufgrund deiner schlechten Gesundheit wurdest du nicht genommen.");
                                 erfolgreich = false;
                         } else if (!job()) {
                                 lbl6.setForeground(Color.YELLOW);
@@ -313,7 +313,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                         this.setVisible(false);
                 } else if (evt.getSource() == aufgeben) {
                         erfolgreich = false;
-                        game.minispielEnde(erfolgreich(), "Sie haben aufgegeben.");
+                        game.minispielEnde(erfolgreich(), "Du hast aufgegeben.");
                         this.setVisible(false);
                 }
 
@@ -393,7 +393,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                 finanzen = spiel.getFinanzen();
 
                 // gibt Ergebnis am Ende an.
-                lbl6.setText("Herzlichen Glückwunsch! Sie haben den Job bekommen!");
+                lbl6.setText("Herzlichen Glückwunsch! Du hast den Job bekommen!");
 
                 index = 1;
                 richtig = 0;
