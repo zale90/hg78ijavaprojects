@@ -49,7 +49,14 @@ public class Spiel {
 		aktuelleRunde = 0;
 		punkte = 0;
 		zeit = zeitProRunde;
-		bewerbungsfaktor = 1;
+		switch(avatarNr){
+		case 1: bewerbungsfaktor = 25;
+				break;
+		case 2: bewerbungsfaktor = 15;
+				break;
+		case 3: bewerbungsfaktor = 5;
+				break;
+		}
 		finanzen = new Finanzen(this);
 		
 		switch(avatarNr){
@@ -775,13 +782,20 @@ public class Spiel {
 	}
 
 	public void zeigeFinanzen() {
+		if (aktuelleRunde < Optionen.ANZAHL_RUNDEN){
 		if ((aktuelleRunde + 1) % 4 == 0){
 			gameGUI.setzeAktiviert(false);
 			finanzen.aktualisiereFinanzenGUI();
 		}
 		else
 			naechsteRunde();
+		}
+		else
+		{
+			naechsteRunde();
+		}
 	}
+		
 	public int getFamilienmitglieder()
 	{
 		return familienmitglieder;
