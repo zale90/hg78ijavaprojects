@@ -20,18 +20,19 @@ public class Credits extends JPanel {
 	private final String text = Optionen.NAME
 			+ "\n\nDieses Spiel hat es sich zur Aufgabe gemacht, die Situation sozial benachteiligter Menschen in Deutschland darzustellen und auf mögliche Auswege hinzuweisen. "
 			+ "Nebenbei soll es natürlich auch Spaß machen. "
-			+ "\n\n\n"
+			+ "\n\n"
 			+ "Mitwirkende\n\n"
 			+ "Idee: Jan Bünker\n\n"
 			+ "Hauptspiel: \nPhilipp Schürmann, Henrik Schlüsener, Jan Bünker, Hendrik Hollenborg\n\n"
 			+ "Automat: \nHeinrich Reich\n\n"
-			+ "Bewerbungstest: \nLukas Strop, Jan Natschke, Christian Haves\n\n"
+			+ "Bewerbungstest: \nLukas Storp, Jan Natschke, Christian Haves\n\n"
 			+ "Kniffel: \nJohannes Diekmann\n\n"
 			+ "Kreuzworträtsel: \nMathias Hüwe, Daniel Stegemann, Philipp Richter\n\n"
 			+ "Senso: \nHeinrich Reich\n\n"
 			+ "Sudoku: \nManuela Wentker, Christian Peters, Bruno Wilken\n\n"
 			+ "Tic Tac Toe: \nAmmar Al Mikael\n\n"
-			+ "Grafiken: \nHendrik Hollenborg";
+			+ "Grafiken: \nHendrik Hollenborg\n\n"
+			+ "Besonderer Dank an: \nThomas Bittner";
 
 	private JTextPane tpInfos;
 

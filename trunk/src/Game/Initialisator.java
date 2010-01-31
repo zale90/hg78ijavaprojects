@@ -35,7 +35,7 @@ public class Initialisator {
 						1,
 						"Horst Terarno",
 						"Schwierigkeitsgrad: leicht\n\nHorst ist ein 35jähriger, kinder- und arbeitsloser Akademiker. Er hat Immobilienmanagement studiert und danach bei Traumhaus.de gearbeitet. Aufgrund der Wirtschaftskrise und gescheiterter Aktienspekulationen verlor er seinen Arbeitsplatz und seine Rücklagen schrumpften auf 1500,-€. Trotz Hartz IV versucht er seinen Lebensstandard zu halten.",
-						bedList, 500, 400, 20, 1));
+						bedList, 500, 400, 16, 1));
 
 		// Hasma Hamada
 		bedList = new Bedürfnis[5];
@@ -49,7 +49,7 @@ public class Initialisator {
 						2,
 						"Hasma Hamada",
 						"Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und ist Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt mit einem 400€-Job zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 130,-€ verbuchen.",
-						bedList, 200, 1500, 15, 5));
+						bedList, 200, 1500, 13, 5));
 
 		// Chantal-Jacqueline Chaves
 		bedList = new Bedürfnis[5];
@@ -62,7 +62,7 @@ public class Initialisator {
 				.add(new Avatar(
 						3,
 						"Jacqueline Chaves",
-						"Schwierigkeitsgrad: schwer\n\nChantal ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.",
+						"Schwierigkeitsgrad: schwer\n\nJaqueline ist eine 20jährige Mutter eines 3jährigen Mädchens und erneut im fünften Monat schwanger. Den Kontakt zu ihren Eltern, sowie zu den Vätern ihrer Kinder hat sie abgebrochen. Ihre Frisör-Ausbildung hat sie aufgrund der Schwangerschaft abgebrochen und hat deswegen keine Rücklage und knabbert an einer monatlichen Rate von 30,-€ für diverse Haushaltsgeräte.",
 						bedList, 100, 600, 10, 3));
 
 		return avList;
@@ -918,7 +918,7 @@ public class Initialisator {
 				new Information(Information.AENDERN_ZEIT,
 						Information.ART_UM_WERT, -4),
 				new Information(Information.AENDERN_GELD,
-						Information.ART_UM_WERT, -10),
+						Information.ART_UM_WERT, -10/familienmitglieder),
 				new Information(Information.AENDERN_GESUNDHEIT,
 						Information.ART_UM_WERT, 50)
 		};
