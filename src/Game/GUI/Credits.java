@@ -20,7 +20,7 @@ public class Credits extends JPanel {
 	private final String text = Optionen.NAME
 			+ "\n\nDieses Spiel hat es sich zur Aufgabe gemacht, die Situation sozial benachteiligter Menschen in Deutschland darzustellen und auf mögliche Auswege hinzuweisen. "
 			+ "Nebenbei soll es natürlich auch Spaß machen. "
-			+ "\n\n"
+			+ "\n\n\n"
 			+ "Mitwirkende\n\n"
 			+ "Idee: Jan Bünker\n\n"
 			+ "Hauptspiel: \nPhilipp Schürmann, Henrik Schlüsener, Jan Bünker, Hendrik Hollenborg\n\n"
@@ -49,7 +49,7 @@ public class Credits extends JPanel {
 		StyledDocument dokument = new DefaultStyledDocument(kontext);
 		Style style = dokument.getStyle(StyleContext.DEFAULT_STYLE);
 		StyleConstants.setAlignment(style, StyleConstants.ALIGN_CENTER);
-		StyleConstants.setFontSize(style, 14);
+		StyleConstants.setFontSize(style, 13);
 
 		try {
 			dokument.insertString(dokument.getLength(), text, style);
