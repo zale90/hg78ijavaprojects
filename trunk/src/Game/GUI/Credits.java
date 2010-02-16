@@ -17,12 +17,11 @@ public class Credits extends JPanel {
 
 	private static final long serialVersionUID = 2500415931767014676L;
 
-	private final String text = Optionen.NAME
-			+ "\n\nDieses Spiel hat es sich zur Aufgabe gemacht, die Situation sozial benachteiligter Menschen in Deutschland darzustellen und auf mögliche Auswege hinzuweisen. "
+	private final String text = 
+		      "Dieses Spiel hat es sich zur Aufgabe gemacht, die Situation sozial benachteiligter Menschen in Deutschland darzustellen und auf mögliche Auswege hinzuweisen. "
 			+ "Nebenbei soll es natürlich auch Spaß machen. "
-			+ "\n\n\n"
+			+ "\n\n"
 			+ "Mitwirkende\n\n"
-			+ "Idee: Jan Bünker\n\n"
 			+ "Hauptspiel: \nPhilipp Schürmann, Henrik Schlüsener, Jan Bünker, Hendrik Hollenborg\n\n"
 			+ "Automat: \nHeinrich Reich\n\n"
 			+ "Bewerbungstest: \nLukas Storp, Jan Natschke, Christian Haves\n\n"
@@ -32,7 +31,10 @@ public class Credits extends JPanel {
 			+ "Sudoku: \nManuela Wentker, Christian Peters, Bruno Wilken\n\n"
 			+ "Tic Tac Toe: \nAmmar Al Mikael\n\n"
 			+ "Grafiken: \nHendrik Hollenborg\n\n"
-			+ "Besonderer Dank an: \nThomas Bittner";
+			+ "Besonderer Dank an: \nThomas Bittner\n\n"
+			+ "Bildnachweise:\nHorst Terano © Peter Kirchhoff, Hasma Hamada © Paul-Georg Meister,\n Jacqueline Chaves © Rainer Sturm, "
+			+ "Hintergrund Bewerbungstest © Jean Jannon, Hintergrund Sudoku © R.Jürgens\n"
+			+ "alle Bilder stammen von www.pixelio.de";
 
 	private JTextPane tpInfos;
 
