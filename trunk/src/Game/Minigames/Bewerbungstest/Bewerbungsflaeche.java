@@ -120,11 +120,11 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                 this.add(lbl4);
 
                 // Lässt Animation am Ende erscheinen
-                lbl5 = new JLabel(new ImageIcon(folder + "haende.gif"));
+                lbl5 = new JLabel(new ImageIcon(folder + "bestanden.jpg"));
                 lbl5.setSize(101, 120);
                 lbl5.setLocation(125, 50);
                 lbl5.setVisible(false);
-                this.add(lbl5);
+                //this.add(lbl5);
 
                 // gibt Ergebnis am Ende an.
                 lbl6 = new JLabel("Herzlichen Glückwunsch! Du hast den Job bekommen!");
@@ -290,7 +290,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                                 lbl5.setSize(160, 160);
                                 lbl5.setLocation(225 - 80, 15);
                                 lbl5.setIcon(null);
-                                //lbl5.setIcon(new ImageIcon(folder + "smiley-traurig.gif"));
+                                //lbl5.setIcon(new ImageIcon(folder + "absage.jpg"));
                                 lbl6.setForeground(Color.YELLOW);
                                 lbl6.setText("Schade. Du hast es nicht geschafft.");
                                 if (gesund.getWert() < 30)
@@ -301,7 +301,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                                 lbl6.setText("Der Betrieb hat sich leider für einen anderen Bewerber entschieden.");
                                 lbl5.setSize(160,160);
                                 lbl5.setLocation(225 - 80, 15);
-                                lbl5.setIcon(new ImageIcon(folder + "smiley-traurig.gif"));
+                                //lbl5.setIcon(new ImageIcon(folder + "absage.jpg"));
                                 erfolgreich = false;
                         }
 
@@ -379,7 +379,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                         info[0] = new Information(12, 2, -3);
                         info[1] = new Information(7, 2, 15);
 
-                        finanzen.einnahmeHinzufügen("Arbeitsstelle", 400);
+                        finanzen.einnahmeHinzufügen("Arbeitsstelle", 160);
                 } else {
                         info = new Information[1];
                         info[0] = new Information(5, 2, -5);
@@ -402,7 +402,7 @@ public class Bewerbungsflaeche extends JDialog implements ActionListener,
                 frage = fragen.gibFragenobjekt();
 
                 lbl1.setText(frage.gibFrage());
-                lbl5.setIcon(new ImageIcon(folder + "haende.gif"));
+                //lbl5.setIcon(new ImageIcon(folder + "haende.gif"));
                 btn1.setText(frage.gibA());
                 btn2.setText(frage.gibB());
                 btn3.setText(frage.gibC());
