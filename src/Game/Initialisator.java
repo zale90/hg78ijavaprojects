@@ -48,7 +48,7 @@ public class Initialisator {
 				.add(new Avatar(
 						2,
 						"Hasma Hamada",
-						"Schwierigkeitsgrad: mittel\n\nHasma ist 40 Jahre alt, verheiratet und Vater von 3 Kindern (9, 10 und 12 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 200,-€ verbuchen.",
+						"Schwierigkeitsgrad: mittel\n\nHasma ist 47 Jahre alt, verheiratet und Vater von 3 Kindern (11, 12 und 13 Jahre). Er ist gelernter Dachdecker, raucht und ist für jeden Snack zu haben. Er pflegt seine Freundschaften und liebt seine Kinder. Aufgrund von Rationalisierung und bescheidenen Qualifikationen wurde ihm bei Bedachungen Wenner gekündigt. Seine Frau trägt zur Haushaltskasse bei, trotzdem kann die Familie nur Rücklagen in Höhe von 200,-€ verbuchen.",
 						bedList, 200, 1500, 13, 5));
 
 		// Chantal-Jacqueline Chaves
