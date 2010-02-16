@@ -147,7 +147,7 @@ public class Automat extends JFrame implements MouseListener, Runnable {
 		this.add(fruechte);
 
 		sApfel = new JLabel("X3>5€", new ImageIcon(
-				"files/Minigames/Automat/symbole/apfel.png"), 0);
+				"files/Minigames/Automat/Symbole_Neu/apfel.png"), 0);
 		sApfel.setSize(120, 30);
 		sApfel.setLocation(0, 130);
 		sApfel.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
@@ -155,7 +155,7 @@ public class Automat extends JFrame implements MouseListener, Runnable {
 		this.add(sApfel);
 
 		sEuro = new JLabel("X3>10€", new ImageIcon(
-				"files/Minigames/Automat/symbole/euro.png"), 0);
+				"files/Minigames/Automat/Symbole_Neu/euro.png"), 0);
 		sEuro.setSize(120, 30);
 		sEuro.setLocation(0, 160);
 		sEuro.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
@@ -163,7 +163,7 @@ public class Automat extends JFrame implements MouseListener, Runnable {
 		this.add(sEuro);
 
 		sBanane = new JLabel("X3>20€", new ImageIcon(
-				"files/Minigames/Automat/symbole/banane.png"), 0);
+				"files/Minigames/Automat/Symbole_Neu/banane.png"), 0);
 		sBanane.setSize(120, 30);
 		sBanane.setLocation(0, 190);
 		sBanane.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
@@ -171,7 +171,7 @@ public class Automat extends JFrame implements MouseListener, Runnable {
 		this.add(sBanane);
 
 		sKirsche = new JLabel("X3>50€", new ImageIcon(
-				"files/Minigames/Automat/symbole/kirsche.png"), 0);
+				"files/Minigames/Automat/Symbole_Neu/kirsche.png"), 0);
 		sKirsche.setSize(120, 30);
 		sKirsche.setLocation(0, 220);
 		sKirsche.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
@@ -179,7 +179,7 @@ public class Automat extends JFrame implements MouseListener, Runnable {
 		this.add(sKirsche);
 
 		sGlocke = new JLabel("X3>100€", new ImageIcon(
-				"files/Minigames/Automat/symbole/glocke.png"), 0);
+				"files/Minigames/Automat/Symbole_Neu/glocke.png"), 0);
 		sGlocke.setSize(120, 30);
 		sGlocke.setLocation(5, 250);
 		sGlocke.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
