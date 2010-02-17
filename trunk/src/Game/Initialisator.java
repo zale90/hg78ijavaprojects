@@ -430,10 +430,10 @@ public class Initialisator {
 			Spielbereich spielbereich, int familienmitglieder) {
 		ArrayList<Aktionsobjekt> aktionsobjekte = new ArrayList<Aktionsobjekt>();
 
-		Aktionsobjekt cheat = getCheat();
-		cheat.addMouseListener(spielbereich);
-		spielbereich.add(cheat);
-		aktionsobjekte.add(cheat);
+		//Aktionsobjekt cheat = getCheat();
+		//cheat.addMouseListener(spielbereich);
+		//spielbereich.add(cheat);
+		//aktionsobjekte.add(cheat);
 
 		Aktionsobjekt schrank = getSchrank(familienmitglieder);
 		schrank.addMouseListener(spielbereich);
