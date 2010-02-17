@@ -10,9 +10,6 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
-
-import Game.Optionen;
-
 public class Credits extends JPanel {
 
 	private static final long serialVersionUID = 2500415931767014676L;
@@ -21,7 +18,7 @@ public class Credits extends JPanel {
 		      "Dieses Spiel hat es sich zur Aufgabe gemacht, die Situation sozial benachteiligter Menschen in Deutschland darzustellen und auf mögliche Auswege hinzuweisen. "
 			+ "Nebenbei soll es natürlich auch Spaß machen. "
 			+ "\n\n"
-			+ "Mitwirkende\n\n"
+			+ "Stand aller zugrunde liegenden Gesetze: Januar 2010\n\n"
 			+ "Hauptspiel: \nPhilipp Schürmann, Henrik Schlüsener, Jan Bünker, Hendrik Hollenborg\n\n"
 			+ "Automat: \nHeinrich Reich\n\n"
 			+ "Bewerbungstest: \nLukas Storp, Jan Natschke, Christian Haves\n\n"
